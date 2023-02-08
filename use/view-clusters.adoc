@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: use/view-clusters.html 
+keywords: view cluster, cluster storage, cluster overview 
+summary: Después de añadir clústeres de Kubernetes a Astra Control, puede ver detalles sobre el clúster, como su ubicación, los nodos de trabajo, los volúmenes persistentes y las clases de almacenamiento. 
+---
+= Consulte el estado y los detalles de los clústeres
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Después de añadir clústeres de Kubernetes a Astra Control, puede ver detalles sobre el clúster, como su ubicación, los nodos de trabajo, los volúmenes persistentes y las clases de almacenamiento.
+
+.Pasos
+. En la interfaz de usuario de Astra Control Service, seleccione *Clusters*.
+. En la página *Clusters*, seleccione el clúster cuyos detalles desea ver.
++
+
+NOTE: Si hay un clúster en `removed` estado aunque la conectividad del clúster y de la red parece correcta (los intentos externos de acceder al clúster mediante las API de Kubernetes se han realizado correctamente), es posible que la imagen que proporcionó a Astra Control ya no sea válida. Esto puede deberse a la rotación o a la caducidad del certificado en el clúster. Para corregir este problema, actualice las credenciales asociadas con el clúster en Astra Control mediante link:https://docs.netapp.com/us-en/astra-automation/index.html["API de control Astra"].
+
+. Consulte la información en las pestañas *Descripción general*, *almacenamiento* y *actividad* para encontrar la información que busca.
++
+** *Descripción general*: Detalles sobre los nodos de trabajo, incluido su estado.
+** *almacenamiento*: Los volúmenes persistentes asociados con el cálculo, incluyendo la clase de almacenamiento y el estado.
+** *Actividad*: Las actividades relacionadas con el cluster.
+
+
+
+
+
+NOTE: También puede ver la información del clúster empezando por Astra Control Service *Dashboard*. En la ficha *Clusters* de *Resumen de recursos*, puede seleccionar los clústeres administrados, que le llevará a la página *Clusters*. Después de llegar a la página *Clusters*, siga los pasos descritos anteriormente.

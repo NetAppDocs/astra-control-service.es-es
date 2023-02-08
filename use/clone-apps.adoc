@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: use/clone-apps.html 
+keywords: clone app, clone storage, clone persistent storage, clone data, move workload, clone data, migrate data, data migration, move storage, move application, move data 
+summary: Clone una aplicación existente para crear una aplicación duplicada en el mismo clúster de Kubernetes o en otro clúster. El clonado puede ayudarle si necesita mover aplicaciones y almacenamiento de un clúster de Kubernetes a otro. Por ejemplo, es posible que desee mover cargas de trabajo mediante una canalización de CD CI y entre espacios de nombres Kubernetes. 
+---
+= Clone y migre aplicaciones
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Puede clonar una aplicación existente para crear una aplicación duplicada en el mismo clúster de Kubernetes o en otro clúster. Cuando Astra Control clona una aplicación, crea un clon de la configuración de la aplicación y del almacenamiento persistente.
+
+El clonado puede ayudarle si necesita mover aplicaciones y almacenamiento de un clúster de Kubernetes a otro. Por ejemplo, es posible que desee mover cargas de trabajo mediante una canalización de CI/CD y entre espacios de nombres Kubernetes.
+
+.Lo que necesitará
+* Para clonar aplicaciones en un clúster diferente, debe asegurarse de que las instancias de cloud que contienen los clústeres de origen y destino (si no son iguales) tienen un bloque predeterminado. Deberá asignar un bloque predeterminado para cada instancia de cloud.
+* Durante las operaciones de clonado, las aplicaciones que necesitan un recurso IngressClass o enlaces web para funcionar correctamente no deben tener esos recursos ya definidos en el clúster de destino.
+
+
+.Limitaciones de clones
+* *Clases de almacenamiento explícitas*: Si implementa una aplicación con una clase de almacenamiento definida explícitamente y necesita clonar la aplicación, el clúster de destino debe tener la clase de almacenamiento especificada originalmente. Se producirá un error al clonar una aplicación con una clase de almacenamiento definida explícitamente a un clúster que no tenga la misma clase de almacenamiento.
+* *Clones y restricciones de usuario*: Cualquier usuario miembro con restricciones de espacio de nombres por nombre/ID de espacio de nombres o por etiquetas de espacio de nombres puede clonar o restaurar una aplicación a un nuevo espacio de nombres en el mismo clúster o a cualquier otro clúster de la cuenta de su organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Después de crear un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar las restricciones de la cuenta de usuario miembro y actualizar las restricciones de roles para que el usuario afectado conceda acceso al nuevo espacio de nombres.
+* *Los clones utilizan cubos predeterminados*:
++
+** Durante una copia de seguridad de la aplicación o una restauración de la aplicación, puede especificar un bloque que se va a utilizar. Debe especificar un bloque predeterminado cuando se clona en clústeres, pero especificar un bloque es opcional cuando se clona dentro del mismo clúster.
+** Cuando se clona en un clúster, la instancia de cloud que contiene el clúster de origen de la operación de clonado debe tener un conjunto de bloques predeterminado.
+** No existe ninguna opción para cambiar bloques para un clon. Si desea controlar qué segmento se utiliza, puede hacer lo mismo link:../use/manage-buckets.html#edit-a-bucket["cambiar el valor predeterminado del segmento"] o haga un link:../use/protect-apps.html#create-a-backup["Backup"] seguido de un link:../use/restore-apps.html["restaurar"] por separado.
+
+
+* *Con Jenkins CI*: Si clona una instancia de Jenkins CI desplegada por el operador, debe restaurar manualmente los datos persistentes. Esta es una limitación del modelo de puesta en marcha de la aplicación.
+
+
+.Pasos
+. Seleccione *aplicaciones*.
+. Debe realizar una de las siguientes acciones:
++
+** Seleccione el menú Opciones de la columna *acciones* de la aplicación deseada.
+** Seleccione el nombre de la aplicación deseada y seleccione la lista desplegable de estado en la parte superior derecha de la página.
+
+
+. Seleccione *Clonar*.
+. Especifique los detalles del clon:
++
+** Introduzca un nombre.
+** Elija un clúster de destino para el clon.
+** Introduzca los espacios de nombres de destino para el clon. Cada espacio de nombres de origen asociado a la aplicación se asigna a un espacio de nombres de destino.
++
+
+NOTE: Astra Control crea nuevos espacios de nombres de destino como parte de la operación de clonación. Los espacios de nombres de destino que especifique no deben estar ya presentes en el clúster de destino.
+
+** Seleccione *Siguiente*.
+** Elija si desea crear el clon a partir de una snapshot o un backup existente. Si no selecciona esta opción, Astra Control crea el clon a partir del estado actual de la aplicación.
++
+*** Si decide clonar desde una snapshot o un backup existente, elija la snapshot o el backup que desee utilizar.
+
+
+
+
+. Seleccione *Siguiente*.
+. Revise la información sobre el clon y seleccione *Clonar*.
+
+
+.Resultado
+Astra Control clona la aplicación en función de la información proporcionada. La operación de clonado se realiza correctamente cuando se encuentra el nuevo clon de la aplicación `Healthy` en la página *aplicaciones*.
+
+Después de crear un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar las restricciones de la cuenta de usuario miembro y actualizar las restricciones de roles para que el usuario afectado conceda acceso al nuevo espacio de nombres.

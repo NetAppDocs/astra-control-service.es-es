@@ -1,0 +1,29 @@
+---
+sidebar: sidebar 
+permalink: learn/app-management.html 
+keywords: custom app, labels, kubernetes labels, kubernetes resources, pods, define custom app 
+summary: Describe el tipo de aplicaciones gestionadas en Astra Control. 
+---
+= Gestión de aplicaciones
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Cuando Astra Control detecta sus clústeres, las aplicaciones de esos clústeres no se gestionan hasta que elija cómo desea gestionarlas. Una aplicación administrada de Astra Control puede ser cualquiera de las siguientes:
+
+* Un espacio de nombres, incluidos todos los recursos de ese espacio de nombres
++
+image:diagram-managed-app1.png["Imagen conceptual que muestra a Astra la gestión de todos los recursos de un espacio de nombres."]
+
+* Una aplicación individual implementada en uno o más espacios de nombres (se utiliza Helm 3 en este ejemplo)
++
+image:diagram-managed-app2.png["Imagen conceptual que muestra a Astra la gestión de una aplicación individual implementada en un espacio de nombres que incluye otras aplicaciones."]
+
+* Un grupo de recursos que se identifica con una etiqueta de Kubernetes dentro de uno o varios espacios de nombres
++
+image:diagram-managed-app3.png["Imagen conceptual en la que se muestra a Astra la gestión de una aplicación personalizada basada en una etiqueta de Kubernetes."]
+
+

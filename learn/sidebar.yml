@@ -1,0 +1,19 @@
+---
+section: learn
+title: Conceptos
+entries:
+- title: Arquitectura y componentes
+  url: "/learn/architecture.html"
+- title: Para clústeres de AWS
+  flavor: aws
+  url: "/learn/aws-storage.html"
+- title: Almacenamiento para clústeres AKS
+  flavor: azure
+  url: "/learn/azure-storage.html"
+- title: Almacenamiento para clústeres GKE
+  flavor: gcp
+  url: "/learn/choose-class-and-size.html"
+- title: Gestión de aplicaciones
+  url: "/learn/app-management.html"
+- title: Roles de usuario y espacios de nombres
+  url: "/learn/user-roles-namespaces.html"

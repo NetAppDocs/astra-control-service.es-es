@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: learn/azure-storage.html 
+keywords: service level, cvs, cvs-performance, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance 
+summary: 'Astra Control Service utiliza Azure NetApp Files como back-end de almacenamiento para los clústeres de Azure Kubernetes Service (AKS). Es necesario comprender cómo elegir una clase de almacenamiento y un tamaño de volumen persistente puede ayudarle a cumplir sus objetivos de rendimiento.' 
+---
+= Clases de almacenamiento y tamaño VP para clústeres AKS
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Astra Control Service es compatible con discos gestionados de Azure NetApp Files, Azure o NetApp Cloud Volumes ONTAP como back-end de almacenamiento para clústeres de Azure Kubernetes Service (AKS).
+
+
+
+== Azure NetApp Files
+
+Astra Control Service es compatible con Azure NetApp Files como back-end de almacenamiento para los clústeres de Azure Kubernetes Service (AKS). Es necesario comprender cómo elegir una clase de almacenamiento y un tamaño de volumen persistente puede ayudarle a cumplir sus objetivos de rendimiento.
+
+
+
+=== Niveles de servicio y clases de almacenamiento
+
+Azure NetApp Files admite tres niveles de servicio: Almacenamiento Ultra, almacenamiento Premium y almacenamiento estándar. Cada uno de estos niveles de servicio está diseñado para satisfacer distintas necesidades de rendimiento:
+
+Ultraespacio de almacenamiento:: Proporciona hasta 128 MIB/s de rendimiento por 1 TIB.
+Almacenamiento excepcional:: Proporciona hasta 64 MIB/s de rendimiento por 1 TIB.
+Almacenamiento estándar:: Proporciona hasta 16 MIB/s de rendimiento por 1 TIB.
+
+
+Estos niveles de servicio son un atributo de un pool de capacidad. Es necesario configurar un pool de capacidad para cada nivel de servicio que se desea usar con los clústeres de Kubernetes. link:../get-started/set-up-microsoft-azure-with-anf.html["Aprenda a configurar pools de capacidad"].
+
+El servicio Astra Control utiliza estos niveles de servicio como clases de almacenamiento para sus volúmenes persistentes. Cuando añade clústeres de Kubernetes a Astra Control Service, se le pedirá que elija Ultra, Premium o Standard como clase de almacenamiento predeterminada. Los nombres de los tipos de almacenamiento son _netapp-anf-perf-ultra_, _netapp-anf-perf-premium_ y _netapp-anf-perf-standard_.
+
+https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels["Obtenga más información sobre estos niveles de servicio en los documentos de Azure NetApp Files"^].
+
+
+
+=== Rendimiento y tamaño de volúmenes persistentes
+
+Tal como se ha descrito anteriormente, el rendimiento de cada nivel de servicio es por 1 TIB de capacidad aprovisionada. Esto significa que los volúmenes de mayor tamaño proporcionan un mejor rendimiento. Por lo tanto, debe tener en cuenta tanto las necesidades de capacidad como el rendimiento al aprovisionar los volúmenes.
+
+
+
+=== Tamaño de volumen mínimo
+
+El servicio de control Astra aprovisiona volúmenes persistentes con un tamaño de volumen mínimo de 100 GIB, incluso si el PVC pide un tamaño de volumen menor. Por ejemplo, si la RVP de un gráfico Helm solicita 6 GIB, el Servicio de control Astra aprovisiona automáticamente un volumen de 100 GIB.
+
+
+
+== Discos gestionados de Azure
+
+Astra Control Service es compatible con los discos gestionados de Azure como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento a nivel de bloques gestionado por Azure.
+
+https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["Obtenga más información acerca de los discos gestionados de Azure"^].
+
+
+
+== Cloud Volumes ONTAP de NetApp
+
+Para obtener información específica sobre la configuración de Cloud Volumes ONTAP de NetApp, incluidas las recomendaciones de rendimiento, visite https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Documentación de Cloud Volumes ONTAP de NetApp"^].

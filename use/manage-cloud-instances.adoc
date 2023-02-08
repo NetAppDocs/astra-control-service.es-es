@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: use/manage-cloud-instances.html 
+keywords: cloud, instance, manage, delete, remove, edit 
+summary: Gestione las instancias de cloud que ha añadido al añadir clústeres nuevos. 
+---
+= Gestionar las instancias de cloud
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Una instancia de cloud es un dominio único dentro de un proveedor de cloud. Es posible crear varias instancias de cloud para cada proveedor de cloud y cada instancia de cloud tiene su propio nombre, credenciales y clústeres asociados.
+
+Cree una instancia de cloud cuando agregue un nuevo clúster a Astra Control. Puede editar una instancia de cloud para cambiar su nombre o bloque predeterminado mediante la interfaz de usuario de Astra Control y realizar otras acciones con la instancia de cloud mediante la API Astra Control.
+
+
+
+== Añadir una instancia de cloud
+
+Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte link:../add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"] si quiere más información.
+
+
+
+== Editar una instancia de cloud
+
+Puede modificar una instancia de cloud existente para un proveedor de cloud.
+
+.Pasos
+. Vaya a *instancias de cloud*.
+. En la lista de instancias de nube, seleccione el menú *acciones* para la instancia de nube que desee editar.
+. Seleccione *Editar*.
++
+En esta página, puede actualizar el nombre y el bloque predeterminado de la instancia de cloud.
+
++
+
+NOTE: Cada instancia de cloud de Astra Control debe tener un nombre único.
+
+
+
+
+
+== Gire las credenciales de una instancia de cloud
+
+Puede utilizar la API Astra Control para rotar las credenciales de una instancia en la nube. Para obtener más información, https://docs.netapp.com/us-en/astra-automation["Vaya a los documentos de automatización de Astra"^].
+
+
+
+== Quitar una instancia de cloud
+
+Puede usar la API Astra Control para eliminar una instancia de cloud de un proveedor de cloud. Para obtener más información, https://docs.netapp.com/us-en/astra-automation["Vaya a los documentos de automatización de Astra"^].

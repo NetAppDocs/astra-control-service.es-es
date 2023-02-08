@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: use/manage-roles.html 
+keywords: users, roles, user roles, namespace, namespaces, account, accounts, permissions, restriction, restrict, constraint, constraints 
+summary: Aprenda a administrar las funciones de usuario agregando una restricción a la función. 
+---
+= Gestionar roles
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Es posible gestionar roles si se añaden restricciones de espacio de nombres y se restringen los roles del usuario a dichas restricciones. Esto le permite controlar el acceso a los recursos de su organización. Puede utilizar la interfaz de usuario de Astra Control o. https://docs.netapp.com/us-en/astra-automation/index.html["La API de control Astra"^] para administrar roles.
+
+
+
+== Agregar una restricción de espacio de nombres a una función
+
+Un usuario Admin o Owner puede agregar restricciones de espacio de nombres.
+
+.Pasos
+. En el área de navegación *Administrar su cuenta*, seleccione *cuenta*.
+. Seleccione la ficha *usuarios*.
+. En la columna *acciones*, seleccione el botón de menú para un usuario con la función Miembro o Visor.
+. Seleccione *Editar rol*.
+. Active la casilla de verificación *restringir rol a restricciones*.
++
+La casilla de verificación sólo está disponible para funciones de miembro o de visor. Puede seleccionar un rol diferente de la lista desplegable *rol*.
+
+. Seleccione *Agregar restricción*.
++
+Se puede ver la lista de restricciones disponibles por espacio de nombres o por etiqueta de espacio de nombres.
+
+. En la lista desplegable *Tipo de restricción*, seleccione *espacio de nombres Kubernetes* o *etiqueta de espacio de nombres Kubernetes* dependiendo de cómo estén configurados los espacios de nombres.
+. Seleccione uno o más espacios de nombres o etiquetas de la lista para redactar una restricción que restrinja las funciones a esos espacios de nombres.
+. Seleccione *Confirmar*.
++
+La página *Editar función* muestra la lista de restricciones que ha elegido para esta función.
+
+. Seleccione *Confirmar*.
++
+En la página *cuenta*, puede ver las restricciones de cualquier rol de miembro o de visor en la columna *rol*.
+
+
+
+
+NOTE: Si habilita restricciones para una función y selecciona *Confirmar* sin agregar restricciones, se considera que la función tiene restricciones completas (se deniega el acceso a cualquier recurso asignado a espacios de nombres).
+
+
+
+== Quitar una restricción de espacio de nombres de una función
+
+Un usuario Admin o Owner puede eliminar una restricción de espacio de nombres de una función.
+
+.Pasos
+. En el área de navegación *Administrar su cuenta*, seleccione *cuenta*.
+. Seleccione la ficha *usuarios*.
+. En la columna *acciones*, seleccione el botón de menú para un usuario con la función Miembro o Visor que tiene restricciones activas.
+. Seleccione *Editar rol*.
++
+El cuadro de diálogo *Editar función* muestra las restricciones activas para la función.
+
+. Seleccione *X* a la derecha de la restricción que debe eliminar.
+. Seleccione *Confirmar*.
+
+
+
+
+== Si quiere más información
+
+* link:../learn/user-roles-namespaces.html["Roles de usuario y espacios de nombres"]
+

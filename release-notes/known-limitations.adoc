@@ -1,0 +1,129 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-limitations.html 
+keywords: limitations, known limitations, interoperability 
+summary: Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o cuya interoperabilidad con esta no es óptima. Revise estas limitaciones detenidamente. 
+---
+= Limitaciones conocidas
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+[role="lead"]
+Las limitaciones conocidas identifican plataformas, dispositivos o funciones que no son compatibles con esta versión del producto o cuya interoperabilidad con esta no es óptima. Revise estas limitaciones detenidamente.
+
+
+
+== Limitaciones generales
+
+Las siguientes limitaciones afectan a la gestión de los clústeres de Kubernetes de Astra Control Service en cualquier puesta en marcha de Kubernetes compatible.
+
+
+
+=== Astra Trident no se desinstala de un clúster
+
+Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Siga estos pasos en la documentación de Astra Trident"^].
+
+
+
+=== Las conexiones existentes a un pod Postgres provocan fallos
+
+Cuando realice operaciones en pods Postgres, no debe conectarse directamente dentro del pod para utilizar el comando psql. Astra Control Service requiere un acceso psql para congelar y descongelar las bases de datos. Si existe una conexión preexistente, se producirá un error en la snapshot, el backup o el clon.
+
+ifdef::aws[]
+
+
+
+=== Cloud Volumes ONTAP de NetApp no es oficialmente compatible con Amazon Web Services
+
+Con la versión 17 de enero de 2023 de Astra Control Service, Cloud Volumes ONTAP de NetApp aún no es compatible oficialmente con Amazon Web Services.
+
+endif::aws[]
+
+ifdef::gcp[]
+
+
+
+== Limitaciones en la administración de clústeres GKE
+
+Las siguientes limitaciones se aplican a la gestión de los clústeres de Kubernetes en Google Kubernetes Engine (GKE).
+
+
+
+=== Las aplicaciones de Google Marketplace no se han validado
+
+NetApp no ha validado las aplicaciones que se pusieron en marcha desde Google Marketplace. Algunos usuarios reportan problemas con el descubrimiento o copia de seguridad de Postgres, MariaDB, y aplicaciones MySQL que fueron desplegadas desde Google Marketplace.
+
+Independientemente del tipo de aplicación que utilice con Astra Control Service, siempre debe probar el flujo de trabajo de backup y restauración usted mismo para garantizar que cumple sus requisitos de recuperación ante desastres.
+
+endif::gcp[]
+
+
+
+== Limitaciones en la gestión de aplicaciones
+
+Las siguientes limitaciones afectan a la gestión de aplicaciones de Astra Control Service.
+
+
+
+=== No es posible restaurar colectivamente varias aplicaciones que utilicen el mismo espacio de nombres para otro
+
+Si gestiona varias aplicaciones que utilizan el mismo espacio de nombres (creando varias definiciones de aplicaciones en Astra Control), no podrá restaurar todas las aplicaciones en un espacio de nombres único diferente. Es necesario restaurar cada aplicación a su propio espacio de nombres independiente.
+
+
+
+=== Astra Control no asigna automáticamente bloques predeterminados para las instancias de la nube
+
+Astra Control no asigna automáticamente un bloque predeterminado para ninguna instancia de cloud. Debe establecer manualmente un bloque predeterminado para una instancia de cloud. Si no se ha establecido un bloque predeterminado, no se podrán realizar operaciones de clonado de aplicaciones entre dos clústeres.
+
+
+
+=== No se admiten las operaciones de restauración in situ de las aplicaciones que utilizan un administrador de certificados
+
+Esta versión de Astra Control Service no admite la restauración local de aplicaciones con gestores de certificados. Se admiten las operaciones de restauración en otro espacio de nombres y operaciones de clonado.
+
+
+
+=== Se produce un error en los clones de aplicaciones después de poner en marcha una aplicación con una clase de almacenamiento establecida
+
+Una vez que se implementa una aplicación con una clase de almacenamiento definida explícitamente (por ejemplo, `helm install ...-set global.storageClass=netapp-cvs-perf-extreme`), los intentos posteriores de clonar la aplicación requieren que el clúster de destino tenga la clase de almacenamiento especificada originalmente. Se producirá un error al clonar una aplicación con una clase de almacenamiento definida explícitamente a un clúster que no tenga la misma clase de almacenamiento. No existen pasos de recuperación en este escenario.
+
+
+
+=== Se puede producir un error en los clones de aplicaciones instaladas con operadores de referencia de paso
+
+Astra Control admite las aplicaciones instaladas con operadores con ámbito de espacio de nombres. Estos operadores están diseñados generalmente con una arquitectura "pasada por valor" en lugar de "pasada por referencia". Las siguientes son algunas aplicaciones del operador que siguen estos patrones:
+
+* https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
++
+
+NOTE: Para K8ssandra, se admiten operaciones de restauración in situ. Una operación de restauración a un nuevo espacio de nombres o clúster requiere que se apague la instancia original de la aplicación. Esto es para garantizar que la información del grupo de pares no conduzca a la comunicación entre instancias. No se admite la clonación de la aplicación.
+
+* https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
+* https://github.com/percona/percona-xtradb-cluster-operator["Clúster Percona XtraDB"^]
+
+
+Tenga en cuenta que Astra Control puede no ser capaz de clonar a un operador diseñado con una arquitectura "de paso por referencia" (por ejemplo, el operador CockroachDB). Durante estos tipos de operaciones de clonado, el operador clonado intenta hacer referencia a los secretos de Kubernetes del operador de origen a pesar de tener su propio secreto nuevo como parte del proceso de clonado. Es posible que se produzca un error en la operación de clonado porque Astra Control no conoce los secretos de Kubernetes en el operador de origen.
+
+
+NOTE: Durante las operaciones de clonado, las aplicaciones que necesitan un recurso IngressClass o enlaces web para funcionar correctamente no deben tener esos recursos ya definidos en el clúster de destino.
+
+
+
+== Limitaciones de control de acceso basado en roles (RBAC)
+
+Las siguientes limitaciones se aplican a la forma en que Astra Control limita el acceso de los usuarios a los recursos o capacidades.
+
+
+
+=== Un usuario con restricciones de RBAC de espacio de nombres puede añadir y anular la gestión de un clúster
+
+No se debe permitir que un usuario con restricciones de RBAC de espacio de nombres añada o anule la gestión de clústeres. Debido a una limitación actual, Astra no impide que estos usuarios desgestionen los clústeres.
+
+
+
+=== Un usuario miembro con restricciones de espacio de nombres no puede acceder a las aplicaciones clonadas o restauradas hasta que un usuario Admin agregue el espacio de nombres a la restricción
+
+Cualquiera `member` El usuario con limitaciones de RBAC por nombre/ID de espacio de nombres puede clonar o restaurar una aplicación en un espacio de nombres nuevo en el mismo clúster o en cualquier otro clúster de la cuenta de la organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Cuando se crea un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar el `member` cuenta de usuario y restricciones de función de actualización para que el usuario afectado conceda acceso al nuevo espacio de nombres.

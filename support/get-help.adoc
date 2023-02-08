@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: support/get-help.html 
+keywords: get help, get support, knowledgebase, Discord, phone, web, ticket, contact support, support ticket 
+summary: 'NetApp ofrece compatibilidad con Astra Control de varias formas. Hay disponibles amplias opciones de soporte gratuito las 24 horas del día, los 7 días de la semana, como artículos de la base de conocimiento (KB) y un canal Discord. Su cuenta de Astra Control incluye soporte técnico remoto mediante emisión de boletos web.' 
+---
+= Obtenga ayuda
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/support/
+
+
+[role="lead"]
+NetApp ofrece compatibilidad con Astra Control de varias formas. Hay disponibles amplias opciones de soporte gratuito las 24 horas del día, los 7 días de la semana, como artículos de la base de conocimiento (KB) y un canal Discord. Su cuenta de Astra Control incluye soporte técnico remoto mediante emisión de boletos web.
+
+Usted debe primero link:register-support.html["Active el soporte para su número de serie de NetApp"] para poder utilizar estas opciones de soporte no autoservicio. Se necesita una cuenta de SSO del sitio de soporte de NetApp (NSS) para el chat y los efectos de la emisión de boletos web junto con la gestión de casos.
+
+Puede acceder a las opciones de soporte desde la interfaz de usuario de Astra Control seleccionando la pestaña *Soporte* del menú principal.
+
+
+
+== Autoasistencia
+
+Estas opciones están disponibles de forma gratuita los siete días de la semana, las 24 horas
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Project_Astra["Base de conocimientos"^]
++
+Buscar artículos, preguntas frecuentes o información de reparaciones relacionadas con Astra Control.
+
+* Documentación
++
+Este es el sitio de documentación que está viendo actualmente.
+
+* https://discord.gg/NetApp["Obtenga ayuda con Discord"^]
++
+Vaya a Astra en la categoría Pub para ponerse en contacto con colegas y expertos.
+
+* Correo electrónico de comentarios
++
+Envíe un correo electrónico a astra.feedback@netapp.com para informarnos de sus pensamientos, ideas o preocupaciones.
+
+
+
+
+
+== Soporte de suscripción
+
+Además de las opciones de autosoporte anteriores, puede trabajar con un ingeniero de soporte de NetApp para resolver los problemas después de usted link:register-support.html["Active el soporte para su número de serie de NetApp"].
+
+Una vez activado su número de serie de Astra Control, puede acceder a los recursos de soporte técnico de NetApp mediante la creación de una https://mysupport.netapp.com/site/cases/mine/create["Ticket de soporte"].
+
+Seleccione *Servicios de datos en la nube > Astra*.
+
+Utilice el número de serie "941" para abrir el billete web. link:register-support.html["Obtenga más información acerca de su número de serie"].
+
+image:screenshot-web-ticket.gif["Captura de pantalla de una incidencia web en el sitio de soporte de NetApp. Para ello, debe seleccionar un sistema, introducir la información de su problema y proporcionarle la información de contacto."]

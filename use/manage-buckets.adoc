@@ -1,0 +1,167 @@
+---
+sidebar: sidebar 
+permalink: use/manage-buckets.html 
+keywords: bucket, buckets, add buckets, change default bucket, default, default bucket, remove bucket, delete bucket, S3, s3, storage, object storage, object store, store, object 
+summary: Gestione los bloques que Astra utiliza para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de su proveedor de cloud. 
+---
+= Gestionar bloques
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Gestione los bloques que Astra utiliza para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de Kubernetes en su instancia de cloud.
+
+Solo los administradores pueden agregar y modificar bloques.
+
+
+
+== Cómo utiliza el control Astra cucharones
+
+Cuando empiece a gestionar su primer clúster de Kubernetes, Astra Control Service crea el bloque predeterminado para su proveedor de cloud en la misma ubicación geográfica que el clúster gestionado.
+
+Astra Control Service utiliza este bloque predeterminado para las copias de seguridad y clones que cree. A continuación, puede usar los backups para restaurar y clonar las aplicaciones entre clústeres.
+
+Si agrega bloques adicionales al servicio de control de Astra, puede seleccionar entre ellos cuando cree una política de protección. También puede cambiar el bloque predeterminado que Astra Control Service utiliza para copias de seguridad y clones ad-hoc. No puede clonar un bucket de un proveedor de cloud a otro proveedor de cloud. Para migrar datos de un proveedor de cloud a otro, clone la aplicación asociada en su lugar.
+
+
+TIP: El servicio Astra Control Service comprueba si se puede acceder a un bloque de destino antes de iniciar una copia de seguridad o un clon.
+
+
+
+== Ver los bloques existentes
+
+Consulte la lista de bloques disponibles para Astra Control Service para determinar su estado e identificar el bloque predeterminado para su proveedor de cloud.
+
+Un bloque puede tener cualquiera de los siguientes estados:
+
+Pendiente:: Después de añadir un bloque, se inicia en el estado pendiente mientras Astra Control lo examina por primera vez.
+Disponible:: El cucharón está disponible para su uso por Astra Control.
+Quitada:: La cuchara no está operativa por el momento. Pase el ratón sobre el icono de estado para identificar el problema.
++
+--
+Si un bloque se encuentra en el estado quitado, puede establecerlo como el bloque predeterminado y asignarlo a un programa de protección. Pero si el bloque no está en estado disponible cuando se inicia una operación de protección de datos, esta operación falla.
+
+--
+
+
+.Paso
+. Vaya a *Cuchos*.
++
+Aparece la lista de cucharones disponibles para el servicio de control de Astra.
+
+
+
+
+
+== Añadir un bloque más
+
+Después de empezar a gestionar un clúster en su proveedor de cloud, puede añadir bloques adicionales en cualquier momento. Esto le permite elegir entre bloques al crear una política de protección y cambiar el bloque predeterminado para backups y clones ad-hoc.
+
+.Lo que necesitará
+* El nombre de un bloque existente en su proveedor de cloud.
+
+
+ifdef::azure[]
+
+* Si su bloque está en Azure:
++
+** El bloque debe pertenecer al grupo de recursos denominado _astra-backup-rg_.
+** Si la configuración del rendimiento de la instancia de la cuenta de almacenamiento de Azure se establece en "Premium", la opción "Tipo de cuenta Premium" debe configurarse en "Block Blobs".
+
+
+
+
+endif::azure[]
+
+.Pasos
+. Vaya a *Cuchos*.
+. Seleccione *Agregar* y siga las indicaciones para añadir el cucharón.
++
+** *Tipo*: Elija su proveedor de nube.
++
+Su proveedor de cloud solo está disponible después de que Astra Control Service haya empezado a gestionar un clúster que se ejecuta en ese proveedor de cloud.
+
+** *Nombre del cucharón existente*: Introduzca el nombre del cucharón.
+** *Descripción*: Si lo desea, introduzca una descripción del cucharón.
+
+
+
+
+ifdef::azure[]
+
+* *Cuenta de almacenamiento* (sólo Azure): Introduzca el nombre de su cuenta de almacenamiento de Azure. Este bloque debe pertenecer al grupo de recursos denominado _astra-backup-rg_.
+
+
+endif::azure[]
+
+ifdef::aws[]
+
+* *Nombre de servidor S3 o dirección IP* (sólo AWS): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin `https://`. Consulte https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentación de Amazon"^] si quiere más información.
+
+
+endif::aws[]
+
+* *Seleccionar credenciales*: Elija las credenciales que proporcionan a Astra Control Service los permisos que necesita para administrar el bloque.
++
+.. Seleccione *Agregar* para añadir el cucharón.
+
+
+
+
+.Resultado
+Astra Control Service añade el cucharón adicional. Ahora puede elegir el bloque cuando cree una política de protección.
+
+
+
+== Cambiar el bloque predeterminado
+
+Cambie el bloque predeterminado que Astra Control Service debe utilizar para las copias de seguridad y clones. Cada instancia de cloud tiene su propio bloque predeterminado.
+
+Astra Control Service utiliza el bloque predeterminado para una instancia de cloud para backups ad-hoc y clones ad-hoc cuando no tiene la opción de clonar desde un backup existente.
+
+
+NOTE: Astra Control no asigna automáticamente un bloque predeterminado para ninguna instancia de cloud. Debe establecer manualmente un bloque predeterminado para una instancia de cloud antes de ejecutar operaciones de clonado de aplicaciones entre dos clústeres.
+
+.Pasos
+. Vaya a *instancias de cloud*.
+. Seleccione el menú de configuración de la columna *acciones* para la instancia de nube que desea editar.
+. Seleccione *Editar*.
+. En la lista de bloques, seleccione el bloque que desea convertir en el bloque predeterminado para esta instancia de cloud.
+. Seleccione *Actualizar*.
+
+
+
+
+== Retirar un cucharón
+
+Puede eliminar un cubo que ya no esté en uso o que no esté sano. Se recomienda hacer esto para mantener la configuración del almacén de objetos sencilla y actualizada.
+
+No se puede eliminar un bloque predeterminado. Si desea eliminar ese bloque, seleccione primero otro bloque como predeterminado.
+
+.Lo que necesitará
+* Antes de empezar, debe comprobar que no hay copias de seguridad en ejecución o completadas para este bloque.
+* Debe comprobar que dicho bloque no se esté utilizando para ninguna copia de seguridad programada.
+
+
+Si lo hay, no podrá continuar.
+
+.Pasos
+. Vaya a *Cuchos*.
+. En el menú *acciones*, seleccione *Quitar*.
++
+
+NOTE: Astra Control garantiza en primer lugar que no existan normativas de programación utilizando el bloque para copias de seguridad y que no haya copias de seguridad activas en el bloque que va a eliminar.
+
+. Escriba "eliminar" para confirmar la acción.
+. Seleccione *Sí, retire la cuchara*.
+
+
+
+
+== Obtenga más información
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["Utilice la API Astra Control"^]
+

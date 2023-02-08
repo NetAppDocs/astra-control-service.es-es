@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: learn/aws-storage.html 
+keywords: service level, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance 
+summary: 'Astra Control Service puede utilizar Amazon Elastic Block Store (EBS) o Amazon FSX para NetApp ONTAP como back-ends de almacenamiento para los clústeres de Elastic Kubernetes Service (EKS). Es necesario comprender cómo elegir una clase de almacenamiento y un tamaño de volumen persistente puede ayudarle a cumplir sus objetivos de rendimiento.' 
+---
+= Tipos de almacenamiento y rendimiento para clústeres de AWS
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Astra Control Service puede utilizar Amazon Elastic Block Store (EBS) o Amazon FSX para NetApp ONTAP como back-ends de almacenamiento para los clústeres de Amazon Elastic Kubernetes Service (EKS).
+
+
+
+== Elastic Block Store (EBS) de Amazon
+
+Cuando utiliza EBS como back-end de almacenamiento para clústeres EKS, puede configurar algunos parámetros de clase de almacenamiento. Para obtener más información acerca de qué significan los parámetros y cómo configurarlos, consulte https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs["La documentación de Kubernetes"^].
+
+Es posible usar varios tipos distintos de volúmenes con EBS:
+
+* Unidades de estado sólido (SSD)
+* Unidades de disco duro (HDD)
+* Generación anterior
+
+
+Para obtener más información sobre cada tipo de volumen y su rendimiento, consulte https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html["La documentación de Amazon EBS"^]. Para obtener información sobre precios, consulte https://aws.amazon.com/ebs/pricing/["Precios de Amazon EBS"^].
+
+
+
+== Amazon FSX para ONTAP de NetApp
+
+Cuando utiliza FSX para ONTAP de NetApp como back-end de almacenamiento para los clústeres de AWS, el rendimiento de I/o depende de la configuración del sistema de archivos y las características de sus cargas de trabajo. Para obtener información específica sobre el rendimiento de ONTAP de NetApp en FSX, consulte https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/performance.html["Rendimiento de Amazon FSX para ONTAP de NetApp"^]. Para obtener información sobre precios, consulte https://aws.amazon.com/fsx/netapp-ontap/pricing/["Precios de Amazon FSX para ONTAP de NetApp"^].

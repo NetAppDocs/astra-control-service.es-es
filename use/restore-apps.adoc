@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: use/restore-apps.html 
+keywords: restore app, restoring an app, restore an app, restore 
+summary: Astra Control puede restaurar la configuración de sus aplicaciones y el almacenamiento persistente a partir de una copia Snapshot o una copia de seguridad. Los backups de almacenamiento persistente se transfieren del almacén de objetos, por lo que la restauración a partir de un backup existente se completará con la más rápida. 
+---
+= Restaurar aplicaciones
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Astra Control puede restaurar su aplicación a partir de una instantánea o una copia de seguridad. La restauración a partir de una snapshot existente será más rápida cuando se restaure la aplicación en el mismo clúster. Puede utilizar la interfaz de usuario de Astra Control o. https://docs.netapp.com/us-en/astra-automation/index.html["La API de control Astra"^] para restaurar aplicaciones.
+
+.Acerca de esta tarea
+* *Proteger sus aplicaciones primero*: Se recomienda tomar una instantánea o hacer una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup en el caso de que la restauración no se realice correctamente.
+* *Comprobar la clase de almacenamiento de destino*: Si restaura a un clúster diferente, asegúrese de que la clase de almacenamiento del clúster de destino esté utilizando el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany) que la clase de almacenamiento del clúster de origen. Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente.
+
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.
+. Seleccione *Protección de datos*.
+. Si desea restaurar desde una instantánea, mantenga seleccionada *instantáneas*. De lo contrario, seleccione *copias de seguridad* para restaurar desde una copia de seguridad.
+. En el menú Opciones de la columna *acciones* de la instantánea o copia de seguridad desde la que desea restaurar, seleccione *Restaurar aplicación*.
+. Elija el tipo de restauración:
++
+** *Restaurar en espacios de nombres originales*: Utilice este procedimiento para restaurar la aplicación en su sitio al cluster original.
++
+[CAUTION]
+====
+La ejecución de una operación de restauración sin movimiento en una aplicación que comparte recursos con otra aplicación puede tener resultados no intencionados. Los recursos compartidos entre las aplicaciones se reemplazan cuando se realiza una restauración sin movimiento en una de las aplicaciones.
+
+====
++
+... Seleccione la instantánea que se va a utilizar para restaurar la aplicación in situ, que revierte la aplicación a una versión anterior de sí misma.
+... Seleccione *Siguiente*.
++
+
+NOTE: Si se restaura en un espacio de nombres que se eliminó previamente, se crea un espacio de nombres nuevo con el mismo nombre como parte del proceso de restauración. Cualquier usuario que tenga derechos para administrar aplicaciones en el espacio de nombres previamente eliminado debe restaurar manualmente los derechos en el espacio de nombres recién creado.
+
+... Revise los detalles sobre la acción de restauración, escriba "restore" y seleccione *Restaurar*.
+
+
+** *Restaurar en nuevos espacios de nombres*: Utilice este procedimiento para restaurar la aplicación en otro clúster o con diferentes espacios de nombres desde el origen.
++
+... Elija el clúster de destino de la aplicación que desea restaurar.
+... Introduzca un espacio de nombres de destino para cada espacio de nombres de origen asociado a la aplicación.
++
+
+NOTE: Astra Control crea nuevos espacios de nombres de destino como parte de esta opción de restauración. Los espacios de nombres de destino que especifique no deben estar ya presentes en el clúster de destino.
+
+... Seleccione *Siguiente*.
+... Seleccione la instantánea que desea utilizar para restaurar la aplicación.
+... Seleccione *Siguiente*.
+... Revise los detalles sobre la acción de restauración y seleccione *Restaurar*.
+
+
+
+
+
+
+.Resultado
+Astra Control restaura la aplicación en función de la información proporcionada. Si restauró la aplicación en un lugar, el contenido de los volúmenes persistentes existentes se reemplaza por el contenido de los volúmenes persistentes de la aplicación restaurada.
+
+
+NOTE: Cualquier usuario miembro con restricciones de espacio de nombres por nombre/ID de espacio de nombres o por etiquetas de espacio de nombres puede clonar o restaurar una aplicación en un nuevo espacio de nombres en el mismo clúster o en cualquier otro clúster de la cuenta de su organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Después de crear un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar las restricciones de la cuenta de usuario miembro y actualizar las restricciones de roles para que el usuario afectado conceda acceso al nuevo espacio de nombres.

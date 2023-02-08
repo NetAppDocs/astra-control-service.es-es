@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: get-started/supported-deployments.html 
+keywords: gke, aks, google kubernetes engine, azure kubernetes service 
+summary: Astra Control Service puede gestionar las aplicaciones que se ejecutan en un clúster de Kubernetes gestionado en entornos de proveedores de cloud. 
+---
+= Puestas en marcha de Kubernetes compatibles
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Astra Control Service puede gestionar las aplicaciones que se ejecutan en un clúster de Kubernetes gestionado en Amazon Elastic Kubernetes Service (EKS) y los clústeres que gestiona por su cuenta.
+
+Astra Control Service puede gestionar las aplicaciones que se ejecutan en un clúster de Kubernetes gestionado en Google Kubernetes Engine (GKE) y los clústeres que gestiona por su cuenta.
+
+Astra Control Service puede gestionar las aplicaciones que se ejecutan en un clúster de Kubernetes gestionado en Azure Kubernetes Service (AKS) y clústeres que gestiona por su cuenta.
+
+ifdef::aws[]
+
+* link:set-up-amazon-web-services.html["Descubra cómo configurar Amazon Web Services para Astra Control Service"].
+
+
+endif::aws[]
+
+ifdef::gcp[]
+
+* link:set-up-google-cloud.html["Descubra cómo configurar Google Cloud para Astra Control Service"].
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+* link:set-up-microsoft-azure-with-anf.html["Descubra cómo configurar Microsoft Azure con Azure NetApp Files para el servicio Astra Control"].
+* link:set-up-microsoft-azure-with-amd.html["Descubra cómo configurar Microsoft Azure con los discos gestionados de Azure para el servicio Astra Control"].
+
+
+endif::azure[]
+
+* link:add-first-cluster.html#start-managing-kubernetes-clusters["Descubra cómo preparar los clústeres autogestionados antes de agregarlos al servicio de control de Astra"].
+

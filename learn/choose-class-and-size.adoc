@@ -1,0 +1,126 @@
+---
+sidebar: sidebar 
+permalink: learn/choose-class-and-size.html 
+keywords: service level, cvs, cvs-performance, storage class, storage classes, pv size, persistent volume size, volume size, bandwidth, performance 
+summary: Astra Control Service utiliza Cloud Volumes Service para Google Cloud como back-end de almacenamiento para volúmenes persistentes. Debe entender cómo elegir un nivel de servicio, una clase de almacenamiento y un tamaño de volumen persistente puede ayudarle a alcanzar sus objetivos de rendimiento. 
+---
+= Tipo de servicio, clases de almacenamiento y tamaño VP para clústeres GKE
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Astra Control Service es compatible con Cloud Volumes Service para Google Cloud, Google Persistent Disk o Cloud Volumes ONTAP de NetApp como opciones de back-end de almacenamiento para volúmenes persistentes.
+
+
+
+== Cloud Volumes Service para Google Cloud
+
+Astra Control Service puede utilizar Cloud Volumes Service para Google Cloud como back-end de almacenamiento para volúmenes persistentes. Es necesario comprender cómo elegir un tipo de servicio, una clase de almacenamiento y un tamaño de volumen persistente pueden ayudarle a alcanzar sus objetivos de rendimiento.
+
+
+
+=== Descripción general
+
+Cloud Volumes Service for Google Cloud proporciona dos tipos de servicios: _CVS_ y _CVS-Performance_. Estos tipos de servicio son compatibles con regiones específicas de Google Cloud. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Acceda al programa Global Regions Maps de Cloud Central de NetApp"^] Para identificar el tipo de servicio compatible en la región de Google Cloud en la que residen los clústeres.
+
+Si los clústeres de Kubernetes deben residir en una región específica, usará el tipo de servicio que se admite en esa región.
+
+Sin embargo, si cuenta con flexibilidad para elegir entre regiones de Google Cloud, le recomendamos que siga estos requisitos de rendimiento:
+
+* Para las aplicaciones K8S que tienen necesidades de almacenamiento de rendimiento de mediano a alto, elija una región de Google Cloud que admita CVS-Performance y use la clase de almacenamiento Premium o Extreme. Entre estas cargas de trabajo se incluyen las canalizaciones de IA/ML, las canalizaciones de CI/CD, el procesamiento de medios y las bases de datos, incluidas las bases de datos relacionales, NoSQL, series temporales, etc.
+* Para las aplicaciones K8S que tienen necesidades de rendimiento del almacenamiento bajas o medianas (aplicaciones web, almacenamiento de archivos de uso general, etc.), elija una región de Google Cloud que admita CVS o CVS-Performance, con la clase de almacenamiento estándar.
+
+
+La tabla siguiente proporciona una comparación rápida de la información descrita en esta página.
+
+[cols="5*"]
+|===
+| Tipo de servicio | Caso de uso | Regiones admitidas | Clases de almacenamiento | Tamaño mínimo del volumen 
+
+
+| CVS-Performance | Con necesidades de rendimiento del almacenamiento medias o altas | https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Consulte las regiones de Google Cloud admitidas."^]  a| 
+* netapp-cvs-perf-standard
+* netapp-cvs-perf-premium
+* netapp-cvs-perf-extreme
+
+| 100 GIB 
+
+
+| CVS | Con necesidades de rendimiento del almacenamiento reducidas a medianas | https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Consulte las regiones de Google Cloud admitidas."^] | netapp-cvs-standard | 300 GIB 
+|===
+
+
+=== Tipo de servicio CVS-Performance
+
+Obtenga más información sobre el tipo de servicio CVS-Performance antes de elegir una clase de almacenamiento y crear volúmenes persistentes.
+
+
+
+==== Clases de almacenamiento
+
+El tipo de servicio CVS-Performance es compatible con tres niveles de servicio: Standard, Premium y Extreme. Cuando añada un clúster a Astra Control Service, se le pedirá que elija Standard, Premium o Extreme como clase de almacenamiento predeterminada para volúmenes persistentes. Cada uno de estos niveles de servicio está diseñado para satisfacer distintas necesidades de capacidad y ancho de banda.
+
+Los nombres de los tipos de almacenamiento son _netapp-cvs-perf-standard_, _netapp-cvs-perf-premium_ y _netapp-cvs-perf-extreme_.
+
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/selecting-the-appropriate-service-level-and-allocated-capacity-for-netapp-cloud-volumes-service#service_levels["Obtenga más información sobre estos niveles de servicio en los documentos de Cloud Volumes Service para Google Cloud"^].
+
+
+
+==== Rendimiento y tamaño de volúmenes persistentes
+
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/selecting-the-appropriate-service-level-and-allocated-capacity-for-netapp-cloud-volumes-service#service_levels["Como explican los documentos de Google Cloud"^], el ancho de banda permitido para cada nivel de servicio es por GIB de capacidad aprovisionada. Esto significa que los volúmenes más grandes proporcionarán un mejor rendimiento.
+
+Asegúrese de leer la página de Google Cloud vinculada a la anterior. Incluye comparaciones de costes y ejemplos que pueden ayudarle a comprender mejor cómo combinar un nivel de servicio con el tamaño del volumen para cumplir sus objetivos de rendimiento.
+
+
+
+==== Tamaño de volumen mínimo
+
+Astra Control Service aprovisiona volúmenes persistentes mediante un tamaño de volumen mínimo de 100 GIB con el tipo de servicio CVS-Performance, incluso si la RVP solicita un tamaño de volumen menor. Por ejemplo, si la RVP de un gráfico Helm solicita 6 GIB, el Servicio de control Astra aprovisiona automáticamente un volumen de 100 GIB.
+
+
+
+=== Tipo de servicio CVS
+
+Obtenga más información sobre el tipo de servicio CVS antes de elegir una clase de almacenamiento y crear volúmenes persistentes.
+
+
+
+==== Clase de almacenamiento
+
+Se admite un nivel de servicio con el tipo de servicio CVS: Standard. Cuando se gestionan clústeres en regiones donde se admite el tipo de servicio CVS, Astra Control Service utiliza el nivel de servicio estándar como clase de almacenamiento predeterminada para volúmenes persistentes. La clase de almacenamiento recibe el nombre de _netapp-cvs-Standard_.
+
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-levels["Obtenga más información acerca del nivel de servicio estándar en los documentos de Cloud Volumes Service para Google Cloud"^].
+
+
+
+==== Rendimiento y tamaño de volúmenes persistentes
+
+El ancho de banda permitido para el tipo de servicio CVS es por GIB de capacidad aprovisionada. Esto significa que los volúmenes más grandes proporcionarán un mejor rendimiento.
+
+
+
+==== Tamaño de volumen mínimo
+
+Astra Control Service aprovisiona volúmenes persistentes utilizando un tamaño de volumen mínimo de 300 GIB con el tipo de servicio CVS, incluso si el PVC pide un tamaño de volumen menor. Por ejemplo, si se solicitan 20 GIB, Astra Control Service aprovisiona automáticamente un volumen de 300 GIB.
+
+Debido a una limitación, si una RVP solicita un volumen entre 700-999 GIB, Astra Control Service aprovisiona automáticamente un tamaño de volumen de 1000 GIB.
+
+
+
+== Disco persistente de Google
+
+Astra Control Service es compatible con Google Persistent Disk como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento en el nivel de bloques gestionado por Google.
+
+https://cloud.google.com/persistent-disk/["Obtenga más información acerca de Google Persistent Disk"^].
+
+https://cloud.google.com/compute/docs/disks/performance["Obtenga más información sobre los diferentes niveles de rendimiento de los discos persistentes de Google"^].
+
+
+
+== Cloud Volumes ONTAP de NetApp
+
+Para obtener información específica sobre la configuración de Cloud Volumes ONTAP de NetApp, incluidas las recomendaciones de rendimiento, visite https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Documentación de Cloud Volumes ONTAP de NetApp"^].

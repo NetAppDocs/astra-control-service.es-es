@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: use/manage-notifications.html 
+keywords: notifications, delete notifications, mark notifications as read 
+summary: Astra Control le avisa cuando las acciones se han completado o han fallado. Por ejemplo, verá una notificación si una copia de seguridad de una aplicación se ha completado correctamente. 
+---
+= Ver y gestionar notificaciones
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Astra Control le avisa cuando las acciones se han completado o han fallado. Por ejemplo, verá una notificación si una copia de seguridad de una aplicación se ha completado correctamente.
+
+El número de notificaciones sin leer está disponible en la parte superior derecha de la interfaz.
+
+Puede ver estas notificaciones y marcarlas como leídas (esto puede ser útil si desea borrar notificaciones no leídas como nosotros).
+
+.Pasos
+. Seleccione el número de notificaciones sin leer en la parte superior derecha.
+. Revise las notificaciones y seleccione *Marcar como leído* o *Mostrar todas las notificaciones*.
++
+Si ha seleccionado *Mostrar todas las notificaciones*, se cargará la página Notificaciones.
+
+. En la página *Notificaciones*, vea las notificaciones, seleccione las que desea marcar como leídas, seleccione *Acción* y seleccione *Marcar como leído*.
+

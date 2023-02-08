@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: get-started/whats-next.html 
+keywords: get started, manage apps, manage account 
+summary: Ahora que ha iniciado sesión y agregado clústeres a Astra Control, está listo para empezar a utilizar las funciones de gestión de datos de aplicaciones de Astra Control. 
+---
+= ¿Cuál es el siguiente?
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Ahora que ha iniciado sesión y agregado un clúster a Astra Control, está listo para empezar a utilizar las funciones de gestión de datos de aplicaciones de Astra Control.
+
+* link:../use/manage-apps.html["Inicie la gestión de aplicaciones"]
+* link:../use/protect-apps.html["Proteja sus aplicaciones"]
+* link:../use/clone-apps.html["Clone aplicaciones"]
+* link:../use/set-up-billing.html["Configurar facturación"]
+* link:../use/manage-users.html["Invitar y administrar usuarios"]
+* link:../use/manage-credentials.html["Gestione las credenciales del proveedor de cloud"]
+* link:../use/manage-notifications.html["Gestionar notificaciones"]
+

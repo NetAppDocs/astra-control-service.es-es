@@ -1,0 +1,389 @@
+---
+sidebar: sidebar 
+permalink: use/manage-app-execution-hooks.html 
+keywords: execution hook, hook, script, snapshot, backup, freeze, thaw, database 
+summary: Un enlace de ejecución es una secuencia de comandos personalizada que se puede ejecutar antes o después de una instantánea de una aplicación administrada. 
+---
+= Gestione los enlaces de ejecución de aplicaciones
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Un enlace de ejecución es una acción personalizada que puede configurar para que se ejecute junto con una operación de protección de datos de una aplicación gestionada. Por ejemplo, si dispone de una aplicación de base de datos, puede utilizar un enlace de ejecución para pausar todas las transacciones de la base de datos antes de realizar una instantánea y reanudar las transacciones una vez completada la instantánea. De este modo se garantiza la creación de instantáneas coherentes con la aplicación.
+
+
+
+== Tipos de enlaces de ejecución
+
+Astra Control admite los siguientes tipos de enlaces de ejecución, en función de cuándo se pueden ejecutar:
+
+* Copia previa de Snapshot
+* Possnapshot
+* Previo al backup
+* Después del backup
+* Después de la restauración
+
+
+
+
+== Filtros de gancho de ejecución
+
+Al agregar o editar un enlace de ejecución a una aplicación, puede agregar filtros a un enlace de ejecución para gestionar qué contenedores coincidirán el gancho. Los filtros son útiles para aplicaciones que usan la misma imagen de contenedor en todos los contenedores, pero pueden usar cada imagen para un propósito diferente (como Elasticsearch). Los filtros permiten crear escenarios en los que los enlaces de ejecución se ejecutarán en algunos de esos contenedores idénticos, pero no necesariamente en todos ellos. Si crea varios filtros para un único enlace de ejecución, se combinan con un operador y lógico. Puede tener hasta 10 filtros activos por gancho de ejecución.
+
+Cada filtro que agregue a un enlace de ejecución utiliza una expresión regular para hacer coincidir los contenedores del clúster. Cuando un gancho coincide con un contenedor, el gancho ejecutará su script asociado en ese contenedor.
+
+
+NOTE: Las expresiones regulares para los filtros utilizan la sintaxis expresión regular 2 (RE2), que no admite la creación de un filtro que excluye contenedores de la lista de coincidencias.
+
+Para obtener información sobre la sintaxis que admite Astra Control para las expresiones regulares en los filtros de enlace de ejecución, consulte https://github.com/google/re2/wiki/Syntax["Soporte de sintaxis de expresión regular 2 (RE2)"^].
+
+
+
+== Notas importantes sobre los enlaces de ejecución personalizados
+
+Tenga en cuenta lo siguiente al planificar enlaces de ejecución para sus aplicaciones.
+
+* Un enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Muchos enlaces de ejecución pueden hacer referencia al mismo script.
+* Astra Control requiere que las secuencias de comandos que utilizan los enlaces de ejecución se escriban en el formato de secuencias de comandos de shell ejecutables.
+* El tamaño del script está limitado a 96 KB.
+* Astra Control utiliza la configuración del enlace de ejecución y cualquier criterio coincidente para determinar qué ganchos se aplican a una operación de instantánea, copia de seguridad o restauración.
+* Todos los fallos del enlace de ejecución son fallos de software; otros ganchos y la operación de protección de datos se siguen intentando incluso si falla un gancho. Sin embargo, cuando falla un gancho, se registra un suceso de advertencia en el registro de eventos de la página *Activity*.
+* Para crear, editar o eliminar enlaces de ejecución, debe ser un usuario con permisos de propietario, administrador o miembro.
+* Si un enlace de ejecución tarda más de 25 minutos en ejecutarse, el enlace fallará, creando una entrada de registro de eventos con un código de retorno de "N/A". Se agotará el tiempo de espera de todas las instantáneas afectadas y se marcarán como errores, con una entrada de registro de eventos resultante que tenga en cuenta el tiempo de espera.
+* Para las operaciones de protección de datos ad hoc, todos los eventos de enlace se generan y guardan en el registro de eventos de la página *actividad*. Sin embargo, en el caso de las operaciones de protección de datos programadas, solo se registran los eventos de fallo de enlace en el registro de eventos (los eventos generados por las propias operaciones de protección de datos programadas aún se registran).
+
+
+[NOTE]
+====
+Puesto que los enlaces de ejecución a menudo reducen o desactivan por completo la funcionalidad de la aplicación con la que se ejecutan, siempre debe intentar minimizar el tiempo que tardan los enlaces de ejecución personalizados. Si inicia una operación de copia de seguridad o de instantánea con los enlaces de ejecución asociados pero, a continuación, la cancela, los ganchos pueden ejecutarse si ya se ha iniciado la operación de copia de seguridad o de Snapshot. Esto significa que la lógica utilizada en un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado.
+
+====
+
+
+=== Orden de ejecución
+
+Cuando se ejecuta una operación de protección de datos, los eventos de enlace de ejecución tienen lugar en el siguiente orden:
+
+. Los ganchos de ejecución de preoperación personalizados aplicables se ejecutan en los contenedores adecuados. Puede crear y ejecutar tantos ganchos de prefuncionamiento personalizados como necesite, pero el orden de ejecución de estos enlaces antes de la operación no está garantizado ni configurable.
+. Se realiza la operación de protección de datos.
+. Los enlaces de ejecución de post-operación personalizados aplicables se ejecutan en los contenedores adecuados. Puede crear y ejecutar tantos enlaces de post-operación personalizados como necesite, pero el orden de ejecución de estos enlaces después de la operación no está garantizado ni configurable.
+
+
+Si crea varios enlaces de ejecución del mismo tipo (por ejemplo, presnapshot), no se garantiza el orden de ejecución de esos enlaces. Sin embargo, el orden de ejecución de ganchos de diferentes tipos está garantizado. Por ejemplo, el orden de ejecución de una configuración que tiene los cinco tipos diferentes de ganchos sería así:
+
+. Ganchos de precopia de seguridad ejecutados
+. Ganchos presnapshot ejecutados
+. Ganchos posteriores a la instantánea ejecutados
+. Se han ejecutado los enlaces posteriores a la copia de seguridad
+. Ganchos posteriores a la restauración ejecutados
+
+
+Puede ver un ejemplo de esta configuración en el número de escenario 2 de la tabla de la <<Determine si se ejecutará un gancho>>.
+
+
+NOTE: Siempre debe probar sus secuencias de comandos de ejecución de enlace antes de habilitarlas en un entorno de producción. Puede utilizar el comando 'kubectl exec' para probar cómodamente los scripts. Después de habilitar los enlaces de ejecución en un entorno de producción, pruebe las copias Snapshot y backups resultantes para garantizar que sean coherentes. Para ello, puede clonar la aplicación en un espacio de nombres temporal, restaurar la instantánea o la copia de seguridad y, a continuación, probar la aplicación.
+
+
+
+=== Determine si se ejecutará un gancho
+
+Utilice la siguiente tabla para determinar si se ejecutará un enlace de ejecución personalizado para su aplicación.
+
+Tenga en cuenta que todas las operaciones de aplicaciones de alto nivel consisten en ejecutar una de las operaciones básicas de copia Snapshot, backup o restauración. Según el supuesto, una operación de clonado puede consistir en diversas combinaciones de estas operaciones, de modo que lo que enlaza la ejecución de una operación de clonado será diferente.
+
+Las operaciones de restauración sin movimiento requieren una snapshot o un backup existentes, por lo que estas operaciones no ejecutan datos instantáneos ni enlaces de backup.
+
+[NOTE]
+====
+Si comienza pero luego cancela una copia de seguridad que incluye una instantánea y hay enlaces de ejecución asociados, es posible que se ejecuten algunos enlaces y es posible que otros no. Esto significa que un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado. Tenga en cuenta los siguientes puntos para realizar backups cancelados con enlaces de ejecución asociados:
+
+* Los enlaces de copia de seguridad previa y posterior siempre se ejecutan.
+* Si la copia de seguridad incluye una nueva instantánea y se ha iniciado la instantánea, se ejecutan los enlaces de preinstantánea y posterior a la instantánea.
+* Si la copia de seguridad se cancela antes del inicio de la instantánea, no se ejecutan los enlaces presnapshot y post snapshot.
+
+
+====
+|===
+| Situación | Funcionamiento | Snapshot existente | Backup existente | Espacio de nombres | Clúster | Funcionan los enlaces de instantáneas | Funcionamiento de los ganchos de backup | Restaurar ejecución de ganchos 
+
+
+| 1 | Clonar | N | N | Nuevo | Igual | Y | N | Y 
+
+
+| 2 | Clonar | N | N | Nuevo | Diferente | Y | Y | Y 
+
+
+| 3 | Clonar o restaurar | Y | N | Nuevo | Igual | N | N | Y 
+
+
+| 4 | Clonar o restaurar | N | Y | Nuevo | Igual | N | N | Y 
+
+
+| 5 | Clonar o restaurar | Y | N | Nuevo | Diferente | N | Y | Y 
+
+
+| 6 | Clonar o restaurar | N | Y | Nuevo | Diferente | N | N | Y 
+
+
+| 7 | Restaurar | Y | N | Existente | Igual | N | N | Y 
+
+
+| 8 | Restaurar | N | Y | Existente | Igual | N | N | Y 
+
+
+| 9 | Snapshot | N.A. | N.A. | N.A. | N.A. | Y | N.A. | N.A. 
+
+
+| 10 | Backup | N | N.A. | N.A. | N.A. | Y | Y | N.A. 
+
+
+| 11 | Backup | Y | N.A. | N.A. | N.A. | N | Y | N.A. 
+|===
+
+
+== Ejemplos de gancho de ejecución
+
+Visite la https://github.com/NetApp/Verda["Proyecto Verda GitHub de NetApp"] Para descargar enlaces de ejecución real para aplicaciones populares como Apache Cassandra y Elasticsearch. También puede ver ejemplos y obtener ideas para estructurar sus propios enlaces de ejecución personalizados.
+
+
+
+== Ver los enlaces de ejecución existentes
+
+Puede ver los enlaces de ejecución personalizados existentes para una aplicación.
+
+.Pasos
+. Vaya a *aplicaciones* y seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
++
+Puede ver todos los enlaces de ejecución habilitados o desactivados en la lista resultante. Puede ver el estado de un gancho, cuántos contenedores coinciden, la hora de creación y cuándo se ejecuta (antes o después de la operación). Puede seleccionar la `+` icono junto al nombre del gancho para expandir la lista de contenedores en los que se ejecutará. Para ver los registros de eventos que rodean los enlaces de ejecución de esta aplicación, vaya a la ficha *actividad*.
+
+
+
+
+
+== Ver los scripts existentes
+
+Puede ver los scripts cargados existentes. También puede ver qué scripts están en uso, y qué enlaces los están utilizando, en esta página.
+
+.Pasos
+. Vaya a *cuenta*.
+. Seleccione la ficha *Scripts*.
++
+En esta página puede ver una lista de los scripts cargados existentes. La columna *Used by* muestra los enlaces de ejecución que utilizan cada script.
+
+
+
+
+
+== Agregar un script
+
+Cada enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Puede agregar una o más secuencias de comandos a las que puedan hacer referencia los enlaces de ejecución. Muchos enlaces de ejecución pueden hacer referencia a la misma secuencia de comandos; esto permite actualizar muchos enlaces de ejecución sólo cambiando una secuencia de comandos.
+
+.Pasos
+. Vaya a *cuenta*.
+. Seleccione la ficha *Scripts*.
+. Seleccione *Agregar*.
+. Debe realizar una de las siguientes acciones:
++
+** Cargue un script personalizado.
++
+... Seleccione la opción *cargar archivo*.
+... Navegue hasta un archivo y cárguelo.
+... Asigne al script un nombre único.
+... (Opcional) Introduzca cualquier nota que los otros administradores deben conocer sobre el script.
+... Seleccione *Guardar script*.
+
+
+** Pegar en un script personalizado desde el portapapeles.
++
+... Seleccione la opción *Pegar o Tipo*.
+... Seleccione el campo de texto y pegue el texto del script en el campo.
+... Asigne al script un nombre único.
+... (Opcional) Introduzca cualquier nota que los otros administradores deben conocer sobre el script.
+
+
+
+
+. Seleccione *Guardar script*.
+
+
+.Resultado
+La nueva secuencia de comandos aparece en la lista de la ficha *Scripts*.
+
+
+
+== Eliminar un script
+
+Puede eliminar una secuencia de comandos del sistema si ya no es necesaria y no se utiliza en ningún anzuelo de ejecución.
+
+.Pasos
+. Vaya a *cuenta*.
+. Seleccione la ficha *Scripts*.
+. Elija la secuencia de comandos que desee quitar y seleccione el menú en la columna *acciones*.
+. Seleccione *Eliminar*.
+
+
+
+NOTE: Si la secuencia de comandos está asociada con uno o más enlaces de ejecución, la acción *Eliminar* no estará disponible. Para eliminar la secuencia de comandos, primero edite los enlaces de ejecución asociados y asócielos a una secuencia de comandos diferente.
+
+
+
+== Cree un enlace de ejecución personalizado
+
+Puede crear un enlace de ejecución personalizado para una aplicación. Consulte <<Ejemplos de gancho de ejecución>> para ejemplos de gancho. Necesita tener permisos de propietario, administrador o miembro para crear enlaces de ejecución.
+
+
+NOTE: Cuando cree un script de shell personalizado para utilizarlo como un enlace de ejecución, recuerde especificar el shell adecuado al principio del archivo, a menos que esté ejecutando comandos específicos o proporcionando la ruta completa a un ejecutable.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
+. Seleccione *Agregar*.
+. En el área *Detalles del gancho*:
++
+.. Determine cuándo debe funcionar el gancho seleccionando un tipo de operación en el menú desplegable *operación*.
+.. Introduzca un nombre único para el gancho.
+.. (Opcional) Introduzca cualquier argumento para pasar al gancho durante la ejecución, pulsando la tecla Intro después de cada argumento que introduzca para grabar cada uno.
+
+
+. (Opcional) en el área *Detalles de filtro de gancho*, puede añadir filtros para controlar en qué contenedores se ejecuta el gancho de ejecución:
++
+.. Seleccione *Agregar filtro*.
+.. En la columna *Tipo de filtro Hook*, elija un atributo en el que filtrar en el menú desplegable.
+.. En la columna *Regex*, introduzca una expresión regular que se utilizará como filtro. Astra Control utiliza https://github.com/google/re2/wiki/Syntax["Sintaxis de regex de expresión regular 2 (RE2)"^].
++
+
+NOTE: Si filtra el nombre exacto de un atributo (como un nombre de POD) sin ningún otro texto en el campo de expresión normal, se realizará una coincidencia de subcadena. Para que coincida con un nombre exacto y sólo con ese nombre, utilice la sintaxis de coincidencia de cadena exacta (por ejemplo, `^exact_podname$`).
+
+.. Para añadir más filtros, seleccione *Agregar filtro*.
++
+
+NOTE: Se combinan varios filtros para un enlace de ejecución con un operador y lógico. Puede tener hasta 10 filtros activos por gancho de ejecución.
+
+
+
+. Cuando termine, seleccione *Siguiente*.
+. En el área *Script*, siga uno de estos procedimientos:
++
+** Agregue un nuevo script.
++
+... Seleccione *Agregar*.
+... Debe realizar una de las siguientes acciones:
++
+**** Cargue un script personalizado.
++
+..... Seleccione la opción *cargar archivo*.
+..... Navegue hasta un archivo y cárguelo.
+..... Asigne al script un nombre único.
+..... (Opcional) Introduzca cualquier nota que los otros administradores deben conocer sobre el script.
+..... Seleccione *Guardar script*.
+
+
+**** Pegar en un script personalizado desde el portapapeles.
++
+..... Seleccione la opción *Pegar o Tipo*.
+..... Seleccione el campo de texto y pegue el texto del script en el campo.
+..... Asigne al script un nombre único.
+..... (Opcional) Introduzca cualquier nota que los otros administradores deben conocer sobre el script.
+
+
+
+
+
+
+** Seleccione un script existente de la lista.
++
+Esto indica al enlace de ejecución que utilice esta secuencia de comandos.
+
+
+
+. Seleccione *Siguiente*.
+. Revise la configuración del gancho de ejecución.
+. Seleccione *Agregar*.
+
+
+
+
+== Compruebe el estado de un enlace de ejecución
+
+Después de que una operación de instantánea, backup o restauración finalice la ejecución, puede comprobar el estado de los enlaces de ejecución que se ejecutan como parte de la operación. Puede utilizar esta información de estado para determinar si desea mantener el enlace de ejecución, modificarlo o eliminarlo.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *Protección de datos*.
+. Seleccione *instantáneas* para ver las instantáneas en ejecución, o *copias de seguridad* para ver las copias de seguridad en ejecución.
++
+El estado * gancho* muestra el estado de la ejecución del gancho de ejecución una vez completada la operación. Puede pasar el ratón sobre el estado para obtener más detalles. Por ejemplo, si hay fallos de enlace de ejecución durante una instantánea, pasar el ratón sobre el estado de enlace de esa instantánea proporciona una lista de los enlaces de ejecución fallidos. Para ver las razones de cada fallo, puede consultar la página *actividad* en el área de navegación del lado izquierdo.
+
+
+
+
+
+== Ver el uso de las secuencias de comandos
+
+Puede ver qué enlaces de ejecución utilizan una secuencia de comandos determinada en la interfaz de usuario web de Astra Control.
+
+.Pasos
+. Seleccione *cuenta*.
+. Seleccione la ficha *Scripts*.
++
+La columna *usado por* de la lista de scripts contiene detalles sobre qué ganchos están utilizando cada script de la lista.
+
+. Seleccione la información de la columna *utilizado por* para un script que le interese.
++
+Aparece una lista más detallada, con los nombres de los ganchos que utilizan la secuencia de comandos y el tipo de operación con la que están configurados para ejecutarse.
+
+
+
+
+
+== Edite un gancho de ejecución
+
+Puede editar un enlace de ejecución si desea cambiar sus atributos, filtros o la secuencia de comandos que utiliza. Necesita tener permisos de propietario, administrador o miembro para editar los enlaces de ejecución.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
+. Seleccione el menú Opciones de la columna *acciones* para un gancho que desee editar.
+. Seleccione *Editar*.
+. Haga los cambios necesarios, seleccione *Siguiente* después de completar cada sección.
+. Seleccione *Guardar*.
+
+
+
+
+== Desactivar un gancho de ejecución
+
+Puede desactivar un gancho de ejecución si desea impedir temporalmente que se ejecute antes o después de una instantánea de una aplicación. Necesita tener permisos de propietario, administrador o miembro para desactivar los enlaces de ejecución.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
+. Seleccione el menú Opciones de la columna *acciones* para el gancho que desea desactivar.
+. Seleccione *Desactivar*.
+
+
+
+
+== Eliminar un gancho de ejecución
+
+Puede eliminar un enlace de ejecución por completo si ya no lo necesita. Necesita tener permisos de propietario, administrador o miembro para eliminar los enlaces de ejecución.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
+. Seleccione el menú Opciones de la columna *acciones* para el gancho que desea eliminar.
+. Seleccione *Eliminar*.
+. En el cuadro de diálogo que aparece, escriba "delete" para confirmar.
+. Seleccione *Sí, elimine el enlace de ejecución*.
+
+
+
+
+== Si quiere más información
+
+* https://github.com/NetApp/Verda["Proyecto Verda GitHub de NetApp"]
+

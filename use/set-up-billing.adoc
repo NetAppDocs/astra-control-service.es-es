@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: use/set-up-billing.html 
+keywords: billing, set up billing, payments, set up payments, credit card, update credit card, change credit card, free plan, free trial, premium, premium plan 
+summary: Astra Control Service ofrece dos formas de facturación para sus espacios de nombres. El plan gratuito le permite gestionar hasta 10 aplicaciones en su cuenta. Si desea gestionar más de 10 espacios de nombres, deberá configurar la facturación mediante la actualización del plan gratuito al plan Premium. O bien, puede gestionar la facturación de Azure o AWS mediante Azure o AWS Marketplace. 
+---
+= Configurar facturación
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Puede utilizar más de un método para gestionar la facturación de su cuenta de Astra Control Service. Si utiliza Azure o Amazon AWS, puede suscribirse a un plan de servicio Astra Control a través de Microsoft Azure Marketplace o AWS Marketplace. Al hacerlo, puede gestionar sus datos de facturación a través del mercado. O bien, puede suscribirse directamente a NetApp. Si se suscribe directamente con NetApp, puede gestionar los datos de su facturación a través del servicio Astra Control Service. Si utiliza Astra Control Service sin suscripción, se suscribiera automáticamente al plan gratuito.
+
+El plan gratuito de Astra Control Service le permite gestionar hasta 10 espacios de nombres en su cuenta. Si desea gestionar más de 10 espacios de nombres, debe configurar la facturación mediante la actualización del plan gratuito al plan Premium, o bien suscribirse a través de Azure Marketplace o AWS Marketplace.
+
+
+
+== Descripción general de la facturación
+
+Existen dos tipos de costes asociados con el uso de Astra Control Service: Cargos por parte de NetApp por el Servicio Astra Control y cargos por parte de su proveedor de cloud por volúmenes persistentes y almacenamiento de objetos.
+
+
+
+=== Facturación de Astra Control Service
+
+Astra Control Service ofrece tres planes:
+
+Plan libre:: Gestione hasta 10 espacios de nombres de forma gratuita.
+Premium PAYGO:: Gestionar una cantidad ilimitada de espacios de nombres a una velocidad específica por hora, por espacio de nombres.
+Suscripción Premium:: Prepago a una tarifa con descuento con una suscripción anual que le permite gestionar hasta 10 espacios de nombres por _Namespace Pack_. Póngase en contacto con el departamento de ventas de NetApp para adquirir tantos paquetes como necesite para su organización. Por ejemplo, adquiera 3 paquetes para gestionar 30 espacios de nombres en Astra Control Service. Si gestiona más espacios de nombres de los permitidos en su suscripción anual, se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional.
++
+--
+Si aún no dispone de una cuenta de Astra Control, al adquirir la suscripción Premium, se crea automáticamente una cuenta de Astra Control para usted. Si ya dispone de un plan gratuito, se convertirá automáticamente a la suscripción Premium.
+
+--
+
+
+Al crear una cuenta de Astra Control, se suscribe automáticamente al Plan libre. El panel de control de Astra muestra cuántos espacios de nombres gestiona actualmente con los 10 espacios de nombres gratuitos que está permitido. La facturación se inicia para un espacio de nombres cuando se gestiona la primera aplicación que contiene el espacio de nombres y se detiene para ese espacio de nombres cuando no se gestiona la última aplicación que contiene el espacio de nombres.
+
+Si intenta gestionar un espacio de nombres 11, Astra Control le notifica que ha alcanzado el límite del Plan libre. A continuación, le pedirá que actualice el plan gratuito a un plan Premium. Se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional.
+
+Puede actualizar a un plan Premium en cualquier momento. Después de actualizar, Astra Control comienza a cobrarle por espacios de nombres _all_ en la cuenta. Los primeros 10 espacios de nombres no se quedan en el plan gratuito.
+
+ifdef::gcp[]
+
+
+
+=== Facturación de Google Cloud
+
+Cuando gestiona los clústeres GKE con Astra Control Service, los volúmenes persistentes se encuentran respaldados por Cloud Volumes Service de NetApp, y los backups de sus aplicaciones se almacenan en un bloque de almacenamiento en Google Cloud.
+
+* https://cloud.google.com/solutions/partners/netapp-cloud-volumes/costs["Consulte los detalles de precios para Cloud Volumes Service"^].
++
+Tenga en cuenta que Astra Control Service es compatible con todos los tipos de servicio y niveles de servicio. El tipo de servicio que utilice dependerá de su https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Región de Google Cloud"^].
+
+* https://cloud.google.com/storage/pricing["Vea los detalles de precios para buckets de almacenamiento de Google Cloud"^].
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+
+
+=== Facturación de Microsoft Azure
+
+Cuando gestiona los clústeres de AKS con Astra Control Service, Azure NetApp Files gestiona los volúmenes persistentes y los backups de sus aplicaciones se almacenan en un contenedor de Azure Blob.
+
+* https://azure.microsoft.com/en-us/pricing/details/netapp["Consulte los detalles de precios para Azure NetApp Files"^].
+* https://azure.microsoft.com/en-us/pricing/details/storage/blobs["Consulte los detalles de precios para el almacenamiento de Microsoft Azure Blob"^].
+
+
+endif::azure[]
+
+ifdef::aws[]
+
+
+
+=== Facturación de Amazon Web Services
+
+Cuando gestiona los clústeres de AWS con Astra Control Service, los volúmenes persistentes se encuentran respaldados por EBS o FSX para ONTAP de NetApp y los backups de sus aplicaciones se almacenan en un bloque de AWS.
+
+* https://aws.amazon.com/eks/pricing/["Consulte los detalles de precios de Amazon Web Services"^].
+
+
+endif::aws[]
+
+
+
+== Suscríbase al servicio Astra Control Service en Azure Marketplace
+
+Puede suscribirse al servicio Astra Control Service mediante Azure Marketplace. La cuenta y los datos de facturación se gestionan a través del Marketplace.
+
+
+NOTE: Para ver un tutorial en vídeo del proceso de suscripción a Azure Marketplace, visite https://www.netapp.tv/details/29979["TV de NetApp"^].
+
+.Pasos
+. Vaya a la https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-astra-acs?tab=Overview["Azure Marketplace"^].
+. Seleccione *Get It Now*.
+. Siga las instrucciones para suscribirse a un plan.
+
+
+
+
+== Suscríbase al servicio Astra Control Service en AWS Marketplace
+
+Puede suscribirse al servicio Astra Control Service mediante AWS Marketplace. La cuenta y los datos de facturación se gestionan a través del Marketplace.
+
+.Pasos
+. Vaya a la https://aws.amazon.com/marketplace/["Mercado AWS"^].
+. Seleccione *continuar para suscribirse*.
+. Siga las instrucciones para suscribirse a un plan.
+
+
+
+
+== Suscríbase al servicio Astra Control directamente con NetApp
+
+Puede suscribirse al servicio Astra Control Service desde la interfaz de usuario del servicio Astra Control o ponerse en contacto con las ventas de NetApp.
+
+
+
+=== Mejora del plan gratuito al plan Premium PAYGO
+
+Actualice su plan de facturación en cualquier momento para comenzar a gestionar más de 10 espacios de nombres de Astra Control pagando a medida que usted va. Todo lo que necesitas es una tarjeta de crédito válida.
+
+.Pasos
+. Seleccione *cuenta* y, a continuación, seleccione *facturación*.
+. En *planes*, vaya a *Premium PAYGO* y seleccione *Actualizar ahora*.
+. Proporcione los datos de pago de una tarjeta de crédito válida y seleccione *Actualizar a Plan Premium*.
++
+
+NOTE: Astra Control le enviará por correo electrónico si la tarjeta de crédito está a punto de expirar.
+
+
+
+.Resultado
+Ahora puede gestionar más de 10 espacios de nombres. Astra Control comienza a cobrarle por los espacios de nombres _All_ que está administrando actualmente.
+
+
+
+=== Actualice del plan gratuito a la suscripción Premium
+
+Póngase en contacto con el equipo de ventas de NetApp para solicitar un pago con tarifa con descuento con una suscripción anual.
+
+.Pasos
+. Seleccione *cuenta* y, a continuación, seleccione *facturación*.
+. En *planes*, vaya a *Suscripción Premium* y seleccione *Ventas de contacto*.
+. Facilite los detalles al equipo de ventas para comenzar el proceso.
+
+
+.Resultado
+Un representante de ventas de NetApp se pondrá en contacto con usted para procesar su pedido de compra. Una vez completado el pedido, Astra Control reflejará su plan actual en la pestaña *facturación*.
+
+
+
+== Ver los costes actuales y el historial de facturación
+
+Astra Control le muestra sus costes mensuales actuales, así como un historial detallado de facturación por espacio de nombres. Si se suscribe a un plan a través de un mercado, el historial de facturación no está visible (pero puede verlo iniciando sesión en el mercado).
+
+.Pasos
+. Seleccione *cuenta* y, a continuación, seleccione *facturación*.
++
+Sus costos actuales aparecen bajo la descripción general de la facturación.
+
+. Para ver el historial de facturación por espacio de nombres, seleccione *Historial de facturación*.
++
+Astra Control le muestra los minutos de uso y los costes de cada espacio de nombres. Un minuto de uso es cuántos minutos Astra Control ha gestionado su espacio de nombres durante un periodo de facturación.
+
+. Seleccione la lista desplegable para seleccionar un mes anterior.
+
+
+
+
+== Cambie la tarjeta de crédito de Premium PAYGO
+
+Si es necesario, puede cambiar la tarjeta de crédito que Astra Control tiene en el archivo para la facturación.
+
+.Pasos
+. Seleccione *cuenta > facturación > método de pago*.
+. Seleccione el icono de configuración.
+. Modificar la tarjeta de crédito.
+
+
+
+
+== Notas importantes
+
+* Su plan de facturación se realiza por cuenta Astra Control.
++
+Si tiene varias cuentas, cada una tiene su propio plan de facturación.
+
+* La factura de Astra Control incluye cargos por la gestión de sus espacios de nombres. Su proveedor de cloud lo carga por separado para el back-end de almacenamiento de volúmenes persistentes.
++
+link:../get-started/intro.html["Más información sobre los precios de Astra Control"].
+
+* Cada período de facturación finaliza el último día del mes.
+* No puede cambiar de un plan Premium a un plan gratuito.
+

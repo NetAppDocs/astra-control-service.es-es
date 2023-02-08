@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: learn/user-roles-namespaces.html 
+keywords: users, roles, user roles, namespace, namespaces, account, accounts, permissions, restriction, restrict, constraint 
+summary: Conozca los tipos disponibles de protección de datos en Astra Control Center y cómo usarlos de la mejor forma para proteger sus aplicaciones. 
+---
+= Roles de usuario y espacios de nombres
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Obtenga información acerca de las funciones de usuario y los espacios de nombres en Astra Control y cómo puede utilizarlas para controlar el acceso a los recursos de la organización.
+
+
+
+== Roles de usuario
+
+Puede utilizar las funciones para controlar el acceso de los usuarios a los recursos o capacidades de Astra Control. Las siguientes son las funciones de usuario de Astra Control:
+
+* Un *propietario* tiene permisos de administrador y puede eliminar cuentas.
+* Un *Admin* tiene permisos de miembro y puede invitar a otros usuarios.
+* Un *Miembro* puede administrar completamente aplicaciones y clústeres.
+* Un *Visor* puede ver los recursos.
+
+
+Puede agregar restricciones a un usuario Miembro o Visor para restringir el usuario a uno o más <<Espacios de nombres>>.
+
+
+
+== Espacios de nombres
+
+Un espacio de nombres es un ámbito que puede asignar a recursos específicos de un clúster gestionado por Astra Control. Astra Control detecta los espacios de nombres de un clúster cuando agrega el clúster a Astra Control. Una vez detectados, los espacios de nombres están disponibles para asignarlos como restricciones a los usuarios. Sólo los miembros que tienen acceso a ese espacio de nombres pueden usar ese recurso. Puede utilizar espacios de nombres para controlar el acceso a los recursos mediante un paradigma que tenga sentido para la organización; por ejemplo, por regiones físicas o divisiones dentro de una empresa. Cuando agrega restricciones a un usuario, puede configurarlo para que tenga acceso a todos los espacios de nombres o sólo a un conjunto específico de espacios de nombres. También es posible asignar restricciones de espacio de nombres usando etiquetas de espacio de nombres.
+
+
+
+== Obtenga más información
+
+* link:../use/manage-roles.html["Gestionar roles"]
+

@@ -1,0 +1,210 @@
+---
+sidebar: sidebar 
+permalink: get-started/intro.html 
+keywords: introduction, how astra works, how Astra works, what Astra is, concept, understanding, overview 
+summary: Astra Control es una solución de gestión del ciclo de vida de los datos de las aplicaciones de Kubernetes que simplifica las operaciones para aplicaciones con estado. Proteja, realice backups y migre cargas de trabajo de Kubernetes con facilidad, y cree instantáneamente clones de aplicaciones que funcionen. 
+---
+= Más información sobre Astra Control
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Astra Control es una solución de gestión del ciclo de vida de los datos de las aplicaciones de Kubernetes que simplifica las operaciones para aplicaciones con estado. Proteja, realice backups y migre cargas de trabajo de Kubernetes con facilidad, y cree instantáneamente clones de aplicaciones que funcionen.
+
+
+
+== Funciones
+
+Astra Control ofrece funcionalidades cruciales para la gestión del ciclo de vida de los datos de las aplicaciones Kubernetes:
+
+* Gestione automáticamente el almacenamiento persistente
+* Crear copias Snapshot y backups bajo demanda que se tienen en cuenta las aplicaciones
+* Automatice las operaciones de backup y Snapshot condicionadas por políticas
+* Migre aplicaciones y datos de un clúster de Kubernetes a otro
+* Clonar una aplicación desde el almacenamiento provisional a la producción
+* Visualizar el estado de la protección y el estado de la aplicación
+* Trabaje con una interfaz de usuario web o una API para implementar sus flujos de trabajo de backup y migración
+
+
+
+
+== Modelos de puesta en marcha
+
+Astra Control está disponible en dos modelos de implementación:
+
+* *Astra Control Service*: Un servicio gestionado por NetApp que proporciona gestión de datos para aplicaciones de clústeres de Kubernetes en varios entornos de proveedores de cloud, así como clústeres de Kubernetes autogestionados.
+* *Astra Control Center*: Software autogestionado que proporciona gestión de datos para aplicaciones de clústeres de Kubernetes que se ejecutan en su entorno local. Astra Control Center también se puede instalar en entornos de varios proveedores de cloud con un entorno de administración del almacenamiento Cloud Volumes ONTAP de NetApp.
+
+
+[cols="1h,2d,2a"]
+|===
+|  | Servicio de control Astra | Astra Control Center 
+
+
+| ¿Cómo se ofrece? | Como un servicio cloud totalmente gestionado de NetApp  a| 
+Como software que se puede descargar, instalar y gestionar
+
+
+
+| ¿Dónde está alojado? | En un cloud público que elija NetApp  a| 
+En su propio clúster de Kubernetes
+
+
+
+| ¿Cómo se actualiza? | Gestionado por NetApp  a| 
+Usted administra cualquier actualización
+
+
+
+| ¿Cuáles son los back-ends de almacenamiento compatibles?  a| 
+* Servicios web de Amazon:
++
+** Amazon EBS
+** Amazon FSX para ONTAP de NetApp
+
+
+
+
+endif::aws[]
+
+ifdef::gcp[]
+
+* Google Cloud:
++
+** Disco persistente de Google
+** Cloud Volumes Service de NetApp
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
+
+
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+* Azure de Microsoft:
++
+** Discos gestionados de Azure
+** Azure NetApp Files
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
+
+
+
+
+endif::azure[]
+
+* Clústeres autogestionados:
++
+** Sistemas ONTAP AFF y FAS de NetApp
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+
+
+
+ a| 
+* Sistemas ONTAP AFF y FAS de NetApp
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+
+
+|===
+
+
+== Funcionamiento del servicio Astra Control
+
+Astra Control Service es un servicio cloud gestionado por NetApp que siempre está activo y actualizado con las últimas funcionalidades. Utiliza varios componentes para habilitar la gestión del ciclo de vida de los datos de aplicaciones.
+
+En un nivel superior, Astra Control Service funciona de esta manera:
+
+* Para comenzar a trabajar con Astra Control Service, configure su proveedor de cloud y inscríbase para obtener una cuenta Astra.
+
+
+ifdef::gcp[]
+
++ ** para los clusters GKE, el servicio Astra Control utiliza https://cloud.netapp.com/cloud-volumes-service-for-gcp["Cloud Volumes Service de NetApp para Google Cloud"^] O discos persistentes de Google como back-end de almacenamiento para sus volúmenes persistentes.
+
+endif::gcp[]
+
+ifdef::azure[]
+
++ ** para clusters de AKS, el servicio de control de Astra utiliza https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] O Azure gestionó discos como back-end de almacenamiento para sus volúmenes persistentes.
+
+endif::azure[]
+
+ifdef::aws[]
+
++ ** para clústeres de Amazon EKS, el servicio Astra Control utiliza https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] o. https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["Amazon FSX para ONTAP de NetApp"^] como back-end de almacenamiento para sus volúmenes persistentes.
+
+endif::aws[]
+
+* Agregue su primera tecnología Kubernetes al servicio Astra Control. A continuación, el servicio de control de Astra realiza lo siguiente:
++
+** Crea un almacén de objetos en su cuenta de proveedor de cloud, que es donde se almacenan las copias de backup.
+
+
+
+
+ifdef::azure[]
+
++ en Azure, Astra Control Service también crea un grupo de recursos, una cuenta de almacenamiento y claves para el contenedor Blob.
+
+endif::azure[]
+
+* Crea un nuevo rol de administrador y una cuenta de servicio de Kubernetes en el clúster.
+* Utiliza la nueva función de administración para instalar https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] en el clúster y para crear una o varias clases de almacenamiento.
+* Si utiliza una oferta de almacenamiento de servicios cloud de NetApp como back-end de almacenamiento, Astra Control Service utiliza Astra Trident para aprovisionar volúmenes persistentes para sus aplicaciones. Si utiliza discos administrados de Amazon EBS o Azure como back-end de almacenamiento, deberá instalar un controlador CSI específico del proveedor. Se proporcionan instrucciones de instalación en link:set-up-amazon-web-services.html["Configure Amazon Web Services"^] y.. link:set-up-microsoft-azure-with-amd.html["Configure Microsoft Azure con discos gestionados de Azure"^].
++
+** En este momento, puede definir aplicaciones del clúster. Se aprovisionan volúmenes persistentes en el back-end de almacenamiento mediante la nueva clase de almacenamiento predeterminada.
+** A continuación, utilice Astra Control Service para gestionar estas aplicaciones y empiece a crear copias Snapshot, copias de seguridad y clones.
+
+
+
+
+El plan gratuito de Astra Control le permite gestionar hasta 10 espacios de nombres en su cuenta. Si desea gestionar más de 10 espacios de nombres, deberá configurar la facturación mediante la actualización del plan gratuito al plan Premium.
+
+
+
+== Cómo funciona Astra Control Center
+
+Astra Control Center se ejecuta en forma local en su propia nube privada.
+
+Astra Control Center admite clústeres de Kubernetes con un tipo de almacenamiento basado en Trident con un entorno de administración del almacenamiento ONTAP 9.5 y versiones posteriores.
+
+En un entorno conectado a la nube, Astra Control Center utiliza Cloud Insights para proporcionar supervisión y telemetría avanzadas. Ante la ausencia de una conexión con Cloud Insights, la telemetría y la supervisión limitadas (7 días de métricas) están disponibles en Astra Control Center y también se exportan a herramientas de supervisión nativas de Kubernetes (como Prometheus y Grafana) mediante puntos finales de métricas abiertas.
+
+Astra Control Center está totalmente integrado en el ecosistema de AutoSupport y Active IQ para proporcionar a los usuarios y el soporte de NetApp información sobre solución de problemas y uso.
+
+Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.
+
+Para instalar y utilizar Astra Control Center, tendrá que estar seguro https://docs.netapp.com/us-en/astra-control-center/get-started/requirements.html["requisitos"].
+
+En un nivel superior, Astra Control Center funciona de esta manera:
+
+* Instala Astra Control Center en su entorno local. Obtenga más información sobre cómo https://docs.netapp.com/us-en/astra-control-center/get-started/install_acc.html["Instalar Astra Control Center"].
+* Puede realizar algunas tareas de configuración como las siguientes:
++
+** Configurar la licencia.
+** Añada el primer clúster.
+** Añada el back-end de almacenamiento que se detecta al añadir el clúster.
+** Agregue un bloque de almacenamiento de objetos que almacenará las copias de seguridad de la aplicación.
+
+
+
+
+Obtenga más información sobre cómo https://docs.netapp.com/us-en/astra-control-center/get-started/setup_overview.html["Configure Astra Control Center"].
+
+Puede añadir aplicaciones al clúster. O bien, si ya tiene algunas aplicaciones en el clúster que se están gestionando, puede utilizar Astra Control Center para gestionarlas. A continuación, utilice Astra Control Center para crear copias Snapshot, backups, clones y relaciones de replicación.
+
+
+
+== Si quiere más información
+
+* https://docs.netapp.com/us-en/astra-family/["Documentación de la familia de productos Astra de NetApp"^]
+* https://docs.netapp.com/us-en/astra/index.html["Documentación de Astra Control Service"^]
+* https://docs.netapp.com/us-en/astra-control-center/index.html["Documentación de Astra Control Center"^]
+* https://docs.netapp.com/us-en/trident/index.html["Documentación de Astra Trident"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["Utilice la API Astra Control"^]
+* https://docs.netapp.com/us-en/cloudinsights/["Documentación de Cloud Insights"^]
+* https://docs.netapp.com/us-en/ontap/index.html["Documentación de ONTAP"^]
+

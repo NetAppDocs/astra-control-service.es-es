@@ -1,0 +1,92 @@
+---
+sidebar: sidebar 
+permalink: use/manage-users.html 
+keywords: invite users, add users, remove users, delete users 
+summary: Invite a los usuarios a unirse a su cuenta de Astra Control y eliminar usuarios que ya no deberían tener acceso a su cuenta. 
+---
+= Invitar y quitar usuarios
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Invite a los usuarios a unirse a su cuenta de Astra Control y eliminar usuarios que ya no deberían tener acceso a la cuenta.
+
+
+
+== Invitar a los usuarios
+
+Los propietarios y administradores de cuentas pueden invitar a otros usuarios a unirse a la cuenta de Astra Control.
+
+.Pasos
+. Asegúrese de que el usuario tiene un link:../get-started/register.html["Inicio de sesión en Cloud Central"].
+. Seleccione *cuenta*.
+. En la ficha *usuarios*, seleccione *Invitar*.
+. Introduzca el nombre del usuario, la dirección de correo electrónico y el rol.
++
+Tenga en cuenta lo siguiente:
+
++
+** La dirección de correo electrónico debe coincidir con la dirección de correo electrónico que el usuario utilizó para registrarse en Cloud Central.
+** Cada rol proporciona los siguientes permisos:
++
+*** Un *propietario* tiene permisos de administrador y puede eliminar cuentas.
+*** Un *Admin* tiene permisos de miembro y puede invitar a otros usuarios.
+*** Un *Miembro* puede administrar completamente aplicaciones y clústeres.
+*** Un *Visor* puede ver los recursos.
+
+
+
+
+. Para agregar restricciones a un usuario con un rol de miembro o de visor, active la casilla de verificación *restringir la función a restricciones* .
++
+Para obtener más información sobre cómo agregar restricciones, consulte link:manage-roles.html["Gestionar roles"].
+
+. Para invitar a otro usuario, seleccione *Añadir otro usuario* e introduzca información para el nuevo usuario.
++
+Puede invitar hasta 10 usuarios a la vez. Puede navegar entre los usuarios a los que está invitando en el lado izquierdo del diálogo *Invitar usuarios*.
+
+. Seleccione *Invitar usuarios*.
+
+
+.Resultado
+El usuario o los usuarios recibirán un correo electrónico que les invita a unirse a su cuenta.
+
+
+
+== Cambiar el rol de un usuario
+
+Un propietario de cuenta puede cambiar la función de todos los usuarios, mientras que un administrador de cuenta puede cambiar la función de los usuarios que tienen la función Admin, Miembro o Visor.
+
+.Pasos
+. Seleccione *cuenta*.
+. En la ficha *usuarios*, seleccione el menú en la columna *acciones* del usuario.
+. Seleccione *Editar rol*.
+. Seleccione un rol nuevo.
+. Para agregar restricciones a un usuario con un rol de miembro o de visor, active la casilla de verificación *restringir la función a restricciones* .
++
+Para obtener más información sobre cómo agregar restricciones, consulte link:manage-roles.html["Gestionar roles"].
+
+. Seleccione *Confirmar*.
+
+
+.Resultado
+Astra Control actualiza los permisos del usuario en función de la nueva función que haya seleccionado.
+
+
+
+== Quitar usuarios
+
+Un usuario con el rol propietario puede eliminar otros usuarios de la cuenta en cualquier momento.
+
+.Pasos
+. Seleccione *cuenta*.
+. En la ficha *usuarios*, seleccione los usuarios que desea quitar.
+. Seleccione el menú en la columna *acciones* y seleccione *Eliminar usuario*.
+. Cuando se le solicite, confirme la eliminación escribiendo "eliminar" y, a continuación, seleccione *Sí, Eliminar usuario*.
+
+
+.Resultado
+Astra Control elimina al usuario de la cuenta.

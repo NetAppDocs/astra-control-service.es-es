@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-issues.html 
+keywords: bugs, known issues, problems 
+summary: Los problemas conocidos identifican problemas por los que el uso correcto de esta versión del producto puede resultar imposible. 
+---
+= Problemas conocidos
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+[role="lead"]
+Los problemas conocidos identifican problemas por los que el uso correcto de esta versión del producto puede resultar imposible.
+
+Los siguientes problemas conocidos afectan a la versión actual:
+
+.Aplicaciones
+* <<Se produce un error en los clones de aplicaciones después de poner en marcha una aplicación con una clase de almacenamiento establecida>>
+* <<La página aplicaciones se carga eternamente al intentar restaurar una aplicación que pertenece a un clúster eliminado>>
+* <<No se puede definir una aplicación en un espacio de nombres que se haya eliminado y vuelto a crear>>
+
+
+.Backup, restauración y clonado
+* <<La restauración de una aplicación genera un tamaño VP superior al VP original>>
+* <<Los clones de aplicaciones producen un error al utilizar una versión específica de PostgreSQL>>
+* <<Los backups de aplicaciones y las snapshots producen errores si la clase volumesnapshotse añade después de gestionar un clúster>>
+
+
+.Otros temas
+* <<Al final, las snapshots comienzan a fallar cuando se utiliza una copia de Snapshot externa versión 4.2.0>>
+* <<Las operaciones de gestión de datos de aplicaciones producen errores internos de servicio (500) cuando Astra Trident está sin conexión>>
+
+
+
+
+== Se produce un error en los clones de aplicaciones después de poner en marcha una aplicación con una clase de almacenamiento establecida
+
+Una vez que se implementa una aplicación con una clase de almacenamiento definida explícitamente (por ejemplo, `helm install ...-set global.storageClass=netapp-cvs-perf-extreme`), los intentos posteriores de clonar la aplicación requieren que el clúster de destino tenga la clase de almacenamiento especificada originalmente. Se producirá un error al clonar una aplicación con una clase de almacenamiento definida explícitamente a un clúster que no tenga la misma clase de almacenamiento. No existen pasos de recuperación en este escenario.
+
+
+
+== La página aplicaciones se carga eternamente al intentar restaurar una aplicación que pertenece a un clúster eliminado
+
+Cuando intenta restaurar una aplicación desde un clúster eliminado de la página aplicaciones, la página aplicaciones nunca termina de cargarse. Como solución alternativa, restaure la aplicación desde el menú acciones de la aplicación en la página de lista aplicaciones.
+
+
+
+== No se puede definir una aplicación en un espacio de nombres que se haya eliminado y vuelto a crear
+
+Si define una aplicación con un espacio de nombres, elimina el espacio de nombres y, a continuación, vuelve a instalar la aplicación en el mismo espacio de nombres, la operación falla con un código de error 409. Para definir la aplicación mediante el espacio de nombres recreado, elimine primero la instancia antigua de la aplicación.
+
+
+
+== La restauración de una aplicación genera un tamaño VP superior al VP original
+
+Si cambia el tamaño de un volumen persistente después de crear un backup y luego se restaura a partir de ese backup, el tamaño del volumen persistente coincidiría con el nuevo tamaño del VP en lugar de usar el tamaño del backup.
+
+
+
+== Los clones de aplicaciones producen un error al utilizar una versión específica de PostgreSQL
+
+Los clones de aplicaciones dentro del mismo clúster fallan constantemente con el gráfico BitNami PostgreSQL 11.5.0. Para clonar correctamente, utilice una versión anterior o posterior del gráfico.
+
+
+
+== Los backups de aplicaciones y las snapshots producen errores si la clase volumesnapshotse añade después de gestionar un clúster
+
+En este escenario, se produce un error de interfaz de usuario 500 en los backups y las snapshots. Como solución alternativa, actualice la lista de aplicaciones.
+
+
+
+== Al final, las snapshots comienzan a fallar cuando se utiliza una copia de Snapshot externa versión 4.2.0
+
+Cuando se usa una controladora Snapshot de Kubernetes (también conocida como copia Snapshot externa) versión 4.2.0 con Kubernetes 1.20 o 1.21, es posible que las copias Snapshot comiencen a fallar algún día. Para evitar esto, utilice otro https://kubernetes-csi.github.io/docs/snapshot-controller.html["versión compatible"^] De copias Snapshot externas, como la versión 4.2.1, con las versiones 1.20 o 1.21 de Kubernetes.
+
+
+
+== Las operaciones de gestión de datos de aplicaciones producen errores internos de servicio (500) cuando Astra Trident está sin conexión
+
+Si Astra Trident se desconecta (y se vuelve a conectar) y se producen 500 errores internos de servicio al intentar gestionar los datos de las aplicaciones, reinicie todos los nodos de Kubernetes del clúster de aplicaciones para restaurar la funcionalidad.

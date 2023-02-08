@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: use/view-apps.html 
+keywords: view app, view app status, view app protection status, view app pods, view persistent storage 
+summary: Una vez que empiece a gestionar una aplicación, Astra Control proporciona detalles sobre la aplicación que le permite identificar su estado, su estado de protección, los pods, el almacenamiento persistente y mucho más. 
+---
+= Ver el estado y los detalles de una aplicación
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Una vez que empiece a gestionar una aplicación, Astra Control proporciona información detallada sobre la aplicación que permite identificar su estado (si está en buen estado), su estado de protección (si está totalmente protegida en caso de fallo), los pods, el almacenamiento persistente y mucho más.
+
+.Pasos
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.
+. Encuentre la información que busca:
++
+Estado de la aplicación:: Proporciona un estado que refleja el estado de la aplicación en Kubernetes.
+Estado de protección de aplicaciones:: Proporciona el estado de la protección de la aplicación:
++
+--
+** *totalmente protegido*: La aplicación tiene una programación de copia de seguridad activa y una copia de seguridad exitosa que tiene menos de una semana de antigüedad
+** *parcialmente protegido*: La aplicación tiene una programación de copia de seguridad activa, una programación de instantáneas activa o una copia de seguridad o instantánea correcta
+** *desprotegido*: Aplicaciones que no están completamente protegidas o parcialmente protegidas.
++
+_no puede estar completamente protegido hasta que tenga una copia de seguridad_ reciente. Esto es importante porque los backups se almacenan en un almacén de objetos lejos de los volúmenes persistentes. Si un fallo o accidente limpia el cluster y es almacenamiento persistente, necesitará una copia de seguridad para recuperar. Una Snapshot no le permite recuperar.
+
+
+
+--
+Descripción general:: Información sobre el estado de los pods asociados con la aplicación.
+Protección de datos:: Permite configurar una política de protección de datos y ver las Snapshot y los backups existentes.
+Reducida:: Muestra los volúmenes persistentes a nivel de aplicación. El estado de un volumen persistente es desde el punto de vista del clúster de Kubernetes.
+Recursos:: Permite verificar qué recursos se están gestionando y haciendo backup.
+Actividad:: Las actividades de Astra Control relacionadas con la app.
+
+
+

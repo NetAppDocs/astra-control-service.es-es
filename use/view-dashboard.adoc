@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: use/view-dashboard.html 
+keywords: dashboard, cluster health, unhealthy apps, protected apps, managed apps 
+summary: Haga clic en Dashboard para ver una vista de alto nivel de las aplicaciones, los clústeres y su estado. 
+---
+= Ver un resumen del estado de las aplicaciones y el clúster
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Haga clic en * Dashboard* para ver una vista de alto nivel de sus aplicaciones, clusters y su estado de salud.
+
+El icono aplicaciones le ayuda a identificar lo siguiente:
+
+* ¿Cuántas aplicaciones gestiona actualmente?
+* Si esas aplicaciones gestionadas están en buen estado.
+* Si las aplicaciones están totalmente protegidas (están protegidas si hay backups recientes disponibles).
+
+
+Tenga en cuenta que no se trata sólo de números o Estados, sino que puede obtener información detallada de cada uno de ellos. Por ejemplo, si las aplicaciones no están completamente protegidas, puede pasar el ratón sobre el icono para identificar qué aplicaciones no están completamente protegidas, lo que incluye un motivo.
+
+El icono clústeres ofrece detalles similares sobre el estado del clúster y es posible profundizar para obtener más detalles como puede hacerlo con una aplicación.

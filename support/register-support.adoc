@@ -1,0 +1,114 @@
+---
+sidebar: sidebar 
+permalink: support/register-support.html 
+keywords: support, register for support, support registration 
+summary: Astra Control intenta registrar automáticamente su cuenta para recibir asistencia cuando configura su cuenta. Si no puede, puede registrarse manualmente para recibir soporte usted mismo. Se requiere registro de soporte para obtener ayuda del soporte técnico de NetApp. 
+---
+= Regístrese para recibir soporte
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/support/
+
+
+[role="lead"]
+Astra Control intenta registrar automáticamente su cuenta para recibir asistencia cuando configura su cuenta. Si no puede, puede registrarse manualmente para recibir soporte usted mismo. Se requiere registro de soporte para obtener ayuda del soporte técnico de NetApp.
+
+
+
+== Compruebe el registro de soporte
+
+Astra Control incluye un campo de estado de soporte que le permite confirmar su registro de soporte.
+
+.Pasos
+. Seleccione *Soporte*.
+. Eche un vistazo al campo Estado de soporte.
++
+El estado de soporte se iniciará como "no registrado", pero pasará a "en curso" y finalmente a "registrado" una vez completado.
+
++
+Este estado de registro de asistencia se registra cada 15 minutos. Los nuevos clientes de NetApp pueden tardar hasta el siguiente día laborable para completar el registro de incorporación y soporte. Si el número de serie no muestra "registrado" en un plazo de 48 horas, puede ponerse en contacto con NetApp a través de astra.feedback@netapp.com o registrarse manualmente desde https://register.netapp.com[].
+
+
+
+
+
+== Obtenga su número de serie
+
+Al registrarse para obtener una cuenta, Astra Control utiliza la información que ha proporcionado sobre su empresa para generar un número de serie de 20 dígitos de NetApp que comienza con "941".
+
+El número de serie de NetApp representa su cuenta de Astra Control. Deberá utilizar este número de serie al abrir una incidencia Web.
+
+Puede encontrar el número de serie en la interfaz Astra Control en la página *Support*.
+
+
+
+== Active los derechos de soporte
+
+Si Astra Control no pudo registrar automáticamente su cuenta para recibir soporte, debe registrar el número de serie de NetApp asociado a Astra Control para activar las autorizaciones de soporte. Ofrecemos 2 opciones de registro de soporte:
+
+. Cliente actual de NetApp con cuenta SSO existente del sitio de soporte de NetApp (NSS)
+. Nuevo cliente de NetApp sin cuenta SSO existente del sitio de soporte de NetApp (NSS)
+
+
+
+
+=== Opción 1: Cliente actual de NetApp con una cuenta del sitio de soporte de NetApp (NSS) existente
+
+.Pasos
+. Desplácese hasta la https://register.netapp.com["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
+. Seleccione *ya estoy registrado como cliente de NetApp*.
+. Introduzca sus credenciales del sitio de soporte de NetApp para iniciar sesión.
++
+Aparece la página de registro del cliente existente.
+
++
+image:screenshot-existing-registration.gif["Formulario de registro de cliente existente"]
+
+. Rellene la información necesaria en el formulario:
++
+.. Introduzca su nombre, empresa y dirección de correo electrónico.
+.. Seleccione *Astra* como la línea de productos.
+.. Escriba su número de serie.
+.. Seleccione *Enviar registro*.
+
+
+
+
+.Resultado
+Debe ser redirigido a una página "Registro enviado correctamente". La dirección de correo electrónico asociada a su registro recibirá un mensaje de correo electrónico en un plazo de unos minutos que indica que "su producto ahora es elegible para recibir asistencia".
+
+Este es un registro de soporte único para el número de serie aplicable.
+
+
+
+=== Opción 2: Nuevo cliente de NetApp sin cuenta del sitio de soporte de NetApp (NSS)
+
+.Pasos
+. Desplácese hasta la https://register.netapp.com["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
+. Seleccione *no soy un cliente registrado de NetApp*.
++
+Aparece la página Registro de nuevo cliente.
+
++
+image:screenshot-new-registration.gif["Formulario de registro de cliente nuevo"]
+
+. Rellene la información necesaria en el formulario:
++
+.. Introduzca su nombre e información de la empresa.
+.. Seleccione *Astra* como la línea de productos.
+.. Escriba su número de serie.
+.. Seleccione *Enviar registro*.
++
+Recibirá un correo electrónico de confirmación de su registro enviado. Si no se produce ningún error, se le redirigirá a una página "Registro enviado correctamente". También recibirá un correo electrónico en un plazo de una hora que indica que "su producto es ahora elegible para recibir asistencia".
+
++
+Este es un registro de soporte único para el número de serie aplicable.
+
+
+
+. Como nuevo cliente de NetApp, también debe crear una cuenta de usuario del sitio de soporte de NetApp (NSS) para futuras activaciones de soporte, y para acceder al portal de soporte para chat de soporte técnico y elaboración de tickets web.
++
+Vaya a la http://now.netapp.com/newuser/["Sitio de registro de soporte de NetApp"^] para realizar esta tarea. Puede proporcionar el número de serie de Astra Control que acaba de registrar para acelerar el proceso.
+
+

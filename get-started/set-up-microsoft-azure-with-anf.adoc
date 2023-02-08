@@ -1,0 +1,278 @@
+---
+sidebar: sidebar 
+permalink: get-started/set-up-microsoft-azure-with-anf.html 
+keywords: azure, azure netapp files, register, create account, create netapp account, azure subscription, azure permissions, service principal, create service principal, set up azure permissions, set up service principal, setup service principal, setup azure permissions, permissions, create capacity pool, setup capacity pool, set up capacity pool, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, azure regions, kubernetes version, linux, image type, networking 
+summary: Es necesario realizar algunos pasos para preparar su suscripción a Microsoft Azure antes de poder gestionar los clústeres de Azure Kubernetes Service con Astra Control Service. 
+---
+= Configure Microsoft Azure con Azure NetApp Files
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Es necesario realizar algunos pasos para preparar su suscripción a Microsoft Azure antes de poder gestionar los clústeres de Azure Kubernetes Service con Astra Control Service. Siga estas instrucciones si tiene pensado utilizar Azure NetApp Files como back-end de almacenamiento.
+
+
+
+== Inicio rápido para configurar Azure
+
+Empiece rápidamente siguiendo estos pasos o desplácese hacia abajo hasta las secciones restantes para obtener todos los detalles.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Uno"] Revise los requisitos del servicio Astra Control para Azure Kubernetes Service
+
+[role="quick-margin-para"]
+Compruebe que el estado de los clústeres sea bueno y ejecute una versión compatible de Kubernetes, que los pools de nodos estén en línea y que ejecuten Linux, etc. <<Requisitos del clúster de Azure Kubernetes Service,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Regístrese para Microsoft Azure
+
+[role="quick-margin-para"]
+Cree una cuenta de Microsoft Azure. <<Regístrese para Microsoft Azure,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Tres"] Regístrese para Azure NetApp Files
+
+[role="quick-margin-para"]
+Registre el proveedor de recursos de NetApp. <<Regístrese para Azure NetApp Files,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Cuatro"] Cree una cuenta de NetApp
+
+[role="quick-margin-para"]
+Vaya a Azure NetApp Files en el portal de Azure y cree una cuenta de NetApp. <<Cree una cuenta de NetApp,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinco"] Configure pools de capacidad
+
+[role="quick-margin-para"]
+Configure uno o varios pools de capacidad para los volúmenes persistentes. <<Configure un pool de capacidad,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Seis"] Delegar una subred en Azure NetApp Files
+
+[role="quick-margin-para"]
+Delegue una subred en Azure NetApp Files para que el servicio de control de Astra pueda crear volúmenes persistentes en esa subred. <<Delegar una subred en Azure NetApp Files,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Siete"] Cree un principal de servicio de Azure
+
+[role="quick-margin-para"]
+Cree una entidad de servicio de Azure con la función Colaborador. <<Cree un principal de servicio de Azure,Obtenga más información sobre este paso>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Ocho"] Opcional: Configurar la redundancia para bloques de backup de Azure
+
+[role="quick-margin-para"]
+De forma predeterminada, los bloques Astra Control Service utilizan para almacenar las copias de seguridad de Azure Kubernetes Service utilizan la opción de redundancia almacenamiento redundante local (LRS). Como paso opcional, puede configurar un nivel de redundancia más duradero para bloques de Azure. <<Opcional: Configurar la redundancia para bloques de backup de Azure,Obtenga más información sobre este paso>>.
+
+
+
+== Requisitos del clúster de Azure Kubernetes Service
+
+Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda detectar y gestionar estos sistemas desde el servicio Astra Control Service.
+
+La versión de Kubernetes:: Los clústeres deben ejecutar Kubernetes de la versión 1.23 a la 1.25.
+Tipo de imagen:: El tipo de imagen para todos los pools de nodos debe ser Linux.
+Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
+Región de Azure:: Los clústeres deben residir en una región donde Azure NetApp Files esté disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Consulte los productos de Azure por región"^].
+Suscripción:: Los clústeres deben residir en una suscripción en la que Azure NetApp Files esté habilitado. Podrá elegir una suscripción cuando lo desee <<Regístrese para Azure NetApp Files,Regístrese para Azure NetApp Files>>.
+Neta virtual:: Considere los siguientes requisitos de vnet:
++
+--
+* Los clústeres deben residir en una red virtual que tenga acceso directo a una subred delegada de Azure NetApp Files. <<Delegar una subred en Azure NetApp Files,Aprenda a configurar una subred delegada>>.
+* Si sus clústeres de Kubernetes están en una vnet con una relación entre iguales a la subred delegada de Azure NetApp Files que se encuentra en otra vnet, ambos lados de la conexión de paridad deben estar en línea.
+* Tenga en cuenta que el límite predeterminado para el número de IP utilizadas en un vnet (incluidos los VNets de conexión inmediata) con Azure NetApp Files es 1,000. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits["Ver los límites de recursos de Azure NetApp Files"^].
++
+Si está cerca del límite, tiene dos opciones:
+
++
+** Puede hacerlo https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits#request-limit-increase-["enviar una solicitud de aumento de límite"^]. Si necesita ayuda, póngase en contacto con su representante de NetApp.
+** Al crear un nuevo clúster de Amazon Kubernetes Service (AKS), especifique una nueva red para el clúster. Una vez creada la nueva red, aprovisione una nueva subred y delegue la subred a Azure NetApp Files.
+
+
+
+
+--
+
+
+
+
+== Regístrese para Microsoft Azure
+
+Si no tiene una cuenta de Microsoft Azure, comience registrándose en Microsoft Azure.
+
+.Pasos
+. Vaya a la https://azure.microsoft.com/en-us/free/["Página de suscripción a Azure"^] Para suscribirse al servicio de Azure.
+. Seleccione un plan y siga las instrucciones para completar la suscripción.
+
+
+
+
+== Regístrese para Azure NetApp Files
+
+Obtenga acceso a Azure NetApp Files registrando el proveedor de recursos de NetApp.
+
+.Pasos
+. Inicie sesión en el portal de Azure.
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-register["Siga la documentación de Azure NetApp Files para registrar el proveedor de recursos de NetApp"^].
+
+
+
+
+== Cree una cuenta de NetApp
+
+Cree una cuenta de NetApp en Azure NetApp Files.
+
+.Paso
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-create-netapp-account["Siga la documentación de Azure NetApp Files para crear una cuenta de NetApp desde el portal de Azure"^].
+
+
+
+
+== Configure un pool de capacidad
+
+Se requieren uno o más pools de capacidad para que Astra Control Service pueda aprovisionar volúmenes persistentes en un pool de capacidad. Astra Control Service no crea pools de capacidad para usted.
+
+Tenga en cuenta lo siguiente al configurar pools de capacidad para sus aplicaciones de Kubernetes:
+
+* Los pools de capacidad deben crearse en la misma región de Azure en la que los clústeres de AKS se gestionarán con Astra Control Service.
+* Un pool de capacidad puede tener un nivel de servicio Ultra, Premium o estándar. Cada uno de estos niveles de servicio está diseñado para satisfacer distintas necesidades de rendimiento. El servicio Astra Control es compatible con las tres.
++
+Es necesario configurar un pool de capacidad para cada nivel de servicio que se desea usar con los clústeres de Kubernetes.
+
++
+link:../learn/azure-storage.html["Obtenga más información acerca de los niveles de servicio de Azure NetApp Files"].
+
+* Antes de crear un pool de capacidad para las aplicaciones que pretenda proteger con Astra Control Service, elija el rendimiento y la capacidad necesarios para esas aplicaciones.
++
+El aprovisionamiento de la cantidad adecuada de capacidad garantiza que los usuarios puedan crear volúmenes persistentes a medida que sean necesarios. Si la capacidad no está disponible, no se pueden aprovisionar los volúmenes persistentes.
+
+* Un pool de capacidad de Azure NetApp Files puede usar el tipo de calidad de servicio manual o automática. Astra Control Service admite pools de capacidad de QoS automática. No se admiten pools de capacidad de calidad de servicio manual.
+
+
+.Paso
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool["Siga la documentación de Azure NetApp Files para configurar un pool de capacidad de calidad de servicio automática"^].
+
+
+
+
+== Delegar una subred en Azure NetApp Files
+
+Debe delegar una subred en Azure NetApp Files para que el Servicio de control Astra pueda crear volúmenes persistentes en esa subred. Tenga en cuenta que Azure NetApp Files permite tener sólo una subred delegada en un vnet.
+
+Si utiliza VNets con una relación entre iguales, ambos lados de la conexión entre iguales deben estar en línea: El vnet donde residen sus clústeres de Kubernetes y el vnet que tiene la subred delegada de Azure NetApp Files.
+
+.Paso
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Siga la documentación de Azure NetApp Files para delegar una subred en Azure NetApp Files"^].
+
+
+.Después de terminar
+Espere unos 10 minutos antes de detectar el clúster que se ejecuta en la subred delegada.
+
+
+
+== Cree un principal de servicio de Azure
+
+Astra Control Service requiere una entidad de servicio de Azure que tenga asignada la función Contributor. Astra Control Service utiliza este servicio principal para facilitar la gestión de los datos de aplicaciones de Kubernetes en su nombre.
+
+Un principal de servicio es una identidad creada específicamente para su uso con aplicaciones, servicios y herramientas. La asignación de un rol al director de servicio restringe el acceso a recursos específicos de Azure.
+
+Siga los pasos que se indican a continuación para crear un principal de servicio con la CLI de Azure. Deberá guardar el resultado en un archivo JSON y proporcionarlo al servicio de control de Astra más adelante. https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli["Consulte la documentación de Azure para obtener más detalles sobre el uso de la CLI"^].
+
+En los pasos siguientes se asume que tiene permiso para crear un principal de servicio y que tiene instalado el SDK de Microsoft Azure (comando az) en su equipo.
+
+.Requisitos
+* El principal de servicio debe utilizar autenticación regular. No se admiten certificados.
+* El director de servicio debe tener acceso a su suscripción de Azure a Contributor o propietario.
+* La suscripción o el grupo de recursos que elija para Scope debe contener los clústeres de AKS y su cuenta de Azure NetApp Files.
+
+
+.Pasos
+. Identifique la suscripción y el ID de inquilino en los que residen los clústeres de AKS (estos son los clústeres que desea gestionar en Astra Control Service).
++
+[source, azureCLI]
+----
+az configure --list-defaults
+az account list --output table
+----
+. Realice una de las siguientes acciones, en función de si utiliza una suscripción completa o un grupo de recursos:
++
+** Cree el principal de servicio, asigne la función Colaborador y especifique el ámbito de toda la suscripción donde residen los clústeres.
++
+[source, azurecli]
+----
+az ad sp create-for-rbac --name service-principal-name --role contributor --scopes /subscriptions/SUBSCRIPTION-ID
+----
+** Cree el principal de servicio, asigne la función Colaborador y especifique el grupo de recursos donde residen los clústeres.
++
+[source, azurecli]
+----
+az ad sp create-for-rbac --name service-principal-name --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP-ID
+----
+
+
+. Almacene la salida de la CLI de Azure resultante como archivo JSON.
++
+Tendrá que proporcionar este archivo para que Astra Control Service pueda descubrir sus clústeres de AKS y gestionar las operaciones de gestión de datos de Kubernetes. link:../use/manage-credentials.html["Obtenga más información sobre la gestión de credenciales en Astra Control Service"].
+
+. Opcional: Agregue el ID de suscripción al archivo JSON para que Astra Control Service rellene automáticamente el ID cuando seleccione el archivo.
++
+De lo contrario, deberá introducir el identificador de suscripción en Astra Control Service cuando se le solicite.
+
++
+*ejemplo*
+
++
+[source, JSON]
+----
+{
+  "appId": "0db3929a-bfb0-4c93-baee-aaf8",
+  "displayName": "sp-example-dev-sandbox",
+  "name": "http://sp-example-dev-sandbox",
+  "password": "mypassword",
+  "tenant": "011cdf6c-7512-4805-aaf8-7721afd8ca37",
+  "subscriptionId": "99ce999a-8c99-99d9-a9d9-99cce99f99ad"
+}
+----
+. Opcional: Pruebe el director de servicio. Elija entre los siguientes comandos de ejemplo según el ámbito que utilice su principal de servicio.
++
+.Alcance de la suscripción
+[source, azurecli]
+----
+az login --service-principal --username APP-ID-SERVICEPRINCIPAL --password PASSWORD --tenant TENANT-ID
+az group list --subscription SUBSCRIPTION-ID
+az aks list --subscription SUBSCRIPTION-ID
+az storage container list --account-name STORAGE-ACCOUNT-NAME
+----
++
+.Ámbito del grupo de recursos
+[source, azurecli]
+----
+az login --service-principal --username APP-ID-SERVICEPRINCIPAL --password PASSWORD --tenant TENANT-ID
+az aks list --subscription SUBSCRIPTION-ID --resource-group RESOURCE-GROUP-ID
+----
+
+
+
+
+== Opcional: Configurar la redundancia para bloques de backup de Azure
+
+Puede configurar un nivel de redundancia más duradero para bloques de backup de Azure. De forma predeterminada, los bloques Astra Control Service utilizan para almacenar las copias de seguridad de Azure Kubernetes Service utilizan la opción de redundancia almacenamiento redundante local (LRS). Para utilizar una opción de redundancia más duradera para bloques de Azure, debe hacer lo siguiente:
+
+.Pasos
+. Cree una cuenta de almacenamiento de Azure que utilice el nivel de redundancia necesario https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["estas instrucciones"^].
+. Cree un contenedor de Azure en la nueva cuenta de almacenamiento con https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["estas instrucciones"^].
+. Agregue el contenedor como cucharón al servicio de control Astra. Consulte link:../use/manage-buckets.html#add-an-additional-bucket["Añadir un bloque más"].
+. (Opcional) para utilizar el bloque recién creado como bloque predeterminado para los backups de Azure, establezca esta opción como el bloque predeterminado para Azure. Consulte link:../use/manage-buckets.html#change-the-default-bucket["Cambiar el bloque predeterminado"].
+
