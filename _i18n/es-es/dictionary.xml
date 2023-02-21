@@ -2077,4 +2077,5 @@
   <block id="6beb2fa01dc121194547db1bfbe03408" category="paragraph">endif::aws[]</block>
   <block id="6e1e9c83b80f4d22d34cbdf60a71383b" category="paragraph">ifdef::gcp[]</block>
   <block id="310c228207a0f8446bbe4c5d16978cb7" category="paragraph">endif::gcp[]</block>
+  <block id="2fae9bf7af2c006788415b299aad1207" category="admonition">Cuando se realiza una restauración sin movimiento de una aplicación que utiliza el almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.</block>
 </blocks>

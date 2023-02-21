@@ -14,6 +14,9 @@ summary: Astra Control puede restaurar la configuración de sus aplicaciones y e
 [role="lead"]
 Astra Control puede restaurar su aplicación a partir de una instantánea o una copia de seguridad. La restauración a partir de una snapshot existente será más rápida cuando se restaure la aplicación en el mismo clúster. Puede utilizar la interfaz de usuario de Astra Control o. https://docs.netapp.com/us-en/astra-automation/index.html["La API de control Astra"^] para restaurar aplicaciones.
 
+
+NOTE: Cuando se realiza una restauración sin movimiento de una aplicación que utiliza el almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.
+
 .Acerca de esta tarea
 * *Proteger sus aplicaciones primero*: Se recomienda tomar una instantánea o hacer una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup en el caso de que la restauración no se realice correctamente.
 * *Comprobar la clase de almacenamiento de destino*: Si restaura a un clúster diferente, asegúrese de que la clase de almacenamiento del clúster de destino esté utilizando el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany) que la clase de almacenamiento del clúster de origen. Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente.
