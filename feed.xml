@@ -8,16 +8,16 @@
     <description>The latest updates from NetApp Documentation</description>
     <language>es-es</language>
     <ttl>60</ttl>
-    <pubDate>Tue, 21 Feb 2023 23:36:51 +0000</pubDate>
-    <lastBuildDate>Tue, 21 Feb 2023 23:36:51 +0000</lastBuildDate>
+    <pubDate>Fri, 24 Feb 2023 16:02:43 +0000</pubDate>
+    <lastBuildDate>Fri, 24 Feb 2023 16:02:43 +0000</lastBuildDate>
     
     
     
     <item>
-      <title>Novedades de Astra Control Service (20 Feb 2023)</title>
-      <pubDate>Mon, 20 Feb 2023 14:29:11 +0000</pubDate>
-      <link>https://docs.netapp.com/es-es/astra-control-service/release-notes/whats-new.html?time=1676903351</link>
-      <guid isPermaLink="false">Mon, 20 Feb 2023 14:29:11 +0000</guid>
+      <title>Novedades de Astra Control Service (24 Feb 2023)</title>
+      <pubDate>Fri, 24 Feb 2023 16:00:20 +0000</pubDate>
+      <link>https://docs.netapp.com/es-es/astra-control-service/release-notes/whats-new.html?time=1677254420</link>
+      <guid isPermaLink="false">Fri, 24 Feb 2023 16:00:20 +0000</guid>
       <description><![CDATA[ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas funciones, mejoras y correcciones de errores. ]]></description>
     </item>
     
