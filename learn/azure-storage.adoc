@@ -53,7 +53,7 @@ El servicio de control Astra aprovisiona volúmenes persistentes con un tamaño 
 
 == Discos gestionados de Azure
 
-Astra Control Service es compatible con los discos gestionados de Azure como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento a nivel de bloques gestionado por Azure.
+Astra Control Service puede utilizar los controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con los discos administrados de Azure como back-end de almacenamiento. Este servicio proporciona almacenamiento a nivel de bloques gestionado por Azure.
 
 https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["Obtenga más información acerca de los discos gestionados de Azure"^].
 

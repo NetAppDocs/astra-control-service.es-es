@@ -113,7 +113,7 @@ Debido a una limitación, si una RVP solicita un volumen entre 700-999 GIB, Astr
 
 == Disco persistente de Google
 
-Astra Control Service es compatible con Google Persistent Disk como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento en el nivel de bloques gestionado por Google.
+Astra Control Service puede utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Google Persistent Disk como back-end de almacenamiento. Este servicio proporciona almacenamiento en el nivel de bloques gestionado por Google.
 
 https://cloud.google.com/persistent-disk/["Obtenga más información acerca de Google Persistent Disk"^].
 

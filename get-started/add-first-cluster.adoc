@@ -76,7 +76,7 @@ endif::gcp[]
 .Lo que necesite&#8217;para clústeres autogestionados
 [%collapsible]
 ====
-Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con otros servicios de almacenamiento.
+Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.
 
 Astra Control Service es compatible con clústeres autogestionados mediante las siguientes distribuciones de Kubernetes:
 

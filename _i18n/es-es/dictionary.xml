@@ -1037,7 +1037,6 @@
   <block id="c6df6edd45599b3322119a1d34838b64" category="section-title">Tamaño de volumen mínimo</block>
   <block id="73d58bce64935ac37f26ef1b6d250e13" category="paragraph">El servicio de control Astra aprovisiona volúmenes persistentes con un tamaño de volumen mínimo de 100 GIB, incluso si el PVC pide un tamaño de volumen menor. Por ejemplo, si la RVP de un gráfico Helm solicita 6 GIB, el Servicio de control Astra aprovisiona automáticamente un volumen de 100 GIB.</block>
   <block id="7a4db5e977cc2bc82255e20ed9b93c4d" category="section-title">Discos gestionados de Azure</block>
-  <block id="a78513acd713c2d45f9956aec22c3e19" category="paragraph">Astra Control Service es compatible con los discos gestionados de Azure como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento a nivel de bloques gestionado por Azure.</block>
   <block id="9c92b8240042e913292ad9bea8c7698f" category="inline-link">Obtenga más información acerca de los discos gestionados de Azure</block>
   <block id="ff42fb74ba93da15d304e42948c0b518" category="paragraph"><block ref="250fe5b998dd6cb4de09bf9afa3806e9" category="inline-link-rx"></block>.</block>
   <block id="0f0b99ea2f70cd363c2c6a279f74e760" category="section-title">Cloud Volumes ONTAP de NetApp</block>
@@ -1092,7 +1091,6 @@
   <block id="a5f0d81b6dacdc3d6dd4b5e1957fc397" category="paragraph">Astra Control Service aprovisiona volúmenes persistentes utilizando un tamaño de volumen mínimo de 300 GIB con el tipo de servicio CVS, incluso si el PVC pide un tamaño de volumen menor. Por ejemplo, si se solicitan 20 GIB, Astra Control Service aprovisiona automáticamente un volumen de 300 GIB.</block>
   <block id="a6970f67086975857f95d5d598afacd7" category="paragraph">Debido a una limitación, si una RVP solicita un volumen entre 700-999 GIB, Astra Control Service aprovisiona automáticamente un tamaño de volumen de 1000 GIB.</block>
   <block id="4ea21227490cfda88113ac9e09c3d896" category="section-title">Disco persistente de Google</block>
-  <block id="5165c93eed8a6988e2abc470bf4d0bbe" category="paragraph">Astra Control Service es compatible con Google Persistent Disk como opción de back-end de almacenamiento. Este servicio proporciona almacenamiento en el nivel de bloques gestionado por Google.</block>
   <block id="c533b58a8522da4b56509ffdf8f54226" category="inline-link">Obtenga más información acerca de Google Persistent Disk</block>
   <block id="39c44ccf09904735b47f23a89ee2e724" category="paragraph"><block ref="055a60e2d0748ea0284ea572aa51a82d" category="inline-link-rx"></block>.</block>
   <block id="a314ef41007da089aa4ae498f35e3a10" category="inline-link">Obtenga más información sobre los diferentes niveles de rendimiento de los discos persistentes de Google</block>
@@ -1114,7 +1112,6 @@
   <block id="d819b60633fd5eee6a163e88aa81da4e" category="paragraph">Astra Control Service puede utilizar Amazon Elastic Block Store (EBS) o Amazon FSX para NetApp ONTAP como back-ends de almacenamiento para los clústeres de Amazon Elastic Kubernetes Service (EKS).</block>
   <block id="8e276a5c4eecb9cd5c1fbb0729744eb5" category="section-title">Elastic Block Store (EBS) de Amazon</block>
   <block id="f83a0018c18787e63139822b6dc279ca" category="inline-link">La documentación de Kubernetes</block>
-  <block id="c969f450a50c240b276b1959fc3eb534" category="paragraph">Cuando utiliza EBS como back-end de almacenamiento para clústeres EKS, puede configurar algunos parámetros de clase de almacenamiento. Para obtener más información acerca de qué significan los parámetros y cómo configurarlos, consulte<block ref="efa17ec338493b6d9caef44d32a8989a" category="inline-link-rx"></block>.</block>
   <block id="7de084a73e1235e817952e00c38561e0" category="paragraph">Es posible usar varios tipos distintos de volúmenes con EBS:</block>
   <block id="6b69488d82bbe2d01d166e7d12047938" category="list-text">Unidades de estado sólido (SSD)</block>
   <block id="fa78e672adc4de65a148d9255690ef20" category="list-text">Unidades de disco duro (HDD)</block>
@@ -1794,7 +1791,6 @@
   <block id="2419fe48841fc722c6b0c9167faf2fb9" category="list-text">Debe tener el archivo de clave de cuenta de servicio para una cuenta de servicio que tenga los permisos necesarios. <block ref="9215258f7e020d0c05367a1a3bfd0982" category="inline-link-macro-rx"></block>.</block>
   <block id="d75122947e3b2c3b0a4b44dfa3966432" category="list-text">Si tiene pensado utilizar Cloud Volumes ONTAP de NetApp como back-end de almacenamiento, debe configurar Cloud Volumes ONTAP para que funcione con Google Cloud. Consulte el Cloud Volumes ONTAP<block ref="3a89728ad1d2dcbb16e661d8af8129b1" category="inline-link-rx"></block>.</block>
   <block id="9eecb04f40bc3e3811b2fcfff6ea5b4f" category="example-title">Lo que necesite&amp;#8217;para clústeres autogestionados</block>
-  <block id="ac3bb3e8177657e75082233c58971d93" category="paragraph">Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con otros servicios de almacenamiento.</block>
   <block id="3b9c73125ae4cc5ab9bb00104b4598d8" category="paragraph">Astra Control Service es compatible con clústeres autogestionados mediante las siguientes distribuciones de Kubernetes:</block>
   <block id="fd89bb4228981d3b22187eb451421cd6" category="list-text">OpenShift Container Platform de Red Hat</block>
   <block id="bbd7c7ef752c876494ec0af98dd0b63a" category="list-text">Motor Kubernetes del rancher</block>
@@ -2078,4 +2074,8 @@
   <block id="afe823403603f8e45a82a192de4f1f39" category="paragraph"><block ref="afe823403603f8e45a82a192de4f1f39" category="inline-link-macro-rx"></block></block>
   <block id="43f10e14cfc78f2dccf4af9115390a26" category="list-text"><block ref="43f10e14cfc78f2dccf4af9115390a26" category="inline-link-rx"></block></block>
   <block id="aa2317f5569d30b7aac1b41dd02ffe97" category="list-text">Si tiene pensado utilizar Cloud Volumes ONTAP de NetApp como back-end de almacenamiento, debe configurar Cloud Volumes ONTAP para que funcione con Amazon Web Services. Consulte el Cloud Volumes ONTAP<block ref="c40ff22452592aa319388d1d94a0a32e" category="inline-link-rx"></block>.</block>
+  <block id="892bb983e85684c863a4bf11d26d064e" category="paragraph">Astra Control Service puede utilizar los controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con los discos administrados de Azure como back-end de almacenamiento. Este servicio proporciona almacenamiento a nivel de bloques gestionado por Azure.</block>
+  <block id="46625131314080c123c1a23c969aa3a8" category="paragraph">Astra Control Service puede utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Google Persistent Disk como back-end de almacenamiento. Este servicio proporciona almacenamiento en el nivel de bloques gestionado por Google.</block>
+  <block id="4d2a3e63d994334eaa09e7217ed0d01d" category="paragraph">Los clústeres pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con EBS. Cuando utiliza EBS como back-end de almacenamiento para clústeres EKS, puede configurar algunos parámetros de clase de almacenamiento. Para obtener más información acerca de qué significan los parámetros y cómo configurarlos, consulte<block ref="efa17ec338493b6d9caef44d32a8989a" category="inline-link-rx"></block>.</block>
+  <block id="4c59c334ed6b80e6cd8237e6f14cf9cb" category="paragraph">Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.</block>
 </blocks>
