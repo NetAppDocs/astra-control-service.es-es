@@ -1163,7 +1163,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-02-24 17:09:55 +0000">02/24/2023</time>
+    <time datetime="2023-02-24 17:49:57 +0000">02/24/2023</time>
     
   
 
@@ -1211,8 +1211,11 @@ Astra Control Service es compatible con clústeres AKS que utilizan Azure Active
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="clústeres-autogestionados">Clústeres autogestionados</h3>
 <div class="paragraph">
-<p>Puede agregar un clúster autogestionado a Astra Control Service cargando un <code>kubeconfig.yaml</code> archivo. Tendrá que asegurarse de que el clúster cumpla los requisitos descritos en <a href="#empiece-a-gestionar-los-clústeres-de-kubernetes">Empiece a gestionar los clústeres de Kubernetes</a>.</p>
+<p>Un clúster autogestionado es un clúster que usted aprovisiona y gestiona directamente. Astra Control Service admite clústeres autogestionados que se ejecutan en un entorno de cloud público. Puede agregar un clúster autogestionado a Astra Control Service cargando un <code>kubeconfig.yaml</code> archivo. Tendrá que asegurarse de que el clúster cumpla los requisitos descritos en <a href="#empiece-a-gestionar-los-clústeres-de-kubernetes">Empiece a gestionar los clústeres de Kubernetes</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1220,7 +1223,7 @@ Astra Control Service es compatible con clústeres AKS que utilizan Azure Active
 <h2 id="empiece-a-gestionar-los-clústeres-de-kubernetes">Empiece a gestionar los clústeres de Kubernetes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Después de iniciar sesión en Astra Control Service, el primer paso es empezar a gestionar los clústeres. Puede añadir un clúster gestionado por un proveedor de cloud o un clúster autogestionado. Antes de añadir un clúster al servicio Astra Control Service, deberá realizar determinadas tareas y asegurarse de que el clúster cumple determinados requisitos.</p>
+<p>Después de iniciar sesión en Astra Control Service, el primer paso es empezar a gestionar los clústeres. Puede añadir un clúster gestionado por un proveedor de cloud o un clúster autogestionado. Antes de añadir un clúster al servicio Astra Control Service, tendrá que realizar tareas específicas y asegurarse de que el clúster cumple determinados requisitos.</p>
 </div>
 <details>
 <summary class="title">Lo que necesite&#8217;para los clústeres gestionados por un proveedor de cloud</summary>
@@ -1242,10 +1245,10 @@ Astra Control Service es compatible con clústeres AKS que utilizan Azure Active
 <summary class="title">Lo que necesite&#8217;para clústeres autogestionados</summary>
 <div class="content">
 <div class="paragraph">
-<p>Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.</p>
+<p>Un clúster autogestionado es un clúster que usted aprovisiona y gestiona directamente. Astra Control Service admite clústeres autogestionados que se ejecutan en un entorno de cloud público. Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.</p>
 </div>
 <div class="paragraph">
-<p>Astra Control Service es compatible con clústeres autogestionados mediante las siguientes distribuciones de Kubernetes:</p>
+<p>Astra Control Service es compatible con clústeres autogestionados que utilizan las siguientes distribuciones de Kubernetes:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1267,6 +1270,9 @@ Astra Control Service es compatible con clústeres AKS que utilizan Azure Active
 <ul>
 <li>
 <p>El clúster debe estar accesible a través de Internet.</p>
+</li>
+<li>
+<p>No se puede alojar el clúster en su red local; debe alojarse en un entorno de cloud público.</p>
 </li>
 <li>
 <p>Si está utilizando o planea utilizar almacenamiento habilitado con controladores CSI, se deben instalar los controladores CSI adecuados en el clúster. Para obtener más información sobre el uso de los controladores CSI para integrar el almacenamiento, consulte la documentación del servicio de almacenamiento.</p>
