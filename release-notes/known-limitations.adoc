@@ -32,16 +32,6 @@ Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desi
 
 Cuando realice operaciones en pods Postgres, no debe conectarse directamente dentro del pod para utilizar el comando psql. Astra Control Service requiere un acceso psql para congelar y descongelar las bases de datos. Si existe una conexión preexistente, se producirá un error en la snapshot, el backup o el clon.
 
-ifdef::aws[]
-
-
-
-=== Cloud Volumes ONTAP de NetApp no es oficialmente compatible con Amazon Web Services
-
-Con la versión 17 de enero de 2023 de Astra Control Service, Cloud Volumes ONTAP de NetApp aún no es compatible oficialmente con Amazon Web Services.
-
-endif::aws[]
-
 ifdef::gcp[]
 
 

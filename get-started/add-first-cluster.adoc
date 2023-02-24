@@ -45,6 +45,7 @@ ifdef::aws[]
 * Debe tener el archivo JSON que contenga las credenciales del usuario de IAM que creó el clúster. link:../get-started/set-up-amazon-web-services.html#create-an-iam-user["Aprenda a crear un usuario de IAM"].
 * Se requiere Astra Trident para Amazon FSX para ONTAP de NetApp. Si tiene pensado utilizar Amazon FSX para ONTAP de NetApp como back-end de almacenamiento para su clúster EKS, consulte la información de Astra Trident en la link:set-up-amazon-web-services.html#eks-cluster-requirements["Requisitos del clúster de EKS"].
 * (Opcional) Si necesita proporcionarlo `kubectl` Consulte las instrucciones de la sección para obtener acceso al comando de un clúster a otros usuarios de IAM que no son el creador del clúster https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/["¿Cómo puedo proporcionar acceso a otros usuarios de IAM y a otras funciones tras la creación del clúster en Amazon EKS?"^].
+* Si tiene pensado utilizar Cloud Volumes ONTAP de NetApp como back-end de almacenamiento, debe configurar Cloud Volumes ONTAP para que funcione con Amazon Web Services. Consulte el Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["documentación de configuración"^].
 
 
 endif::aws[]

@@ -829,8 +829,6 @@
   <block id="684d9922c22d027489e3cb0caa3d50ca" category="paragraph">Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo<block ref="63f898d0a9f06a9c415a80b9d724603c" category="inline-link-rx"></block>.</block>
   <block id="52613a0e2a34040faff2fa3713d61414" category="section-title">Las conexiones existentes a un pod Postgres provocan fallos</block>
   <block id="b9f8e20735440b893e92df9f8f191ee9" category="paragraph">Cuando realice operaciones en pods Postgres, no debe conectarse directamente dentro del pod para utilizar el comando psql. Astra Control Service requiere un acceso psql para congelar y descongelar las bases de datos. Si existe una conexión preexistente, se producirá un error en la snapshot, el backup o el clon.</block>
-  <block id="1825b9e766e0b0cdba1d02a62126146f" category="section-title">Cloud Volumes ONTAP de NetApp no es oficialmente compatible con Amazon Web Services</block>
-  <block id="06a37277cf290af4d70f99c3def289f6" category="paragraph">Con la versión 17 de enero de 2023 de Astra Control Service, Cloud Volumes ONTAP de NetApp aún no es compatible oficialmente con Amazon Web Services.</block>
   <block id="6bfe142cec74b24abd2888a936579280" category="section-title">Limitaciones en la administración de clústeres GKE</block>
   <block id="3265b2231bbb5d69811830c739f49e98" category="paragraph">Las siguientes limitaciones se aplican a la gestión de los clústeres de Kubernetes en Google Kubernetes Engine (GKE).</block>
   <block id="5353c8647d31220e244ffd816499d2bb" category="section-title">Las aplicaciones de Google Marketplace no se han validado</block>
@@ -891,9 +889,7 @@
   <block id="9ed67fb9a4ad2ebd97ca13fe2eb81541" category="list-title">Nuevas funciones y soporte</block>
   <block id="dc76043b82b478d28285ae514fece7b7" category="list-text">Funciones mejoradas de enlaces de ejecución con opciones de filtrado adicionales</block>
   <block id="708d69a9cfe8326e5c6ce3c8ad6ac757" category="paragraph"><block ref="708d69a9cfe8326e5c6ce3c8ad6ac757" category="inline-link-macro-rx"></block></block>
-  <block id="a02fef9177dafc1ed65c31506043a788" category="list-text">Compatibilidad con Cloud Volumes ONTAP de NetApp como back-end de almacenamiento (compatible oficialmente con plataformas Microsoft Azure y Google Cloud)</block>
   <block id="9282ad3aef7e124a3b2b9c7eab52b33d" category="inline-link-macro">Arquitectura y componentes</block>
-  <block id="9873d3282f5b305c09e3384bd4cc642f" category="paragraph"><block ref="9873d3282f5b305c09e3384bd4cc642f" category="inline-link-macro-rx"></block></block>
   <block id="d187001d501dee0ac96f1c4520418b01" category="section-title">22 de noviembre de 2022</block>
   <block id="3aed836d77f6857f6adf310ab3a489e9" category="list-text">Compatibilidad con aplicaciones que abarcan varios espacios de nombres</block>
   <block id="615bfdde03d6ca17ceb25db1da7a8950" category="paragraph"><block ref="615bfdde03d6ca17ceb25db1da7a8950" category="inline-link-macro-rx"></block></block>
@@ -2078,4 +2074,8 @@
   <block id="6e1e9c83b80f4d22d34cbdf60a71383b" category="paragraph">ifdef::gcp[]</block>
   <block id="310c228207a0f8446bbe4c5d16978cb7" category="paragraph">endif::gcp[]</block>
   <block id="2fae9bf7af2c006788415b299aad1207" category="admonition">Cuando se realiza una restauración sin movimiento de una aplicación que utiliza el almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.</block>
+  <block id="9bef1d9bf218ed752be76e1c92b4e716" category="list-text">Compatibilidad con Cloud Volumes ONTAP de NetApp como back-end de almacenamiento</block>
+  <block id="afe823403603f8e45a82a192de4f1f39" category="paragraph"><block ref="afe823403603f8e45a82a192de4f1f39" category="inline-link-macro-rx"></block></block>
+  <block id="43f10e14cfc78f2dccf4af9115390a26" category="list-text"><block ref="43f10e14cfc78f2dccf4af9115390a26" category="inline-link-rx"></block></block>
+  <block id="aa2317f5569d30b7aac1b41dd02ffe97" category="list-text">Si tiene pensado utilizar Cloud Volumes ONTAP de NetApp como back-end de almacenamiento, debe configurar Cloud Volumes ONTAP para que funcione con Amazon Web Services. Consulte el Cloud Volumes ONTAP<block ref="c40ff22452592aa319388d1d94a0a32e" category="inline-link-rx"></block>.</block>
 </blocks>

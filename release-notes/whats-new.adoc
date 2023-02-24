@@ -23,9 +23,9 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 +
 link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"]
 
-* Compatibilidad con Cloud Volumes ONTAP de NetApp como back-end de almacenamiento (compatible oficialmente con plataformas Microsoft Azure y Google Cloud)
+* Compatibilidad con Cloud Volumes ONTAP de NetApp como back-end de almacenamiento
 +
-link:../learn/architecture.html#astra-control-components["Arquitectura y componentes"]
+link:../get-started/intro.html["Más información sobre Astra Control"]
 
 
 
