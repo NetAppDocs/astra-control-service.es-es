@@ -54,7 +54,7 @@ link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres d
 +
 link:../use/manage-cloud-instances.html["Gestionar las instancias de cloud"]
 
-* Compatibilidad con la adición de clústeres de Kubernetes autogestionados al servicio Astra Control
+* Compatibilidad con la adición de clústeres de Kubernetes autogestionados en entornos de cloud público a Astra Control Service
 +
 link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"]
 

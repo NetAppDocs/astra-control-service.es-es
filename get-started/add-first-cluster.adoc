@@ -28,13 +28,17 @@ Si todavía no tiene un clúster, puede crear uno que cumpla link:set-up-amazon-
 
 NOTE: Astra Control Service es compatible con clústeres AKS que utilizan Azure Active Directory (Azure AD) para la autenticación y la gestión de identidades. Cuando cree el clúster, siga las instrucciones que se indican en https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentación oficial"^] Para configurar el clúster de modo que use Azure AD. Debe asegurarse de que sus clústeres cumplen los requisitos de la integración de Azure AD gestionada por AKS.
 
-Puede agregar un clúster autogestionado a Astra Control Service cargando un `kubeconfig.yaml` archivo. Tendrá que asegurarse de que el clúster cumpla los requisitos descritos en <<Empiece a gestionar los clústeres de Kubernetes>>.
+
+
+=== Clústeres autogestionados
+
+Un clúster autogestionado es un clúster que usted aprovisiona y gestiona directamente. Astra Control Service admite clústeres autogestionados que se ejecutan en un entorno de cloud público. Puede agregar un clúster autogestionado a Astra Control Service cargando un `kubeconfig.yaml` archivo. Tendrá que asegurarse de que el clúster cumpla los requisitos descritos en <<Empiece a gestionar los clústeres de Kubernetes>>.
 
 
 
 == Empiece a gestionar los clústeres de Kubernetes
 
-Después de iniciar sesión en Astra Control Service, el primer paso es empezar a gestionar los clústeres. Puede añadir un clúster gestionado por un proveedor de cloud o un clúster autogestionado. Antes de añadir un clúster al servicio Astra Control Service, deberá realizar determinadas tareas y asegurarse de que el clúster cumple determinados requisitos.
+Después de iniciar sesión en Astra Control Service, el primer paso es empezar a gestionar los clústeres. Puede añadir un clúster gestionado por un proveedor de cloud o un clúster autogestionado. Antes de añadir un clúster al servicio Astra Control Service, tendrá que realizar tareas específicas y asegurarse de que el clúster cumple determinados requisitos.
 
 .Lo que necesite&#8217;para los clústeres gestionados por un proveedor de cloud
 [%collapsible]
@@ -76,9 +80,9 @@ endif::gcp[]
 .Lo que necesite&#8217;para clústeres autogestionados
 [%collapsible]
 ====
-Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.
+Un clúster autogestionado es un clúster que usted aprovisiona y gestiona directamente. Astra Control Service admite clústeres autogestionados que se ejecutan en un entorno de cloud público. Sus clústeres autogestionados pueden usar Astra Trident para interactuar con los servicios de almacenamiento de NetApp, o pueden utilizar controladores de interfaz de almacenamiento de contenedores (CSI) para interactuar con Amazon Elastic Block Store (EBS), Azure Managed Disks y Google Persistent Disk.
 
-Astra Control Service es compatible con clústeres autogestionados mediante las siguientes distribuciones de Kubernetes:
+Astra Control Service es compatible con clústeres autogestionados que utilizan las siguientes distribuciones de Kubernetes:
 
 * OpenShift Container Platform de Red Hat
 * Motor Kubernetes del rancher
@@ -88,6 +92,7 @@ Astra Control Service es compatible con clústeres autogestionados mediante las 
 Su clúster autogestionado debe cumplir con los siguientes requisitos:
 
 * El clúster debe estar accesible a través de Internet.
+* No se puede alojar el clúster en su red local; debe alojarse en un entorno de cloud público.
 * Si está utilizando o planea utilizar almacenamiento habilitado con controladores CSI, se deben instalar los controladores CSI adecuados en el clúster. Para obtener más información sobre el uso de los controladores CSI para integrar el almacenamiento, consulte la documentación del servicio de almacenamiento.
 * Si utiliza o planea utilizar almacenamiento de NetApp, compruebe que ha instalado la última versión de Astra Trident:
 +
