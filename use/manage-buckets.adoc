@@ -12,19 +12,21 @@ summary: Gestione los bloques que Astra utiliza para backups y clones mediante l
 
 
 [role="lead"]
-Gestione los bloques que Astra utiliza para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de Kubernetes en su instancia de cloud.
+Puede gestionar los bloques que Astra utiliza para backups y clones. Puede añadir bloques adicionales, quitar bloques existentes y cambiar el bloque predeterminado para los clústeres de Kubernetes en una instancia de cloud.
 
-Solo los administradores pueden agregar y modificar bloques.
+Solo los propietarios y administradores pueden gestionar los bloques.
 
 
 
 == Cómo utiliza el control Astra cucharones
 
-Cuando empiece a gestionar su primer clúster de Kubernetes, Astra Control Service crea el bloque predeterminado para su proveedor de cloud en la misma ubicación geográfica que el clúster gestionado.
+Cuando empiece a gestionar su primer clúster Kubernetes para una instancia de cloud, Astra Control Service crea el bloque inicial para este fin link:manage-cloud-instances.html["instancia de cloud"^].
 
-Astra Control Service utiliza este bloque predeterminado para las copias de seguridad y clones que cree. A continuación, puede usar los backups para restaurar y clonar las aplicaciones entre clústeres.
+Puede designar manualmente un bloque como el bloque predeterminado para una instancia de cloud. Si lo hace, Astra Control Service utiliza este bloque de forma predeterminada para las copias de seguridad y clones que cree en cualquier clúster gestionado de esa instancia cloud (puede seleccionar un bloque diferente para las copias de seguridad). Si clona una aplicación en vivo desde cualquiera de los clústeres gestionados de una instancia de cloud a otro clúster, Astra Control Service utiliza el bloque predeterminado para la instancia de cloud de origen para realizar la operación de clonado.
 
-Si agrega bloques adicionales al servicio de control de Astra, puede seleccionar entre ellos cuando cree una política de protección. También puede cambiar el bloque predeterminado que Astra Control Service utiliza para copias de seguridad y clones ad-hoc. No puede clonar un bucket de un proveedor de cloud a otro proveedor de cloud. Para migrar datos de un proveedor de cloud a otro, clone la aplicación asociada en su lugar.
+Puede establecer el mismo bloque que el bloque predeterminado para varias instancias de cloud.
+
+Puede seleccionar desde cualquier grupo cuando crea una política de protección o inicia un backup ad hoc.
 
 
 TIP: El servicio Astra Control Service comprueba si se puede acceder a un bloque de destino antes de iniciar una copia de seguridad o un clon.
@@ -33,11 +35,11 @@ TIP: El servicio Astra Control Service comprueba si se puede acceder a un bloque
 
 == Ver los bloques existentes
 
-Consulte la lista de bloques disponibles para Astra Control Service para determinar su estado e identificar el bloque predeterminado para su proveedor de cloud.
+Consulte la lista de bloques disponibles para Astra Control Service para determinar su estado e identificar el bloque predeterminado (si se ha definido) para su instancia de cloud.
 
 Un bloque puede tener cualquiera de los siguientes estados:
 
-Pendiente:: Después de añadir un bloque, se inicia en el estado pendiente mientras Astra Control lo examina por primera vez.
+Pendiente:: Después de añadir un cucharón, se inicia en el estado pendiente mientras Astra Control lo detecta.
 Disponible:: El cucharón está disponible para su uso por Astra Control.
 Quitada:: La cuchara no está operativa por el momento. Pase el ratón sobre el icono de estado para identificar el problema.
 +
@@ -50,7 +52,7 @@ Si un bloque se encuentra en el estado quitado, puede establecerlo como el bloqu
 .Paso
 . Vaya a *Cuchos*.
 +
-Aparece la lista de cucharones disponibles para el servicio de control de Astra.
+Se muestra la lista de cucharones disponibles para el servicio de control de Astra.
 
 
 
@@ -58,15 +60,26 @@ Aparece la lista de cucharones disponibles para el servicio de control de Astra.
 
 == Añadir un bloque más
 
-Después de empezar a gestionar un clúster en su proveedor de cloud, puede añadir bloques adicionales en cualquier momento. Esto le permite elegir entre bloques al crear una política de protección y cambiar el bloque predeterminado para backups y clones ad-hoc.
+Puede añadir cubos adicionales en cualquier momento. Esto le permite elegir entre bloques al crear una política de protección o iniciar un backup ad hoc, y le permite cambiar el bloque predeterminado que utiliza una instancia de cloud.
+
+Puede añadir los siguientes tipos de cubos:
+
+* Amazon Web Services
+* Genérico S3
+* Google Cloud Platform
+* Microsoft Azure
+* ONTAP S3 de NetApp
+* StorageGRID S3 de NetApp
+
 
 .Lo que necesitará
-* El nombre de un bloque existente en su proveedor de cloud.
+* El nombre de un bloque existente.
+* Las credenciales del bloque que proporcionan a Astra Control Service los permisos que necesita para gestionar el bloque.
 
 
 ifdef::azure[]
 
-* Si su bloque está en Azure:
+* Si su bloque está en Microsoft Azure:
 +
 ** El bloque debe pertenecer al grupo de recursos denominado _astra-backup-rg_.
 ** Si la configuración del rendimiento de la instancia de la cuenta de almacenamiento de Azure se establece en "Premium", la opción "Tipo de cuenta Premium" debe configurarse en "Block Blobs".
@@ -81,9 +94,6 @@ endif::azure[]
 . Seleccione *Agregar* y siga las indicaciones para añadir el cucharón.
 +
 ** *Tipo*: Elija su proveedor de nube.
-+
-Su proveedor de cloud solo está disponible después de que Astra Control Service haya empezado a gestionar un clúster que se ejecuta en ese proveedor de cloud.
-
 ** *Nombre del cucharón existente*: Introduzca el nombre del cucharón.
 ** *Descripción*: Si lo desea, introduzca una descripción del cucharón.
 
@@ -99,12 +109,12 @@ endif::azure[]
 
 ifdef::aws[]
 
-* *Nombre de servidor S3 o dirección IP* (sólo AWS): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin `https://`. Consulte https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentación de Amazon"^] si quiere más información.
+* *Nombre de servidor S3 o dirección IP* (sólo tipos de bloques AWS y S3): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin `https://`. Consulte https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentación de Amazon"^] si quiere más información.
 
 
 endif::aws[]
 
-* *Seleccionar credenciales*: Elija las credenciales que proporcionan a Astra Control Service los permisos que necesita para administrar el bloque.
+* *Seleccionar credenciales*: Introduzca las credenciales que proporcionan a Astra Control Service los permisos que necesita para administrar el bloque. La información que debe proporcionar varía en función del tipo de segmento.
 +
 .. Seleccione *Agregar* para añadir el cucharón.
 
@@ -112,15 +122,13 @@ endif::aws[]
 
 
 .Resultado
-Astra Control Service añade el cucharón adicional. Ahora puede elegir el bloque cuando cree una política de protección.
+Astra Control Service añade el cucharón. Ahora puede elegir este bloque cuando cree una política de protección o ejecute un backup ad hoc. También puede establecer este bloque como el bloque predeterminado para una instancia de cloud.
 
 
 
 == Cambiar el bloque predeterminado
 
-Cambie el bloque predeterminado que Astra Control Service debe utilizar para las copias de seguridad y clones. Cada instancia de cloud tiene su propio bloque predeterminado.
-
-Astra Control Service utiliza el bloque predeterminado para una instancia de cloud para backups ad-hoc y clones ad-hoc cuando no tiene la opción de clonar desde un backup existente.
+Puede cambiar el bloque predeterminado para una instancia de cloud. Astra Control Service utilizará este bloque de forma predeterminada para las copias de seguridad y clones. Cada instancia de cloud tiene su propio bloque predeterminado.
 
 
 NOTE: Astra Control no asigna automáticamente un bloque predeterminado para ninguna instancia de cloud. Debe establecer manualmente un bloque predeterminado para una instancia de cloud antes de ejecutar operaciones de clonado de aplicaciones entre dos clústeres.
