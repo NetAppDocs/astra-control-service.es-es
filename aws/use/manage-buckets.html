@@ -1163,7 +1163,7 @@
 <p class="page-details">
   
     
-    <time datetime="2023-02-20 14:29:11 +0000">02/20/2023</time>
+    <time datetime="2023-02-27 17:33:04 +0000">02/27/2023</time>
     
   
 
@@ -1176,10 +1176,10 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>Gestione los bloques que Astra utiliza para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de Kubernetes en su instancia de cloud.</p>
+<p>Puede gestionar los bloques que Astra utiliza para backups y clones. Puede añadir bloques adicionales, quitar bloques existentes y cambiar el bloque predeterminado para los clústeres de Kubernetes en una instancia de cloud.</p>
 </div>
 <div class="paragraph">
-<p>Solo los administradores pueden agregar y modificar bloques.</p>
+<p>Solo los propietarios y administradores pueden gestionar los bloques.</p>
 </div>
 </div>
 </div>
@@ -1187,13 +1187,16 @@
 <h2 id="cómo-utiliza-el-control-astra-cucharones">Cómo utiliza el control Astra cucharones</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Cuando empiece a gestionar su primer clúster de Kubernetes, Astra Control Service crea el bloque predeterminado para su proveedor de cloud en la misma ubicación geográfica que el clúster gestionado.</p>
+<p>Cuando empiece a gestionar su primer clúster Kubernetes para una instancia de cloud, Astra Control Service crea el bloque inicial para este fin <a href="manage-cloud-instances.html" target="_blank" rel="noopener">"instancia de cloud"</a>.</p>
 </div>
 <div class="paragraph">
-<p>Astra Control Service utiliza este bloque predeterminado para las copias de seguridad y clones que cree. A continuación, puede usar los backups para restaurar y clonar las aplicaciones entre clústeres.</p>
+<p>Puede designar manualmente un bloque como el bloque predeterminado para una instancia de cloud. Si lo hace, Astra Control Service utiliza este bloque de forma predeterminada para las copias de seguridad y clones que cree en cualquier clúster gestionado de esa instancia cloud (puede seleccionar un bloque diferente para las copias de seguridad). Si clona una aplicación en vivo desde cualquiera de los clústeres gestionados de una instancia de cloud a otro clúster, Astra Control Service utiliza el bloque predeterminado para la instancia de cloud de origen para realizar la operación de clonado.</p>
 </div>
 <div class="paragraph">
-<p>Si agrega bloques adicionales al servicio de control de Astra, puede seleccionar entre ellos cuando cree una política de protección. También puede cambiar el bloque predeterminado que Astra Control Service utiliza para copias de seguridad y clones ad-hoc. No puede clonar un bucket de un proveedor de cloud a otro proveedor de cloud. Para migrar datos de un proveedor de cloud a otro, clone la aplicación asociada en su lugar.</p>
+<p>Puede establecer el mismo bloque que el bloque predeterminado para varias instancias de cloud.</p>
+</div>
+<div class="paragraph">
+<p>Puede seleccionar desde cualquier grupo cuando crea una política de protección o inicia un backup ad hoc.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -1213,7 +1216,7 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <h2 id="ver-los-bloques-existentes">Ver los bloques existentes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Consulte la lista de bloques disponibles para Astra Control Service para determinar su estado e identificar el bloque predeterminado para su proveedor de cloud.</p>
+<p>Consulte la lista de bloques disponibles para Astra Control Service para determinar su estado e identificar el bloque predeterminado (si se ha definido) para su instancia de cloud.</p>
 </div>
 <div class="paragraph">
 <p>Un bloque puede tener cualquiera de los siguientes estados:</p>
@@ -1222,7 +1225,7 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <dl>
 <dt class="hdlist1">Pendiente</dt>
 <dd>
-<p>Después de añadir un bloque, se inicia en el estado pendiente mientras Astra Control lo examina por primera vez.</p>
+<p>Después de añadir un cucharón, se inicia en el estado pendiente mientras Astra Control lo detecta.</p>
 </dd>
 <dt class="hdlist1">Disponible</dt>
 <dd>
@@ -1247,7 +1250,7 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <li>
 <p>Vaya a <strong>Cuchos</strong>.</p>
 <div class="paragraph">
-<p>Aparece la lista de cucharones disponibles para el servicio de control de Astra.</p>
+<p>Se muestra la lista de cucharones disponibles para el servicio de control de Astra.</p>
 </div>
 </li>
 </ol>
@@ -1258,13 +1261,41 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <h2 id="añadir-un-bloque-más">Añadir un bloque más</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Después de empezar a gestionar un clúster en su proveedor de cloud, puede añadir bloques adicionales en cualquier momento. Esto le permite elegir entre bloques al crear una política de protección y cambiar el bloque predeterminado para backups y clones ad-hoc.</p>
+<p>Puede añadir cubos adicionales en cualquier momento. Esto le permite elegir entre bloques al crear una política de protección o iniciar un backup ad hoc, y le permite cambiar el bloque predeterminado que utiliza una instancia de cloud.</p>
+</div>
+<div class="paragraph">
+<p>Puede añadir los siguientes tipos de cubos:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Amazon Web Services</p>
+</li>
+<li>
+<p>Genérico S3</p>
+</li>
+<li>
+<p>Google Cloud Platform</p>
+</li>
+<li>
+<p>Microsoft Azure</p>
+</li>
+<li>
+<p>ONTAP S3 de NetApp</p>
+</li>
+<li>
+<p>StorageGRID S3 de NetApp</p>
+</li>
+</ul>
 </div>
 <div class="ulist">
 <div class="title">Lo que necesitará</div>
 <ul>
 <li>
-<p>El nombre de un bloque existente en su proveedor de cloud.</p>
+<p>El nombre de un bloque existente.</p>
+</li>
+<li>
+<p>Las credenciales del bloque que proporcionan a Astra Control Service los permisos que necesita para gestionar el bloque.</p>
 </li>
 </ul>
 </div>
@@ -1280,9 +1311,6 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <ul>
 <li>
 <p><strong>Tipo</strong>: Elija su proveedor de nube.</p>
-<div class="paragraph">
-<p>Su proveedor de cloud solo está disponible después de que Astra Control Service haya empezado a gestionar un clúster que se ejecuta en ese proveedor de cloud.</p>
-</div>
 </li>
 <li>
 <p><strong>Nombre del cucharón existente</strong>: Introduzca el nombre del cucharón.</p>
@@ -1292,10 +1320,10 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Nombre de servidor S3 o dirección IP</strong> (sólo AWS): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin <code>https://</code>. Consulte <a href="https://docs.aws.amazon.com/general/latest/gr/s3.html" target="_blank" rel="noopener">"La documentación de Amazon"</a> si quiere más información.</p>
+<p><strong>Nombre de servidor S3 o dirección IP</strong> (sólo tipos de bloques AWS y S3): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin <code>https://</code>. Consulte <a href="https://docs.aws.amazon.com/general/latest/gr/s3.html" target="_blank" rel="noopener">"La documentación de Amazon"</a> si quiere más información.</p>
 </li>
 <li>
-<p><strong>Seleccionar credenciales</strong>: Elija las credenciales que proporcionan a Astra Control Service los permisos que necesita para administrar el bloque.</p>
+<p><strong>Seleccionar credenciales</strong>: Introduzca las credenciales que proporcionan a Astra Control Service los permisos que necesita para administrar el bloque. La información que debe proporcionar varía en función del tipo de segmento.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
@@ -1314,7 +1342,7 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 </div>
 <div class="paragraph">
 <div class="title">Resultado</div>
-<p>Astra Control Service añade el cucharón adicional. Ahora puede elegir el bloque cuando cree una política de protección.</p>
+<p>Astra Control Service añade el cucharón. Ahora puede elegir este bloque cuando cree una política de protección o ejecute un backup ad hoc. También puede establecer este bloque como el bloque predeterminado para una instancia de cloud.</p>
 </div>
 </div>
 </div>
@@ -1322,10 +1350,7 @@ El servicio Astra Control Service comprueba si se puede acceder a un bloque de d
 <h2 id="cambiar-el-bloque-predeterminado">Cambiar el bloque predeterminado</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Cambie el bloque predeterminado que Astra Control Service debe utilizar para las copias de seguridad y clones. Cada instancia de cloud tiene su propio bloque predeterminado.</p>
-</div>
-<div class="paragraph">
-<p>Astra Control Service utiliza el bloque predeterminado para una instancia de cloud para backups ad-hoc y clones ad-hoc cuando no tiene la opción de clonar desde un backup existente.</p>
+<p>Puede cambiar el bloque predeterminado para una instancia de cloud. Astra Control Service utilizará este bloque de forma predeterminada para las copias de seguridad y clones. Cada instancia de cloud tiene su propio bloque predeterminado.</p>
 </div>
 <div class="admonitionblock note">
 <table>
