@@ -28,7 +28,7 @@ indexpage:
     - title: Manos a la obra
       url: https://docs.netapp.com/us-en/astra-automation/get-started/before_get_started.html
     - title: Referencia de API
-      url: https://docs.netapp.com/us-en/astra-automation/reference/api_reference.html
+      url: https://docs.netapp.com/us-en/astra-automation/reference/overview.html
     - title: Flujos de trabajo API
       url: https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html
   - title: Demostraciones y tutoriales
