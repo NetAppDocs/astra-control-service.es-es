@@ -99,7 +99,9 @@ endif::azure[]
 
 * Clústeres autogestionados:
 +
-** Sistemas ONTAP AFF y FAS de NetApp
+** Amazon EBS
+** Disco persistente de Google
+** Discos gestionados de Azure
 ** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
