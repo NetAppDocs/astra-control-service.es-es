@@ -16,6 +16,29 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 
 
 
+== 25 de abril de 2023
+
+.Nuevas funciones y soporte
+ifdef::azure[]
+
+endif::azure[]
+
+* Compatibilidad con clústeres privados de Red Hat OpenShift
++
+link:../get-started/manage-private-cluster.html["Gestione clústeres privados desde Astra Control Service"]
+
+* Soporte para incluir o excluir recursos de aplicaciones durante las operaciones de restauración
++
+link:../use/restore-apps.html#filter-resources-during-an-application-restore["Restaurar aplicaciones"]
+
+* Compatibilidad para la gestión de aplicaciones solo de datos
++
+link:../use/manage-apps.html["Inicie la gestión de aplicaciones"]
+
+
+
+
+
 == 17 de enero de 2023
 
 .Nuevas funciones y soporte

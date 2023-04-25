@@ -72,7 +72,7 @@ Puede añadir los siguientes tipos de cubos:
 * StorageGRID S3 de NetApp
 
 
-.Lo que necesitará
+.Antes de empezar
 * El nombre de un bloque existente.
 * Las credenciales del bloque que proporcionan a Astra Control Service los permisos que necesita para gestionar el bloque.
 
@@ -149,7 +149,7 @@ Puede eliminar un cubo que ya no esté en uso o que no esté sano. Se recomienda
 
 No se puede eliminar un bloque predeterminado. Si desea eliminar ese bloque, seleccione primero otro bloque como predeterminado.
 
-.Lo que necesitará
+.Antes de empezar
 * Antes de empezar, debe comprobar que no hay copias de seguridad en ejecución o completadas para este bloque.
 * Debe comprobar que dicho bloque no se esté utilizando para ninguna copia de seguridad programada.
 

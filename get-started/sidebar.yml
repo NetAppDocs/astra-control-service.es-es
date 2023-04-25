@@ -27,6 +27,7 @@ entries:
 - title: Gestione clústeres
   url: "/get-started/add-first-cluster.html"
 - title: Gestione clústeres privados
+  flavor: azure
   url: "/get-started/manage-private-cluster.html"
 - title: El futuro
   url: "/get-started/whats-next.html"

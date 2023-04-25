@@ -77,7 +77,7 @@ Guarde las credenciales del usuario de IAM para poder importar las credenciales 
 
 Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda detectar y gestionar estos sistemas desde el servicio Astra Control Service.
 
-La versión de Kubernetes:: Un clúster de debe ejecutar una versión de Kubernetes entre 1.22 y 1.24.
+La versión de Kubernetes:: Un clúster de debe ejecutar una versión de Kubernetes en el rango de 1,23 a 1,25.
 Tipo de imagen:: El tipo de imagen para cada nodo de trabajo debe ser Linux.
 Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
 

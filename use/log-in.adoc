@@ -19,7 +19,7 @@ Se puede acceder al servicio Astra Control mediante una interfaz de usuario basa
 
 TIP: Puede utilizar el inicio de sesión único para iniciar sesión con credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
 
-.Lo que necesitará
+.Antes de empezar
 * link:../get-started/register.html["Un ID de usuario de Cloud Central"].
 * link:../get-started/register.html["Una nueva cuenta de Astra Control"] o. link:manage-users.html["una invitación a una cuenta existente"].
 * Un navegador web compatible.

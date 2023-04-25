@@ -406,6 +406,11 @@ NOTE: Si selecciona un clúster marcado con un icono "privado", utiliza direccio
 endif::azure[]
 
 . *Nombre de credenciales* (para clústeres autogestionados): Proporcione un nombre para la credencial de clúster autogestionada que está cargando a Astra Control. De forma predeterminada, el nombre de las credenciales se completa automáticamente como nombre del clúster.
+. (Opcional) *ID de ruta privada*: Introduce el identificador de ruta privado, que puedes obtener del Astra Connector.
++
+
+NOTE: Private route ID es el nombre asociado con Astra Connector, que permite gestionar un clúster de Kubernetes privado mediante Astra. En este contexto, un clúster privado es un clúster de Kubernetes que no expone su servidor API a Internet.
+
 . (Opcional) *almacenamiento*: Seleccione la clase de almacenamiento que desea que las aplicaciones de Kubernetes implementadas en este clúster utilicen de forma predeterminada.
 +
 [NOTE]

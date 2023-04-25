@@ -46,6 +46,11 @@ Para obtener información sobre la sintaxis que admite Astra Control para las ex
 
 Tenga en cuenta lo siguiente al planificar enlaces de ejecución para sus aplicaciones.
 
+[NOTE]
+====
+Puesto que los enlaces de ejecución a menudo reducen o desactivan por completo la funcionalidad de la aplicación con la que se ejecutan, siempre debe intentar minimizar el tiempo que tardan los enlaces de ejecución personalizados. Si inicia una operación de copia de seguridad o de instantánea con los enlaces de ejecución asociados pero, a continuación, la cancela, los ganchos pueden ejecutarse si ya se ha iniciado la operación de copia de seguridad o de Snapshot. Esto significa que la lógica utilizada en un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado.
+
+====
 * Un enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Muchos enlaces de ejecución pueden hacer referencia al mismo script.
 * Astra Control requiere que las secuencias de comandos que utilizan los enlaces de ejecución se escriban en el formato de secuencias de comandos de shell ejecutables.
 * El tamaño del script está limitado a 96 KB.
@@ -57,11 +62,6 @@ Tenga en cuenta lo siguiente al planificar enlaces de ejecución para sus aplica
 * Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
 
 
-[NOTE]
-====
-Puesto que los enlaces de ejecución a menudo reducen o desactivan por completo la funcionalidad de la aplicación con la que se ejecutan, siempre debe intentar minimizar el tiempo que tardan los enlaces de ejecución personalizados. Si inicia una operación de copia de seguridad o de instantánea con los enlaces de ejecución asociados pero, a continuación, la cancela, los ganchos pueden ejecutarse si ya se ha iniciado la operación de copia de seguridad o de Snapshot. Esto significa que la lógica utilizada en un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado.
-
-====
 
 
 === Orden de ejecución
@@ -123,7 +123,7 @@ Si comienza pero luego cancela una copia de seguridad que incluye una instantán
 | 4 | Clonar o restaurar | N | Y | Nuevo | Igual | N | N | Y 
 
 
-| 5 | Clonar o restaurar | Y | N | Nuevo | Diferente | N | Y | Y 
+| 5 | Clonar o restaurar | Y | N | Nuevo | Diferente | N | N | Y 
 
 
 | 6 | Clonar o restaurar | N | Y | Nuevo | Diferente | N | N | Y 
@@ -141,7 +141,7 @@ Si comienza pero luego cancela una copia de seguridad que incluye una instantán
 | 10 | Backup | N | N.A. | N.A. | N.A. | Y | Y | N.A. 
 
 
-| 11 | Backup | Y | N.A. | N.A. | N.A. | N | Y | N.A. 
+| 11 | Backup | Y | N.A. | N.A. | N.A. | N | N | N.A. 
 |===
 
 

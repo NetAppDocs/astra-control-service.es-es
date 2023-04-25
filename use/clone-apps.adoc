@@ -19,7 +19,7 @@ El clonado puede ayudarle si necesita mover aplicaciones y almacenamiento de un 
 
 NOTE: Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
 
-.Lo que necesitará
+.Antes de empezar
 * Para clonar aplicaciones en un clúster diferente, debe asegurarse de haber asignado un bloque predeterminado para la instancia de cloud que contiene el clúster de origen. Si la instancia de cloud de origen no tiene un conjunto de bloques predeterminado, se producirá un error en la operación de clonado entre clústeres.
 * Durante las operaciones de clonado, las aplicaciones que necesitan un recurso IngressClass o enlaces web para funcionar correctamente no deben tener esos recursos ya definidos en el clúster de destino.
 
@@ -60,6 +60,12 @@ NOTE: Astra Control crea nuevos espacios de nombres de destino como parte de la 
 +
 *** Si decide clonar desde una snapshot o un backup existente, elija la snapshot o el backup que desee utilizar.
 
+
+** Seleccione *Siguiente*.
+** Elija mantener la clase de almacenamiento original asociada a la aplicación o seleccionar una clase de almacenamiento diferente.
++
+
+NOTE: Si selecciona otra clase de almacenamiento y esta clase de almacenamiento no existe en el momento de la restauración, se devolverá un error.
 
 
 

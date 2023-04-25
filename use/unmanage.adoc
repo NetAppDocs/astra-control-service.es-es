@@ -67,7 +67,7 @@ Cuando se desadministra un clúster:
 
 
 .Resultado
-El estado del clúster cambia a *Extracción*. Después de eso, el clúster se eliminará de la página *Clusters* y ya no será gestionado por Astra Control Center.
+El estado del clúster cambia a *Extracción*. Después de eso, el clúster se eliminará de la página *Clusters* y Astra Control ya no lo gestionará.
 
 
 

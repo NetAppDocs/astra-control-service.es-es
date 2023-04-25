@@ -32,6 +32,12 @@ Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desi
 
 Cuando realice operaciones en pods Postgres, no debe conectarse directamente dentro del pod para utilizar el comando psql. Astra Control Service requiere un acceso psql para congelar y descongelar las bases de datos. Si existe una conexión preexistente, se producirá un error en la snapshot, el backup o el clon.
 
+
+
+=== La página Actividad muestra hasta 100.000 eventos
+
+La página Actividad de Astra Control puede mostrar hasta 100.000 eventos. Para ver todos los eventos registrados, recupere los eventos mediante link:../rest-api/api-intro.html["API REST de Astra Control"^].
+
 ifdef::gcp[]
 
 
@@ -44,7 +50,7 @@ Las siguientes limitaciones se aplican a la gestión de los clústeres de Kubern
 
 === Las aplicaciones de Google Marketplace no se han validado
 
-NetApp no ha validado las aplicaciones que se pusieron en marcha desde Google Marketplace. Algunos usuarios reportan problemas con el descubrimiento o copia de seguridad de Postgres, MariaDB, y aplicaciones MySQL que fueron desplegadas desde Google Marketplace.
+NetApp no ha validado las aplicaciones que se pusieron en marcha desde Google Marketplace. Algunos usuarios han informado de problemas con el descubrimiento o la copia de seguridad de las aplicaciones Postgres, MariaDB y MySQL que se implementaron desde Google Marketplace.
 
 Independientemente del tipo de aplicación que utilice con Astra Control Service, siempre debe probar el flujo de trabajo de backup y restauración usted mismo para garantizar que cumple sus requisitos de recuperación ante desastres.
 

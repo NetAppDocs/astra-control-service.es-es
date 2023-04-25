@@ -20,7 +20,7 @@ Usted primero link:../get-started/add-first-cluster.html["Añada un clúster de 
 
 Astra Control tiene los siguientes requisitos de gestión de aplicaciones:
 
-* *Licencia*: Para gestionar más de 10 espacios de nombres, necesita una suscripción a Astra Control Center.
+* *Licencias*: Para administrar más de 10 espacios de nombres, necesitas una suscripción a Astra Control.
 * *Namespaces*: Las aplicaciones se pueden definir dentro de uno o más espacios de nombres especificados en un único clúster mediante Astra Control. Una aplicación puede contener recursos que abarcan varios espacios de nombres dentro del mismo clúster. Astra Control no admite la capacidad de definir las aplicaciones en varios clústeres.
 * *Clase de almacenamiento*: Si instala una aplicación con una clase de almacenamiento definida explícitamente y necesita clonar la aplicación, el clúster de destino para la operación de clonación debe tener la clase de almacenamiento especificada originalmente. Se producirá un error al clonar una aplicación con una clase de almacenamiento definida explícitamente a un clúster que no tenga la misma clase de almacenamiento.
 * *Recursos de Kubernetes*: Las aplicaciones que utilizan los recursos de Kubernetes no recopilados por Astra Control pueden no tener funciones completas de gestión de datos de aplicaciones. Astra Control recopila los siguientes recursos de Kubernetes:
@@ -129,10 +129,9 @@ Aunque Astra Control le permite gestionar por separado ambos niveles de la jerar
 
 TIP: A modo de ejemplo, puede que desee establecer una normativa de backup para «maria» con una cadencia semanal, pero es posible que deba realizar backups de «mariadb» (que se encuentra en el mismo espacio de nombres) con mayor frecuencia que esta. Según estas necesidades, debería gestionar las aplicaciones por separado, no como una aplicación de espacio de nombres único.
 
-.Lo que necesitará
+.Antes de empezar
 * Se añadió un clúster de Kubernetes a Astra Control.
 * Una o más aplicaciones instaladas en el clúster. <<Métodos de instalación de aplicaciones compatibles,Obtenga más información sobre los métodos de instalación de aplicaciones compatibles>>.
-* Uno o más pods activos.
 * Espacios de nombres existentes en el clúster Kubernetes que se añadió a Astra Control.
 * (Opcional) una etiqueta de Kubernetes en cualquiera link:../use/manage-apps.html#app-management-requirements["Recursos de Kubernetes compatibles"].
 +
@@ -163,11 +162,6 @@ Definir una aplicación le proporciona un control más granular de lo que se deb
 
 WARNING: Al definir aplicaciones, asegúrese de no incluir un recurso de Kubernetes en varias aplicaciones con políticas de protección. La superposición de políticas de protección en recursos de Kubernetes puede provocar conflictos de datos.
 
-[CAUTION]
-====
-La ejecución de una operación de restauración sin movimiento en una aplicación que comparte recursos con otra aplicación puede tener resultados no intencionados. Los recursos compartidos entre las aplicaciones se reemplazan cuando se realiza una restauración sin movimiento en una de las aplicaciones.
-
-====
 .Obtenga más información sobre la adición de recursos con ámbito de clúster a los espacios de nombres de la aplicación.
 [%collapsible]
 ====
