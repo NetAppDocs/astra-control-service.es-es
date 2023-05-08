@@ -20,7 +20,7 @@ Cree una instancia de cloud cuando agregue un nuevo clúster a Astra Control. Pu
 
 == Añadir una instancia de cloud
 
-Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte link:../add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"] si quiere más información.
+Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"] si quiere más información.
 
 
 

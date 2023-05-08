@@ -523,7 +523,6 @@
   <block id="17b729b98794e7751851e44999370d04" category="paragraph">Cree una instancia de cloud cuando agregue un nuevo clúster a Astra Control. Puede editar una instancia de cloud para cambiar su nombre o bloque predeterminado mediante la interfaz de usuario de Astra Control y realizar otras acciones con la instancia de cloud mediante la API Astra Control.</block>
   <block id="a9bc6d8e4d782bc598e38b2000d38494" category="section-title">Añadir una instancia de cloud</block>
   <block id="3f1d9fb87fc33f3d4ce9b5dd75395968" category="inline-link-macro">Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service</block>
-  <block id="f3ed27964ccf64e77e1488f7d2a16145" category="paragraph">Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte <block ref="957d53ce26004606b67720b5be4bf2a4" category="inline-link-macro-rx"></block> si quiere más información.</block>
   <block id="ac724f89da6e1ee891ad387ee705b990" category="section-title">Editar una instancia de cloud</block>
   <block id="fcc50ead8c65d9b32d8108741495ac8a" category="paragraph">Puede modificar una instancia de cloud existente para un proveedor de cloud.</block>
   <block id="d5fd16efc8cbbd38442158f7b709dce9" category="list-text">En la lista de instancias de nube, seleccione el menú *acciones* para la instancia de nube que desee editar.</block>
@@ -2129,4 +2128,5 @@
   <block id="68bd054170816bc3e89c4e00c3a23bfd" category="paragraph">Para obtener información específica sobre la configuración de Cloud Volumes ONTAP de NetApp, incluidas las recomendaciones de rendimiento, visite<block ref="b17f0a969868e5279849aa167864d3ad" category="inline-link-rx"></block>.</block>
   <block id="5e45edcd9985e188c258e7b6515feeea" category="paragraph">Astra Control Service admite Azure NetApp Files, discos gestionados de Azure, o NetApp Cloud Volumes ONTAP como back-end de almacenamiento para los clústeres de Azure Kubernetes Service (AKS).</block>
   <block id="6bab6ac71f743f37f154b7b0219c56a8" category="paragraph">Astra Control Service es compatible con Cloud Volumes Service for Google Cloud, Google Persistent Disk o NetApp Cloud Volumes ONTAP como opciones de back-end de almacenamiento para los volúmenes persistentes.</block>
+  <block id="09a08aa51d9a5d34a5bc6cecdb1f03bf" category="paragraph">Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte <block ref="04d97bec7f4fa11002764129cf40d13a" category="inline-link-macro-rx"></block> si quiere más información.</block>
 </blocks>
