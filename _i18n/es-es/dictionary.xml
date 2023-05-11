@@ -2115,25 +2115,7 @@
   <block id="09a08aa51d9a5d34a5bc6cecdb1f03bf" category="paragraph">Puede añadir una nueva instancia de cloud cuando agregue un clúster nuevo a Astra Control. Consulte <block ref="04d97bec7f4fa11002764129cf40d13a" category="inline-link-macro-rx"></block> si quiere más información.</block>
   <block id="3151d43bcd1c27b32e26e2270e5f6365" category="inline-link">Siga las instrucciones de este artículo de la base de conocimientos</block>
   <block id="89ee4e626d8ee5cecc8bc20164109dc0" category="paragraph">Sí, puede añadir clústeres GKE privados al servicio Astra Control. Para crear un clúster GKE privado,<block ref="99bba183cf709d565e021b59be5fb393" category="inline-link-rx"></block>.</block>
-  <block id="84810f606cf208e2aa62628838041ba8" category="list-text">Se requieren Astra Trident y una controladora Snapshot externa para las operaciones con back-ends de almacenamiento. Para instalarlos, haga lo siguiente:</block>
-  <block id="a9b10c3e99be35f3f8a9c7dc7fadd754" category="inline-link">Instale los CRD de instantánea y el controlador de instantánea</block>
-  <block id="fc49eec2e1350c70e0ee83082938896c" category="list-text"><block ref="40a914e8068809539f086034e13549c6" category="inline-link-rx"></block>.</block>
-  <block id="e5b001692c70f874108d4c3517741181" category="inline-link">Instala la versión más reciente de Astra Trident</block>
-  <block id="a303c00b0d0d4a1b4adf9ac86b7be2cc" category="list-text"><block ref="6b04d2c2cadce52e000fe64978797f65" category="inline-link-rx"></block>.</block>
-  <block id="48d0b044dd9368b2691ff16393a31d86" category="inline-link">Cree una instancia de VolumeSnapshotClass</block>
-  <block id="0fa487fe8680011a1e8590273692a729" category="list-text"><block ref="7780c580e1dcefaf97af849cafb81d68" category="inline-link-rx"></block>.</block>
-  <block id="7acbd9a679c6d9e0677acd3b0514110d" category="paragraph">Consulte los pasos para obtener instrucciones sobre la instalación del controlador CSI.</block>
-  <block id="b112804ac2e50d1a247c4e71c3315d8c" category="inline-link">Instale los CRD de instantánea y el controlador de instantánea</block>
-  <block id="6c190cb8b2ab4bcec637bcea54946bee" category="paragraph">Si aún no lo ha hecho,<block ref="0e5afab18fbd6e0f822d02155d04d2bd" category="inline-link-rx"></block>.</block>
   <block id="9743b1bac661724fbae098bb88f6131d" category="list-text"><block ref="9743b1bac661724fbae098bb88f6131d" category="inline-link-rx"></block></block>
   <block id="1012a371df8509745561ebc7fb6c67ed" category="paragraph"><block ref="1012a371df8509745561ebc7fb6c67ed" category="inline-link-rx"></block></block>
   <block id="ed0a05533716082066f8bcf9280a4c5f" category="list-text"><block ref="ed0a05533716082066f8bcf9280a4c5f" category="inline-link-rx"></block></block>
-  <block id="abfeaf5dc3fa1bf4a2a2cba84c5e546c" category="section-title">15 de mayo de 2023</block>
-  <block id="7dfc25c1548ba836ed04c79f8fbd1825" category="paragraph">Esta es una versión de corrección de errores menor.</block>
-  <block id="8f80a6bba41c8f2f5d1a9b2f5ff1d87b" category="section-title">Es posible que las snapshots fallen en clústeres de Amazon EKS 1,25 o posteriores</block>
-  <block id="b3794e2a706f8946cd7b6e8c2435538f" category="paragraph">Las snapshots de los clústeres de Amazon EKS en la versión 1,25 o posterior pueden fallar porque se utiliza una controladora de snapshot incorrecta.</block>
-  <block id="bfe0bca35535f01b62abdc5459c6610c" category="paragraph">Como solución alternativa, haga lo siguiente al actualizar instalaciones existentes de EKS 1,25 o posteriores:</block>
-  <block id="d5d53109cd766da789a263c6e2051051" category="list-text">Elimine cualquier CRD de Snapshot existente y cualquier controlador de instantánea existente.</block>
-  <block id="43f17763173fe230bdd78477152f5f7d" category="inline-link">Desinstale Astra Trident</block>
-  <block id="478393a7bc00211c00b84b91bd7270e1" category="list-text"><block ref="ae36d1cdd520df7c3eaefc0ce2deb814" category="inline-link-rx"></block>.</block>
 </blocks>
