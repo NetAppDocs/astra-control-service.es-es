@@ -31,4 +31,4 @@ Puede ver detalles de tareas actuales o pasadas y filtrar por estado de tarea.
 
 
 
-NOTE: Las tareas se conservan en la lista *tareas* durante un máximo de 24 horas. Puede configurar este límite y otros ajustes del monitor de tareas mediante https://docs.netapp.com/us-en/astra-automation/["API de control Astra"^].
+NOTE: Las tareas se conservan en la lista *tareas* durante un máximo de 24 horas. Puede configurar este límite y otros ajustes del monitor de tareas mediante https://["API de control Astra"^].

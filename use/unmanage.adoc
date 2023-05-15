@@ -56,7 +56,7 @@ endif::gcp[]
 Cuando se desadministra un clúster:
 
 * Esta acción evita que Astra Control gestione su clúster. No realiza cambios en la configuración del clúster y no elimina el clúster.
-* Astra Trident no se desinstala del clúster. https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Descubra cómo desinstalar Astra Trident"^].
+* Astra Trident no se desinstala del clúster. https://["Descubra cómo desinstalar Astra Trident"^].
 
 
 .Pasos

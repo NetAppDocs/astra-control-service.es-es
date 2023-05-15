@@ -38,7 +38,7 @@ Cada filtro que agregue a un enlace de ejecución utiliza una expresión regular
 
 NOTE: Las expresiones regulares para los filtros utilizan la sintaxis expresión regular 2 (RE2), que no admite la creación de un filtro que excluye contenedores de la lista de coincidencias.
 
-Para obtener información sobre la sintaxis que admite Astra Control para las expresiones regulares en los filtros de enlace de ejecución, consulte https://github.com/google/re2/wiki/Syntax["Soporte de sintaxis de expresión regular 2 (RE2)"^].
+Para obtener información sobre la sintaxis que admite Astra Control para las expresiones regulares en los filtros de enlace de ejecución, consulte https://["Soporte de sintaxis de expresión regular 2 (RE2)"^].
 
 
 
@@ -147,7 +147,7 @@ Si comienza pero luego cancela una copia de seguridad que incluye una instantán
 
 == Ejemplos de gancho de ejecución
 
-Visite la https://github.com/NetApp/Verda["Proyecto Verda GitHub de NetApp"] Para descargar enlaces de ejecución real para aplicaciones populares como Apache Cassandra y Elasticsearch. También puede ver ejemplos y obtener ideas para estructurar sus propios enlaces de ejecución personalizados.
+Visite la https://["Proyecto Verda GitHub de NetApp"] Para descargar enlaces de ejecución real para aplicaciones populares como Apache Cassandra y Elasticsearch. También puede ver ejemplos y obtener ideas para estructurar sus propios enlaces de ejecución personalizados.
 
 
 
@@ -254,7 +254,7 @@ NOTE: Cuando cree un script de shell personalizado para utilizarlo como un enlac
 +
 .. Seleccione *Agregar filtro*.
 .. En la columna *Tipo de filtro Hook*, elija un atributo en el que filtrar en el menú desplegable.
-.. En la columna *Regex*, introduzca una expresión regular que se utilizará como filtro. Astra Control utiliza https://github.com/google/re2/wiki/Syntax["Sintaxis de regex de expresión regular 2 (RE2)"^].
+.. En la columna *Regex*, introduzca una expresión regular que se utilizará como filtro. Astra Control utiliza https://["Sintaxis de regex de expresión regular 2 (RE2)"^].
 +
 
 NOTE: Si filtra el nombre exacto de un atributo (como un nombre de POD) sin ningún otro texto en el campo de expresión normal, se realizará una coincidencia de subcadena. Para que coincida con un nombre exacto y sólo con ese nombre, utilice la sintaxis de coincidencia de cadena exacta (por ejemplo, `^exact_podname$`).
@@ -386,5 +386,5 @@ Puede eliminar un enlace de ejecución por completo si ya no lo necesita. Necesi
 
 == Si quiere más información
 
-* https://github.com/NetApp/Verda["Proyecto Verda GitHub de NetApp"]
+* https://["Proyecto Verda GitHub de NetApp"]
 

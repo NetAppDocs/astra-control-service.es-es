@@ -85,19 +85,19 @@ Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda 
 La versión de Kubernetes:: Los clústeres deben ejecutar Kubernetes de la versión 1.23 a la 1.25.
 Tipo de imagen:: El tipo de imagen para todos los pools de nodos debe ser Linux.
 Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
-Región de Azure:: Los clústeres deben residir en una región donde Azure NetApp Files esté disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Consulte los productos de Azure por región"^].
+Región de Azure:: Los clústeres deben residir en una región donde Azure NetApp Files esté disponible. https://["Consulte los productos de Azure por región"^].
 Suscripción:: Los clústeres deben residir en una suscripción en la que Azure NetApp Files esté habilitado. Podrá elegir una suscripción cuando lo desee <<Regístrese para Azure NetApp Files,Regístrese para Azure NetApp Files>>.
 Neta virtual:: Considere los siguientes requisitos de vnet:
 +
 --
 * Los clústeres deben residir en una red virtual que tenga acceso directo a una subred delegada de Azure NetApp Files. <<Delegar una subred en Azure NetApp Files,Aprenda a configurar una subred delegada>>.
 * Si sus clústeres de Kubernetes están en una vnet con una relación entre iguales a la subred delegada de Azure NetApp Files que se encuentra en otra vnet, ambos lados de la conexión de paridad deben estar en línea.
-* Tenga en cuenta que el límite predeterminado para el número de IP utilizadas en un vnet (incluidos los VNets de conexión inmediata) con Azure NetApp Files es 1,000. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits["Ver los límites de recursos de Azure NetApp Files"^].
+* Tenga en cuenta que el límite predeterminado para el número de IP utilizadas en un vnet (incluidos los VNets de conexión inmediata) con Azure NetApp Files es 1,000. https://["Ver los límites de recursos de Azure NetApp Files"^].
 +
 Si está cerca del límite, tiene dos opciones:
 
 +
-** Puede hacerlo https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits#request-limit-increase-["enviar una solicitud de aumento de límite"^]. Si necesita ayuda, póngase en contacto con su representante de NetApp.
+** Puede hacerlo https://["enviar una solicitud de aumento de límite"^]. Si necesita ayuda, póngase en contacto con su representante de NetApp.
 ** Al crear un nuevo clúster de Amazon Kubernetes Service (AKS), especifique una nueva red para el clúster. Una vez creada la nueva red, aprovisione una nueva subred y delegue la subred a Azure NetApp Files.
 
 
@@ -113,7 +113,7 @@ Si está cerca del límite, tiene dos opciones:
 Si no tiene una cuenta de Microsoft Azure, comience registrándose en Microsoft Azure.
 
 .Pasos
-. Vaya a la https://azure.microsoft.com/en-us/free/["Página de suscripción a Azure"^] Para suscribirse al servicio de Azure.
+. Vaya a la https://["Página de suscripción a Azure"^] Para suscribirse al servicio de Azure.
 . Seleccione un plan y siga las instrucciones para completar la suscripción.
 
 
@@ -125,7 +125,7 @@ Obtenga acceso a Azure NetApp Files registrando el proveedor de recursos de NetA
 
 .Pasos
 . Inicie sesión en el portal de Azure.
-. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-register["Siga la documentación de Azure NetApp Files para registrar el proveedor de recursos de NetApp"^].
+. https://["Siga la documentación de Azure NetApp Files para registrar el proveedor de recursos de NetApp"^].
 
 
 
@@ -135,7 +135,7 @@ Obtenga acceso a Azure NetApp Files registrando el proveedor de recursos de NetA
 Cree una cuenta de NetApp en Azure NetApp Files.
 
 .Paso
-. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-create-netapp-account["Siga la documentación de Azure NetApp Files para crear una cuenta de NetApp desde el portal de Azure"^].
+. https://["Siga la documentación de Azure NetApp Files para crear una cuenta de NetApp desde el portal de Azure"^].
 
 
 
@@ -162,7 +162,7 @@ El aprovisionamiento de la cantidad adecuada de capacidad garantiza que los usua
 
 
 .Paso
-. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool["Siga la documentación de Azure NetApp Files para configurar un pool de capacidad de calidad de servicio automática"^].
+. https://["Siga la documentación de Azure NetApp Files para configurar un pool de capacidad de calidad de servicio automática"^].
 
 
 
@@ -174,7 +174,7 @@ Debe delegar una subred en Azure NetApp Files para que el Servicio de control As
 Si utiliza VNets con una relación entre iguales, ambos lados de la conexión entre iguales deben estar en línea: El vnet donde residen sus clústeres de Kubernetes y el vnet que tiene la subred delegada de Azure NetApp Files.
 
 .Paso
-. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Siga la documentación de Azure NetApp Files para delegar una subred en Azure NetApp Files"^].
+. https://["Siga la documentación de Azure NetApp Files para delegar una subred en Azure NetApp Files"^].
 
 
 .Después de terminar
@@ -188,7 +188,7 @@ Astra Control Service requiere una entidad de servicio de Azure que tenga asigna
 
 Un principal de servicio es una identidad creada específicamente para su uso con aplicaciones, servicios y herramientas. La asignación de un rol al director de servicio restringe el acceso a recursos específicos de Azure.
 
-Siga los pasos que se indican a continuación para crear un principal de servicio con la CLI de Azure. Deberá guardar el resultado en un archivo JSON y proporcionarlo al servicio de control de Astra más adelante. https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli["Consulte la documentación de Azure para obtener más detalles sobre el uso de la CLI"^].
+Siga los pasos que se indican a continuación para crear un principal de servicio con la CLI de Azure. Deberá guardar el resultado en un archivo JSON y proporcionarlo al servicio de control de Astra más adelante. https://["Consulte la documentación de Azure para obtener más detalles sobre el uso de la CLI"^].
 
 En los pasos siguientes se asume que tiene permiso para crear un principal de servicio y que tiene instalado el SDK de Microsoft Azure (comando az) en su equipo.
 
@@ -271,8 +271,8 @@ az aks list --subscription SUBSCRIPTION-ID --resource-group RESOURCE-GROUP-ID
 Puede configurar un nivel de redundancia más duradero para bloques de backup de Azure. De forma predeterminada, los bloques Astra Control Service utilizan para almacenar las copias de seguridad de Azure Kubernetes Service utilizan la opción de redundancia almacenamiento redundante local (LRS). Para utilizar una opción de redundancia más duradera para bloques de Azure, debe hacer lo siguiente:
 
 .Pasos
-. Cree una cuenta de almacenamiento de Azure que utilice el nivel de redundancia necesario https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["estas instrucciones"^].
-. Cree un contenedor de Azure en la nueva cuenta de almacenamiento con https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["estas instrucciones"^].
+. Cree una cuenta de almacenamiento de Azure que utilice el nivel de redundancia necesario https://["estas instrucciones"^].
+. Cree un contenedor de Azure en la nueva cuenta de almacenamiento con https://["estas instrucciones"^].
 . Agregue el contenedor como cucharón al servicio de control Astra. Consulte link:../use/manage-buckets.html#add-an-additional-bucket["Añadir un bloque más"].
 . (Opcional) para utilizar el bloque recién creado como bloque predeterminado para los backups de Azure, establezca esta opción como el bloque predeterminado para Azure. Consulte link:../use/manage-buckets.html#change-the-default-bucket["Cambiar el bloque predeterminado"].
 

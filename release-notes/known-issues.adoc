@@ -73,7 +73,7 @@ En este escenario, se produce un error de interfaz de usuario 500 en los backups
 
 == Al final, las snapshots comienzan a fallar cuando se utiliza una copia de Snapshot externa versión 4.2.0
 
-Cuando se usa una controladora Snapshot de Kubernetes (también conocida como copia Snapshot externa) versión 4.2.0 con Kubernetes 1.20 o 1.21, es posible que las copias Snapshot comiencen a fallar algún día. Para evitar esto, utilice otro https://kubernetes-csi.github.io/docs/snapshot-controller.html["versión compatible"^] De copias Snapshot externas, como la versión 4.2.1, con las versiones 1.20 o 1.21 de Kubernetes.
+Cuando se usa una controladora Snapshot de Kubernetes (también conocida como copia Snapshot externa) versión 4.2.0 con Kubernetes 1.20 o 1.21, es posible que las copias Snapshot comiencen a fallar algún día. Para evitar esto, utilice otro https://["versión compatible"^] De copias Snapshot externas, como la versión 4.2.1, con las versiones 1.20 o 1.21 de Kubernetes.
 
 
 

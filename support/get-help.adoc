@@ -24,7 +24,7 @@ Puede acceder a las opciones de soporte desde la interfaz de usuario de Astra Co
 
 Estas opciones están disponibles de forma gratuita los siete días de la semana, las 24 horas
 
-* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Project_Astra["Base de conocimientos"^]
+* https://["Base de conocimientos"^]
 +
 Buscar artículos, preguntas frecuentes o información de reparaciones relacionadas con Astra Control.
 
@@ -32,7 +32,7 @@ Buscar artículos, preguntas frecuentes o información de reparaciones relaciona
 +
 Este es el sitio de documentación que está viendo actualmente.
 
-* https://discord.gg/NetApp["Obtenga ayuda con Discord"^]
+* https://["Obtenga ayuda con Discord"^]
 +
 Vaya a Astra en la categoría Pub para ponerse en contacto con colegas y expertos.
 
@@ -48,7 +48,7 @@ Envíe un correo electrónico a astra.feedback@netapp.com para informarnos de su
 
 Además de las opciones de autosoporte anteriores, puede trabajar con un ingeniero de soporte de NetApp para resolver los problemas después de usted link:register-support.html["Active el soporte para su número de serie de NetApp"].
 
-Una vez activado su número de serie de Astra Control, puede acceder a los recursos de soporte técnico de NetApp mediante la creación de una https://mysupport.netapp.com/site/cases/mine/create["Ticket de soporte"].
+Una vez activado su número de serie de Astra Control, puede acceder a los recursos de soporte técnico de NetApp mediante la creación de una https://["Ticket de soporte"].
 
 Seleccione *Servicios de datos en la nube > Astra*.
 

@@ -24,7 +24,7 @@ Las siguientes limitaciones afectan a la gestión de los clústeres de Kubernete
 
 === Astra Trident no se desinstala de un clúster
 
-Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Siga estos pasos en la documentación de Astra Trident"^].
+Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://["Siga estos pasos en la documentación de Astra Trident"^].
 
 
 
@@ -92,13 +92,13 @@ Una vez que se implementa una aplicación con una clase de almacenamiento defini
 
 Astra Control admite las aplicaciones instaladas con operadores con ámbito de espacio de nombres. Estos operadores están diseñados generalmente con una arquitectura "pasada por valor" en lugar de "pasada por referencia". Las siguientes son algunas aplicaciones del operador que siguen estos patrones:
 
-* https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
+* https://["Apache K8ssandra"^]
 +
 
 NOTE: Para K8ssandra, se admiten operaciones de restauración in situ. Una operación de restauración a un nuevo espacio de nombres o clúster requiere que se apague la instancia original de la aplicación. Esto es para garantizar que la información del grupo de pares no conduzca a la comunicación entre instancias. No se admite la clonación de la aplicación.
 
-* https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
-* https://github.com/percona/percona-xtradb-cluster-operator["Clúster Percona XtraDB"^]
+* https://["Jenkins CI"^]
+* https://["Clúster Percona XtraDB"^]
 
 
 Tenga en cuenta que Astra Control puede no ser capaz de clonar a un operador diseñado con una arquitectura "de paso por referencia" (por ejemplo, el operador CockroachDB). Durante estos tipos de operaciones de clonado, el operador clonado intenta hacer referencia a los secretos de Kubernetes del operador de origen a pesar de tener su propio secreto nuevo como parte del proceso de clonado. Es posible que se produzca un error en la operación de clonado porque Astra Control no conoce los secretos de Kubernetes en el operador de origen.
@@ -123,3 +123,18 @@ No se debe permitir que un usuario con restricciones de RBAC de espacio de nombr
 === Un usuario miembro con restricciones de espacio de nombres no puede acceder a las aplicaciones clonadas o restauradas hasta que un usuario Admin agregue el espacio de nombres a la restricción
 
 Cualquiera `member` El usuario con limitaciones de RBAC por nombre/ID de espacio de nombres puede clonar o restaurar una aplicación en un espacio de nombres nuevo en el mismo clúster o en cualquier otro clúster de la cuenta de la organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Cuando se crea un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar el `member` cuenta de usuario y restricciones de función de actualización para que el usuario afectado conceda acceso al nuevo espacio de nombres.
+
+
+
+=== Es posible que las snapshots fallen en clústeres de Amazon EKS 1,25 o posteriores
+
+Las snapshots de los clústeres de Amazon EKS en la versión 1,25 o posterior pueden fallar porque se utiliza una controladora de snapshot incorrecta.
+
+Como solución alternativa, haga lo siguiente al actualizar instalaciones existentes de EKS 1,25 o posteriores:
+
+. Elimine cualquier CRD de Snapshot existente y cualquier controlador de instantánea existente.
+. https://["Desinstale Astra Trident"^].
+. https://["Instale los CRD de instantánea y el controlador de instantánea"^].
+. https://["Instala la versión más reciente de Astra Trident"^].
+. https://["Cree una instancia de VolumeSnapshotClass"^].
+

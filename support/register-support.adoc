@@ -27,7 +27,7 @@ Astra Control incluye un campo de estado de soporte que le permite confirmar su 
 El estado de soporte se iniciará como "no registrado", pero pasará a "en curso" y finalmente a "registrado" una vez completado.
 
 +
-Este estado de registro de asistencia se registra cada 15 minutos. Los nuevos clientes de NetApp pueden tardar hasta el siguiente día laborable para completar el registro de incorporación y soporte. Si el número de serie no muestra "registrado" en un plazo de 48 horas, puede ponerse en contacto con NetApp a través de astra.feedback@netapp.com o registrarse manualmente desde https://register.netapp.com[].
+Este estado de registro de asistencia se registra cada 15 minutos. Los nuevos clientes de NetApp pueden tardar hasta el siguiente día laborable para completar el registro de incorporación y soporte. Si el número de serie no muestra "registrado" en un plazo de 48 horas, puede ponerse en contacto con NetApp a través de astra.feedback@netapp.com o registrarse manualmente desde https://[].
 
 
 
@@ -56,7 +56,7 @@ Si Astra Control no pudo registrar automáticamente su cuenta para recibir sopor
 === Opción 1: Cliente actual de NetApp con una cuenta del sitio de soporte de NetApp (NSS) existente
 
 .Pasos
-. Desplácese hasta la https://register.netapp.com["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
+. Desplácese hasta la https://["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
 . Seleccione *ya estoy registrado como cliente de NetApp*.
 . Introduzca sus credenciales del sitio de soporte de NetApp para iniciar sesión.
 +
@@ -85,7 +85,7 @@ Este es un registro de soporte único para el número de serie aplicable.
 === Opción 2: Nuevo cliente de NetApp sin cuenta del sitio de soporte de NetApp (NSS)
 
 .Pasos
-. Desplácese hasta la https://register.netapp.com["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
+. Desplácese hasta la https://["Registro de soporte de servicios de datos en el cloud"^] Para crear una cuenta de NSS.
 . Seleccione *no soy un cliente registrado de NetApp*.
 +
 Aparece la página Registro de nuevo cliente.
@@ -109,6 +109,6 @@ Este es un registro de soporte único para el número de serie aplicable.
 
 . Como nuevo cliente de NetApp, también debe crear una cuenta de usuario del sitio de soporte de NetApp (NSS) para futuras activaciones de soporte, y para acceder al portal de soporte para chat de soporte técnico y elaboración de tickets web.
 +
-Vaya a la http://now.netapp.com/newuser/["Sitio de registro de soporte de NetApp"^] para realizar esta tarea. Puede proporcionar el número de serie de Astra Control que acaba de registrar para acelerar el proceso.
+Vaya a la http://["Sitio de registro de soporte de NetApp"^] para realizar esta tarea. Puede proporcionar el número de serie de Astra Control que acaba de registrar para acelerar el proceso.
 
 

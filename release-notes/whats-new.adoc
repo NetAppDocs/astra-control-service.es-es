@@ -16,6 +16,13 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 
 
 
+== 15 de mayo de 2023
+
+.Nuevas funciones y soporte
+Esta es una versión de corrección de errores menor.
+
+
+
 == 25 de abril de 2023
 
 .Nuevas funciones y soporte
@@ -134,7 +141,7 @@ Entre otras mejoras, Astra Control ahora admite el uso de la misma secuencia de 
 
 +
 
-NOTE: En esta versión se han eliminado los enlaces de ejecución predeterminados previa y posterior a la copia Snapshot para aplicaciones específicas que ofrece NetApp. Si no proporciona sus propios enlaces de ejecución para instantáneas, Astra Control Service realizará instantáneas coherentes con los fallos a partir del 4 de agosto de 2022. Visite la https://github.com/NetApp/Verda["Repositorio de Verda GitHub de NetApp"^] para la ejecución de ejemplo de secuencias de comandos de enlace que puede modificar para ajustarse a su entorno.
+NOTE: En esta versión se han eliminado los enlaces de ejecución predeterminados previa y posterior a la copia Snapshot para aplicaciones específicas que ofrece NetApp. Si no proporciona sus propios enlaces de ejecución para instantáneas, Astra Control Service realizará instantáneas coherentes con los fallos a partir del 4 de agosto de 2022. Visite la https://["Repositorio de Verda GitHub de NetApp"^] para la ejecución de ejemplo de secuencias de comandos de enlace que puede modificar para ajustarse a su entorno.
 
 +
 link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"]
@@ -233,7 +240,7 @@ Esta versión incluye las siguientes funciones y mejoras nuevas.
 
 * Astra Control Center Astra Control ya está disponible en un nuevo modelo de implementación. _Astra Control Center_ es un software autogestionado que instala y opera en su centro de datos para que pueda gestionar la gestión del ciclo de vida de las aplicaciones de Kubernetes para los clústeres Kubernetes en las instalaciones.
 +
-Para obtener más información, https://docs.netapp.com/us-en/astra-control-center["Vaya a la documentación de Astra Control Center"^].
+Para obtener más información, https://["Vaya a la documentación de Astra Control Center"^].
 
 * Traiga su propio bucket, ahora puede gestionar los bloques que emplea Astra para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de Kubernetes de su proveedor de cloud.
 +
@@ -280,7 +287,7 @@ endif::azure[]
 
 * API REST la API REST de Astra Control ya está disponible para su uso. La API se basa en tecnologías modernas y en las mejores prácticas actuales.
 +
-https://docs.netapp.com/us-en/astra-automation["Aprenda a automatizar la gestión del ciclo de vida de los datos de aplicaciones con la API DE REST"^].
+https://["Aprenda a automatizar la gestión del ciclo de vida de los datos de aplicaciones con la API DE REST"^].
 
 * Suscripción anual Astra Control Service ahora ofrece una _Premium Subscription_.
 +
@@ -321,9 +328,9 @@ link:../use/monitor-account-activity.html["Obtenga más información sobre cómo
 
 ifdef::gcp[]
 
-Astra Control Service ahora es compatible con https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types["Tipo de servicio _CVS_"^] Con Cloud Volumes Service para Google Cloud. Esto es además de ser compatible con el tipo de servicio _CVS-Performance_. A modo de recordatorio, Astra Control Service utiliza Cloud Volumes Service para Google Cloud como back-end de almacenamiento para sus volúmenes persistentes.
+Astra Control Service ahora es compatible con https://["Tipo de servicio _CVS_"^] Con Cloud Volumes Service para Google Cloud. Esto es además de ser compatible con el tipo de servicio _CVS-Performance_. A modo de recordatorio, Astra Control Service utiliza Cloud Volumes Service para Google Cloud como back-end de almacenamiento para sus volúmenes persistentes.
 
-Esta mejora implica que el servicio Astra Control Service ahora puede gestionar los datos de aplicaciones para los clústeres de Kubernetes que se ejecutan en _any_ https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Región de Google Cloud en la que Cloud Volumes Service es compatible"^].
+Esta mejora implica que el servicio Astra Control Service ahora puede gestionar los datos de aplicaciones para los clústeres de Kubernetes que se ejecutan en _any_ https://["Región de Google Cloud en la que Cloud Volumes Service es compatible"^].
 
 Si tiene la flexibilidad para elegir entre regiones de Google Cloud, puede elegir CVS o CVS-Performance, según sus requisitos de rendimiento. link:../learn/choose-class-and-size.html["Obtenga más información sobre cómo elegir un tipo de servicio"].
 

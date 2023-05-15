@@ -64,7 +64,7 @@ Usted administra cualquier actualización
 +
 ** Amazon EBS
 ** Amazon FSX para ONTAP de NetApp
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["Cloud Volumes ONTAP"^]
+** https://["Cloud Volumes ONTAP"^]
 
 
 
@@ -77,7 +77,7 @@ ifdef::gcp[]
 +
 ** Disco persistente de Google
 ** Cloud Volumes Service de NetApp
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
+** https://["Cloud Volumes ONTAP"^]
 
 
 
@@ -90,7 +90,7 @@ ifdef::azure[]
 +
 ** Discos gestionados de Azure
 ** Azure NetApp Files
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
+** https://["Cloud Volumes ONTAP"^]
 
 
 
@@ -102,13 +102,13 @@ endif::azure[]
 ** Amazon EBS
 ** Disco persistente de Google
 ** Discos gestionados de Azure
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+** https://["Cloud Volumes ONTAP"^]
 
 
 
  a| 
 * Sistemas ONTAP AFF y FAS de NetApp
-* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+* https://["Cloud Volumes ONTAP"^]
 
 
 |===
@@ -125,19 +125,19 @@ En un nivel superior, Astra Control Service funciona de esta manera:
 
 ifdef::gcp[]
 
-+ ** para los clusters GKE, el servicio Astra Control utiliza https://cloud.netapp.com/cloud-volumes-service-for-gcp["Cloud Volumes Service de NetApp para Google Cloud"^] O discos persistentes de Google como back-end de almacenamiento para sus volúmenes persistentes.
++ ** para los clusters GKE, el servicio Astra Control utiliza https://["Cloud Volumes Service de NetApp para Google Cloud"^] O discos persistentes de Google como back-end de almacenamiento para sus volúmenes persistentes.
 
 endif::gcp[]
 
 ifdef::azure[]
 
-+ ** para clusters de AKS, el servicio de control de Astra utiliza https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^] O Azure gestionó discos como back-end de almacenamiento para sus volúmenes persistentes.
++ ** para clusters de AKS, el servicio de control de Astra utiliza https://["Azure NetApp Files"^] O Azure gestionó discos como back-end de almacenamiento para sus volúmenes persistentes.
 
 endif::azure[]
 
 ifdef::aws[]
 
-+ ** para clústeres de Amazon EKS, el servicio Astra Control utiliza https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] o. https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["Amazon FSX para ONTAP de NetApp"^] como back-end de almacenamiento para sus volúmenes persistentes.
++ ** para clústeres de Amazon EKS, el servicio Astra Control utiliza https://["Amazon Elastic Block Store"^] o. https://["Amazon FSX para ONTAP de NetApp"^] como back-end de almacenamiento para sus volúmenes persistentes.
 
 endif::aws[]
 
@@ -155,7 +155,7 @@ ifdef::azure[]
 endif::azure[]
 
 * Crea un nuevo rol de administrador y una cuenta de servicio de Kubernetes en el clúster.
-* Utiliza la nueva función de administración para instalar https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] en el clúster y para crear una o varias clases de almacenamiento.
+* Utiliza la nueva función de administración para instalar https://["Astra Trident"^] en el clúster y para crear una o varias clases de almacenamiento.
 * Si utiliza una oferta de almacenamiento de servicios cloud de NetApp como back-end de almacenamiento, Astra Control Service utiliza Astra Trident para aprovisionar volúmenes persistentes para sus aplicaciones. Si utiliza discos administrados de Amazon EBS o Azure como back-end de almacenamiento, deberá instalar un controlador CSI específico del proveedor. Se proporcionan instrucciones de instalación en link:set-up-amazon-web-services.html["Configure Amazon Web Services"^] y.. link:set-up-microsoft-azure-with-amd.html["Configure Microsoft Azure con discos gestionados de Azure"^].
 +
 ** En este momento, puede definir aplicaciones del clúster. Se aprovisionan volúmenes persistentes en el back-end de almacenamiento mediante la nueva clase de almacenamiento predeterminada.
@@ -180,11 +180,11 @@ Astra Control Center está totalmente integrado en el ecosistema de AutoSupport 
 
 Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.
 
-Para instalar y utilizar Astra Control Center, tendrá que estar seguro https://docs.netapp.com/us-en/astra-control-center/get-started/requirements.html["requisitos"].
+Para instalar y utilizar Astra Control Center, tendrá que estar seguro https://["requisitos"].
 
 En un nivel superior, Astra Control Center funciona de esta manera:
 
-* Instala Astra Control Center en su entorno local. Obtenga más información sobre cómo https://docs.netapp.com/us-en/astra-control-center/get-started/install_acc.html["Instalar Astra Control Center"].
+* Instala Astra Control Center en su entorno local. Obtenga más información sobre cómo https://["Instalar Astra Control Center"].
 * Puede realizar algunas tareas de configuración como las siguientes:
 +
 ** Configurar la licencia.
@@ -195,7 +195,7 @@ En un nivel superior, Astra Control Center funciona de esta manera:
 
 
 
-Obtenga más información sobre cómo https://docs.netapp.com/us-en/astra-control-center/get-started/setup_overview.html["Configure Astra Control Center"].
+Obtenga más información sobre cómo https://["Configure Astra Control Center"].
 
 Puede añadir aplicaciones al clúster. O bien, si ya tiene algunas aplicaciones en el clúster que se están gestionando, puede utilizar Astra Control Center para gestionarlas. A continuación, utilice Astra Control Center para crear copias Snapshot, backups, clones y relaciones de replicación.
 
@@ -203,11 +203,11 @@ Puede añadir aplicaciones al clúster. O bien, si ya tiene algunas aplicaciones
 
 == Si quiere más información
 
-* https://docs.netapp.com/us-en/astra-family/["Documentación de la familia de productos Astra de NetApp"^]
-* https://docs.netapp.com/us-en/astra/index.html["Documentación de Astra Control Service"^]
-* https://docs.netapp.com/us-en/astra-control-center/index.html["Documentación de Astra Control Center"^]
-* https://docs.netapp.com/us-en/trident/index.html["Documentación de Astra Trident"^]
-* https://docs.netapp.com/us-en/astra-automation/index.html["Utilice la API Astra Control"^]
-* https://docs.netapp.com/us-en/cloudinsights/["Documentación de Cloud Insights"^]
-* https://docs.netapp.com/us-en/ontap/index.html["Documentación de ONTAP"^]
+* https://["Documentación de la familia de productos Astra de NetApp"^]
+* https://["Documentación de Astra Control Service"^]
+* https://["Documentación de Astra Control Center"^]
+* https://["Documentación de Astra Trident"^]
+* https://["Utilice la API Astra Control"^]
+* https://["Documentación de Cloud Insights"^]
+* https://["Documentación de ONTAP"^]
 

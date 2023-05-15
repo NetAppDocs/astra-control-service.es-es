@@ -109,7 +109,7 @@ endif::azure[]
 
 ifdef::aws[]
 
-* *Nombre de servidor S3 o dirección IP* (sólo tipos de bloques AWS y S3): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin `https://`. Consulte https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentación de Amazon"^] si quiere más información.
+* *Nombre de servidor S3 o dirección IP* (sólo tipos de bloques AWS y S3): Introduzca el nombre de dominio completo del extremo S3 que corresponda a su región, sin `https://`. Consulte https://["La documentación de Amazon"^] si quiere más información.
 
 
 endif::aws[]
@@ -171,5 +171,5 @@ NOTE: Astra Control garantiza en primer lugar que no existan normativas de progr
 
 == Obtenga más información
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["Utilice la API Astra Control"^]
+* https://["Utilice la API Astra Control"^]
 

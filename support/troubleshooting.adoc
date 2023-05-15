@@ -14,11 +14,11 @@ summary: Encuentre sugerencias para la solución de problemas comunes.
 [role="lead"]
 Aprenda a solucionar algunos problemas comunes que puede encontrar.
 
-https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra[]
+https://[]
 
 
 
 == Si quiere más información
 
-* https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra["Resolución de problemas"^]
+* https://["Resolución de problemas"^]
 
