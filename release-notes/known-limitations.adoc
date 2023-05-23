@@ -24,7 +24,7 @@ Las siguientes limitaciones afectan a la gestión de los clústeres de Kubernete
 
 === Astra Trident no se desinstala de un clúster
 
-Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://["Siga estos pasos en la documentación de Astra Trident"^].
+Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Siga estos pasos en la documentación de Astra Trident"^].
 
 
 
@@ -92,13 +92,13 @@ Una vez que se implementa una aplicación con una clase de almacenamiento defini
 
 Astra Control admite las aplicaciones instaladas con operadores con ámbito de espacio de nombres. Estos operadores están diseñados generalmente con una arquitectura "pasada por valor" en lugar de "pasada por referencia". Las siguientes son algunas aplicaciones del operador que siguen estos patrones:
 
-* https://["Apache K8ssandra"^]
+* https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
 +
 
 NOTE: Para K8ssandra, se admiten operaciones de restauración in situ. Una operación de restauración a un nuevo espacio de nombres o clúster requiere que se apague la instancia original de la aplicación. Esto es para garantizar que la información del grupo de pares no conduzca a la comunicación entre instancias. No se admite la clonación de la aplicación.
 
-* https://["Jenkins CI"^]
-* https://["Clúster Percona XtraDB"^]
+* https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
+* https://github.com/percona/percona-xtradb-cluster-operator["Clúster Percona XtraDB"^]
 
 
 Tenga en cuenta que Astra Control puede no ser capaz de clonar a un operador diseñado con una arquitectura "de paso por referencia" (por ejemplo, el operador CockroachDB). Durante estos tipos de operaciones de clonado, el operador clonado intenta hacer referencia a los secretos de Kubernetes del operador de origen a pesar de tener su propio secreto nuevo como parte del proceso de clonado. Es posible que se produzca un error en la operación de clonado porque Astra Control no conoce los secretos de Kubernetes en el operador de origen.
@@ -133,8 +133,8 @@ Las snapshots de los clústeres de Kubernetes que ejecutan la versión 1,25 o po
 Como solución alternativa, haga lo siguiente al actualizar instalaciones existentes de Kubernetes 1,25 o posteriores:
 
 . Elimine cualquier CRD de Snapshot existente y cualquier controlador de instantánea existente.
-. https://["Desinstale Astra Trident"^].
-. https://["Instale los CRD de instantánea y el controlador de instantánea"^].
-. https://["Instala la versión más reciente de Astra Trident"^].
-. https://["Cree una instancia de VolumeSnapshotClass"^].
+. https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Desinstale Astra Trident"^].
+. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["Instale los CRD de instantánea y el controlador de instantánea"^].
+. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Instala la versión más reciente de Astra Trident"^].
+. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-create-a-volumesnapshotclass["Cree una instancia de VolumeSnapshotClass"^].
 

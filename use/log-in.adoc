@@ -14,10 +14,10 @@ summary: Puede acceder al servicio Astra Control mediante una interfaz de usuari
 
 
 [role="lead"]
-Se puede acceder al servicio Astra Control mediante una interfaz de usuario basada en SaaS https://[].
+Se puede acceder al servicio Astra Control mediante una interfaz de usuario basada en SaaS https://astra.netapp.io[].
 
 
-TIP: Puede utilizar el inicio de sesión único para iniciar sesión con credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
+TIP: Puede utilizar el inicio de sesión único para iniciar sesión con credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
 
 .Antes de empezar
 * link:../get-started/register.html["Un ID de usuario de Cloud Central"].
@@ -29,6 +29,6 @@ Astra Control Service es compatible con las versiones recientes de Firefox, Safa
 
 
 .Pasos
-. Abra un explorador web y vaya a. https://[].
+. Abra un explorador web y vaya a. https://astra.netapp.io[].
 . Inicie sesión con sus credenciales de Cloud Central de NetApp.
 

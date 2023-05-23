@@ -110,9 +110,9 @@ Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda 
 La versión de Kubernetes:: Un clúster de debe ejecutar una versión de Kubernetes en el rango de 1,24 a 1,25.
 Tipo de imagen:: El tipo de imagen para cada nodo de trabajo debe ser `COS_CONTAINERD`.
 Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
-Región de Google Cloud:: Si piensa utilizar Cloud Volumes Service para Google Cloud como back-end de almacenamiento, los clústeres se deben ejecutar en un https://["Región de Google Cloud en la que es compatible Cloud Volumes Service para Google Cloud."] Tenga en cuenta que Astra Control Service admite ambos tipos de servicios: CVS y CVS-Performance. Como práctica recomendada, debe elegir una región que sea compatible con Cloud Volumes Service para Google Cloud, incluso si no la utiliza como back-end de almacenamiento. Esto facilita el uso de Cloud Volumes Service para Google Cloud como back-end de almacenamiento futuro si cambian sus requisitos de rendimiento.
+Región de Google Cloud:: Si piensa utilizar Cloud Volumes Service para Google Cloud como back-end de almacenamiento, los clústeres se deben ejecutar en un https://cloud.netapp.com/cloud-volumes-global-regions#cvsGc["Región de Google Cloud en la que es compatible Cloud Volumes Service para Google Cloud."] Tenga en cuenta que Astra Control Service admite ambos tipos de servicios: CVS y CVS-Performance. Como práctica recomendada, debe elegir una región que sea compatible con Cloud Volumes Service para Google Cloud, incluso si no la utiliza como back-end de almacenamiento. Esto facilita el uso de Cloud Volumes Service para Google Cloud como back-end de almacenamiento futuro si cambian sus requisitos de rendimiento.
 Redes:: Si planea usar Cloud Volumes Service para Google Cloud como back-end de almacenamiento, el clúster debe residir en un VPC que tenga una relación entre iguales con Cloud Volumes Service para Google Cloud. <<Opcional: Configure la agrupación de redes para el VPC,Este paso se describe a continuación>>.
-Clústeres privados:: Si el clúster es privado, el https://["redes autorizadas"^] Debe permitir la dirección IP del servicio Astra Control:
+Clústeres privados:: Si el clúster es privado, el https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept["redes autorizadas"^] Debe permitir la dirección IP del servicio Astra Control:
 +
 --
 52.188.218.166/32
@@ -128,9 +128,9 @@ Modo de funcionamiento para un clúster GKE:: Debe usar el modo de funcionamient
 Astra Control Service puede utilizar Cloud Volumes Service para Google Cloud como back-end de almacenamiento para sus volúmenes persistentes. Si planea utilizar este servicio, debe adquirir Cloud Volumes Service para Google Cloud en Google Cloud Marketplace para permitir la facturación de volúmenes persistentes.
 
 .Paso
-. Vaya a la https://["Página de Cloud Volumes Service de NetApp"^] En Google Cloud Marketplace, seleccione *Compra* y siga las indicaciones.
+. Vaya a la https://console.cloud.google.com/marketplace/product/endpoints/cloudvolumesgcp-api.netapp.com["Página de Cloud Volumes Service de NetApp"^] En Google Cloud Marketplace, seleccione *Compra* y siga las indicaciones.
 +
-https://["Siga las instrucciones paso a paso de la documentación de Google Cloud para adquirir y activar el servicio"^].
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/quickstart#purchase_the_service["Siga las instrucciones paso a paso de la documentación de Google Cloud para adquirir y activar el servicio"^].
 
 
 
@@ -141,7 +141,7 @@ https://["Siga las instrucciones paso a paso de la documentación de Google Clou
 Su proyecto necesita permisos para acceder a API específicas de Google Cloud. Las API se utilizan para interactuar con recursos de Google Cloud, como los clústeres de Google Kubernetes Engine (GKE) y el almacenamiento de Cloud Volumes Service de NetApp.
 
 .Paso
-. https://["Utilice la consola de Google Cloud o la interfaz de línea de comandos gcloud para habilitar las siguientes API"^]:
+. https://cloud.google.com/endpoints/docs/openapi/enable-api["Utilice la consola de Google Cloud o la interfaz de línea de comandos gcloud para habilitar las siguientes API"^]:
 +
 ** Google Kubernetes Engine
 ** Almacenamiento en cloud
@@ -166,7 +166,7 @@ video::video-enable-gcp-apis.mp4[width=848,height=480]
 Astra Control Service utiliza una cuenta de servicio de Google Cloud para facilitar la gestión de datos de aplicaciones de Kubernetes en su nombre.
 
 .Pasos
-. Vaya a Google Cloud y. https://["cree una cuenta de servicio mediante la consola, el comando gcloud u otro método preferido"^].
+. Vaya a Google Cloud y. https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["cree una cuenta de servicio mediante la consola, el comando gcloud u otro método preferido"^].
 . Otorgue a la cuenta de servicio las siguientes funciones:
 +
 ** *Kubernetes Engine Admin*: Se utiliza para enumerar clústeres y crear acceso de administrador para administrar aplicaciones.
@@ -216,7 +216,7 @@ La clave de cuenta de servicio es texto sin formato almacenado en el formato Jav
 Solo puede ver o descargar el archivo JSON cuando crea la clave. Sin embargo, puede crear una nueva clave en cualquier momento.
 
 .Pasos
-. Vaya a Google Cloud y. https://["cree una clave de cuenta de servicio mediante la consola, el comando gcloud u otro método preferido"^].
+. Vaya a Google Cloud y. https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys["cree una clave de cuenta de servicio mediante la consola, el comando gcloud u otro método preferido"^].
 . Cuando se le solicite, guarde el archivo de claves de la cuenta de servicio en una ubicación segura.
 
 
@@ -232,11 +232,11 @@ Si piensa utilizar Cloud Volumes Service para Google Cloud como servicio de back
 La forma más sencilla de configurar Network peering es obtener los comandos gcloud directamente de Cloud Volumes Service. Los comandos se encuentran disponibles en Cloud Volumes Service al crear un nuevo sistema de archivos.
 
 .Pasos
-. https://["Acceda al programa Global Regions Maps de Cloud Central de NetApp"^] E identifique el tipo de servicio que usará en la región de Google Cloud en la que resida su clúster.
+. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Acceda al programa Global Regions Maps de Cloud Central de NetApp"^] E identifique el tipo de servicio que usará en la región de Google Cloud en la que resida su clúster.
 +
-Cloud Volumes Service ofrece dos tipos de servicios: CVS y CVS-Performance. https://["Obtenga más información sobre estos tipos de servicio"^].
+Cloud Volumes Service ofrece dos tipos de servicios: CVS y CVS-Performance. https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types["Obtenga más información sobre estos tipos de servicio"^].
 
-. https://["Vaya a Cloud Volumes en Google Cloud Platform"^].
+. https://console.cloud.google.com/netapp/cloud-volumes/volumes["Vaya a Cloud Volumes en Google Cloud Platform"^].
 . En la página *Volumes*, seleccione *Crear*.
 . En *Tipo de servicio*, seleccione *CVS* o *CVS-Performance*.
 +
@@ -256,10 +256,10 @@ image:gcp-peering.gif["Una captura de pantalla de la consola de Google Cloud en 
 . Seleccione el botón para ver los comandos de configuración de conexión de red.
 . Copie los comandos y ejecútelos en Cloud Shell.
 +
-Para obtener más detalles sobre el uso de estos comandos, consulte https://["Inicio rápido de Cloud Volumes Service para GCP"^].
+Para obtener más detalles sobre el uso de estos comandos, consulte https://cloud.google.com/solutions/partners/netapp-cloud-volumes/quickstart#configure_private_services_access_and_set_up_network_peering["Inicio rápido de Cloud Volumes Service para GCP"^].
 
 +
-https://["Obtenga más información sobre cómo configurar el acceso a los servicios privados y la configuración de la conexión a redes"^].
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/setting-up-private-services-access["Obtenga más información sobre cómo configurar el acceso a los servicios privados y la configuración de la conexión a redes"^].
 
 . Una vez que haya terminado, puede seleccionar cancelar en la página *Crear sistema de archivos*.
 +

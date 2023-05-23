@@ -36,7 +36,7 @@ Astra Control requiere que proporcione información precisa sobre el cliente en 
 
 *¿Cuál es la URL del servicio de control de Astra?*
 
-Puede acceder al servicio Astra Control en https://[].
+Puede acceder al servicio Astra Control en https://astra.netapp.io[].
 
 *envié una invitación por correo electrónico a un colega, pero no la he recibido. ¿Qué debo hacer?*
 
@@ -90,7 +90,7 @@ Sí, puede agregar clústeres AKS privados a Astra Control Service. Para agregar
 
 *¿Puedo utilizar Active Directory para administrar la autenticación de mis clústeres de AKS?*
 
-Sí, puede configurar sus clústeres AKS para usar Azure Active Directory (Azure AD) para la autenticación y la gestión de identidades. Cuando cree el clúster, siga las instrucciones que se indican en https://["documentación oficial"^] Para configurar el clúster de modo que use Azure AD. Debe asegurarse de que sus clústeres cumplen los requisitos de la integración de Azure AD gestionada por AKS.
+Sí, puede configurar sus clústeres AKS para usar Azure Active Directory (Azure AD) para la autenticación y la gestión de identidades. Cuando cree el clúster, siga las instrucciones que se indican en https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentación oficial"^] Para configurar el clúster de modo que use Azure AD. Debe asegurarse de que sus clústeres cumplen los requisitos de la integración de Azure AD gestionada por AKS.
 
 endif::azure[]
 
@@ -106,7 +106,7 @@ Sí, Astra Control puede gestionar clústeres que residen en un VPC compartido. 
 
 *¿Dónde puedo encontrar mis credenciales de cuenta de servicio en GCP?*
 
-Después de iniciar sesión en la https://["Consola de Google Cloud"^], los datos de su cuenta de servicio se encuentran en la sección *IAM y Admin*. Para obtener información detallada, consulte link:set-up-google-cloud.html["cómo configurar Google Cloud para Astra Control"].
+Después de iniciar sesión en la https://console.cloud.google.com/["Consola de Google Cloud"^], los datos de su cuenta de servicio se encuentran en la sección *IAM y Admin*. Para obtener información detallada, consulte link:set-up-google-cloud.html["cómo configurar Google Cloud para Astra Control"].
 
 *Me gustaría añadir diferentes clusters GKE de diferentes proyectos de GCP. ¿Es compatible con Astra Control?*
 

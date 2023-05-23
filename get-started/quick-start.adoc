@@ -80,8 +80,8 @@ Si va a gestionar su propio clúster y no está alojado en un proveedor de cloud
 == image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Dos"] Complete el registro de Astra Control
 
 [role="quick-margin-list"]
-. Cree un https://["Cloud Central de NetApp"^] cuenta.
-. Especifique su ID de correo electrónico de Cloud Central de NetApp al crear su cuenta de Astra Control https://["En la página de productos Astra"^].
+. Cree un https://cloud.netapp.com["Cloud Central de NetApp"^] cuenta.
+. Especifique su ID de correo electrónico de Cloud Central de NetApp al crear su cuenta de Astra Control https://cloud.netapp.com/astra["En la página de productos Astra"^].
 
 
 [role="quick-margin-para"]

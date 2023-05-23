@@ -23,7 +23,7 @@ Antes de iniciar sesión en Astra Control Service, necesita completar un proceso
 Cuando utilice Astra Control Service, gestionará sus aplicaciones desde una cuenta. Una cuenta incluye usuarios que pueden ver y gestionar las aplicaciones de la cuenta, así como los detalles de facturación.
 
 .Pasos
-. https://["Vaya a la página Astra Control en Cloud Central"^].
+. https://cloud.netapp.com/astra["Vaya a la página Astra Control en Cloud Central"^].
 . Seleccione *comenzar con Astra Control*.
 . Seleccione la pestaña *PLAN LIBRE*.
 +
@@ -46,13 +46,13 @@ Algunas cosas importantes que debe tener en cuenta al rellenar el formulario:
 
 == Regístrese en Cloud Central
 
-Si todavía no dispone de una cuenta de Cloud Central de NetApp, regístrese en Cloud Central para acceder a Astra Control Service y los demás servicios cloud de NetApp. El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Si ya tiene una cuenta de Cloud Central y ha completado el registro, puede acceder a ella https://["Servicio de control Astra"^] Uso directo de las credenciales de Cloud Central.
+Si todavía no dispone de una cuenta de Cloud Central de NetApp, regístrese en Cloud Central para acceder a Astra Control Service y los demás servicios cloud de NetApp. El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Si ya tiene una cuenta de Cloud Central y ha completado el registro, puede acceder a ella https://astra.netapp.io["Servicio de control Astra"^] Uso directo de las credenciales de Cloud Central.
 
 
-TIP: Puede utilizar el inicio de sesión único para iniciar sesión en Cloud Central utilizando credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
+TIP: Puede utilizar el inicio de sesión único para iniciar sesión en Cloud Central utilizando credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
 
 .Pasos
-. Vaya a. https://["Cloud Central de NetApp"^].
+. Vaya a. https://cloud.netapp.com["Cloud Central de NetApp"^].
 . En la parte superior derecha, seleccione *Registrarse*.
 . Rellene el formulario.
 +
@@ -73,4 +73,4 @@ image:screenshot-cloud-central-signup.gif["Una captura de pantalla de la página
 .Resultado
 Ahora tiene un inicio de sesión de usuario activo de Cloud Central.
 
-Ahora que está registrado, puede acceder a Astra Control Service directamente con sus credenciales de Cloud Central desde https://[].
+Ahora que está registrado, puede acceder a Astra Control Service directamente con sus credenciales de Cloud Central desde https://astra.netapp.io[].

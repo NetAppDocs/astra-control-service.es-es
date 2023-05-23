@@ -12,7 +12,7 @@ summary: Astra Control puede restaurar la configuración de sus aplicaciones y e
 
 
 [role="lead"]
-Astra Control puede restaurar su aplicación a partir de una instantánea o una copia de seguridad. La restauración a partir de una snapshot existente será más rápida cuando se restaure la aplicación en el mismo clúster. Puede utilizar la interfaz de usuario de Astra Control o. https://["La API de control Astra"^] para restaurar aplicaciones.
+Astra Control puede restaurar su aplicación a partir de una instantánea o una copia de seguridad. La restauración a partir de una snapshot existente será más rápida cuando se restaure la aplicación en el mismo clúster. Puede utilizar la interfaz de usuario de Astra Control o. https://docs.netapp.com/us-en/astra-automation/index.html["La API de control Astra"^] para restaurar aplicaciones.
 
 
 NOTE: Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
@@ -123,7 +123,7 @@ NOTE: Debe especificar al menos un espacio de nombres, una etiqueta o un GVK. As
 NOTE: Si la aplicación contenía originalmente varios espacios de nombres y la restauraba en nuevos espacios de nombres, todos los espacios de nombres se crearán incluso si no contienen recursos.
 
 .. (Opcional) Introduzca un nombre de recurso.
-.. (Opcional) *Selector de etiquetas*: Incluye a. https://["selector de etiquetas"^] para agregar a la regla. El selector de etiquetas se utiliza para filtrar sólo los recursos que coincidan con la etiqueta seleccionada.
+.. (Opcional) *Selector de etiquetas*: Incluye a. https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["selector de etiquetas"^] para agregar a la regla. El selector de etiquetas se utiliza para filtrar sólo los recursos que coincidan con la etiqueta seleccionada.
 .. (Opcional) Seleccione *Usar GVK (GroupVersionKind) configurado para filtrar recursos* para opciones de filtrado adicionales.
 +
 

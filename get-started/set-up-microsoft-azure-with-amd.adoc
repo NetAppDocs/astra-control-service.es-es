@@ -64,7 +64,7 @@ Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda 
 La versión de Kubernetes:: Los clústeres deben ejecutar Kubernetes, de la versión 1,24 a la 1,26.
 Tipo de imagen:: El tipo de imagen para todos los pools de nodos debe ser Linux.
 Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
-Región de Azure:: Como práctica recomendada, debe elegir una región que sea compatible con Azure NetApp Files, incluso si no la utiliza como back-end de almacenamiento. Esto facilita el uso de Azure NetApp Files como back-end de almacenamiento en el futuro si sus requisitos de rendimiento cambian. https://["Consulte los productos de Azure por región"^].
+Región de Azure:: Como práctica recomendada, debe elegir una región que sea compatible con Azure NetApp Files, incluso si no la utiliza como back-end de almacenamiento. Esto facilita el uso de Azure NetApp Files como back-end de almacenamiento en el futuro si sus requisitos de rendimiento cambian. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Consulte los productos de Azure por región"^].
 
 
 Controladores CSI:: Los clústeres deben tener instalados los controladores CSI adecuados.
@@ -77,7 +77,7 @@ Controladores CSI:: Los clústeres deben tener instalados los controladores CSI 
 Si no tiene una cuenta de Microsoft Azure, comience registrándose en Microsoft Azure.
 
 .Pasos
-. Vaya a la https://["Página de suscripción a Azure"^] Para suscribirse al servicio de Azure.
+. Vaya a la https://azure.microsoft.com/en-us/free/["Página de suscripción a Azure"^] Para suscribirse al servicio de Azure.
 . Seleccione un plan y siga las instrucciones para completar la suscripción.
 
 
@@ -89,7 +89,7 @@ Astra Control Service requiere una entidad de servicio de Azure que tenga asigna
 
 Un principal de servicio es una identidad creada específicamente para su uso con aplicaciones, servicios y herramientas. La asignación de un rol al director de servicio restringe el acceso a recursos específicos de Azure.
 
-Siga los pasos que se indican a continuación para crear un principal de servicio con la CLI de Azure. Deberá guardar el resultado en un archivo JSON y proporcionarlo al servicio de control de Astra más adelante. https://["Consulte la documentación de Azure para obtener más detalles sobre el uso de la CLI"^].
+Siga los pasos que se indican a continuación para crear un principal de servicio con la CLI de Azure. Deberá guardar el resultado en un archivo JSON y proporcionarlo al servicio de control de Astra más adelante. https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli["Consulte la documentación de Azure para obtener más detalles sobre el uso de la CLI"^].
 
 En los pasos siguientes se asume que tiene permiso para crear un principal de servicio y que tiene instalado el SDK de Microsoft Azure (comando az) en su equipo.
 
@@ -214,7 +214,7 @@ Debería ver una salida similar a la siguiente:
 Puede instalar los controladores de Azure CSI para completar la preparación.
 
 .Paso
-. Vaya a. https://["La documentación del controlador Microsoft CSI"^].
+. Vaya a. https://docs.microsoft.com/en-us/azure/aks/csi-storage-drivers["La documentación del controlador Microsoft CSI"^].
 . Siga las instrucciones para instalar los controladores CSI necesarios.
 
 
@@ -225,8 +225,8 @@ Puede instalar los controladores de Azure CSI para completar la preparación.
 Puede configurar un nivel de redundancia más duradero para bloques de backup de Azure. De forma predeterminada, los bloques Astra Control Service utilizan para almacenar las copias de seguridad de Azure Kubernetes Service utilizan la opción de redundancia almacenamiento redundante local (LRS). Para utilizar una opción de redundancia más duradera para bloques de Azure, debe hacer lo siguiente:
 
 .Pasos
-. Cree una cuenta de almacenamiento de Azure que utilice el nivel de redundancia necesario https://["estas instrucciones"^].
-. Cree un contenedor de Azure en la nueva cuenta de almacenamiento con https://["estas instrucciones"^].
+. Cree una cuenta de almacenamiento de Azure que utilice el nivel de redundancia necesario https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["estas instrucciones"^].
+. Cree un contenedor de Azure en la nueva cuenta de almacenamiento con https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["estas instrucciones"^].
 . Agregue el contenedor como cucharón al servicio de control Astra. Consulte link:../use/manage-buckets.html#add-an-additional-bucket["Añadir un bloque más"].
 . (Opcional) para utilizar el bloque recién creado como bloque predeterminado para los backups de Azure, establezca esta opción como el bloque predeterminado para Azure. Consulte link:../use/manage-buckets.html#change-the-default-bucket["Cambiar el bloque predeterminado"].
 

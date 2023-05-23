@@ -45,10 +45,10 @@ NOTE: Cada instancia de cloud de Astra Control debe tener un nombre único.
 
 == Gire las credenciales de una instancia de cloud
 
-Puede utilizar la API Astra Control para rotar las credenciales de una instancia en la nube. Para obtener más información, https://["Vaya a los documentos de automatización de Astra"^].
+Puede utilizar la API Astra Control para rotar las credenciales de una instancia en la nube. Para obtener más información, https://docs.netapp.com/us-en/astra-automation["Vaya a los documentos de automatización de Astra"^].
 
 
 
 == Quitar una instancia de cloud
 
-Puede usar la API Astra Control para eliminar una instancia de cloud de un proveedor de cloud. Para obtener más información, https://["Vaya a los documentos de automatización de Astra"^].
+Puede usar la API Astra Control para eliminar una instancia de cloud de un proveedor de cloud. Para obtener más información, https://docs.netapp.com/us-en/astra-automation["Vaya a los documentos de automatización de Astra"^].

@@ -75,13 +75,13 @@ kubectl apply -f myapp.yaml
 Las siguientes son algunas aplicaciones del operador que siguen estos patrones:
 
 +
-** https://["Apache K8ssandra"^]
+** https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
 +
 
 NOTE: Para K8ssandra, se admiten operaciones de restauración in situ. Una operación de restauración a un nuevo espacio de nombres o clúster requiere que se apague la instancia original de la aplicación. Esto es para garantizar que la información del grupo de pares no conduzca a la comunicación entre instancias. No se admite la clonación de la aplicación.
 
-** https://["Jenkins CI"^]
-** https://["Clúster Percona XtraDB"^]
+** https://github.com/jenkinsci/kubernetes-operator["Jenkins CI"^]
+** https://github.com/percona/percona-xtradb-cluster-operator["Clúster Percona XtraDB"^]
 
 
 +
@@ -136,7 +136,7 @@ TIP: A modo de ejemplo, puede que desee establecer una normativa de backup para 
 * (Opcional) una etiqueta de Kubernetes en cualquiera link:../use/manage-apps.html#app-management-requirements["Recursos de Kubernetes compatibles"].
 +
 
-TIP: Una etiqueta es una pareja clave/valor que se puede asignar a objetos de Kubernetes para su identificación. Las etiquetas facilitan la ordenación, la organización y la búsqueda de los objetos de Kubernetes. Para obtener más información acerca de las etiquetas de Kubernetes, https://["Consulte la documentación oficial de Kubernetes"^].
+TIP: Una etiqueta es una pareja clave/valor que se puede asignar a objetos de Kubernetes para su identificación. Las etiquetas facilitan la ordenación, la organización y la búsqueda de los objetos de Kubernetes. Para obtener más información acerca de las etiquetas de Kubernetes, https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["Consulte la documentación oficial de Kubernetes"^].
 
 
 
@@ -206,7 +206,7 @@ NOTE: Las aplicaciones se pueden definir dentro de uno o más espacios de nombre
 . (Opcional) Introduzca una etiqueta para los recursos de Kubernetes en cada espacio de nombres. Puede especificar una sola etiqueta o un criterio de selector de etiquetas (consulta).
 +
 
-TIP: Para obtener más información acerca de las etiquetas de Kubernetes, https://["Consulte la documentación oficial de Kubernetes"^].
+TIP: Para obtener más información acerca de las etiquetas de Kubernetes, https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["Consulte la documentación oficial de Kubernetes"^].
 
 . (Opcional) Añada espacios de nombres adicionales para la aplicación seleccionando *Agregar espacio de nombres* y eligiendo el espacio de nombres en la lista desplegable.
 . (Opcional) Introduzca los criterios de etiqueta única o selector de etiquetas para los espacios de nombres adicionales que añada.

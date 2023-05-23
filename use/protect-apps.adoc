@@ -12,7 +12,7 @@ summary: Proteja sus aplicaciones tomando snapshots y backups usando una políti
 
 
 [role="lead"]
-Proteja sus aplicaciones tomando snapshots y backups usando una política de protección automatizada o de manera ad hoc. Puede utilizar la interfaz de usuario de Astra o. https://["La API de control Astra"^] para proteger aplicaciones.
+Proteja sus aplicaciones tomando snapshots y backups usando una política de protección automatizada o de manera ad hoc. Puede utilizar la interfaz de usuario de Astra o. https://docs.netapp.com/us-en/astra-automation/index.html["La API de control Astra"^] para proteger aplicaciones.
 
 Más información acerca de link:../learn/data-protection.html["Protección de datos en Astra Control"^].
 
@@ -33,7 +33,7 @@ Puede realizar las siguientes tareas relacionadas con la protección de los dato
 
 La política de protección protege una aplicación mediante la creación de snapshots, backups o ambos con una programación definida. Puede optar por crear snapshots y backups por hora, día, semana y mes, y especificar la cantidad de copias que desea retener.
 
-Si necesita que backups o snapshots se ejecuten con más frecuencia de una vez por hora, puede hacerlo https://["Utilice la API REST de Astra Control para crear copias Snapshot y copias de seguridad"^].
+Si necesita que backups o snapshots se ejecuten con más frecuencia de una vez por hora, puede hacerlo https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilice la API REST de Astra Control para crear copias Snapshot y copias de seguridad"^].
 
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
