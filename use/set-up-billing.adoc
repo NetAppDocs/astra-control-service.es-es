@@ -71,6 +71,7 @@ Cuando gestiona los clústeres de AKS con Astra Control Service, Azure NetApp Fi
 
 * https://azure.microsoft.com/en-us/pricing/details/netapp["Consulte los detalles de precios para Azure NetApp Files"^].
 * https://azure.microsoft.com/en-us/pricing/details/storage/blobs["Consulte los detalles de precios para el almacenamiento de Microsoft Azure Blob"^].
+* https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-astra-acs?tab=PlansAndPrice["Consulta los planes y los precios del servicio de Astra Control en Azure Marketplace"]
 
 
 endif::azure[]
@@ -110,8 +111,9 @@ NOTE: Para ver un tutorial en vídeo del proceso de suscripción a Azure Marketp
 Puede suscribirse al servicio Astra Control Service mediante AWS Marketplace. La cuenta y los datos de facturación se gestionan a través del Marketplace.
 
 .Pasos
-. Vaya a la https://aws.amazon.com/marketplace/["Mercado AWS"^].
-. Seleccione *continuar para suscribirse*.
+. Vaya a la https://aws.amazon.com/marketplace/pp/prodview-auupmqjoq43ey?sr=0-1&ref_=beagle&applicationId=AWSMPContessa["Mercado AWS"^].
+. Seleccione *Ver opciones de compra*.
+. Si se le solicita hacerlo, inicie sesión en su cuenta de AWS o cree una nueva cuenta.
 . Siga las instrucciones para suscribirse a un plan.
 
 

@@ -119,6 +119,7 @@ Clústeres privados:: Si el clúster es privado, el https://cloud.google.com/kub
 
 --
 Modo de funcionamiento para un clúster GKE:: Debe usar el modo de funcionamiento estándar. El modo de piloto automático no se ha probado en este momento. link:https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters#modes["Obtenga más información sobre los modos de funcionamiento"^].
+Pools de almacenamiento:: Si usa NetApp Cloud Volumes Service como back-end de almacenamiento con el tipo de servicio CVS, debe configurar los pools de almacenamiento antes de poder aprovisionar volúmenes. Consulte link:../learn/choose-class-and-size.html#overview["Tipo de servicio, clases de almacenamiento y tamaño VP para clústeres GKE"^] si quiere más información.
 
 
 

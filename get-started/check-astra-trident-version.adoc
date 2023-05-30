@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: get-started/check-astra-trident-version.html 
+keywords: astra trident, check, version 
+summary: En el caso de los clústeres autogestionados, es posible que deba asegurarse de que está utilizando la versión correcta de Astra Trident. 
+---
+= Comprueba la versión de Astra Trident
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Para añadir un clúster autogestionado que utilice Astra Trident para los servicios de almacenamiento, asegúrese de que la versión instalada de Astra Trident es la más reciente.
+
+.Pasos
+. Compruebe la versión de Astra Trident.
++
+[source, console]
+----
+kubectl get tridentversions -n trident
+----
++
+Si Astra Trident está instalado, verá una salida similar a la siguiente:
+
++
+[listing]
+----
+NAME      VERSION
+trident   22.10.0
+----
++
+Si Astra Trident no está instalado, verá una salida similar a la siguiente:
+
++
+[listing]
+----
+error: the server doesn't have a resource type "tridentversions"
+----
++
+
+NOTE: Si Astra Trident no está instalado o no está actualizado y desea que su clúster utilice Astra Trident para servicios de almacenamiento, debe instalar la versión más reciente de Astra Trident antes de continuar. Consulte la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentación de Astra Trident"^] si desea obtener instrucciones.
+
+. Asegúrese de que los pods estén ejecutando:
++
+[source, console]
+----
+kubectl get pods -n trident
+----
+. Compruebe si las clases de almacenamiento utilizan los controladores Astra Trident compatibles. El nombre del aprovisionador debe ser `csi.trident.netapp.io`. Consulte el siguiente ejemplo:
++
+[source, console]
+----
+kubectl get sc
+----
++
+Respuesta de ejemplo:
+
++
+[listing]
+----
+NAME                   PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+ontap-gold (default)   csi.trident.netapp.io          Delete          Immediate           true                   5d23h
+----
+

@@ -12,11 +12,19 @@ summary: Una vez configurado su entorno, estará listo para crear un clúster de
 
 
 [role="lead"]
+Puede utilizar Astra Control Service para gestionar clústeres privados de Azure Kubernetes Service (AKS) y Red Hat OpenShift en AKS. En estas instrucciones se asume que ya ha creado un clúster privado de AKS o OpenShift y preparado un método seguro para acceder de forma remota; para obtener más información sobre la creación y el acceso a clústeres privados de AKS o OpenShift, consulte la siguiente documentación:
+
+* https://docs.microsoft.com/azure/aks/private-clusters["Documentación de Azure para clústeres AKS privados"^]
+* https://learn.microsoft.com/en-us/azure/openshift/howto-create-private-cluster-4x["Documentación de Azure para clústeres de OpenShift privados"^]
+
+
 Puede utilizar Astra Control Service para gestionar clústeres privados de Azure Kubernetes Service (AKS) y clústeres privados de Red Hat OpenShift en AKS. En estas instrucciones se asume que ya ha creado un clúster privado de AKS o OpenShift y preparado un método seguro para acceder de forma remota; para obtener más información sobre la creación y el acceso a clústeres privados de AKS o OpenShift, consulte la siguiente documentación:
 
 * https://docs.microsoft.com/azure/aks/private-clusters["Documentación de Azure para clústeres AKS privados"^]
 * https://learn.microsoft.com/en-us/azure/openshift/howto-create-private-cluster-4x["Documentación de Azure para clústeres de OpenShift privados"^]
 
+
+Puede utilizar Astra Control Service para gestionar clústeres privados de Amazon Elastic Kubernetes Service (EKS). En estas instrucciones se asume que ya ha creado un clúster EKS privado y preparado un método seguro para acceder de forma remota; para obtener más información sobre la creación y el acceso a clústeres EKS privados, consulte la https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html["Documentación de Amazon EKS"^].
 
 
 
@@ -51,7 +59,15 @@ kubectl apply -f astraconnector_operator.yaml -n astra-connector-operator
 kubectl create ns astra-connector
 ----
 . Genere un token de API de control Astra utilizando las instrucciones del https://docs.netapp.com/us-en/astra-automation/get-started/get_api_token.html["Documentación de Astra Automation"^].
-. Modifique el archivo de configuración de ejemplo en el directorio config/samples del repositorio del operador de Astra Connector para incluir el `spec.natssync-client.cloud-bridge-url` clave. Por ejemplo:
+. Modifique el archivo de configuración de ejemplo en el directorio config/samples del repositorio de operadores de Astra Connector a fin de incluir valores específicos de su entorno para las siguientes claves:
++
+** `spec.natssync-client.cloud-bridge-url`
+** `spec.astra.token`
+** `spec.astra.clusterName`
+** `spec.astra.accountId`
++
+Por ejemplo:
+
 +
 [listing]
 ----
@@ -77,6 +93,8 @@ spec:
     accountId: <Astra Control account id>
     acceptEULA: yes
 ----
+
+
 . Aplique la definición de recurso personalizado de Astra Connector (CRD).
 +
 [source, console]
@@ -90,7 +108,7 @@ kubectl apply -f config/samples/astraconnector_v1.yaml -n astra-connector
 kubectl get astraconnector astra-connector -n astra-connector
 ----
 +
-Debe hacer referencia a una salida similar a la siguiente:
+Debería ver una salida similar a la siguiente:
 
 +
 [source, console]
@@ -104,11 +122,7 @@ astra-connector   true         22b839aa-8b85-445a-85dd-0b1f53b5ea19
 
 == Configure el almacenamiento persistente
 
-Configure el almacenamiento persistente para el clúster. Puede usar discos gestionados de Azure NetApp Files o Azure. Consulte la documentación de Get Started para obtener más información sobre la configuración de Azure con estas opciones:
-
-* https://docs.netapp.com/us-en/astra-control-service/get-started/set-up-microsoft-azure-with-anf.html["Configure Microsoft Azure con Azure NetApp Files"]
-* https://docs.netapp.com/us-en/astra-control-service/get-started/set-up-microsoft-azure-with-amd.html["Configure Microsoft Azure con discos gestionados de Azure"]
-
+Configure el almacenamiento persistente para el clúster. Consulte la documentación para empezar para obtener más información sobre la configuración del almacenamiento persistente:
 
 
 

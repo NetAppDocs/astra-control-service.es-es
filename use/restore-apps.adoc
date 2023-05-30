@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: use/restore-apps.html 
-keywords: restore app, restoring an app, restore an app, restore, migrate nas-economy 
+keywords: restore app, restoring an app, restore an app, restore, migrate storage class 
 summary: Astra Control puede restaurar la configuración de sus aplicaciones y el almacenamiento persistente a partir de una copia Snapshot o una copia de seguridad. Los backups de almacenamiento persistente se transfieren del almacén de objetos, por lo que la restauración a partir de un backup existente se completará con la más rápida. 
 ---
 = Restaurar aplicaciones
@@ -43,7 +43,7 @@ NOTE: Si se restaura en un espacio de nombres que se eliminó previamente, se cr
 
 
 
-** *Restaurar en nuevos espacios de nombres*: Utilice este procedimiento para restaurar la aplicación en otro clúster o con diferentes espacios de nombres desde el origen.
+** *Restaurar en nuevos espacios de nombres*: Utilice este procedimiento para restaurar la aplicación en otro clúster o con diferentes espacios de nombres desde el origen. También puede usar este procedimiento para migrar una aplicación a una clase de almacenamiento diferente.
 +
 ... Especifique el nombre de la aplicación restaurada.
 ... Elija el clúster de destino de la aplicación que desea restaurar.
@@ -54,6 +54,13 @@ NOTE: Astra Control crea nuevos espacios de nombres de destino como parte de est
 
 ... Seleccione *Siguiente*.
 ... Seleccione la instantánea o la copia de seguridad que desea utilizar para restaurar la aplicación.
+... Seleccione *Siguiente*.
+... Elija una de las siguientes opciones:
++
+**** *Restaurar usando clases de almacenamiento originales*: La aplicación utiliza la clase de almacenamiento asociada originalmente a menos que no exista en el clúster de destino. En este caso, se utilizará la clase de almacenamiento predeterminada para el clúster.
+**** *Restaurar usando una clase de almacenamiento diferente*: Seleccione una clase de almacenamiento que exista en el clúster de destino. Todos los volúmenes de aplicaciones, independientemente de sus tipos de almacenamiento asociados originalmente, se migrarán a esta clase de almacenamiento diferente como parte de la restauración.
+
+
 ... Seleccione *Siguiente*.
 
 
