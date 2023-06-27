@@ -1724,8 +1724,6 @@
   <block id="6c8bc25bbb383bdd569b3a8b67462c4a" category="list-text">Asegúrese de que los pods estén ejecutando:</block>
   <block id="ceb1396f571b46844bfc0042be1d74da" category="list-text">Compruebe si las clases de almacenamiento utilizan los controladores Astra Trident compatibles. El nombre del aprovisionador debe ser<block ref="08044207e9f63bb0fd474dab347a776c" prefix=" " category="inline-code"></block>. Consulte el siguiente ejemplo:</block>
   <block id="6d55356ca8cb9b27cfa6e2bb46ebb089" category="paragraph">Respuesta de ejemplo:</block>
-  <block id="7e4e5121275b933eab9a9d5689c80875" category="paragraph">Asegúrese de que dispone de lo siguiente en su máquina antes de realizar los pasos siguientes:</block>
-  <block id="f6ca4dc4443aea5e0b0f91e229709c7c" category="list-text">kubectl v1.19 o posterior instalado</block>
   <block id="ee6257954c2f973cd54453583dc792ca" category="list-text">Una imagen marcada activa con los derechos de administrador del clúster para el contexto activo</block>
   <block id="5f85438ae0f2c9122a5cf54e8e098c98" category="list-text">Cree una cuenta de servicio del siguiente modo:</block>
   <block id="4ab759267d2877902a521921e10f5f5b" category="list-text">Cree un archivo de cuenta de servicio llamado<block ref="a22dad5601b31427598f571133fb2aed" prefix=" " category="inline-code"></block>.</block>
@@ -2170,4 +2168,6 @@
   <block id="2b30723c9e7134241d748eae9faa73a6" category="paragraph">Siga estas instrucciones para crear un archivo kubeconfig para Rancher, upstream Kubernetes y Red Hat OpenShift clusters.</block>
   <block id="e6bab5933e86bee96753d8079fcceaed" category="section-title">26 de junio de 2023</block>
   <block id="b77235e640ab8b5a90390081c423e880" category="list-text">Las suscripciones de Azure Marketplace ahora se facturan por hora en lugar de por minuto</block>
+  <block id="972d9f8e0e28ff88864515cf37f116b2" category="paragraph">Asegúrese de tener lo siguiente en su máquina antes de comenzar:</block>
+  <block id="e518ff6eca9962a9ad470732191bb026" category="list-text">kubectl v1,23 o posterior instalado</block>
 </blocks>
