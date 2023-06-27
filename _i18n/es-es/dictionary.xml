@@ -637,7 +637,6 @@
   <block id="42e4ae99b1c75f246e10097db7c80bb8" category="list-text">Plan libre</block>
   <block id="89b4085fdb03b14f69ace6f96236c990" category="list-text">Gestione hasta 10 espacios de nombres de forma gratuita.</block>
   <block id="862788c3bb11330575081aed95a87221" category="list-text">Premium PAYGO</block>
-  <block id="c9a3db1f241c40ba4fb01ecd0f5f278c" category="list-text">Gestionar una cantidad ilimitada de espacios de nombres a una velocidad específica por hora, por espacio de nombres.</block>
   <block id="5ddf59442786f24c8da307580d0ef431" category="list-text">Suscripción Premium</block>
   <block id="2f4b44f727ad34215a2cafb46fe686b5" category="list-text">Prepago a una tarifa con descuento con una suscripción anual que le permite gestionar hasta 10 espacios de nombres por _Namespace Pack_. Póngase en contacto con el departamento de ventas de NetApp para adquirir tantos paquetes como necesite para su organización. Por ejemplo, adquiera 3 paquetes para gestionar 30 espacios de nombres en Astra Control Service. Si gestiona más espacios de nombres de los permitidos en su suscripción anual, se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional.</block>
   <block id="b7b192852402c2ca345a411875aaae75" category="paragraph">Si aún no dispone de una cuenta de Astra Control, al adquirir la suscripción Premium, se crea automáticamente una cuenta de Astra Control para usted. Si ya dispone de un plan gratuito, se convertirá automáticamente a la suscripción Premium.</block>
@@ -645,7 +644,6 @@
   <block id="3aa4dd0198751b5007ad998ab156a84c" category="paragraph">Si intenta gestionar un espacio de nombres 11, Astra Control le notifica que ha alcanzado el límite del Plan libre. A continuación, le pedirá que actualice el plan gratuito a un plan Premium. Se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional.</block>
   <block id="2bcc45d362c387d8f1c6cec1c1721572" category="paragraph">Puede actualizar a un plan Premium en cualquier momento. Después de actualizar, Astra Control comienza a cobrarle por espacios de nombres _all_ en la cuenta. Los primeros 10 espacios de nombres no se quedan en el plan gratuito.</block>
   <block id="6b77f6ea2428949be628fe51587bf096" category="section-title">Facturación de Google Cloud</block>
-  <block id="4edd6e2cac5c4de2dfed17f138966576" category="paragraph">Cuando gestiona los clústeres GKE con Astra Control Service, los volúmenes persistentes se encuentran respaldados por Cloud Volumes Service de NetApp, y los backups de sus aplicaciones se almacenan en un bloque de almacenamiento en Google Cloud.</block>
   <block id="45f0f10c20d19ddc78bfdf6e608f069a" category="inline-link">Consulte los detalles de precios para Cloud Volumes Service</block>
   <block id="e952d755f5ef5c7803cdfa78e9eadb1a" category="list-text"><block ref="89dd56840eed735019d241a1ba2301aa" category="inline-link-rx"></block>.</block>
   <block id="1e74109ffea9efee081364cbc0ee2939" category="inline-link">Región de Google Cloud</block>
@@ -653,13 +651,11 @@
   <block id="ad3fb6b690e4f991f4efd7c6f5faa57e" category="inline-link">Vea los detalles de precios para buckets de almacenamiento de Google Cloud</block>
   <block id="a818db5e8b40448ca77b94e5a5ad28f2" category="list-text"><block ref="eb8eb935c0c14910141318c56c72ab57" category="inline-link-rx"></block>.</block>
   <block id="1a8745ef58feccdedbe914ac98126031" category="section-title">Facturación de Microsoft Azure</block>
-  <block id="386f63f35c235633bcba30f10411ff68" category="paragraph">Cuando gestiona los clústeres de AKS con Astra Control Service, Azure NetApp Files gestiona los volúmenes persistentes y los backups de sus aplicaciones se almacenan en un contenedor de Azure Blob.</block>
   <block id="1658b2532a0c8ef3d1a8919b2adca0b1" category="inline-link">Consulte los detalles de precios para Azure NetApp Files</block>
   <block id="f3cb6a45114448521e0d760118c3450a" category="list-text"><block ref="5b54cd0a32569a83c26d011725a70e8f" category="inline-link-rx"></block>.</block>
   <block id="834f115f891f80f44d1e669ac9431329" category="inline-link">Consulte los detalles de precios para el almacenamiento de Microsoft Azure Blob</block>
   <block id="60645c74c7b13c7e76b51afce755e291" category="list-text"><block ref="e3bc379f0a02e5929a1f19bfe2e39bbb" category="inline-link-rx"></block>.</block>
   <block id="3e00312869fede718a42b76c5ee6e2ff" category="section-title">Facturación de Amazon Web Services</block>
-  <block id="7e2fa2a7770af29cbdd272c113a7fc4e" category="paragraph">Cuando gestiona los clústeres de AWS con Astra Control Service, los volúmenes persistentes se encuentran respaldados por EBS o FSX para ONTAP de NetApp y los backups de sus aplicaciones se almacenan en un bloque de AWS.</block>
   <block id="9e3c019abe231865229584e6f6e502de" category="inline-link">Consulte los detalles de precios de Amazon Web Services</block>
   <block id="aa992a3ab98a373e82c93ded62f2d914" category="list-text"><block ref="31ae57f3df84273eeed4bc5214fec458" category="inline-link-rx"></block>.</block>
   <block id="7cf981924f9f32f25a7be7da04e4f309" category="section-title">Suscríbase al servicio Astra Control Service en Azure Marketplace</block>
@@ -2046,7 +2042,6 @@
   <block id="5f116b62082ad46b96d2b6d9abbcf0ec" category="admonition">Si selecciona otra clase de almacenamiento y esta clase de almacenamiento no existe en el momento de la restauración, se devolverá un error.</block>
   <block id="ada8ec5cd268a153424f1f7cb79750a2" category="paragraph">El estado del clúster cambia a *Extracción*. Después de eso, el clúster se eliminará de la página *Clusters* y Astra Control ya no lo gestionará.</block>
   <block id="85fcb9615339f8f8ea462bcc5faea0c9" category="list-text">*Proteja sus aplicaciones primero*: Se recomienda encarecidamente que tome una instantánea o una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup en el caso de que la restauración no se realice correctamente.</block>
-  <block id="dad130a6ad30a7802e5df566fbf9e7fc" category="list-text">*Comprobar volúmenes de destino*: Si restaura a un clúster diferente, asegúrese de que el clúster utiliza el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany). Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente.</block>
   <block id="4250100f234fe7960272e070cd21fe6e" category="list-text">*Planificar necesidades de espacio*: Cuando se realiza una restauración in situ de una aplicación que utiliza almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.</block>
   <block id="fd09da9cdc1a428192d0b1e00adcc181" category="list-text">En el menú Opciones de la columna Acciones, seleccione *Restaurar*.</block>
   <block id="fb43cf9ce5f31c6de66316a29725099b" category="list-text">Seleccione la instantánea o la copia de seguridad que desea utilizar para restaurar la aplicación en el lugar, lo que revierte la aplicación a una versión anterior de sí misma.</block>
@@ -2137,10 +2132,7 @@
   <block id="0df1bbdefb6c7ab54388f20e615d6ff6" category="list-text">*Clases de almacenamiento Astra Trident configuradas*: Al menos una clase de almacenamiento Astra Trident debe ser<block ref="56eee92baaddefbebda4bc1d0011f25b" category="inline-link-rx"></block> en el clúster. Si se configura una clase de almacenamiento predeterminada, asegúrese de que sólo una clase de almacenamiento tenga esa anotación.</block>
   <block id="eddf0b0c77ced4551605b01f9388baea" category="summary">Debe crear un archivo kubeconfig de rol administrador para clústeres autogestionados.</block>
   <block id="9dc913e0573023f0b54d8d304c10a592" category="doc">Cree un archivo kubeconfig de rol de cluster de administración</block>
-  <block id="8737bd0c30a0b2e2c8127074a8e8ff3b" category="paragraph">Para agregar un cluster autogestionado, debe crear un archivo kubeconfig de rol de cluster de administración.</block>
-  <block id="ddc9715607fb981646b02ffaaae9d35b" category="section-title">Cree un archivo kubeconfig para Rancher, upstream Kubernetes y Red Hat OpenShift</block>
   <block id="bacde2d5f8907c39cfce03260081b849" category="section-title">Cree un archivo kubeconfig para los clústeres de Amazon EKS</block>
-  <block id="b54e0018cc383761560c8cea8c440181" category="paragraph">Siga las instrucciones de la documentación de Amazon para crear un archivo kubeconfig para clústeres de Amazon EKS:</block>
   <block id="219018d1a7fc0ccfc7ae0919efd38830" category="inline-link">Creación o actualización de un archivo kubeconfig para un clúster de Amazon EKS</block>
   <block id="5efa640818add52a71a9634fe973dd16" category="paragraph"><block ref="5efa640818add52a71a9634fe973dd16" category="inline-link-rx"></block></block>
   <block id="0f2007d7b4634d1a7885862c6f181b9a" category="paragraph">Astra Control Service es compatible con NetApp Cloud Volumes Service para Google Cloud, Google Persistent Disk o NetApp Cloud Volumes ONTAP como opciones de back-end de almacenamiento para los volúmenes persistentes.</block>
@@ -2158,4 +2150,24 @@
   <block id="a7a08622ee5c8019b57354b99b7693b2" category="list-text">Elija una de las siguientes opciones:</block>
   <block id="42f6c62242bb567ac4a309a82717d6e9" category="list-text">*Restaurar usando clases de almacenamiento originales*: La aplicación utiliza la clase de almacenamiento asociada originalmente a menos que no exista en el clúster de destino. En este caso, se utilizará la clase de almacenamiento predeterminada para el clúster.</block>
   <block id="cc9916e812cf950bc0992213a1e5cc57" category="list-text">*Restaurar usando una clase de almacenamiento diferente*: Seleccione una clase de almacenamiento que exista en el clúster de destino. Todos los volúmenes de aplicaciones, independientemente de sus tipos de almacenamiento asociados originalmente, se migrarán a esta clase de almacenamiento diferente como parte de la restauración.</block>
+  <block id="9d9af3135a71ef374583f995f07a2539" category="list-text">*Comprobar volúmenes de destino*: Si restaura a una clase de almacenamiento diferente, asegúrese de que la clase de almacenamiento utilice el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany). Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente.</block>
+  <block id="5856d66908e22cf434dbd9afeccf641a" category="list-text">Gestione una cantidad ilimitada de espacios de nombres a una tasa específica, por espacio de nombres.</block>
+  <block id="bf4f678d4a57f18576a93b45fbd878bd" category="paragraph">Los volúmenes persistentes están respaldados por NetApp Cloud Volumes Service y los backups de tus aplicaciones se almacenan en un depósito de Google Cloud Storage.</block>
+  <block id="a56e21e29fdc4a1e8ca3d0fe83ad8ec3" category="paragraph">Azure NetApp Files respalda los volúmenes persistentes y los backups de tus aplicaciones se almacenan en un contenedor de Azure Blob.</block>
+  <block id="86a07afa8b9287decc7dfb566c79acd0" category="admonition">La tasa de facturación de Azure para Astra Control Service es por hora y una nueva hora de facturación se inicia después de que hayan transcurrido 29 minutos de la hora de uso.</block>
+  <block id="e981ded0727c1f04fd1694b122e20eaf" category="paragraph">Los volúmenes persistentes están respaldados por EBS o FSx para NetApp ONTAP, y los backups de tus aplicaciones se almacenan en un bucket de AWS.</block>
+  <block id="d4ae639645d553b896abe75ac8b8fb73" category="paragraph">Puede añadir un clúster a Astra Control Service mediante un archivo kubeconfig. En función del tipo de cluster que desee agregar, es posible que necesite crear manualmente un archivo kubeconfig para el cluster mediante pasos específicos.</block>
+  <block id="0a5ba28570aea2968b693d84884e128b" category="list-text"><block ref="270c1986302e0f0fbc9bdc7d3d446b6f" category="inline-xref-macro-rx"></block></block>
+  <block id="83b7dd6cfece02a28db9f2ac3e288f6b" category="list-text"><block ref="ff6d2cef6da4f3683aa2957d17e520ce" category="inline-xref-macro-rx"></block></block>
+  <block id="f4e3f91ab28afe92afe1b18439c87032" category="paragraph">Siga estas instrucciones para crear un archivo kubeconfig y un secreto de token permanente para los clústeres de Amazon EKS. Se necesita un secreto de token permanente para los clústeres alojados en EKS.</block>
+  <block id="86c2623498c303c25d17eef1213b105f" category="list-text">Siga las instrucciones de la documentación de Amazon para generar un archivo kubeconfig:</block>
+  <block id="213438247a7298f2d7b9c6cacef2c596" category="paragraph">Ajuste el nombre de la cuenta de servicio según sea necesario. El espacio de nombres<block ref="7396424ab57f5865f0549a6bcf5fcba3" prefix=" " category="inline-code"></block> es necesario para estos pasos. Si cambia aquí el nombre de la cuenta de servicio, debe aplicar los mismos cambios en los siguientes pasos.</block>
+  <block id="258e85c2b71b211fc9c71a141998a89d" category="list-text">Se ha llamado a crear un archivo secreto de token de cuenta de servicio<block ref="75341b94414ff18c92f49d4d7c83a188" prefix=" " category="inline-code"></block>.</block>
+  <block id="b73c5900cc67ec3996003ea18742f312" category="list-text">Aplique el secreto de token:</block>
+  <block id="0c4c0773122e9387cad53cff8068b18b" category="list-text">Recupere el secreto de token:</block>
+  <block id="84233ef8b39305d023ce1d5e237bbe9d" category="list-text">Sustituya el<block ref="ee11cbb19052e40b07aac0ca060c23ee" prefix=" " category="inline-code"></block> Sección del archivo kubeconfig de AWS EKS con el token, como se muestra en el siguiente ejemplo:</block>
+  <block id="393c821bd73b2367663c50c77fd00df6" category="section-title">Cree un archivo kubeconfig para otros tipos de clusters</block>
+  <block id="2b30723c9e7134241d748eae9faa73a6" category="paragraph">Siga estas instrucciones para crear un archivo kubeconfig para Rancher, upstream Kubernetes y Red Hat OpenShift clusters.</block>
+  <block id="e6bab5933e86bee96753d8079fcceaed" category="section-title">26 de junio de 2023</block>
+  <block id="b77235e640ab8b5a90390081c423e880" category="list-text">Las suscripciones de Azure Marketplace ahora se facturan por hora en lugar de por minuto</block>
 </blocks>
