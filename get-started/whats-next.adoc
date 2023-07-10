@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: get-started/whats-next.html 
 keywords: get started, manage apps, manage account 
-summary: Ahora que ha iniciado sesión y agregado clústeres a Astra Control, está listo para empezar a utilizar las funciones de gestión de datos de aplicaciones de Astra Control. 
+summary: Ahora que ha iniciado sesión y ha añadido clústeres a Astra Control, estará listo para empezar a utilizar las funciones de gestión de datos de aplicación de Astra Control. 
 ---
 = ¿Cuál es el siguiente?
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: Ahora que ha iniciado sesión y agregado clústeres a Astra Control, es
 
 
 [role="lead"]
-Ahora que ha iniciado sesión y agregado un clúster a Astra Control, está listo para empezar a utilizar las funciones de gestión de datos de aplicaciones de Astra Control.
+Ahora que ha iniciado sesión y añadido un clúster a Astra Control, está listo para empezar a utilizar las funciones de gestión de datos de aplicaciones de Astra Control.
 
 * link:../use/manage-apps.html["Inicie la gestión de aplicaciones"]
 * link:../use/protect-apps.html["Proteja sus aplicaciones"]

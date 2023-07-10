@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: get-started/register.html 
 keywords: cloud central, sign up, log in, login, register, register for cloud central, create account, sign up for account, get an account, account, accounts 
-summary: El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Regístrese en Cloud Central para poder acceder a Astra Control Service y a otros servicios cloud de NetApp. 
+summary: El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Regístrate en Cloud Central y accede a Astra Control Service y a otros servicios de nube de NetApp. 
 ---
 = Regístrese para obtener una cuenta de Astra Control Service
 :hardbreaks:
@@ -46,7 +46,7 @@ Algunas cosas importantes que debe tener en cuenta al rellenar el formulario:
 
 == Regístrese en Cloud Central
 
-Si todavía no dispone de una cuenta de Cloud Central de NetApp, regístrese en Cloud Central para acceder a Astra Control Service y los demás servicios cloud de NetApp. El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Si ya tiene una cuenta de Cloud Central y ha completado el registro, puede acceder a ella https://astra.netapp.io["Servicio de control Astra"^] Uso directo de las credenciales de Cloud Central.
+Si aún no tienes una cuenta de Cloud Central de NetApp, regístrate en Cloud Central para acceder al servicio Astra Control y a otros servicios cloud de NetApp. El servicio Astra Control se integra con el servicio de autenticación de NetApp Cloud Central. Si ya tiene una cuenta de Cloud Central y ha completado el registro, puede acceder a ella https://astra.netapp.io["Servicio de control Astra"^] Uso directo de las credenciales de Cloud Central.
 
 
 TIP: Puede utilizar el inicio de sesión único para iniciar sesión en Cloud Central utilizando credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.

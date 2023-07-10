@@ -62,8 +62,8 @@ Cuando se desadministra un clúster:
 .Pasos
 . Seleccione *Clusters*.
 . Seleccione la casilla de comprobación del clúster que ya no desea gestionar.
-. En el menú Opciones de la columna *acciones*, seleccione *Unmanage*.
-. Confirme que desea anular la administración del clúster y, a continuación, seleccione *Sí, anular la administración del clúster*.
+. En el menú de opciones de la columna *Acciones*, selecciona *Desgestionar*.
+. Confirme que desea anular la gestión del clúster y, a continuación, seleccione *Sí, anular la gestión*.
 
 
 .Resultado
@@ -73,7 +73,7 @@ El estado del clúster cambia a *Extracción*. Después de eso, el clúster se e
 
 == Elimine clústeres de su proveedor de cloud
 
-Antes de eliminar un clúster de Kubernetes que tiene volúmenes persistentes (VP) que residen en clases de almacenamiento de NetApp, primero debe eliminar las reclamaciones de volumen persistente (RVP) siguiendo uno de los métodos siguientes. Si elimina el PVC y el VP antes de eliminar el clúster, se garantiza que no reciba facturas inesperadas de su proveedor de cloud.
+Antes de eliminar un clúster de Kubernetes que tiene volúmenes persistentes (VP) que residen en clases de almacenamiento de NetApp, primero debe eliminar las reclamaciones de volumen persistente (RVP) siguiendo uno de los métodos siguientes. Eliminar la RVP y el VP antes de eliminar el clúster garantiza que no recibirá facturas inesperadas del proveedor de cloud.
 
 * *método #1*: Elimina los espacios de nombres de la carga de trabajo de la aplicación del clúster. _not_ elimine el espacio de nombres Trident.
 * *método #2*: Elimine las CVP y las vainas, o el despliegue donde se montan las Vs.
@@ -83,4 +83,4 @@ Cuando gestiona un clúster de Kubernetes desde Astra Control, las aplicaciones 
 
 Si utiliza uno de los métodos anteriores, se eliminarán los correspondientes VP de su clúster. Asegúrese de que no existan VP en las clases de almacenamiento de NetApp en el clúster antes de eliminarlo.
 
-Si no eliminó los volúmenes persistentes antes de eliminar el clúster, deberá eliminar manualmente los volúmenes de back-end de su proveedor de cloud.
+Si no eliminó los volúmenes persistentes antes de eliminar el clúster, deberá eliminar manualmente los volúmenes de back-end del proveedor de cloud.
