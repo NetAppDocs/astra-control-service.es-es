@@ -16,12 +16,23 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 
 
 
+== 27 de julio de 2023
+
+.Nuevas funciones y soporte
+* Ahora las operaciones de clonado admiten solo clones activos (estado actual de la aplicación gestionada). Para clonar desde una copia de Snapshot o un backup, use el flujo de trabajo de restauración.
++
+link:../use/restore-apps.html["Restaurar aplicaciones"^]
+
+
+
+
+
 == 26 de junio de 2023
 
 .Nuevas funciones y soporte
 * Las suscripciones de Azure Marketplace ahora se facturan por hora en lugar de por minuto
 +
-link:../use/set-up-billing.html["Configurar facturación"]
+link:../use/set-up-billing.html["Configurar facturación"^]
 
 
 
@@ -32,11 +43,11 @@ link:../use/set-up-billing.html["Configurar facturación"]
 .Nuevas funciones y soporte
 * Compatibilidad con clústeres privados de Amazon EKS
 +
-link:../get-started/manage-private-cluster.html["Gestione clústeres privados desde Astra Control Service"]
+link:../get-started/manage-private-cluster.html["Gestione clústeres privados desde Astra Control Service"^]
 
 * Compatibilidad para seleccionar la clase de almacenamiento de destino durante las operaciones de restauración o clonado
 +
-link:../use/restore-apps.html["Restaurar aplicaciones"]
+link:../use/restore-apps.html["Restaurar aplicaciones"^]
 
 
 
@@ -58,15 +69,15 @@ endif::azure[]
 
 * Compatibilidad con clústeres privados de Red Hat OpenShift
 +
-link:../get-started/manage-private-cluster.html["Gestione clústeres privados desde Astra Control Service"]
+link:../get-started/manage-private-cluster.html["Gestione clústeres privados desde Astra Control Service"^]
 
 * Soporte para incluir o excluir recursos de aplicaciones durante las operaciones de restauración
 +
-link:../use/restore-apps.html#filter-resources-during-an-application-restore["Restaurar aplicaciones"]
+link:../use/restore-apps.html#filter-resources-during-an-application-restore["Restaurar aplicaciones"^]
 
 * Compatibilidad para la gestión de aplicaciones solo de datos
 +
-link:../use/manage-apps.html["Inicie la gestión de aplicaciones"]
+link:../use/manage-apps.html["Inicie la gestión de aplicaciones"^]
 
 
 
@@ -77,11 +88,11 @@ link:../use/manage-apps.html["Inicie la gestión de aplicaciones"]
 .Nuevas funciones y soporte
 * Funciones mejoradas de enlaces de ejecución con opciones de filtrado adicionales
 +
-link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"]
+link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"^]
 
 * Compatibilidad con Cloud Volumes ONTAP de NetApp como back-end de almacenamiento
 +
-link:../get-started/intro.html["Más información sobre Astra Control"]
+link:../get-started/intro.html["Más información sobre Astra Control"^]
 
 
 
@@ -92,41 +103,41 @@ link:../get-started/intro.html["Más información sobre Astra Control"]
 .Nuevas funciones y soporte
 * Compatibilidad con aplicaciones que abarcan varios espacios de nombres
 +
-link:../use/manage-apps.html["Defina las aplicaciones"]
+link:../use/manage-apps.html["Defina las aplicaciones"^]
 
 * Soporte para incluir recursos de clúster en una definición de aplicación
 +
-link:../use/manage-apps.html["Defina las aplicaciones"]
+link:../use/manage-apps.html["Defina las aplicaciones"^]
 
 * Generación de informes de progreso mejorado para sus operaciones de backup, restauración y clonado
 +
-link:../use/monitor-running-tasks.html["Supervisar tareas en ejecución"]
+link:../use/monitor-running-tasks.html["Supervisar tareas en ejecución"^]
 
 * Compatibilidad con la gestión de clústeres que ya cuentan con una versión compatible de Astra Trident instalada
 +
-link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"]
+link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"^]
 
 * Compatibilidad con la gestión de suscripciones de varios proveedores de cloud en una única cuenta de Astra Control Service
 +
-link:../use/manage-cloud-instances.html["Gestionar las instancias de cloud"]
+link:../use/manage-cloud-instances.html["Gestionar las instancias de cloud"^]
 
 * Compatibilidad con la adición de clústeres de Kubernetes autogestionados en entornos de cloud público a Astra Control Service
 +
-link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"]
+link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"^]
 
 * La facturación del Servicio de control de Astra ahora se controla por espacio de nombres en lugar de por aplicación
 +
-link:../use/set-up-billing.html["Configurar facturación"]
+link:../use/set-up-billing.html["Configurar facturación"^]
 
 * Soporte para suscribirse a las ofertas basadas en términos del servicio Astra Control Service a través de AWS Marketplace
 +
-link:../use/set-up-billing.html["Configurar facturación"]
+link:../use/set-up-billing.html["Configurar facturación"^]
 
 
 
 .Problemas y limitaciones conocidos
-* link:../release-notes/known-issues.html["Problemas conocidos de esta versión"]
-* link:../release-notes/known-limitations.html["Limitaciones conocidas de esta versión"]
+* link:../release-notes/known-issues.html["Problemas conocidos de esta versión"^]
+* link:../release-notes/known-limitations.html["Limitaciones conocidas de esta versión"^]
 
 
 
@@ -143,7 +154,7 @@ Esta versión incluye las siguientes funciones y mejoras nuevas.
 
 * Flujo de trabajo de gestión de aplicaciones mejorado los flujos de trabajo de gestión de aplicaciones mejorados proporcionan una mayor flexibilidad a la hora de definir aplicaciones gestionadas por Astra Control.
 +
-link:../use/manage-apps.html#define-apps["Gestionar aplicaciones"]
+link:../use/manage-apps.html#define-apps["Gestionar aplicaciones"^]
 
 
 
@@ -151,7 +162,7 @@ ifdef::aws[]
 
 * Compatibilidad con clústeres de Amazon Web Services Astra Control Service ahora puede gestionar las aplicaciones que se ejecutan en los clústeres alojados en Amazon Elastic Kubernetes Service. Puede configurar los clústeres para que usen Amazon Elastic Block Store o Amazon FSX para ONTAP de NetApp como back-end de almacenamiento.
 +
-link:../get-started/set-up-amazon-web-services.html["Configure Amazon Web Services"]
+link:../get-started/set-up-amazon-web-services.html["Configure Amazon Web Services"^]
 
 
 
@@ -170,7 +181,7 @@ Entre otras mejoras, Astra Control ahora admite el uso de la misma secuencia de 
 NOTE: En esta versión se han eliminado los enlaces de ejecución predeterminados previa y posterior a la copia Snapshot para aplicaciones específicas que ofrece NetApp. Si no proporciona sus propios enlaces de ejecución para instantáneas, Astra Control Service realizará instantáneas coherentes con los fallos a partir del 4 de agosto de 2022. Visite la https://github.com/NetApp/Verda["Repositorio de Verda GitHub de NetApp"^] para la ejecución de ejemplo de secuencias de comandos de enlace que puede modificar para ajustarse a su entorno.
 
 +
-link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"]
+link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"^]
 
 
 
@@ -197,7 +208,7 @@ Esta versión incluye las siguientes funciones y mejoras nuevas.
 
 * Namespace Control de acceso basado en funciones (RBAC) Astra Control Service ahora admite la asignación de restricciones de espacio de nombres a usuarios miembros o Viewer.
 +
-link:../learn/user-roles-namespaces.html["Control de acceso basado en roles (RBAC) del espacio de nombres"]
+link:../learn/user-roles-namespaces.html["Control de acceso basado en roles (RBAC) del espacio de nombres"^]
 
 
 
@@ -205,11 +216,11 @@ ifdef::azure[]
 
 * Compatibilidad de Azure Active Directory con Astra Control Service es compatible con clústeres AKS que utilizan Azure Active Directory para la autenticación y la gestión de identidades.
 +
-link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"]
+link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"^]
 
 * Compatibilidad con clústeres AKS privados ahora puede gestionar clústeres AKS que utilizan direcciones IP privadas.
 +
-link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"]
+link:../get-started/add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"^]
 
 
 
@@ -217,7 +228,7 @@ endif::azure[]
 
 * Retirada de la cuchara de Astra Control ahora puede retirar una cuchara del servicio Astra Control.
 +
-link:../use/manage-buckets.html["Retirar un cucharón"]
+link:../use/manage-buckets.html["Retirar un cucharón"^]
 
 
 
@@ -236,15 +247,15 @@ endif::azure[]
 
 * Restauración de aplicaciones in situ puede restaurar una snapshot, un clon o un backup de una aplicación in situ restaurando el mismo clúster y espacio de nombres.
 +
-link:../use/restore-apps.html["Restaurar aplicaciones"]
+link:../use/restore-apps.html["Restaurar aplicaciones"^]
 
 * Eventos de secuencias de comandos con enlaces de ejecución Astra Control admite secuencias de comandos personalizadas que puede ejecutar antes o después de tomar una instantánea de una aplicación. Esto le permite realizar tareas como suspender transacciones de base de datos para que la instantánea de la aplicación de base de datos sea coherente.
 +
-link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"]
+link:../use/manage-app-execution-hooks.html["Gestione los enlaces de ejecución de aplicaciones"^]
 
 * Aplicaciones implementadas por el operador Astra Control admite algunas aplicaciones cuando se ponen en marcha con los operadores.
 +
-link:../use/manage-apps.html#app-management-requirements["Inicie la gestión de aplicaciones"]
+link:../use/manage-apps.html#app-management-requirements["Inicie la gestión de aplicaciones"^]
 
 
 
@@ -252,7 +263,7 @@ ifdef::azure[]
 
 * Los directores de servicio con ámbito de grupo de recursos Astra Control Service ahora son compatibles con los principales de servicio que utilizan un ámbito de grupo de recursos.
 +
-link:../get-started/set-up-microsoft-azure-with-anf.html#create-an-azure-service-principal-2["Cree un principal de servicio de Azure"]
+link:../get-started/set-up-microsoft-azure-with-anf.html#create-an-azure-service-principal-2["Cree un principal de servicio de Azure"^]
 
 
 
@@ -270,7 +281,7 @@ Para obtener más información, https://docs.netapp.com/us-en/astra-control-cent
 
 * Traiga su propio bucket, ahora puede gestionar los bloques que emplea Astra para backups y clones mediante la adición de bloques adicionales y el cambio del bloque predeterminado para los clústeres de Kubernetes de su proveedor de cloud.
 +
-link:../use/manage-buckets.html["Gestionar bloques"]
+link:../use/manage-buckets.html["Gestionar bloques"^]
 
 
 
@@ -285,11 +296,11 @@ Esta versión incluye correcciones de errores y las siguientes mejoras para la c
 * Compatibilidad con VPC compartidos ahora puede gestionar clústeres GKE en proyectos GCP con una configuración de red VPC compartida.
 * El tamaño de volumen persistente para el tipo de servicio CVS Astra Control Service ahora crea volúmenes persistentes con un tamaño mínimo de 300 GIB cuando se usa el tipo de servicio CVS.
 +
-link:../learn/choose-class-and-size.html["Descubra cómo el servicio Astra Control utiliza Cloud Volumes Service para Google Cloud como back-end de almacenamiento para volúmenes persistentes"].
+link:../learn/choose-class-and-size.html["Descubra cómo el servicio Astra Control utiliza Cloud Volumes Service para Google Cloud como back-end de almacenamiento para volúmenes persistentes"^].
 
 * La compatibilidad con el SO optimizado para contenedores del SO optimizado para contenedores ahora es compatible con los nodos de trabajo GKE. Esto es además de la compatibilidad con Ubuntu.
 +
-link:../get-started/set-up-google-cloud.html#gke-cluster-requirements["Obtenga más información sobre los requisitos del clúster GKE"].
+link:../get-started/set-up-google-cloud.html#gke-cluster-requirements["Obtenga más información sobre los requisitos del clúster GKE"^].
 
 
 
@@ -305,7 +316,7 @@ ifdef::azure[]
 
 * Compatibilidad con clústeres AKS Astra Control Service ahora puede gestionar aplicaciones que se ejecutan en un clúster Kubernetes gestionado en Azure Kubernetes Service (AKS).
 +
-link:../get-started/set-up-microsoft-azure-with-anf.html["Aprenda cómo empezar"].
+link:../get-started/set-up-microsoft-azure-with-anf.html["Aprenda cómo empezar"^].
 
 
 
@@ -323,11 +334,11 @@ Prepago a una tarifa con descuento con una suscripción anual que le permite ges
 Si gestiona más aplicaciones de las permitidas en su suscripción anual, se le cobrará una tasa de exceso de 0.005 dólares por minuto, por aplicación (igual que Premium PAYGO).
 
 +
-link:../get-started/intro.html#pricing["Más información sobre los precios del servicio Astra Control"].
+link:../get-started/intro.html#pricing["Más información sobre los precios del servicio Astra Control"^].
 
 * Espacio de nombres y visualización de aplicaciones hemos mejorado la página aplicaciones descubiertas para mostrar mejor la jerarquía entre espacios de nombres y aplicaciones. Solo tiene que ampliar un espacio de nombres para ver las aplicaciones que contiene dicho espacio de nombres.
 +
-link:../use/manage-apps.html["Más información sobre la gestión de aplicaciones"].
+link:../use/manage-apps.html["Más información sobre la gestión de aplicaciones"^].
 
 +
 image:screenshot-group.gif["Captura de pantalla de la página aplicaciones con la ficha descubierta seleccionada."]
@@ -342,7 +353,7 @@ image:screenshot-protection-policy.gif["Una captura de pantalla del cuadro de di
 ** Descargue la actividad de su cuenta de Astra Control en un archivo CSV.
 ** Vea las actividades directamente en la página Clusters o la página Apps después de seleccionar un clúster o una aplicación.
 +
-link:../use/monitor-account-activity.html["Obtenga más información sobre cómo ver la actividad de su cuenta"].
+link:../use/monitor-account-activity.html["Obtenga más información sobre cómo ver la actividad de su cuenta"^].
 
 
 
@@ -358,7 +369,7 @@ Astra Control Service ahora es compatible con https://cloud.google.com/solutions
 
 Esta mejora implica que el servicio Astra Control Service ahora puede gestionar los datos de aplicaciones para los clústeres de Kubernetes que se ejecutan en _any_ https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Región de Google Cloud en la que Cloud Volumes Service es compatible"^].
 
-Si tiene la flexibilidad para elegir entre regiones de Google Cloud, puede elegir CVS o CVS-Performance, según sus requisitos de rendimiento. link:../learn/choose-class-and-size.html["Obtenga más información sobre cómo elegir un tipo de servicio"].
+Si tiene la flexibilidad para elegir entre regiones de Google Cloud, puede elegir CVS o CVS-Performance, según sus requisitos de rendimiento. link:../learn/choose-class-and-size.html["Obtenga más información sobre cómo elegir un tipo de servicio"^].
 
 endif::gcp[]
 
@@ -368,7 +379,7 @@ endif::gcp[]
 
 Nos complace anunciar que Astra Control Service ya está disponible en general. Incorporamos muchos de los comentarios que recibimos de la versión beta e hicimos algunas mejoras notables.
 
-* La facturación está ahora disponible, lo que le permite pasar del Plan libre al Plan Premium. link:../use/set-up-billing.html["Más información sobre facturación"].
+* La facturación está ahora disponible, lo que le permite pasar del Plan libre al Plan Premium. link:../use/set-up-billing.html["Más información sobre facturación"^].
 * Astra Control Service ahora crea volúmenes persistentes con un tamaño mínimo de 100 GIB cuando se usa el tipo de servicio CVS-Performance.
 * Astra Control Service ahora puede descubrir aplicaciones más rápido.
 * Ahora puede crear y eliminar cuentas por su cuenta.
