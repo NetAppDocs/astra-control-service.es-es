@@ -1749,13 +1749,8 @@
   <block id="18b73e29f7da6f9330f1f9e4d3b28341" category="section-title">Instale el operador del conector Astra</block>
   <block id="756856619863426af3279d53a81b018d" category="list-text">Clonar el operador de Astra Connector, el repositorio de GitHub:</block>
   <block id="a968d335ed6555127f3fbdb020cecd5f" category="list-text">Cambie los directorios al nivel superior del paquete de operadores sin empaquetar para que pueda ver el<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> archivo con<block ref="44ba5ca65651b4f36f1927576dd35436" prefix=" " category="inline-code"></block> comando.</block>
-  <block id="37d0b0adf169e682e19c955d0cd73c29" category="list-text">Cree un espacio de nombres para el operador Astra Connector.</block>
-  <block id="38da14ec20cf0841c7dc45fab0adbf07" category="list-text">Aplique el<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> archivo en el espacio de nombres del operador.</block>
-  <block id="48812784c9e7b02bc76402c5a0c3ca10" category="list-text">Cree un espacio de nombres para los componentes del clúster privado.</block>
   <block id="e36d851dc2ff79e16c7cfbbb4e4fbe97" category="inline-link">Documentación de Astra Automation</block>
   <block id="e9c498c38ce73fcff282ff152abd7d47" category="list-text">Genere un token de API de control Astra utilizando las instrucciones del<block ref="c02899be0babfb1350e3b2576a6e8c97" category="inline-link-rx"></block>.</block>
-  <block id="f831baeb7ae8c560addc2916d8b1096e" category="list-text">Aplique la definición de recurso personalizado de Astra Connector (CRD).</block>
-  <block id="138db2318815f6b9fc7cc55dd6a6ad32" category="list-text">Compruebe el estado del conector Astra.</block>
   <block id="61ddd26ba79b5e63c1e52be1beb28889" category="section-title">Configure el almacenamiento persistente</block>
   <block id="5a86157a3052fc9bb31e17ca06630acf" category="summary">Astra Control Service es un servicio gestionado por NetApp que proporciona gestión de datos para aplicaciones de clústeres de Kubernetes en múltiples entornos de cloud. Vaya a los documentos de Astra Control Center si necesita gestionar las aplicaciones de Kubernetes que se ejecutan en su entorno local.</block>
   <block id="1c90591655cdfe7d885b02ed72ae2509" category="summary">NetApp ofrece compatibilidad con Astra Control de varias formas. Hay disponibles amplias opciones de soporte gratuito las 24 horas del día, los 7 días de la semana, como artículos de la base de conocimiento (KB) y un canal Discord. Su cuenta de Astra Control incluye soporte técnico remoto mediante emisión de boletos web.</block>
@@ -2225,4 +2220,8 @@ RKE 2 (v1,24.x) con Rancher 2,7</block>
   <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="3c873407a87c44620e1fc922d17cba7d" category="list-text">Aplique el<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> archivo. Cuando ejecuta este comando, se crea el espacio de nombres correcto para el operador Astra Connector y la configuración se aplica al espacio de nombres:</block>
+  <block id="40fcdcafdc66ab23541a6bf36b499c0f" category="list-text">Cree un espacio de nombres para los componentes del clúster privado:</block>
+  <block id="f285f679ba0c90d91ce807d87ad3a50e" category="list-text">Aplique la definición de recursos personalizados (CRD) de Astra Connector:</block>
+  <block id="c642f3e0823bc0255f23532494f80829" category="list-text">Compruebe el estado de Astra Connector:</block>
 </blocks>
