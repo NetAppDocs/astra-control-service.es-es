@@ -2224,4 +2224,5 @@ RKE 2 (v1,24.x) con Rancher 2,7</block>
   <block id="40fcdcafdc66ab23541a6bf36b499c0f" category="list-text">Cree un espacio de nombres para los componentes del clúster privado:</block>
   <block id="f285f679ba0c90d91ce807d87ad3a50e" category="list-text">Aplique la definición de recursos personalizados (CRD) de Astra Connector:</block>
   <block id="c642f3e0823bc0255f23532494f80829" category="list-text">Compruebe el estado de Astra Connector:</block>
+  <block id="dce58385777428b5d9a30460fe36730a" category="list-text">Si va a agregar el clúster mediante un archivo kubeconfig que hace referencia a una entidad de certificación (CA) privada, agregue la siguiente línea al<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> sección del archivo kubeconfig. Esto permite a Astra Control añadir el clúster:</block>
 </blocks>

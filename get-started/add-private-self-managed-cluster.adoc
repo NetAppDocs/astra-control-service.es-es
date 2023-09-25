@@ -200,6 +200,12 @@ Su clúster autogestionado debe cumplir con los siguientes requisitos:
 * No se puede alojar el clúster en su red local; debe alojarse en un entorno de cloud público.
 * Si está utilizando o planea utilizar almacenamiento habilitado con controladores CSI, se deben instalar los controladores CSI adecuados en el clúster. Para obtener más información sobre el uso de los controladores CSI para integrar el almacenamiento, consulte la documentación del servicio de almacenamiento.
 * Tiene acceso al archivo kubeconfig de cluster que incluye solo un elemento de contexto. Siga link:create-kubeconfig.html["estas instrucciones"^] para generar un archivo kubeconfig.
+* Si va a agregar el clúster mediante un archivo kubeconfig que hace referencia a una entidad de certificación (CA) privada, agregue la siguiente línea al `cluster` sección del archivo kubeconfig. Esto permite a Astra Control añadir el clúster:
++
+[listing]
+----
+insecure-skip-tls-verify: true
+----
 * *Sólo rancher*: Al administrar clústeres de aplicaciones en un entorno Rancher, modifique el contexto predeterminado del clúster de aplicaciones en el archivo kubeconfig proporcionado por Rancher para utilizar un contexto de plano de control en lugar del contexto del servidor API Rancher. Esto reduce la carga en el servidor API de Rancher y mejora el rendimiento.
 * *Astra Trident*: Si estás usando o planeas usar el almacenamiento de NetApp, asegúrate de haber instalado la última versión de Astra Trident. Si Astra Trident ya está instalado, link:check-astra-trident-version.html["compruebe que es la versión más reciente"^].
 +
