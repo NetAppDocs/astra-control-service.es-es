@@ -16,6 +16,13 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 
 
 
+== 2 de octubre de 2023
+
+.Nuevas funciones y soporte
+Esta es una versión de corrección de errores menor.
+
+
+
 == 27 de julio de 2023
 
 .Nuevas funciones y soporte
