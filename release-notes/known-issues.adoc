@@ -23,6 +23,9 @@ Los siguientes problemas conocidos afectan a la versión actual:
 .Backup, restauración y clonado
 * <<Los clones de aplicaciones producen un error al utilizar una versión específica de PostgreSQL>>
 * <<Los backups de aplicaciones y las snapshots producen errores si la clase volumesnapshotse añade después de gestionar un clúster>>
+* <<Las operaciones de restauración sin movimiento a las clases de almacenamiento económico ontap-nas fallan>>
+* <<Puede producirse un error en la restauración desde un backup cuando se utiliza el cifrado en tránsito de Kerberos>>
+* <<Los datos de backup permanecen en bloque tras la eliminación de bloques con política de retención vencida>>
 
 
 .Otros temas
@@ -46,6 +49,30 @@ Los clones de aplicaciones dentro del mismo clúster fallan constantemente con e
 == Los backups de aplicaciones y las snapshots producen errores si la clase volumesnapshotse añade después de gestionar un clúster
 
 En este escenario, se produce un error de interfaz de usuario 500 en los backups y las snapshots. Como solución alternativa, actualice la lista de aplicaciones.
+
+
+
+== Las operaciones de restauración sin movimiento a las clases de almacenamiento económico ontap-nas fallan
+
+Si realiza una restauración sin movimiento de una aplicación (restaura la aplicación en su espacio de nombres original) y la clase de almacenamiento de la aplicación utiliza el `ontap-nas-economy` controlador, se puede producir un error en la operación de restauración si el directorio snapshot no está oculto. Antes de restaurar en el lugar, siga las instrucciones de link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Habilite el backup y la restauración para las operaciones económicas de ontap-nas"^] para ocultar el directorio de instantáneas.
+
+
+
+== Puede producirse un error en la restauración desde un backup cuando se utiliza el cifrado en tránsito de Kerberos
+
+Cuando se restaura una aplicación desde un backup a un back-end de almacenamiento que utiliza el cifrado en tránsito de Kerberos, se puede producir un error en la operación de restauración. Este problema no afecta a la restauración de una copia Snapshot ni a la replicación de los datos de la aplicación mediante SnapMirror de NetApp.
+
+
+NOTE: Cuando use el cifrado en tránsito de Kerberos con volúmenes NFSv4, asegúrese de que los volúmenes NFSv4 estén utilizando la configuración correcta. Consulte la sección Configuración de dominio de NetApp NFSv4 (página 13) del https://www.netapp.com/media/16398-tr-3580.pdf["Guía de mejoras y prácticas recomendadas de NetApp NFSv4"^].
+
+
+
+== Los datos de backup permanecen en bloque tras la eliminación de bloques con política de retención vencida
+
+Si elimina el backup inmutable de una aplicación después de que la política de retención del bloque haya caducado, el backup se eliminará de Astra Control, pero no del bloque. Como solución alternativa, si necesita eliminar las copias de seguridad más recientes o todas las copias de seguridad de una aplicación, elimine las copias de seguridad manualmente del entorno de administración de almacenamiento.
+
+
+NOTE: Si tiene más de una copia de seguridad para una aplicación, elimine las copias de seguridad más recientes o todas las copias de seguridad de la aplicación. Si elimina cualquier copia de seguridad incremental intermedia, no podrá recuperar la aplicación de la última copia de seguridad.
 
 
 

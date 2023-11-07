@@ -8,7 +8,7 @@ summary: Estas preguntas frecuentes pueden ser de ayuda si solo está buscando u
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
-:imagesdir: ../media/
+:imagesdir: ../media/use/
 
 
 [role="lead"]
@@ -48,11 +48,11 @@ Sí. Después de actualizar al plan Premium, Astra Control empieza a cobrarle po
 
 *Me actualizé al Plan Premium PAYGO a mediados de un mes. ¿Me cobrarán por todo el mes?*
 
-No, la facturación comienza a partir de la hora en que actualizó al plan Premium.
+No La facturación comienza desde el momento en que se actualizó al plan Premium.
 
 *Estoy utilizando el Plan libre, me cobraré por las reclamaciones de volumen persistente?*
 
-Sí, estará cargado para los volúmenes persistentes que utilizan los clústeres del proveedor de cloud.
+Sí, se le cobrará por los volúmenes persistentes que utilizan los clústeres de su proveedor de cloud.
 
 
 
@@ -102,7 +102,7 @@ ifdef::gcp[]
 
 *¿Puedo añadir un clúster GKE privado al servicio Astra Control?*
 
-Sí, puede añadir clústeres GKE privados al servicio Astra Control.  Para agregar un grupo de GKE privado, consulte link:add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"].
+Sí, puede añadir clústeres GKE privados al servicio Astra Control. Para agregar un grupo de GKE privado, consulte link:add-first-cluster.html["Empiece a gestionar los clústeres de Kubernetes desde Astra Control Service"].
 
 Los grupos de GKE privados deben tener el https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept["redes autorizadas"^] Establezca esta opción para permitir la dirección IP de Astra Control:
 
@@ -110,7 +110,7 @@ Los grupos de GKE privados deben tener el https://cloud.google.com/kubernetes-en
 
 *¿Puede mi clúster GKE residir en un VPC compartido?*
 
-Sí, Astra Control puede gestionar clústeres que residen en un VPC compartido. link:set-up-google-cloud.html["Aprenda a configurar la cuenta de servicio Astra para una configuración VPC compartida"].
+Sí. Astra Control puede gestionar clústeres que residen en una VPC compartida. link:set-up-google-cloud.html["Aprenda a configurar la cuenta de servicio Astra para una configuración VPC compartida"].
 
 *¿Dónde puedo encontrar mis credenciales de cuenta de servicio en GCP?*
 
@@ -192,4 +192,78 @@ Sí. Una operación de instantánea en una aplicación de Astra Control incluye 
 
 *¿Puedo gestionar las instantáneas tomadas por Astra Control directamente a través de mi proveedor de nube?*
 
-No Las copias Snapshot y las copias de seguridad realizadas por Astra Control solo se pueden gestionar con Astra Control.
+No Las copias Snapshot y los backups que realice Astra Control solo pueden gestionarse con Astra Control.
+
+
+
+== Aprovisionador de Astra Control
+
+*¿En qué se diferencian las funciones de aprovisionamiento de almacenamiento de Astra Control Provisioner de las de Astra Trident?*
+
+Astra Control Provisioning, como parte de Astra Control, es compatible con un superconjunto de funciones de aprovisionamiento de almacenamiento que no están disponibles en Astra Trident de código abierto. Estas funciones se suman a todas las funciones que están disponibles en Trident de código abierto.
+
+*¿El aprovisionador de control Astra está reemplazando a Astra Trident?*
+
+En las siguientes actualizaciones de Astra Control, Astra Control Provisioner reemplazará a Astra Trident como aprovisionador de almacenamiento y orquestador en la arquitectura de Astra Control. Por este motivo, es muy recomendable que los usuarios de Astra Control link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"]. Astra Trident seguirá siendo de código abierto y se seguirá lanzando, manteniendo, admitiendo y actualizando con las nuevas funciones CSI y otras de NetApp.
+
+*Tengo que pagar por Astra Trident?*
+
+No Astra Trident seguirá siendo de código abierto y puede descargarse gratuitamente.
+
+*¿Puedo usar las funciones de gestión y aprovisionamiento del almacenamiento en Astra Control sin instalar y usar todo Astra Control?*
+
+Sí, puede actualizar a Astra Trident 23,10 o una versión posterior y habilitar la funcionalidad de aprovisionamiento Astra Control incluso si no quiera consumir el conjunto completo de funciones de la funcionalidad de gestión de datos de Astra Control.
+
+* ¿Cómo puedo pasar de ser un usuario existente de Trident a Astra Control para usar la gestión avanzada del almacenamiento y la funcionalidad de aprovisionamiento?*
+
+Si ya eres un usuario de Trident (esto incluye usuarios de Astra Trident en la nube pública), primero debes adquirir una licencia de Astra Control. Cuando lo haga, podrá descargar el bundle de aprovisionamiento de Astra Control, actualizar Astra Trident y link:../use/enable-acp.html["Habilita la funcionalidad Astra Control Provisioner"].
+
+*¿Cómo sé si Astra Control Provisioner ha reemplazado a Astra Trident en mi clúster?*
+
+Después de instalar el aprovisionador de Astra Control, el clúster de host de la interfaz de usuario de Astra Control mostrará un `ACP version` en lugar de `Trident version` campo y núm. de versión instalada actual.
+
+image:ac-acp-version.png["Una captura de pantalla que muestra la ubicación de la versión de ACP en la interfaz de usuario de"]
+
+Si no tiene acceso a la interfaz de usuario, puede confirmar que la instalación se ha realizado correctamente mediante los siguientes métodos:
+
+[role="tabbed-block"]
+====
+.Operador Astra Trident
+--
+Compruebe el `trident-acp` container se está ejecutando y eso `acpVersion` es `23.10.0` con el estado de `Installed`:
+
+[listing]
+----
+kubectl get torc -o yaml
+----
+Respuesta:
+
+[listing]
+----
+status:
+  acpVersion: 23.10.0
+  currentInstallationParams:
+    ...
+    acpImage: <my_custom_registry>/trident-acp:v23.10.0
+    enableACP: "true"
+    ...
+  ...
+  status: Installed
+----
+--
+.tridentctl
+--
+Confirme que se ha habilitado el aprovisionador de Astra Control:
+
+[listing]
+----
+./tridentctl -n trident version
+----
+Respuesta:
+
+[listing]
+----
++----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 23.10.0 | 23.10.0 | 23.10.0. | +----------------+----------------+-------------+
+----
+--
+====

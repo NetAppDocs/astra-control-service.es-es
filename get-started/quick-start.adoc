@@ -73,7 +73,8 @@ link:set-up-microsoft-azure-with-amd.html["Obtenga más información acerca de l
 
 endif::azure[]
 
-Si va a gestionar su propio clúster y no está alojado en un proveedor de cloud, revise los requisitos de los clústeres autogestionados.link:add-first-cluster.html#start-managing-kubernetes-clusters["Obtenga más información sobre los requisitos de clúster autogestionados"].
+Si va a gestionar su propio clúster y no está alojado en un proveedor de cloud, revise los requisitos de los clústeres autogestionados.
+link:add-first-cluster.html["Obtenga más información sobre los requisitos de clúster autogestionados"].
 
 
 

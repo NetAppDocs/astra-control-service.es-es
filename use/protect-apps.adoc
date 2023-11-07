@@ -21,6 +21,8 @@ Puede realizar las siguientes tareas relacionadas con la protección de los dato
 * <<Configure una política de protección>>
 * <<Crear una copia de Snapshot>>
 * <<Cree un backup>>
+* <<Habilite el backup y la restauración para las operaciones económicas de ontap-nas>>
+* <<Cree un backup inmutable>>
 * <<Ver Snapshot y backups>>
 * <<Eliminar snapshots>>
 * <<Cancelar backups>>
@@ -34,6 +36,9 @@ Puede realizar las siguientes tareas relacionadas con la protección de los dato
 La política de protección protege una aplicación mediante la creación de snapshots, backups o ambos con una programación definida. Puede optar por crear snapshots y backups por hora, día, semana y mes, y especificar la cantidad de copias que desea retener.
 
 Si necesita que backups o snapshots se ejecuten con más frecuencia de una vez por hora, puede hacerlo https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilice la API REST de Astra Control para crear copias Snapshot y copias de seguridad"^].
+
+
+NOTE: Si va a definir una política de protección que crea backups inmutables para escribir bloques WORM (escritura única y lectura múltiple), asegúrese de que el tiempo de retención de los backups no sea más corto que el período de retención configurado para el bloque.
 
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
@@ -65,6 +70,9 @@ Astra Control implementa la política de protección de datos mediante la creaci
 
 Puede crear una snapshot bajo demanda en cualquier momento.
 
+
+IMPORTANT: Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` controlador, no se pueden crear instantáneas. Utilice una clase de almacenamiento alternativa para las instantáneas.
+
 .Pasos
 . Seleccione *aplicaciones*.
 . En el menú Opciones de la columna *acciones* de la aplicación deseada, seleccione *Snapshot*.
@@ -90,6 +98,11 @@ Sepa cómo se maneja el espacio de almacenamiento al realizar un backup de una a
 ====
 endif::azure[]
 
+.Acerca de esta tarea
+Los buckets en Astra Control no informan sobre la capacidad disponible. Antes de realizar backups o clonar aplicaciones gestionadas por Astra Control, comprueba la información del bucket en el sistema de administración del almacenamiento correspondiente.
+
+Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` conductor, usted necesita <<Habilite el backup y la restauración para las operaciones económicas de ontap-nas,habilite el backup y la restauración>> funcionalidad. Asegúrese de que ha definido un `backendType` parámetro en la https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objeto de almacenamiento de Kubernetes"^] con un valor de `ontap-nas-economy` antes de ejecutar cualquier operación de protección.
+
 .Pasos
 . Seleccione *aplicaciones*.
 . En el menú Opciones de la columna *acciones* de la aplicación deseada, seleccione *copia de seguridad*.
@@ -103,14 +116,135 @@ endif::azure[]
 .Resultado
 Astra Control crea una copia de seguridad de la aplicación.
 
+[NOTE]
+====
+* Si la red tiene una interrupción del servicio o es anormalmente lenta, es posible que se agote el tiempo de espera de una operación de backup. Esto provoca un error en el backup.
+* Si necesita cancelar una copia de seguridad en ejecución, utilice las instrucciones de <<Cancelar backups>>. Para eliminar la copia de seguridad, espere hasta que haya finalizado y, a continuación, utilice las instrucciones de <<Eliminar backups>>.
+* Después de una operación de protección de datos (clonado, backup, restauración) y un cambio de tamaño posterior de volumen persistente, se demora hasta veinte minutos antes de que se muestre el tamaño del nuevo volumen en la interfaz de usuario. La operación de protección de datos se realiza correctamente en cuestión de minutos, y se puede utilizar el software de gestión para el back-end de almacenamiento para confirmar el cambio de tamaño del volumen.
 
-NOTE: Si necesita cancelar una copia de seguridad en ejecución, utilice las instrucciones de <<Cancelar backups>>. Para eliminar la copia de seguridad, espere hasta que haya finalizado y, a continuación, utilice las instrucciones de <<Eliminar backups>>.
 
+====
+
+
+== Habilite el backup y la restauración para las operaciones económicas de ontap-nas
+
+Astra Control Provisioning ofrece funcionalidad de backup y restauración que puede habilitarse para los back-ends de almacenamiento que utilicen el `ontap-nas-economy` clase de almacenamiento.
+
+.Antes de empezar
+* Habilitó el aprovisionador de Astra Control.
+* Has definido una aplicación en Astra Control. Esta aplicación tendrá funcionalidad de protección limitada hasta que complete este procedimiento.
+* Ya tienes `ontap-nas-economy` se ha seleccionado como la clase de almacenamiento predeterminada para el back-end del almacenamiento.
+
+
+.Expanda para obtener pasos de configuración
+[%collapsible]
+====
+. Realice lo siguiente en el back-end de almacenamiento de ONTAP:
++
+.. Busque la SVM donde aloja el `ontap-nas-economy`-basado en volúmenes de la aplicación.
+.. Inicie sesión en un terminal conectado a ONTAP donde se crean los volúmenes.
+.. Oculte el directorio de snapshots para la SVM:
++
+
+NOTE: Este cambio afecta a toda la SVM. El directorio oculto seguirá siendo accesible.
+
++
+[source, console]
+----
+nfs modify -vserver <svm name> -v3-hide-snapshot enabled
+----
++
+
+IMPORTANT: Compruebe que el directorio de snapshots del back-end de almacenamiento de ONTAP esté oculto. Si no se oculta este directorio, se puede perder el acceso a la aplicación, especialmente si se utiliza NFSv3.
+
+
+
+. Haga lo siguiente en Astra Trident:
++
+.. Habilite el directorio snapshot para cada VP basado en ontap-nas y asociado con la aplicación:
++
+[source, console]
+----
+tridentctl update volume <pv name> --snapshot-dir=true --pool-level=true -n trident
+----
+.. Confirme que el directorio de snapshots se haya habilitado para cada VP asociado:
++
+[source, console]
+----
+tridentctl get volume <pv name> -n trident -o yaml | grep snapshotDir
+----
++
+Respuesta:
+
++
+[listing]
+----
+snapshotDirectory: "true"
+----
+
+
+. En Astra Control, actualiza la aplicación después de habilitar todos los directorios Snapshot asociados para que Astra Control reconozca el valor modificado.
+
+
+.Resultado
+La aplicación está lista para realizar backups y restauraciones con Astra Control. Otras aplicaciones también pueden utilizar cada RVP para realizar backups y restauraciones de datos.
+
+====
+
+
+== Cree un backup inmutable
+
+No se puede modificar, eliminar ni sobrescribir una copia de seguridad inmutable siempre que la política de retención del depósito que almacena la copia de seguridad la prohíba. Puede crear backups inmutables mediante el backup de aplicaciones en bloques que tengan configurada una política de retención. Consulte link:../learn/data-protection.html#immutable-backups["Protección de datos"^] para obtener información importante sobre cómo trabajar con backups inmutables.
+
+.Antes de empezar
+Debe configurar el bucket de destino con una política de retención. La forma de hacerlo variará en función del proveedor de almacenamiento que utilice. Consulte la documentación del proveedor de almacenamiento para obtener más información:
+
+* *Amazon Web Services*: https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-console.html["Habilite S3 Object Lock al crear el bloque y establezca un modo de retención predeterminado de «gobierno» con un período de retención predeterminado"^].
+* *Google Cloud*: https://cloud.google.com/storage/docs/using-bucket-lock["Configure un depósito con una política de retención y especifique un período de retención"^].
+* *Microsoft Azure*: https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-container-scope?tabs=azure-portal["Configure un depósito de almacenamiento BLOB con una política de retención basada en tiempo en el ámbito de nivel de contenedor"^].
+* *NetApp StorageGRID*: https://docs.netapp.com/us-en/storagegrid-117/tenant/creating-s3-bucket.html["Habilite S3 Object Lock al crear el bloque y establezca un modo de retención predeterminado de «cumplimiento» con un período de retención predeterminado"^].
+
+
+
+NOTE: Los buckets en Astra Control no informan sobre la capacidad disponible. Antes de realizar backups o clonar aplicaciones gestionadas por Astra Control, comprueba la información del bucket en el sistema de administración del almacenamiento correspondiente.
+
+
+IMPORTANT: Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` controlador, asegúrese de que ha definido un `backendType` parámetro en la https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objeto de almacenamiento de Kubernetes"^] con un valor de `ontap-nas-economy` antes de ejecutar cualquier operación de protección.
+
+.Pasos
+. Seleccione *aplicaciones*.
+. En el menú Opciones de la columna *acciones* de la aplicación deseada, seleccione *copia de seguridad*.
+. Personalice el nombre del backup.
+. Elija si desea realizar una copia de seguridad de la aplicación desde una instantánea existente. Si selecciona esta opción, puede elegir entre una lista de snapshots existentes.
+. Seleccione un bucket de destino para el backup en la lista de bloques de almacenamiento. Se indica un depósito de escritura única y lectura múltiple (WORM) con el estado «bloqueado» junto al nombre del depósito.
++
+
+NOTE: Si el depósito es de tipo no admitido, se indica cuando pasa el ratón por encima o selecciona el depósito.
+
+. Seleccione *Siguiente*.
+. Revise el resumen de copia de seguridad y seleccione *copia de seguridad*.
+
+
+.Resultado
+Astra Control crea un backup inmutable de la aplicación.
+
+[NOTE]
+====
+* Si la red tiene una interrupción del servicio o es anormalmente lenta, es posible que se agote el tiempo de espera de una operación de backup. Esto provoca un error en el backup.
+* Si intentas crear dos backups inmutables de la misma aplicación en el mismo bloque a la vez, Astra Control impide que se inicie el segundo backup. Espere hasta que se complete la primera copia de seguridad antes de iniciar otra.
+* No es posible cancelar una copia de seguridad inmutable en ejecución.
+* Después de una operación de protección de datos (clonado, backup, restauración) y un cambio de tamaño posterior de volumen persistente, se demora hasta veinte minutos antes de que se muestre el tamaño del nuevo volumen en la interfaz de usuario. La operación de protección de datos se realiza correctamente en cuestión de minutos, y se puede utilizar el software de gestión para el back-end de almacenamiento para confirmar el cambio de tamaño del volumen.
+
+
+====
 
 
 == Ver Snapshot y backups
 
 Puede ver las instantáneas y las copias de seguridad de una aplicación desde la pestaña Data Protection.
+
+
+NOTE: Se indica una copia de seguridad inmutable con el estado «Locked» junto al bloque que está utilizando.
 
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
@@ -146,6 +280,9 @@ Es posible cancelar una copia de seguridad que esté en curso.
 
 TIP: Para cancelar una copia de seguridad, la copia de seguridad debe estar en `Running` estado. No puede cancelar una copia de seguridad que esté en `Pending` estado.
 
+
+NOTE: No es posible cancelar una copia de seguridad inmutable en ejecución.
+
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.
 . Seleccione *Protección de datos*.
@@ -162,6 +299,9 @@ Elimine los backups programados o bajo demanda que ya no necesita.
 
 
 NOTE: Si necesita cancelar una copia de seguridad en ejecución, utilice las instrucciones de <<Cancelar backups>>. Para eliminar la copia de seguridad, espere hasta que haya finalizado y, a continuación, utilice estas instrucciones.
+
+
+NOTE: No se puede eliminar un backup inmutable antes de que caduque el período de retención.
 
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.

@@ -16,6 +16,44 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 
 
 
+== 7 de noviembre de 2023
+
+[[nas-eco-backup-restore]]
+.Nuevas funciones y soporte
+* * Capacidades de copia de seguridad y restauración para aplicaciones con backends de almacenamiento respaldados por controladores de economía ontap-nas*: Permite operaciones de copia de seguridad y restauración para `ontap-nas-economy` con algunos link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["sencillos pasos"^].
+* *Soporte de Astra Control Service para clústeres locales de Red Hat OpenShift Container Platform*
++
+link:../use/restore-apps.html["Añadir un clúster"^]
+
+* *Copias de seguridad inmutables*: Astra Control ahora es compatible link:../concepts/data-protection.html#immutable-backups["backups de solo lectura que se pueden modificar"^] como capa de seguridad adicional contra el malware y otras amenazas.
+* *Presentamos Astra Control Provisionador*
++
+Con el lanzamiento 23,10, Astra Control introduce un nuevo componente de software llamado Astra Control Provisioning que estará disponible para todos los usuarios con licencia de Astra Control. Astra Control Provisioning ofrece acceso a un superconjunto de funciones avanzadas de aprovisionamiento de almacenamiento y gestión más allá de las que ofrece Astra Trident. Estas funciones están disponibles para todos los clientes de Astra Control sin coste adicional.
+
++
+** *Empieza con Astra Control Provisioner*
+Puede hacerlo link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"^] Si ha instalado y configurado su entorno de modo que utilice Astra Trident 23,10.
+** *La funcionalidad de Astra Control Provisionador*
++
+Las siguientes funciones están disponibles en la versión Astra Control Provisioner 23,10:
+
++
+*** * Seguridad de backend de almacenamiento mejorada con cifrado Kerberos 5*: Puede mejorar la seguridad del almacenamiento link:../use-acp/configure-storage-backend-encryption.html["habilitar cifrado"^] para el tráfico entre el clúster gestionado y el back-end de almacenamiento. El aprovisionador de control de Astra admite el cifrado Kerberos 5 a través de conexiones NFSv4,1 GbE desde clústeres de Red Hat OpenShift a Azure NetApp Files y volúmenes ONTAP en las instalaciones.
+*** *Recuperar datos usando una instantánea*: Astra Control Provisioner proporciona una restauración de volumen rápida y en el lugar desde una instantánea usando el `TridentActionSnapshotRestore` (TASR) CR.
+*** * Capacidades de copia de seguridad y restauración para aplicaciones con `ontap-nas-economy` Back-ends de almacenamiento respaldados por el conductor*: Como se describe <<nas-eco-backup-restore,anterior>>.
+
+
+
+
+* *Soporte de Astra Control Service para Red Hat OpenShift Service en clústeres de AWS (ROSA)*
++
+link:../use/restore-apps.html["Añadir un clúster"^]
+
+* * Ganchos de ejecución desactivados por defecto*: A partir de esta versión, la funcionalidad de los ganchos de ejecución puede ser link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["activado"] o desactivado para seguridad adicional (está desactivado de forma predeterminada). Si todavía no has creado enlaces de ejecución para usarlos con Astra Control, debes hacerlo link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["active la función de enlaces de ejecución"^] para empezar a crear ganchos. Si ha creado enlaces de ejecución antes de esta versión, la funcionalidad de enlaces de ejecución permanece activada y puede utilizar los enlaces como lo haría normalmente.
+
+
+
+
 == 2 de octubre de 2023
 
 .Nuevas funciones y soporte

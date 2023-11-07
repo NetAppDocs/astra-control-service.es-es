@@ -18,7 +18,7 @@ Un enlace de ejecución es una acción personalizada que puede configurar para q
 
 == Tipos de enlaces de ejecución
 
-Astra Control admite los siguientes tipos de enlaces de ejecución, en función de cuándo se pueden ejecutar:
+Astra Control Service admite los siguientes tipos de ganchos de ejecución, según cuándo se puedan ejecutar:
 
 * Copia previa de Snapshot
 * Possnapshot
@@ -31,14 +31,12 @@ Astra Control admite los siguientes tipos de enlaces de ejecución, en función 
 
 == Filtros de gancho de ejecución
 
-Al agregar o editar un enlace de ejecución a una aplicación, puede agregar filtros a un enlace de ejecución para gestionar qué contenedores coincidirán el gancho. Los filtros son útiles para aplicaciones que usan la misma imagen de contenedor en todos los contenedores, pero pueden usar cada imagen para un propósito diferente (como Elasticsearch). Los filtros permiten crear escenarios en los que los enlaces de ejecución se ejecutarán en algunos de esos contenedores idénticos, pero no necesariamente en todos ellos. Si crea varios filtros para un único enlace de ejecución, se combinan con un operador y lógico. Puede tener hasta 10 filtros activos por gancho de ejecución.
+Al agregar o editar un enlace de ejecución a una aplicación, puede agregar filtros a un enlace de ejecución para gestionar los contenedores que coincidirá el enlace. Los filtros son útiles para aplicaciones que usan la misma imagen de contenedor en todos los contenedores, pero pueden usar cada imagen para un propósito diferente (como Elasticsearch). Los filtros le permiten crear escenarios donde los enlaces de ejecución se ejecutan en algunos, pero no necesariamente todos los contenedores idénticos. Si crea varios filtros para un único enlace de ejecución, se combinan con un operador y lógico. Puede tener hasta 10 filtros activos por gancho de ejecución.
 
-Cada filtro que agregue a un enlace de ejecución utiliza una expresión regular para hacer coincidir los contenedores del clúster. Cuando un gancho coincide con un contenedor, el gancho ejecutará su script asociado en ese contenedor.
+Cada filtro que agregue a un enlace de ejecución utiliza una expresión regular para hacer coincidir los contenedores del clúster. Cuando un gancho coincide con un contenedor, el gancho ejecutará su script asociado en ese contenedor. Las expresiones regulares para los filtros utilizan la sintaxis expresión regular 2 (RE2), que no admite la creación de un filtro que excluye contenedores de la lista de coincidencias. Para obtener información sobre la sintaxis que admite Astra Control para las expresiones regulares en los filtros de enlace de ejecución, consulte https://github.com/google/re2/wiki/Syntax["Soporte de sintaxis de expresión regular 2 (RE2)"^].
 
 
-NOTE: Las expresiones regulares para los filtros utilizan la sintaxis expresión regular 2 (RE2), que no admite la creación de un filtro que excluye contenedores de la lista de coincidencias.
-
-Para obtener información sobre la sintaxis que admite Astra Control para las expresiones regulares en los filtros de enlace de ejecución, consulte https://github.com/google/re2/wiki/Syntax["Soporte de sintaxis de expresión regular 2 (RE2)"^].
+NOTE: Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
 
 
 
@@ -48,9 +46,17 @@ Tenga en cuenta lo siguiente al planificar enlaces de ejecución para sus aplica
 
 [NOTE]
 ====
-Puesto que los enlaces de ejecución a menudo reducen o desactivan por completo la funcionalidad de la aplicación con la que se ejecutan, siempre debe intentar minimizar el tiempo que tardan los enlaces de ejecución personalizados. Si inicia una operación de copia de seguridad o de instantánea con los enlaces de ejecución asociados pero, a continuación, la cancela, los ganchos pueden ejecutarse si ya se ha iniciado la operación de copia de seguridad o de Snapshot. Esto significa que la lógica utilizada en un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado.
+Debido a que los enlaces de ejecución a menudo reducen o desactivan por completo la funcionalidad de la aplicación con la que se ejecutan, siempre debe intentar minimizar el tiempo que tardan los enlaces de ejecución personalizados.
+Si inicia una operación de copia de seguridad o de instantánea con los enlaces de ejecución asociados pero, a continuación, la cancela, los ganchos pueden ejecutarse si ya se ha iniciado la operación de copia de seguridad o de Snapshot. Esto significa que la lógica utilizada en un enlace de ejecución posterior a la copia de seguridad no puede suponer que la copia de seguridad se ha completado.
 
 ====
+* La función de enlaces de ejecución está deshabilitada de forma predeterminada para las nuevas implementaciones de Astra Control.
++
+** Debe activar la función de enlaces de ejecución antes de poder utilizar los enlaces de ejecución.
+** Los usuarios propietario o administrador pueden habilitar o deshabilitar la función de enlaces de ejecución para todos los usuarios definidos en la cuenta de Astra Control actual. Consulte <<Active la función de enlaces de ejecución>> y.. <<Desactive la función de enlaces de ejecución>> si desea obtener instrucciones.
+** El estado de habilitación de la función se preserva durante las actualizaciones de Astra Control.
+
+
 * Un enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Muchos enlaces de ejecución pueden hacer referencia al mismo script.
 * Astra Control requiere que las secuencias de comandos que utilizan los enlaces de ejecución se escriban en el formato de secuencias de comandos de shell ejecutables.
 * El tamaño del script está limitado a 96 KB.
@@ -58,8 +64,7 @@ Puesto que los enlaces de ejecución a menudo reducen o desactivan por completo 
 * Todos los fallos del enlace de ejecución son fallos de software; otros ganchos y la operación de protección de datos se siguen intentando incluso si falla un gancho. Sin embargo, cuando falla un gancho, se registra un suceso de advertencia en el registro de eventos de la página *Activity*.
 * Para crear, editar o eliminar enlaces de ejecución, debe ser un usuario con permisos de propietario, administrador o miembro.
 * Si un enlace de ejecución tarda más de 25 minutos en ejecutarse, el enlace fallará, creando una entrada de registro de eventos con un código de retorno de "N/A". Se agotará el tiempo de espera de todas las instantáneas afectadas y se marcarán como errores, con una entrada de registro de eventos resultante que tenga en cuenta el tiempo de espera.
-* Para las operaciones de protección de datos ad hoc, todos los eventos de enlace se generan y guardan en el registro de eventos de la página *actividad*. Sin embargo, en el caso de las operaciones de protección de datos programadas, solo se registran los eventos de fallo de enlace en el registro de eventos (los eventos generados por las propias operaciones de protección de datos programadas aún se registran).
-* Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
+* Para las operaciones de protección de datos ad hoc, todos los eventos de enlace se generan y guardan en el registro de eventos de la página *Actividad*. Sin embargo, en el caso de las operaciones de protección de datos programadas, solo se registran los eventos de fallo de enlace en el registro de eventos (los eventos generados por las propias operaciones de protección de datos programadas aún se registran).
 
 
 
@@ -73,7 +78,7 @@ Cuando se ejecuta una operación de protección de datos, los eventos de enlace 
 . Los enlaces de ejecución de post-operación personalizados aplicables se ejecutan en los contenedores adecuados. Puede crear y ejecutar tantos enlaces de post-operación personalizados como necesite, pero el orden de ejecución de estos enlaces después de la operación no está garantizado ni configurable.
 
 
-Si crea varios enlaces de ejecución del mismo tipo (por ejemplo, presnapshot), no se garantiza el orden de ejecución de esos enlaces. Sin embargo, el orden de ejecución de ganchos de diferentes tipos está garantizado. Por ejemplo, el orden de ejecución de una configuración que tiene los cinco tipos diferentes de ganchos sería así:
+Si crea varios enlaces de ejecución del mismo tipo (por ejemplo, presnapshot), no se garantiza el orden de ejecución de esos enlaces. Sin embargo, el orden de ejecución de ganchos de diferentes tipos está garantizado. Por ejemplo, el orden de ejecución de una configuración que tiene todos los diferentes tipos de ganchos se vería así:
 
 . Ganchos de precopia de seguridad ejecutados
 . Ganchos presnapshot ejecutados
@@ -151,6 +156,41 @@ Visite la https://github.com/NetApp/Verda["Proyecto Verda GitHub de NetApp"] Par
 
 
 
+== Active la función de enlaces de ejecución
+
+Si es un usuario propietario o administrador, puede activar la función de enlaces de ejecución. Cuando habilita la función, todos los usuarios definidos en esta cuenta de Astra Control pueden usar ganchos de ejecución y ver los ganchos de ejecución y los scripts de enlace existentes.
+
+.Pasos
+. Vaya a *aplicaciones* y seleccione el nombre de una aplicación administrada.
+. Seleccione la ficha *ganchos de ejecución*.
+. Seleccione *Enable execution hooks*.
++
+Aparece la pestaña *Cuenta* > *Ajustes de función*.
+
+. En el panel * Ganchos de ejecución *, seleccione el menú de configuración.
+. Selecciona *Activar*.
+. Observe la advertencia de seguridad que aparece.
+. Seleccione *Sí, habilite los ganchos de ejecución*.
+
+
+
+
+== Desactive la función de enlaces de ejecución
+
+Si eres un usuario propietario o administrador, puedes deshabilitar la función de enlaces de ejecución para todos los usuarios definidos en esta cuenta de Astra Control. Debe suprimir todos los enlaces de ejecución existentes antes de desactivar la función de enlaces de ejecución. Consulte <<Eliminar un gancho de ejecución>> para obtener instrucciones sobre cómo eliminar un enlace de ejecución existente.
+
+.Pasos
+. Vaya a *Cuenta* y luego seleccione la pestaña *Ajustes de función*.
+. Seleccione la ficha *ganchos de ejecución*.
+. En el panel * Ganchos de ejecución *, seleccione el menú de configuración.
+. Seleccione *Desactivar*.
+. Observe la advertencia que aparece.
+. Tipo `disable` para confirmar que desea deshabilitar la función para todos los usuarios.
+. Seleccione *Sí, desactivar*.
+
+
+
+
 == Ver los enlaces de ejecución existentes
 
 Puede ver los enlaces de ejecución personalizados existentes para una aplicación.
@@ -181,9 +221,10 @@ En esta página puede ver una lista de los scripts cargados existentes. La colum
 
 == Agregar un script
 
-Cada enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Puede agregar una o más secuencias de comandos a las que puedan hacer referencia los enlaces de ejecución. Muchos enlaces de ejecución pueden hacer referencia a la misma secuencia de comandos; esto permite actualizar muchos enlaces de ejecución sólo cambiando una secuencia de comandos.
+Cada enlace de ejecución debe utilizar una secuencia de comandos para realizar acciones. Puede agregar una o más secuencias de comandos a las que puedan hacer referencia los enlaces de ejecución. Muchos ganchos de ejecución pueden hacer referencia al mismo script; esto le permite actualizar muchos ganchos de ejecución cambiando solo un script.
 
 .Pasos
+. Asegúrese de que la función de enlaces de ejecución es <<Active la función de enlaces de ejecución,activado>>.
 . Vaya a *cuenta*.
 . Seleccione la ficha *Scripts*.
 . Seleccione *Agregar*.
@@ -234,12 +275,13 @@ NOTE: Si la secuencia de comandos está asociada con uno o más enlaces de ejecu
 
 == Cree un enlace de ejecución personalizado
 
-Puede crear un enlace de ejecución personalizado para una aplicación. Consulte <<Ejemplos de gancho de ejecución>> para ejemplos de gancho. Necesita tener permisos de propietario, administrador o miembro para crear enlaces de ejecución.
+Puedes crear un gancho de ejecución personalizado para una aplicación y añadirlo a Astra Control. Consulte <<Ejemplos de gancho de ejecución>> para ejemplos de gancho. Necesita tener permisos de propietario, administrador o miembro para crear enlaces de ejecución.
 
 
 NOTE: Cuando cree un script de shell personalizado para utilizarlo como un enlace de ejecución, recuerde especificar el shell adecuado al principio del archivo, a menos que esté ejecutando comandos específicos o proporcionando la ruta completa a un ejecutable.
 
 .Pasos
+. Asegúrese de que la función de enlaces de ejecución es <<Active la función de enlaces de ejecución,activado>>.
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
 . Seleccione la ficha *ganchos de ejecución*.
 . Seleccione *Agregar*.

@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: use/restore-apps.html 
-keywords: restore app, restoring an app, restore an app, restore, migrate storage class 
-summary: Astra Control puede restaurar la configuración de sus aplicaciones y el almacenamiento persistente a partir de una copia Snapshot o una copia de seguridad. Los backups de almacenamiento persistente se transfieren del almacén de objetos, por lo que la restauración a partir de un backup existente se completará con la más rápida. 
+keywords: restore app, restoring an app, restore an app, restore, ontap-nas-economy, disruptive, migration 
+summary: Astra Control puede restaurar la configuración de sus aplicaciones y el almacenamiento persistente a partir de una copia Snapshot o una copia de seguridad. Los backups de almacenamiento persistente se transfieren desde su almacén de objetos, de modo que la restauración a partir de un backup existente se completa lo más rápido. 
 ---
 = Restaurar aplicaciones
 :hardbreaks:
@@ -17,10 +17,11 @@ Astra Control puede restaurar su aplicación a partir de una instantánea o una 
 
 NOTE: Si se agrega un filtro de espacio de nombres a un enlace de ejecución que se ejecuta después de una operación de restauración o clonado y el origen y destino de la restauración o clonado se encuentran en diferentes espacios de nombres, el filtro de espacio de nombres solo se aplica al espacio de nombres de destino.
 
-.Acerca de esta tarea
-* *Proteja sus aplicaciones primero*: Se recomienda encarecidamente que tome una instantánea o una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup en el caso de que la restauración no se realice correctamente.
+.Antes de empezar
+* *Proteja sus aplicaciones primero*: Se recomienda encarecidamente que tome una instantánea o una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup si la restauración no se realiza correctamente.
 * *Comprobar volúmenes de destino*: Si restaura a una clase de almacenamiento diferente, asegúrese de que la clase de almacenamiento utilice el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany). Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente. Por ejemplo, si el volumen persistente de origen utiliza el modo de acceso RWX, seleccionando una clase de almacenamiento de destino que no pueda proporcionar RWX, como Azure Managed Disks, AWS EBS, Google Persistent Disk o. `ontap-san`, hará que falle la operación de restauración. Para obtener más información sobre los modos de acceso a volúmenes persistentes, consulte la https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes["Kubernetes"^] documentación.
 * *Planificar necesidades de espacio*: Cuando se realiza una restauración in situ de una aplicación que utiliza almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.
+* *(Solo controlador económico de ontap-nas) Copias de seguridad y restauraciones*: Antes de realizar copias de seguridad o restaurar una aplicación que utiliza una clase de almacenamiento respaldada por el `ontap-nas-economy` controlador, compruebe que el link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["El directorio Snapshot del sistema de administración de almacenamiento de ONTAP está oculto"]. Si no se oculta este directorio, se puede perder el acceso a la aplicación, especialmente si se utiliza NFSv3.
 
 
 [CAUTION]
@@ -92,7 +93,7 @@ Astra Control restaura la aplicación en función de la información proporciona
 NOTE: Después de una operación de protección de datos (clonado, backup o restauración) y un posterior tamaño de volumen persistente, se produce un retraso de hasta veinte minutos antes de que se muestre el tamaño del nuevo volumen en la interfaz de usuario web. La operación de protección de datos se realiza correctamente en cuestión de minutos, y se puede utilizar el software de gestión para el back-end de almacenamiento para confirmar el cambio de tamaño del volumen.
 
 
-NOTE: Cualquier usuario miembro con restricciones de espacio de nombres por nombre/ID de espacio de nombres o por etiquetas de espacio de nombres puede clonar o restaurar una aplicación en un nuevo espacio de nombres en el mismo clúster o en cualquier otro clúster de la cuenta de su organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Después de crear un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar las restricciones de la cuenta de usuario miembro y actualizar las restricciones de roles para que el usuario afectado conceda acceso al nuevo espacio de nombres.
+NOTE: Cualquier usuario miembro con restricciones de espacio de nombres por nombre/ID de espacio de nombres o por etiquetas de espacio de nombres puede clonar o restaurar una aplicación en un nuevo espacio de nombres en el mismo clúster o en cualquier otro clúster de la cuenta de su organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Después de que una operación de clonado o restauración crea un nuevo espacio de nombres, el administrador/propietario de la cuenta puede editar la cuenta de usuario miembro y actualizar las restricciones de roles para el usuario afectado a fin de otorgar acceso al nuevo espacio de nombres.
 
 
 

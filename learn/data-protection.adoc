@@ -39,6 +39,24 @@ NOTE: Si realiza una copia de Snapshot o una copia de seguridad, pero se produce
 
 
 
+=== Backups inmutables
+
+Astra Control Service admite la creación de backups inmutables con las siguientes plataformas y tipos de bloques:
+
+* Amazon Web Services con un bucket de Amazon S3 con S3 Object Lock configurado
+* Microsoft Azure mediante un bucket de Azure con una política de retención configurada
+* Google Kubernetes Engine (GKE) mediante un depósito de Google Cloud Storage con una política de retención configurada
+* NetApp StorageGRID con un bloque de S3 con bloqueo de objetos de S3 GB configurado
+
+
+Tenga en cuenta lo siguiente cuando trabaje con copias de seguridad inmutables:
+
+* Si realiza una copia de seguridad de un bucket WORM en una plataforma no compatible o en un tipo de bucket no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.
+* Astra Control no admite políticas de gestión del ciclo de vida de los datos ni la eliminación manual de objetos en los bloques que utilizas con backups inmutables. Asegúrate de que el back-end de almacenamiento no esté configurado para gestionar el ciclo de vida de las copias Snapshot de Astra Control o de los datos que se han realizado backups.
+
+
+
+
 == Clones
 
 Un _clone_ es un duplicado exacto de una aplicación, su configuración y sus volúmenes de datos persistentes. Es posible crear manualmente un clon en el mismo clúster de Kubernetes o en otro clúster. El clonado de una aplicación puede ser útil si necesita mover aplicaciones y almacenamiento de un clúster de Kubernetes a otro.

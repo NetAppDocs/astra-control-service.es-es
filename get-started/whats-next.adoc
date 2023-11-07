@@ -4,7 +4,7 @@ permalink: get-started/whats-next.html
 keywords: get started, manage apps, manage account 
 summary: Ahora que ha iniciado sesión y ha añadido clústeres a Astra Control, estará listo para empezar a utilizar las funciones de gestión de datos de aplicación de Astra Control. 
 ---
-= ¿Cuál es el siguiente?
+= El futuro
 :hardbreaks:
 :allow-uri-read: 
 :icons: font

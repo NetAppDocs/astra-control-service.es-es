@@ -12,13 +12,13 @@ summary: Una vez que empiece a gestionar una aplicación, Astra Control proporci
 
 
 [role="lead"]
-Una vez que empiece a gestionar una aplicación, Astra Control proporciona información detallada sobre la aplicación que permite identificar su estado (si está en buen estado), su estado de protección (si está totalmente protegida en caso de fallo), los pods, el almacenamiento persistente y mucho más.
+Después de empezar a gestionar una aplicación, Astra Control proporciona detalles sobre la aplicación que te permiten identificar el estado de comunicación (si Astra Control puede comunicarse con la aplicación), su estado de protección (si está totalmente protegido en caso de fallo), los pods, el almacenamiento persistente y mucho más.
 
 .Pasos
 . Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.
 . Encuentre la información que busca:
 +
-Estado de la aplicación:: Proporciona un estado que refleja el estado de la aplicación en Kubernetes.
+Estado de la aplicación:: Proporciona un estado que refleja si Astra Control puede comunicarse con la aplicación.
 Estado de protección de aplicaciones:: Proporciona el estado de la protección de la aplicación:
 +
 --

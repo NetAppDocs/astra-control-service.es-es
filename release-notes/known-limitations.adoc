@@ -22,12 +22,6 @@ Las siguientes limitaciones afectan a la gestión de los clústeres de Kubernete
 
 
 
-=== Astra Trident no se desinstala de un clúster
-
-Cuando desvincula un clúster de Astra Control Service, Astra Trident no se desinstala automáticamente del clúster. Para desinstalar Astra Trident, debes hacerlo https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Siga estos pasos en la documentación de Astra Trident"^].
-
-
-
 === Las conexiones existentes a un pod Postgres provocan fallos
 
 Cuando realice operaciones en pods Postgres, no debe conectarse directamente dentro del pod para utilizar el comando psql. Astra Control Service requiere un acceso psql para congelar y descongelar las bases de datos. Si existe una conexión preexistente, se producirá un error en la snapshot, el backup o el clon.
@@ -45,14 +39,6 @@ ifdef::gcp[]
 == Limitaciones en la administración de clústeres GKE
 
 Las siguientes limitaciones se aplican a la gestión de los clústeres de Kubernetes en Google Kubernetes Engine (GKE).
-
-
-
-=== Las aplicaciones de Google Marketplace no se han validado
-
-NetApp no ha validado las aplicaciones que se pusieron en marcha desde Google Marketplace. Algunos usuarios han informado de problemas con el descubrimiento o la copia de seguridad de las aplicaciones Postgres, MariaDB y MySQL que se implementaron desde Google Marketplace.
-
-Independientemente del tipo de aplicación que utilice con Astra Control Service, siempre debe probar el flujo de trabajo de backup y restauración usted mismo para garantizar que cumple sus requisitos de recuperación ante desastres.
 
 endif::gcp[]
 
@@ -122,7 +108,7 @@ No se debe permitir que un usuario con restricciones de RBAC de espacio de nombr
 
 === Un usuario miembro con restricciones de espacio de nombres no puede acceder a las aplicaciones clonadas o restauradas hasta que un usuario Admin agregue el espacio de nombres a la restricción
 
-Cualquiera `member` El usuario con limitaciones de RBAC por nombre/ID de espacio de nombres puede clonar o restaurar una aplicación en un espacio de nombres nuevo en el mismo clúster o en cualquier otro clúster de la cuenta de la organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Cuando se crea un espacio de nombres nuevo mediante una operación de clonado o restauración, el propietario/administrador de la cuenta puede editar el `member` cuenta de usuario y restricciones de función de actualización para que el usuario afectado conceda acceso al nuevo espacio de nombres.
+Cualquiera `member` El usuario con limitaciones de RBAC por nombre/ID de espacio de nombres puede clonar o restaurar una aplicación en un espacio de nombres nuevo en el mismo clúster o en cualquier otro clúster de la cuenta de la organización. Sin embargo, el mismo usuario no puede acceder a la aplicación clonada o restaurada en el nuevo espacio de nombres. Una vez que una operación de clonado o restauración crea un nuevo espacio de nombres, el administrador/propietario de la cuenta puede editar el `member` cuenta de usuario y restricciones de función de actualización para que el usuario afectado conceda acceso al nuevo espacio de nombres.
 
 
 
