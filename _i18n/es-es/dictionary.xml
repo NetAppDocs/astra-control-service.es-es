@@ -2162,9 +2162,6 @@ RKE 2 (v1,24.x) con Rancher 2,7</block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="dce58385777428b5d9a30460fe36730a" category="list-text">Si va a agregar el clúster mediante un archivo kubeconfig que hace referencia a una entidad de certificación (CA) privada, agregue la siguiente línea al<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> sección del archivo kubeconfig. Esto permite a Astra Control añadir el clúster:</block>
   <block id="f4228b9bf977f4c9a1952ea84926975f" category="section-title">2 de octubre de 2023</block>
-  <block id="33a97eec462a14258b6a1fe63f943ec5" category="list-text">kubectl v1,25 o posterior instalado</block>
-  <block id="3b34edb55fd85d9b0636e2533b140b9f" category="list-text">Acceda con atención al clúster que pretende añadir y gestionar con Astra Control Center</block>
-  <block id="d5b7f62a909e346c0e1cd08be571c54f" category="admonition">Para este procedimiento, no necesita acceso kubectl al clúster que ejecuta Astra Control Center.</block>
   <block id="c49be33f592950e78d23dd417a4a75e5" category="list-text">Una imagen de referencia activa para el clúster que pretende gestionar con derechos de administrador del clúster para el contexto activo</block>
   <block id="565bfe8a9451afd10f3c41fe9fa4cf22" category="list-text">Cree una cuenta de servicio:</block>
   <block id="5a20342984ee9d605acb505095dbcd0a" category="list-text">Cree uno de los siguientes roles de clúster con permisos suficientes para que Astra Control gestione un clúster:</block>
@@ -2555,4 +2552,5 @@ Puede hacerlo <block ref="34554017affcf2d95a6dc49ac60c5b22" category="inline-lin
   <block id="b518803a746e06a4f19197ae81406970" category="paragraph">Si elimina el backup inmutable de una aplicación después de que la política de retención del bloque haya caducado, el backup se eliminará de Astra Control, pero no del bloque. Como solución alternativa, si necesita eliminar las copias de seguridad más recientes o todas las copias de seguridad de una aplicación, elimine las copias de seguridad manualmente del entorno de administración de almacenamiento.</block>
   <block id="f318002a693e78e0cf366be52609a528" category="admonition">Si tiene más de una copia de seguridad para una aplicación, elimine las copias de seguridad más recientes o todas las copias de seguridad de la aplicación. Si elimina cualquier copia de seguridad incremental intermedia, no podrá recuperar la aplicación de la última copia de seguridad.</block>
   <block id="03281739854e4951c0f98529e54a24f2" category="sidebar">Use el aprovisionador de Astra Control</block>
+  <block id="49219ed727d5145cd828958ebce847fa" category="list-text">kubectl v1,26 o posterior instalado</block>
 </blocks>
