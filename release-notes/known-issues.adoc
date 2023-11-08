@@ -69,10 +69,7 @@ NOTE: Cuando use el cifrado en tránsito de Kerberos con volúmenes NFSv4, aseg�
 
 == Los datos de backup permanecen en bloque tras la eliminación de bloques con política de retención vencida
 
-Si elimina el backup inmutable de una aplicación después de que la política de retención del bloque haya caducado, el backup se eliminará de Astra Control, pero no del bloque. Como solución alternativa, si necesita eliminar las copias de seguridad más recientes o todas las copias de seguridad de una aplicación, elimine las copias de seguridad manualmente del entorno de administración de almacenamiento.
-
-
-NOTE: Si tiene más de una copia de seguridad para una aplicación, elimine las copias de seguridad más recientes o todas las copias de seguridad de la aplicación. Si elimina cualquier copia de seguridad incremental intermedia, no podrá recuperar la aplicación de la última copia de seguridad.
+Si elimina el backup inmutable de una aplicación después de que la política de retención del bloque haya caducado, el backup se eliminará de Astra Control, pero no del bloque. Este problema se solucionará en una próxima versión.
 
 
 
