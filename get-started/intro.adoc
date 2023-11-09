@@ -105,9 +105,17 @@ endif::azure[]
 ** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
+* Clústeres en las instalaciones:
++
+** Sistemas ONTAP AFF y FAS de NetApp
+** ONTAP Select de NetApp
+** Cloud Volumes ONTAP
+
+
 
  a| 
 * Sistemas ONTAP AFF y FAS de NetApp
+* ONTAP Select de NetApp
 * https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
