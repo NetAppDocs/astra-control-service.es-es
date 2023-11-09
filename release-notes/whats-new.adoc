@@ -23,9 +23,9 @@ NetApp actualiza periódicamente Astra Control Service para ofrecerle nuevas fun
 * * Capacidades de copia de seguridad y restauración para aplicaciones con backends de almacenamiento respaldados por controladores de economía ontap-nas*: Permite operaciones de copia de seguridad y restauración para `ontap-nas-economy` con algunos link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["sencillos pasos"^].
 * *Soporte de Astra Control Service para clústeres locales de Red Hat OpenShift Container Platform*
 +
-link:../use/restore-apps.html["Añadir un clúster"^]
+link:../get-started/add-first-cluster.html["Añadir un clúster"^]
 
-* *Copias de seguridad inmutables*: Astra Control ahora es compatible link:../concepts/data-protection.html#immutable-backups["backups de solo lectura que se pueden modificar"^] como capa de seguridad adicional contra el malware y otras amenazas.
+* *Copias de seguridad inmutables*: Astra Control ahora es compatible link:../learn/data-protection.html#immutable-backups["backups de solo lectura que se pueden modificar"^] como capa de seguridad adicional contra el malware y otras amenazas.
 * *Presentamos Astra Control Provisionador*
 +
 Con el lanzamiento 23,10, Astra Control introduce un nuevo componente de software llamado Astra Control Provisioning que estará disponible para todos los usuarios con licencia de Astra Control. Astra Control Provisioning ofrece acceso a un superconjunto de funciones avanzadas de aprovisionamiento de almacenamiento y gestión más allá de las que ofrece Astra Trident. Estas funciones están disponibles para todos los clientes de Astra Control sin coste adicional.
@@ -47,8 +47,10 @@ Las siguientes funciones están disponibles en la versión Astra Control Provisi
 
 * *Soporte de Astra Control Service para Red Hat OpenShift Service en clústeres de AWS (ROSA)*
 +
-link:../use/restore-apps.html["Añadir un clúster"^]
+link:../get-started/add-first-cluster.html["Añadir un clúster"^]
 
+* *Soporte para la gestión de aplicaciones que utilizan almacenamiento NVMe/TCP*
+Astra Control ahora puede gestionar aplicaciones respaldadas por volúmenes persistentes que están conectados mediante NVMe/TCP.
 * * Ganchos de ejecución desactivados por defecto*: A partir de esta versión, la funcionalidad de los ganchos de ejecución puede ser link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["activado"] o desactivado para seguridad adicional (está desactivado de forma predeterminada). Si todavía no has creado enlaces de ejecución para usarlos con Astra Control, debes hacerlo link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["active la función de enlaces de ejecución"^] para empezar a crear ganchos. Si ha creado enlaces de ejecución antes de esta versión, la funcionalidad de enlaces de ejecución permanece activada y puede utilizar los enlaces como lo haría normalmente.
 
 
