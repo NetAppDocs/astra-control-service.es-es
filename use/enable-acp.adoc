@@ -12,7 +12,7 @@ summary: Habilita el aprovisionador de Astra Control para acceder a funcionalida
 
 
 [role="lead"]
-Las versiones 23,10 y posteriores de Astra Trident incluyen la opción de usar Astra Control Provisioning, que permite a los usuarios de Astra Control con licencia acceder a funcionalidades avanzadas de aprovisionamiento del almacenamiento. El aprovisionador Astra Control ofrece esta funcionalidad ampliada, además de la funcionalidad estándar basada en CSI de Astra Trident.
+Las versiones 23,10 y posteriores de Astra Trident incluyen la opción de usar Astra Control Provisioning, que permite a los usuarios de Astra Control con licencia acceder a funcionalidades avanzadas de aprovisionamiento del almacenamiento. El aprovisionador Astra Control ofrece esta funcionalidad ampliada, además de la funcionalidad estándar basada en CSI de Astra Trident. Puedes usar este procedimiento para habilitar e instalar el aprovisionador de Astra Control.
 
 Tu suscripción al servicio de Astra Control incluye automáticamente la licencia para el uso del aprovisionador de Astra Control.
 
@@ -38,9 +38,6 @@ Si ya tienes un Astra Trident sin el aprovisionador de Astra Control y quieres h
 * *Confirma que tu versión de Astra Trident se encuentra en una ventana de cuatro versiones*: Puedes realizar una actualización directa a Astra Trident 23,10 con el aprovisionador de control de Astra si tu Astra Trident está dentro de una ventana de cuatro versiones de la versión 23,10. Por ejemplo, puedes actualizar directamente de Astra Trident 22,10 a 23,10.
 * *Confirme que su clúster tiene una arquitectura de sistema AMD64*: La imagen del aprovisionador de Astra Control se proporciona en las arquitecturas de CPU AMD64 y ARM64, pero solo AMD64 es compatible con Astra Control.
 
-
-.Actualice a Astra Control Provisioner 23,10
-Si actualizaste Astra Trident a la versión 23,10, puedes usar este procedimiento para habilitar e instalar Astra Control Provisioner.
 
 .Pasos
 . Acceda al registro de imágenes de Astra Control de NetApp:
