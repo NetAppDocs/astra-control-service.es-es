@@ -30,7 +30,7 @@ Cuando realice operaciones en pods Postgres, no debe conectarse directamente den
 
 === La página Actividad muestra hasta 100.000 eventos
 
-La página Actividad de Astra Control puede mostrar hasta 100.000 eventos. Para ver todos los eventos registrados, recupere los eventos mediante link:../rest-api/api-intro.html["API REST de Astra Control"^].
+La página Actividad de Astra Control puede mostrar hasta 100.000 eventos. Para ver todos los eventos registrados, recupere los eventos mediante https://docs.netapp.com/us-en/astra-automation/["API REST de Astra Control"^].
 
 ifdef::gcp[]
 
