@@ -2554,4 +2554,7 @@ Astra Control ahora puede gestionar aplicaciones respaldadas por volúmenes pers
   <block id="00ae925249b1dcd734cdb679b48bf8f7" category="list-text">ONTAP Select de NetApp</block>
   <block id="488eba069a2619d48659ff6ffa6f538a" category="paragraph">Las versiones 23,10 y posteriores de Astra Trident incluyen la opción de usar Astra Control Provisioning, que permite a los usuarios de Astra Control con licencia acceder a funcionalidades avanzadas de aprovisionamiento del almacenamiento. El aprovisionador Astra Control ofrece esta funcionalidad ampliada, además de la funcionalidad estándar basada en CSI de Astra Trident. Puedes usar este procedimiento para habilitar e instalar el aprovisionador de Astra Control.</block>
   <block id="3296ea02e6ef8200a85b529d14dc6282" category="paragraph">La página Actividad de Astra Control puede mostrar hasta 100.000 eventos. Para ver todos los eventos registrados, recupere los eventos mediante<block ref="3f49e9a4af0b49133601252075c9bc37" category="inline-link-rx"></block>.</block>
+  <block id="164fe74cfbca9ef543331e42b891cf2c" category="list-text">NetApp MetroCluster</block>
+  <block id="cd27a1715aac859bc2a48a86ed2000c0" category="inline-link">El Longhorn</block>
+  <block id="1752f949f63eb1f41cea70be24a2a732" category="list-text"><block ref="1752f949f63eb1f41cea70be24a2a732" category="inline-link-rx"></block></block>
 </blocks>

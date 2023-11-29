@@ -100,16 +100,20 @@ endif::azure[]
 * Clústeres autogestionados:
 +
 ** Amazon EBS
-** Disco persistente de Google
 ** Discos gestionados de Azure
+** Disco persistente de Google
 ** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+** NetApp MetroCluster
+** https://longhorn.io/["El Longhorn"^]
 
 
 * Clústeres en las instalaciones:
 +
+** NetApp MetroCluster
 ** Sistemas ONTAP AFF y FAS de NetApp
 ** ONTAP Select de NetApp
-** Cloud Volumes ONTAP
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+** https://longhorn.io/["El Longhorn"^]
 
 
 
