@@ -233,7 +233,7 @@ Si piensa utilizar Cloud Volumes Service para Google Cloud como servicio de back
 La forma más sencilla de configurar Network peering es obtener los comandos gcloud directamente de Cloud Volumes Service. Los comandos se encuentran disponibles en Cloud Volumes Service al crear un nuevo sistema de archivos.
 
 .Pasos
-. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Acceda al programa Global Regions Maps de Cloud Central de NetApp"^] E identifique el tipo de servicio que usará en la región de Google Cloud en la que resida su clúster.
+. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Ve a los mapas de regiones globales de NetApp BlueXP"^] E identifique el tipo de servicio que usará en la región de Google Cloud en la que resida su clúster.
 +
 Cloud Volumes Service ofrece dos tipos de servicios: CVS y CVS-Performance. https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types["Obtenga más información sobre estos tipos de servicio"^].
 

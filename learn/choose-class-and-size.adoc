@@ -24,7 +24,7 @@ Astra Control Service puede utilizar Cloud Volumes Service para Google Cloud com
 
 === Descripción general
 
-Cloud Volumes Service for Google Cloud proporciona dos tipos de servicios: _CVS_ y _CVS-Performance_. Estos tipos de servicio son compatibles con regiones específicas de Google Cloud. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Acceda al programa Global Regions Maps de Cloud Central de NetApp"^] Para identificar el tipo de servicio compatible en la región de Google Cloud en la que residen los clústeres.
+Cloud Volumes Service for Google Cloud proporciona dos tipos de servicios: _CVS_ y _CVS-Performance_. Estos tipos de servicio son compatibles con regiones específicas de Google Cloud. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Ve a los mapas de regiones globales de NetApp BlueXP"^] Para identificar el tipo de servicio compatible en la región de Google Cloud en la que residen los clústeres.
 
 Si los clústeres de Kubernetes deben residir en una región específica, usará el tipo de servicio que se admite en esa región.
 

@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: use/log-in.html 
-keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account 
+keywords: logging in, log in, sign in, signing in, BlueXP, netapp BlueXP, user account 
 summary: Puede acceder al servicio Astra Control mediante una interfaz de usuario basada en SaaS en astra.netapp.io. 
 ---
 = Inicie sesión en el servicio Astra Control
@@ -17,10 +17,10 @@ summary: Puede acceder al servicio Astra Control mediante una interfaz de usuari
 Se puede acceder al servicio Astra Control mediante una interfaz de usuario basada en SaaS https://astra.netapp.io[].
 
 
-TIP: Puede utilizar el inicio de sesión único para iniciar sesión con credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda de Cloud Central"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
+TIP: Puede utilizar el inicio de sesión único para iniciar sesión con credenciales del directorio corporativo (identidad federada). Para obtener más información, visite la https://cloud.netapp.com/help-center["Centro de ayuda"^] Y, a continuación, seleccione *Opciones de inicio de sesión de Cloud Central*.
 
 .Antes de empezar
-* link:../get-started/register.html["Un ID de usuario de Cloud Central"].
+* link:../get-started/register.html["Un ID de usuario de BlueXP"].
 * link:../get-started/register.html["Una nueva cuenta de Astra Control"] o. link:manage-users.html["una invitación a una cuenta existente"].
 * Un navegador web compatible.
 +
@@ -30,5 +30,5 @@ Astra Control Service es compatible con las versiones recientes de Firefox, Safa
 
 .Pasos
 . Abra un explorador web y vaya a. https://astra.netapp.io[].
-. Inicie sesión con sus credenciales de Cloud Central de NetApp.
+. Inicia sesión con tus credenciales de NetApp BlueXP.
 
