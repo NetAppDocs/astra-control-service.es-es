@@ -26,12 +26,6 @@ Puede utilizar Astra Control Service para gestionar los siguientes tipos de clú
 | Distribución de Kubernetes | Versiones compatibles 
 
 
-| Azure Kubernetes Service en HCI de pila de Azure | Azure Stack HCI 21H2 y 22H2 con AKS 1,24.x y 1,25.x 
-
-
-| Anthos de Google | 1,15 hasta 1,16 
-
-
 | Kubernetes (ascendente) | 1,26 a 1,28 
 
 
@@ -42,9 +36,6 @@ RKE 2 (v1,26.x) con Rancher 2,7
 
 
 | OpenShift Container Platform de Red Hat | 4,11 hasta 4,13 
-
-
-| VMware Tanzu Kubernetes Grid Integrated Edition | 1,16. x 
 |===
 En estas instrucciones se asume que ya ha creado un clúster privado y ha preparado un método seguro para acceder de forma remota a él.
 

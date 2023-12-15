@@ -26,12 +26,6 @@ Puede utilizar Astra Control Service para gestionar los siguientes tipos de clú
 | Distribución de Kubernetes | Versiones compatibles 
 
 
-| Azure Kubernetes Service en HCI de pila de Azure | Azure Stack HCI 21H2 y 22H2 con AKS 1,23 y 1,24 
-
-
-| Anthos de Google | 1,12 hasta 1,14 
-
-
 | Kubernetes (ascendente) | 1,24 a 1,26 (se requiere Astra Trident 22,10 o posterior para Kubernetes 1,25 o posterior) 
 
 
@@ -42,12 +36,6 @@ RKE 2 (v1,24.x) con Rancher 2,7
 
 
 | OpenShift Container Platform de Red Hat | 4,10 hasta 4,12 
-
-
-| Grid de Kubernetes de VMware Tanzania | 1,6 
-
-
-| VMware Tanzu Kubernetes Grid Integrated Edition | 1,14 y 1,15 
 |===
 En estas instrucciones se asume que ya ha creado un clúster autogestionado.
 
