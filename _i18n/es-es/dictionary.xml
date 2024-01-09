@@ -2214,13 +2214,11 @@ RKE 2 (v1,26.x) con Rancher 2,7</block>
   <block id="258c9b2ecd2a4147777d96a2577bb01d" category="list-text">*Identificador de ruta privado*: Introduce el identificador de ruta privado, que puedes obtener del Astra Connector. Si consulta el Astra Connector a través del<block ref="e29c11c68aee82b23845c3b2bf3ce544" prefix=" " category="inline-code"></block> comando, el identificador de ruta privada se denomina<block ref="6205f02991df9d45acb59ccb61d7a0cb" prefix=" " category="inline-code"></block>.</block>
   <block id="1d740d5e28f5ec526ba0e21bd2c042ae" category="list-text"><block ref="d19f65bb3040b630d929eb2fd73ae249" category="inline-link-macro-rx"></block>.</block>
   <block id="615193f2c37d9fd054a61bf78b73ad01" category="section-title">Backups inmutables</block>
-  <block id="213c28884ce4a2a71120000c783fcf82" category="paragraph">Astra Control Service admite la creación de backups inmutables con las siguientes plataformas y tipos de bloques:</block>
   <block id="10c409f776da63661445303239e693a2" category="list-text">Amazon Web Services con un bucket de Amazon S3 con S3 Object Lock configurado</block>
   <block id="beef1143f09010f8bcfdc72a883e9c08" category="list-text">Microsoft Azure mediante un bucket de Azure con una política de retención configurada</block>
   <block id="a497c37cc42f059834689ec0fba7374a" category="list-text">Google Kubernetes Engine (GKE) mediante un depósito de Google Cloud Storage con una política de retención configurada</block>
   <block id="2068f70db106b56bd996eac3699fdfcf" category="list-text">NetApp StorageGRID con un bloque de S3 con bloqueo de objetos de S3 GB configurado</block>
   <block id="81a25fa8f10fc7cec301084797002d71" category="paragraph">Tenga en cuenta lo siguiente cuando trabaje con copias de seguridad inmutables:</block>
-  <block id="582c23d1f9cff824030194a7519dc569" category="list-text">Si realiza una copia de seguridad de un bucket WORM en una plataforma no compatible o en un tipo de bucket no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.</block>
   <block id="046b0dc975ab97773b3ec3307b750bf6" category="list-text">Astra Control no admite políticas de gestión del ciclo de vida de los datos ni la eliminación manual de objetos en los bloques que utilizas con backups inmutables. Asegúrate de que el back-end de almacenamiento no esté configurado para gestionar el ciclo de vida de las copias Snapshot de Astra Control o de los datos que se han realizado backups.</block>
   <block id="67fc69d0bf35fe0124a1937122bf3aec" category="summary">Puedes configurar el cifrado para proteger el tráfico entre Astra Control y tu back-end de almacenamiento.</block>
   <block id="341784bc72164a9576c48141a8457786" category="doc">Configurar el cifrado de backend de almacenamiento</block>
@@ -2552,4 +2550,7 @@ Astra Control ahora puede gestionar aplicaciones respaldadas por volúmenes pers
   <block id="00c4331aab8ed2101088511f96b6af8e" category="list-text"><block ref="f21e19b64d79b0da0ff48729d1b28669" category="inline-link-rx"></block>.</block>
   <block id="005a56f182fe268e9f6977b39114eab8" category="list-text">Instale Astra Trident con el aprovisionador de control de Astra habilitado <block ref="87d6b9737ff6f9e44e3dd25c182cf495" prefix="(" category="inline-code"></block>):</block>
   <block id="89de75d28b7402eb7cc9790aa9e4f669" category="cell">4,11 hasta 4,14</block>
+  <block id="ab25e566dd860edad27ef68f7ef5b9e7" category="paragraph">Un backup inmutable es un backup que no se puede cambiar ni eliminar durante un periodo determinado. Cuando creas un backup inmutable, Astra Control realiza una comprobación para garantizar que el bloque que utilizas sea un bloque de escritura única y lectura múltiple (WORM), y, si es así, garantiza que el backup sea inmutable desde Astra Control.
+Astra Control Service admite la creación de backups inmutables con las siguientes plataformas y tipos de bloques:</block>
+  <block id="2d0336a0c7896d90ad095dbc30578198" category="list-text">Si realiza la copia de SEGURIDAD en un bloque WORM en una plataforma no compatible o en un tipo de bloque no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.</block>
 </blocks>

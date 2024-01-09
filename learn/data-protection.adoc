@@ -41,6 +41,7 @@ NOTE: Si realiza una copia de Snapshot o una copia de seguridad, pero se produce
 
 === Backups inmutables
 
+Un backup inmutable es un backup que no se puede cambiar ni eliminar durante un periodo determinado. Cuando creas un backup inmutable, Astra Control realiza una comprobación para garantizar que el bloque que utilizas sea un bloque de escritura única y lectura múltiple (WORM), y, si es así, garantiza que el backup sea inmutable desde Astra Control.
 Astra Control Service admite la creación de backups inmutables con las siguientes plataformas y tipos de bloques:
 
 * Amazon Web Services con un bucket de Amazon S3 con S3 Object Lock configurado
@@ -51,7 +52,7 @@ Astra Control Service admite la creación de backups inmutables con las siguient
 
 Tenga en cuenta lo siguiente cuando trabaje con copias de seguridad inmutables:
 
-* Si realiza una copia de seguridad de un bucket WORM en una plataforma no compatible o en un tipo de bucket no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.
+* Si realiza la copia de SEGURIDAD en un bloque WORM en una plataforma no compatible o en un tipo de bloque no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.
 * Astra Control no admite políticas de gestión del ciclo de vida de los datos ni la eliminación manual de objetos en los bloques que utilizas con backups inmutables. Asegúrate de que el back-end de almacenamiento no esté configurado para gestionar el ciclo de vida de las copias Snapshot de Astra Control o de los datos que se han realizado backups.
 
 
