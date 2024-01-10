@@ -21,6 +21,14 @@ NOTE: Si se agrega un filtro de espacio de nombres a un enlace de ejecución que
 * *Proteja sus aplicaciones primero*: Se recomienda encarecidamente que tome una instantánea o una copia de seguridad de su aplicación antes de restaurarla. Esto le permitirá clonar desde la snapshot o backup si la restauración no se realiza correctamente.
 * *Comprobar volúmenes de destino*: Si restaura a una clase de almacenamiento diferente, asegúrese de que la clase de almacenamiento utilice el mismo modo de acceso de volumen persistente (por ejemplo, ReadWriteMany). Se producirá un error en la operación de restauración si el modo de acceso al volumen persistente de destino es diferente. Por ejemplo, si el volumen persistente de origen utiliza el modo de acceso RWX, seleccionando una clase de almacenamiento de destino que no pueda proporcionar RWX, como Azure Managed Disks, AWS EBS, Google Persistent Disk o. `ontap-san`, hará que falle la operación de restauración. Para obtener más información sobre los modos de acceso a volúmenes persistentes, consulte la https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes["Kubernetes"^] documentación.
 * *Planificar necesidades de espacio*: Cuando se realiza una restauración in situ de una aplicación que utiliza almacenamiento ONTAP de NetApp, el espacio utilizado por la aplicación restaurada puede duplicarse. Después de realizar una restauración sin movimiento, elimine las instantáneas no deseadas de la aplicación restaurada para liberar espacio de almacenamiento.
+* *Controladores de clase de almacenamiento compatibles*: Astra Control admite la restauración de copias de seguridad mediante clases de almacenamiento respaldadas por los siguientes controladores:
++
+** `ontap-nas`
+** `ontap-nas-economy`
+** `ontap-san`
+** `ontap-san-economy`
+
+
 * *(Solo controlador económico de ontap-nas) Copias de seguridad y restauraciones*: Antes de realizar copias de seguridad o restaurar una aplicación que utiliza una clase de almacenamiento respaldada por el `ontap-nas-economy` controlador, compruebe que el link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["El directorio Snapshot del sistema de administración de almacenamiento de ONTAP está oculto"]. Si no se oculta este directorio, se puede perder el acceso a la aplicación, especialmente si se utiliza NFSv3.
 
 

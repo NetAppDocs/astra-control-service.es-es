@@ -70,6 +70,14 @@ Astra Control implementa la política de protección de datos mediante la creaci
 
 Puede crear una snapshot bajo demanda en cualquier momento.
 
+.Acerca de esta tarea
+Astra Control permite la creación de copias Snapshot con clases de almacenamiento respaldadas por los siguientes controladores:
+
+* `ontap-nas`
+* `ontap-san`
+* `ontap-san-economy`
+
+
 
 IMPORTANT: Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` controlador, no se pueden crear instantáneas. Utilice una clase de almacenamiento alternativa para las instantáneas.
 
@@ -98,6 +106,17 @@ Sepa cómo se maneja el espacio de almacenamiento al realizar un backup de una a
 ====
 endif::azure[]
 
+[NOTE]
+====
+Astra Control permite la creación de backups mediante clases de almacenamiento respaldadas por los siguientes controladores:
+
+* `ontap-nas`
+* `ontap-nas-economy`
+* `ontap-san`
+* `ontap-san-economy`
+
+
+====
 .Acerca de esta tarea
 Los buckets en Astra Control no informan sobre la capacidad disponible. Antes de realizar backups o clonar aplicaciones gestionadas por Astra Control, comprueba la información del bucket en el sistema de administración del almacenamiento correspondiente.
 

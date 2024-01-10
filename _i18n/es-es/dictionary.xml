@@ -2553,4 +2553,11 @@ Astra Control ahora puede gestionar aplicaciones respaldadas por volúmenes pers
   <block id="ab25e566dd860edad27ef68f7ef5b9e7" category="paragraph">Un backup inmutable es un backup que no se puede cambiar ni eliminar durante un periodo determinado. Cuando creas un backup inmutable, Astra Control realiza una comprobación para garantizar que el bloque que utilizas sea un bloque de escritura única y lectura múltiple (WORM), y, si es así, garantiza que el backup sea inmutable desde Astra Control.
 Astra Control Service admite la creación de backups inmutables con las siguientes plataformas y tipos de bloques:</block>
   <block id="2d0336a0c7896d90ad095dbc30578198" category="list-text">Si realiza la copia de SEGURIDAD en un bloque WORM en una plataforma no compatible o en un tipo de bloque no compatible, puede obtener resultados impredecibles, como un error en la eliminación de backups, incluso si ha transcurrido el tiempo de retención.</block>
+  <block id="2b298e0fe3f26bd15bd0a6fde1cc37ca" category="paragraph">Astra Control permite la creación de copias Snapshot con clases de almacenamiento respaldadas por los siguientes controladores:</block>
+  <block id="00055dac2ba112b87a95a368075b9561" category="list-text"><block ref="8321592ce24c8a122ecf26a63cfca407" prefix="" category="inline-code"></block></block>
+  <block id="cd17e7ed84c40a0ff5ecb8b625b1f186" category="list-text"><block ref="73a3350a1b91aeb6e2836fdf5975672c" prefix="" category="inline-code"></block></block>
+  <block id="73b781a615cea2647a87ff2035e296b1" category="list-text"><block ref="3016c12c1db45f14c80c9c1731b9c26a" prefix="" category="inline-code"></block></block>
+  <block id="7699a29541e69341e6490b2f436f651b" category="paragraph">Astra Control permite la creación de backups mediante clases de almacenamiento respaldadas por los siguientes controladores:</block>
+  <block id="cecdaed309330a9e7dea16b2076957ee" category="list-text"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block></block>
+  <block id="d5011d1ec3e5cf71761411134c41a9cd" category="list-text">*Controladores de clase de almacenamiento compatibles*: Astra Control admite la restauración de copias de seguridad mediante clases de almacenamiento respaldadas por los siguientes controladores:</block>
 </blocks>
