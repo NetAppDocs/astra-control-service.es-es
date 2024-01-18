@@ -30,12 +30,7 @@ Astra Control Service ofrece tres planes:
 
 Plan libre:: Gestione hasta 10 espacios de nombres de forma gratuita.
 Premium PAYGO:: Gestione una cantidad ilimitada de espacios de nombres a una tasa específica, por espacio de nombres.
-Suscripción Premium:: Prepago a una tarifa con descuento con una suscripción anual que le permite gestionar hasta 10 espacios de nombres por _Namespace Pack_. Póngase en contacto con el departamento de ventas de NetApp para adquirir tantos paquetes como necesite para su organización. Por ejemplo, adquiera 3 paquetes para gestionar 30 espacios de nombres en Astra Control Service. Si gestiona más espacios de nombres de los permitidos en su suscripción anual, se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional.
-+
---
-Si aún no dispone de una cuenta de Astra Control, al adquirir la suscripción Premium, se crea automáticamente una cuenta de Astra Control para usted. Si ya dispone de un plan gratuito, se convertirá automáticamente a la suscripción Premium.
-
---
+Suscripción Premium:: Prepago a una tarifa con descuento con una suscripción anual que le permite administrar hasta 20 espacios de nombres por _paquete de espacio de nombres_. Póngase en contacto con el departamento de ventas de NetApp para adquirir tantos paquetes como necesite para su organización. Por ejemplo, compre 3 paquetes para gestionar 60 espacios de nombres desde Astra Control Service. Si gestiona más espacios de nombres de los permitidos en su suscripción anual, se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional. Si aún no dispone de una cuenta de Astra Control, al adquirir la suscripción Premium, se crea automáticamente una cuenta de Astra Control para usted. Si ya dispone de un plan gratuito, se convertirá automáticamente a la suscripción Premium.
 
 
 Al crear una cuenta de Astra Control, se suscribe automáticamente al Plan libre. El panel de control de Astra muestra cuántos espacios de nombres gestiona actualmente con los 10 espacios de nombres gratuitos que está permitido. La facturación se inicia para un espacio de nombres cuando se gestiona la primera aplicación que contiene el espacio de nombres y se detiene para ese espacio de nombres cuando no se gestiona la última aplicación que contiene el espacio de nombres.
