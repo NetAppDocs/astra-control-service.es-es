@@ -59,6 +59,7 @@ Puede configurar una de tres versiones diferentes de cifrado de Kerberos, según
 
 Configure la regla de política de exportación de ONTAP con los permisos de acceso adecuados. Por ejemplo, si los clústeres montarán los volúmenes NFS con una combinación de Kerberos 5i y cifrado Kerberos 5p, utilice los siguientes ajustes de acceso:
 
+[cols="4*"]
 |===
 | Tipo | Acceso de solo lectura | Acceso de lectura/escritura | Acceso de superusuario 
 

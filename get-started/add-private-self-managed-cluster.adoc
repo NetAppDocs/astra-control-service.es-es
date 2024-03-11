@@ -22,6 +22,7 @@ Un clúster autogestionado es un clúster que usted aprovisiona y gestiona direc
 
 Puede utilizar Astra Control Service para gestionar los siguientes tipos de clústeres privados autogestionados:
 
+[cols="2*"]
 |===
 | Distribución de Kubernetes | Versiones compatibles 
 

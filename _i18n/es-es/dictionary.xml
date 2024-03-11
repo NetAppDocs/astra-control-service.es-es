@@ -2000,13 +2000,11 @@
   <block id="c52ee6d695c3236a2b8bf5b454bac3cb" category="cell">Distribución de Kubernetes</block>
   <block id="2e5d14f7919ff3c6138e7845aec4f915" category="cell">Versiones compatibles</block>
   <block id="0770a54f3635e09a4e4ff53a035b9979" category="cell">Kubernetes (ascendente)</block>
-  <block id="4863c0e3b29248649240a69b9df08e1e" category="cell">1,24 a 1,26 (se requiere Astra Trident 22,10 o posterior para Kubernetes 1,25 o posterior)</block>
   <block id="8c95b632875261344eb6365459feffd0" category="cell">Motor Kubernetes de rancher (RKE)</block>
   <block id="86742721bf4e412fd236371e22eea76b" category="cell">RKE 1,3 con Rancher 2,6
 RKE 1,4 con Rancher 2,7
 RKE 2 (v1,23.x) con Rancher 2,6
 RKE 2 (v1,24.x) con Rancher 2,7</block>
-  <block id="2fc3e0590f5be49e12616e7785d1d1d8" category="cell">4,10 hasta 4,12</block>
   <block id="bd0c68687ae6337e2436da35c9876b3a" category="paragraph">En estas instrucciones se asume que ya ha creado un clúster autogestionado.</block>
   <block id="f1e065a4705616b4a33e38f8a6c9d9b0" category="list-text"><block ref="a250d079edf413d7ab6b80bd41f1a440" category="inline-xref-macro-rx"></block></block>
   <block id="16b1f7f08468f13997b2fdd4f721c9a4" category="section-title">Añada el clúster a Astra Control Service</block>
@@ -2559,4 +2557,5 @@ Astra Control Service admite la creación de backups inmutables con las siguient
   <block id="cecdaed309330a9e7dea16b2076957ee" category="list-text"><block ref="caafdf62a2c609bfa5316118231a1007" prefix="" category="inline-code"></block></block>
   <block id="d5011d1ec3e5cf71761411134c41a9cd" category="list-text">*Controladores de clase de almacenamiento compatibles*: Astra Control admite la restauración de copias de seguridad mediante clases de almacenamiento respaldadas por los siguientes controladores:</block>
   <block id="55a8ef29f75e55b9790167d340f9b10a" category="list-text">Prepago a una tarifa con descuento con una suscripción anual que le permite administrar hasta 20 espacios de nombres por _paquete de espacio de nombres_. Póngase en contacto con el departamento de ventas de NetApp para adquirir tantos paquetes como necesite para su organización. Por ejemplo, compre 3 paquetes para gestionar 60 espacios de nombres desde Astra Control Service. Si gestiona más espacios de nombres de los permitidos en su suscripción anual, se le cobrará la tasa de exceso dependiente de la suscripción por espacio de nombres adicional. Si aún no dispone de una cuenta de Astra Control, al adquirir la suscripción Premium, se crea automáticamente una cuenta de Astra Control para usted. Si ya dispone de un plan gratuito, se convertirá automáticamente a la suscripción Premium.</block>
+  <block id="b55edf29fb10e1f082aaf76e7d14a0e5" category="cell">1,26 a 1,28 (con Astra Trident 23,04 o posterior)</block>
 </blocks>

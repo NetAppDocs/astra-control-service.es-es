@@ -112,6 +112,7 @@ Si comienza pero luego cancela una copia de seguridad que incluye una instantán
 
 
 ====
+[cols="9*"]
 |===
 | Situación | Funcionamiento | Snapshot existente | Backup existente | Espacio de nombres | Clúster | Funcionan los enlaces de instantáneas | Funcionamiento de los ganchos de backup | Restaurar ejecución de ganchos 
 
