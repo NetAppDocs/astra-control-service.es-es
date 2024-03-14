@@ -50,3 +50,5 @@ entries:
   url: "/use/enable-acp.html"
 - title: Desgestione aplicaciones y clústeres
   url: "/use/unmanage.html"
+- title: Pon en marcha una instancia autogestionada de Astra Control
+  url: "/use/deploy-astra-control-center.html"

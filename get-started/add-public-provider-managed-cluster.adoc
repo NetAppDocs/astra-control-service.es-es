@@ -34,13 +34,13 @@ NOTE: Astra Control Service es compatible con clústeres AKS que utilizan Azure 
 
 Después de iniciar sesión en Astra Control Service, el primer paso es empezar a gestionar los clústeres. Antes de añadir un clúster al servicio Astra Control Service, tendrá que realizar tareas específicas y asegurarse de que el clúster cumple determinados requisitos.
 
-Al gestionar clústeres de Azure Kubernetes Service y Google Kubernetes Engine, tenga en cuenta que tiene dos opciones para la instalación y la gestión del ciclo de vida de Astra Trident:
+Al gestionar clústeres de Azure Kubernetes Service y Google Kubernetes Engine, tenga en cuenta que tiene dos opciones para la instalación del aprovisionador de Astra Control y la gestión del ciclo de vida:
 
-* Puedes utilizar el servicio Astra Control para gestionar automáticamente el ciclo de vida de Astra Trident. Para hacerlo, asegúrese de que Astra Trident no esté instalado en el clúster que desee gestionar con Astra Control Service. En este caso, Astra Trident instala automáticamente Astra Trident cuando se comienza a gestionar el clúster y las actualizaciones de Astra Trident se realizan automáticamente.
-* Puede gestionar el ciclo de vida de Astra Trident usted mismo. Para ello, instale Astra Trident en el clúster antes de gestionar el clúster con Astra Control Service. En este caso, Astra Control Service detecta que Astra Trident ya está instalado y no lo reinstala ni gestiona renovaciones de Astra Trident. Consulte la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentación de Astra Trident"^] para obtener instrucciones de instalación.
+* Puedes utilizar el servicio Astra Control para gestionar automáticamente el ciclo de vida del aprovisionador Astra Control. Para hacerlo, asegúrese de que Astra Trident no esté instalado y que Astra Control Provisioner no esté habilitado en el clúster que desee gestionar con Astra Control Service. En este caso, Astra Control Service habilita automáticamente Astra Control Provisioning cuando se comienza a gestionar el clúster, y las actualizaciones del aprovisionador de Astra Control se realizan automáticamente.
+* Puede gestionar el ciclo de vida de Astra Control Provisionador tú mismo. Para ello, habilite el aprovisionador de Astra Control en el clúster antes de gestionar el clúster con Astra Control Service. En este caso, Astra Control Service detecta que Astra Control Provisioning ya está habilitado y no lo reinstala ni gestiona las actualizaciones del aprovisionador de Astra Control. Consulte link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"^] Para seguir los pasos, habilita el aprovisionador de Astra Control.
 
 
-Al gestionar los clústeres de Amazon Web Services con Astra Control Service, si necesita back-ends de almacenamiento habilitado con Astra Trident, deberá instalar Astra Trident manualmente en el clúster antes de gestionarlo con Astra Control Service. Consulte la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentación de Astra Trident"^] para obtener instrucciones de instalación.
+Al gestionar clústeres de Amazon Web Services con Astra Control Service, si necesita back-ends de almacenamiento que solo puede utilizarse con el aprovisionador de Astra Control, tendrá que habilitar el aprovisionador de Astra Control manualmente en el clúster antes de gestionarlo con el servicio de Astra Control. Consulte link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"^] Para conocer los pasos que hay que seguir para habilitar el aprovisionador de Astra Control.
 
 .Antes de empezar
 [%collapsible%open]
@@ -49,7 +49,7 @@ ifdef::aws[]
 
 .Amazon Web Services
 * Debe tener el archivo JSON que contenga las credenciales del usuario de IAM que creó el clúster. link:../get-started/set-up-amazon-web-services.html#create-an-iam-user["Aprenda a crear un usuario de IAM"].
-* Se requiere Astra Trident para Amazon FSX para ONTAP de NetApp. Si tiene pensado utilizar Amazon FSX para ONTAP de NetApp como back-end de almacenamiento para su clúster EKS, consulte la información de Astra Trident en la link:set-up-amazon-web-services.html#eks-cluster-requirements["Requisitos del clúster de EKS"].
+* Se requiere el aprovisionador de Astra Control para Amazon FSx para NetApp ONTAP. Si tienes pensado usar Amazon FSx para NetApp ONTAP como back-end de almacenamiento para tu clúster de EKS, consulte la información del aprovisionador de control de Astra en la link:set-up-amazon-web-services.html#eks-cluster-requirements["Requisitos del clúster de EKS"].
 * (Opcional) Si necesita proporcionarlo `kubectl` Consulte las instrucciones de la sección para obtener acceso al comando de un clúster a otros usuarios de IAM que no son el creador del clúster https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/["¿Cómo puedo proporcionar acceso a otros usuarios de IAM y a otras funciones tras la creación del clúster en Amazon EKS?"^].
 * Si tiene pensado utilizar Cloud Volumes ONTAP de NetApp como back-end de almacenamiento, debe configurar Cloud Volumes ONTAP para que funcione con Amazon Web Services. Consulte el Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["documentación de configuración"^].
 
@@ -79,7 +79,7 @@ endif::gcp[]
 
 ====
 .Pasos
-. (Opcional) Si añade un clúster de Amazon EKS o desea gestionar la instalación y las actualizaciones de Astra Trident usted mismo, instale Astra Trident en el clúster. Consulte la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentación de Astra Trident"^] para obtener instrucciones de instalación.
+. (Opcional) Si añade un clúster de Amazon EKS o desea gestionar la instalación y actualizaciones de Astra Control Provisionador, habilite Astra Control Provisionador en el clúster. Consulte link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"^] para pasos de habilitación.
 . Abra la interfaz de usuario web de Astra Control Service en un navegador.
 . En el Panel de control, seleccione *gestionar clúster Kubernetes*.
 +

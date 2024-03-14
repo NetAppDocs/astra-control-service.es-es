@@ -150,7 +150,7 @@ Astra Control crea una copia de seguridad de la aplicación.
 Astra Control Provisioning ofrece funcionalidad de backup y restauración que puede habilitarse para los back-ends de almacenamiento que utilicen el `ontap-nas-economy` clase de almacenamiento.
 
 .Antes de empezar
-* Habilitó el aprovisionador de Astra Control.
+* Habilitó el aprovisionador de Astra Control o Astra Trident.
 * Has definido una aplicación en Astra Control. Esta aplicación tendrá funcionalidad de protección limitada hasta que complete este procedimiento.
 * Ya tienes `ontap-nas-economy` se ha seleccionado como la clase de almacenamiento predeterminada para el back-end del almacenamiento.
 
@@ -178,7 +178,7 @@ IMPORTANT: Compruebe que el directorio de snapshots del back-end de almacenamien
 
 
 
-. Haga lo siguiente en Astra Trident:
+. Haga lo siguiente en Astra Control Provisioner o Astra Trident:
 +
 .. Habilite el directorio snapshot para cada VP basado en ontap-nas y asociado con la aplicación:
 +

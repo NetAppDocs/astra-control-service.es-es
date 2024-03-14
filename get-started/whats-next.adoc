@@ -21,4 +21,5 @@ Ahora que ha iniciado sesión y añadido un clúster a Astra Control, está list
 * link:../use/manage-users.html["Invitar y administrar usuarios"]
 * link:../use/manage-credentials.html["Gestione las credenciales del proveedor de cloud"]
 * link:../use/manage-notifications.html["Gestionar notificaciones"]
+* link:../use/deploy-astra-control-center.html["Pon en marcha una instancia autogestionada de Astra Control"]
 

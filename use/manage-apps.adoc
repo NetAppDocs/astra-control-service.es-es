@@ -97,7 +97,7 @@ Es posible que Astra Control no pueda clonar a un operador diseñado con una arq
 
 La tienes link:../get-started/add-first-cluster.html["ha agregado el clúster"] A Astra Control, puede instalar aplicaciones o gestionar las aplicaciones existentes en el clúster. Cualquier aplicación que se limita a uno o más espacios de nombres se puede gestionar.
 
-Astra Control gestionará las aplicaciones con estado solo si el almacenamiento está en una clase de almacenamiento compatible con Astra Control. Astra Control Service es compatible con cualquier clase de almacenamiento que admita Astra Trident o un controlador CSI genérico.
+Astra Control gestionará las aplicaciones con estado solo si el almacenamiento está en una clase de almacenamiento compatible con Astra Control. Astra Control Service es compatible con cualquier clase de almacenamiento que sea compatible con el aprovisionador de control Astra o un controlador CSI genérico.
 
 ifdef::gcp[]
 

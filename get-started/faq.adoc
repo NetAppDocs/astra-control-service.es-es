@@ -60,7 +60,7 @@ Sí, se le cobrará por los volúmenes persistentes que utilizan los clústeres 
 
 *Necesito instalar los controladores CSI en mi clúster antes de agregarlos al servicio de control Astra?*
 
-No Cuando se añade el clúster a Astra Control, el servicio instalará automáticamente el controlador Trident Container Storage Interface (CSI) de NetApp en el clúster de Kubernetes. Este controlador CSI se utiliza para aprovisionar volúmenes persistentes para clústeres respaldados por su proveedor de cloud.
+No Cuando se añade el clúster a Astra Control, el servicio instalará automáticamente el controlador Astra Trident Container Storage Interface (CSI) en el clúster de Kubernetes. Este controlador CSI se utiliza para aprovisionar volúmenes persistentes para clústeres respaldados por su proveedor de cloud.
 
 *Necesito agregar nodos de trabajo a mi clúster después de agregar al servicio de control de Astra. ¿Qué debo hacer?*
 
@@ -145,9 +145,8 @@ WARNING: Quite siempre un clúster de Astra Control antes de eliminarlo mediante
 
 endif::gcp[]
 
-*¿Se desinstalará Astra Trident cuando quite un clúster de Astra Control?*
-
-Astra Trident no se desinstalará de un clúster cuando quite el clúster de Astra Control.
+* ¿Se desinstala Astra Control Provisionador automáticamente de un clúster cuando lo desgestiono?*
+Cuando se desgestiona un clúster de Astra Control Center, el aprovisionador de Astra Control o Astra Trident no se desinstalan automáticamente del clúster. Para desinstalar Astra Control Provisioner y sus componentes o Astra Trident, deberá hacerlo https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Siga estos pasos para desinstalar la instancia de Astra Trident que contiene el servicio de aprovisionamiento Astra Control"^].
 
 
 
@@ -203,26 +202,21 @@ No Las copias Snapshot y los backups que realice Astra Control solo pueden gesti
 Astra Control Provisioning, como parte de Astra Control, es compatible con un superconjunto de funciones de aprovisionamiento de almacenamiento que no están disponibles en Astra Trident de código abierto. Estas funciones se suman a todas las funciones que están disponibles en Trident de código abierto.
 
 *¿El aprovisionador de control Astra está reemplazando a Astra Trident?*
-
-En las siguientes actualizaciones de Astra Control, Astra Control Provisioner reemplazará a Astra Trident como aprovisionador de almacenamiento y orquestador en la arquitectura de Astra Control. Por este motivo, es muy recomendable que los usuarios de Astra Control link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"]. Astra Trident seguirá siendo de código abierto y se seguirá lanzando, manteniendo, admitiendo y actualizando con las nuevas funciones CSI y otras de NetApp.
+Astra Control Provisioning ha reemplazado a Astra Trident como aprovisionador de almacenamiento y orquestador en la arquitectura de Astra Control. Los usuarios de Astra Control deberían hacerlo link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"] Para utilizar Astra Control. Astra Trident seguirá siendo compatible en esta versión, pero no será compatible en futuras versiones. Astra Trident seguirá siendo de código abierto y se lanzará, mantendrá, admitirá y actualizará con las nuevas CSI y otras funciones de NetApp. Sin embargo, solo el aprovisionador de Astra Control que contenga la funcionalidad CSI de Astra Trident junto con funcionalidades ampliadas de gestión del almacenamiento pueden usarse con próximas versiones de Astra Control.
 
 *Tengo que pagar por Astra Trident?*
 
-No Astra Trident seguirá siendo de código abierto y puede descargarse gratuitamente.
+No Astra Trident seguirá siendo de código abierto y puede descargarse gratuitamente. El uso de la funcionalidad de aprovisionamiento de Astra Control ahora requiere una licencia de Astra Control.
 
 *¿Puedo usar las funciones de gestión y aprovisionamiento del almacenamiento en Astra Control sin instalar y usar todo Astra Control?*
 
-Sí, puede actualizar a Astra Trident 23,10 o una versión posterior y habilitar la funcionalidad de aprovisionamiento Astra Control incluso si no quiera consumir el conjunto completo de funciones de la funcionalidad de gestión de datos de Astra Control.
+Sí, puede actualizar a Astra Control Provisioner y utilizar su funcionalidad aunque no quiera consumir el conjunto de funciones completo de la funcionalidad de gestión de datos de Astra Control.
 
-* ¿Cómo puedo pasar de ser un usuario existente de Trident a Astra Control para usar la gestión avanzada del almacenamiento y la funcionalidad de aprovisionamiento?*
-
-Si ya eres un usuario de Trident (esto incluye usuarios de Astra Trident en la nube pública), primero debes adquirir una licencia de Astra Control. Cuando lo haga, podrá descargar el bundle de aprovisionamiento de Astra Control, actualizar Astra Trident y link:../use/enable-acp.html["Habilita la funcionalidad Astra Control Provisioner"].
-
-*¿Cómo sé si Astra Control Provisioner ha reemplazado a Astra Trident en mi clúster?*
+[[Running-acp-check]]*¿Cómo sé si Astra Control Provisioner ha reemplazado a Astra Trident en mi clúster?*
 
 Después de instalar el aprovisionador de Astra Control, el clúster de host de la interfaz de usuario de Astra Control mostrará un `ACP version` en lugar de `Trident version` campo y núm. de versión instalada actual.
 
-image:ac-acp-version.png["Una captura de pantalla que muestra la ubicación de la versión de ACP en la interfaz de usuario de"]
+image:ac-acp-version.png["Una captura de pantalla que muestra la ubicación de la versión del aprovisionador de Astra Control en la interfaz de usuario"]
 
 Si no tiene acceso a la interfaz de usuario, puede confirmar que la instalación se ha realizado correctamente mediante los siguientes métodos:
 
@@ -230,7 +224,7 @@ Si no tiene acceso a la interfaz de usuario, puede confirmar que la instalación
 ====
 .Operador Astra Trident
 --
-Compruebe el `trident-acp` container se está ejecutando y eso `acpVersion` es `23.10.0` con el estado de `Installed`:
+Compruebe el `trident-acp` container se está ejecutando y eso `acpVersion` es `23.10.0` o posterior con el estado de `Installed`:
 
 [listing]
 ----

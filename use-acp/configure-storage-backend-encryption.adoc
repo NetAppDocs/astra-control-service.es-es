@@ -32,7 +32,7 @@ Es posible habilitar el cifrado de Kerberos en el tráfico de almacenamiento ent
 NOTE: El cifrado de Kerberos para el tráfico NFS con back-ends de almacenamiento de ONTAP en las instalaciones solo se admite mediante el `ontap-nas` controlador de almacenamiento.
 
 .Antes de empezar
-* Asegúrese de haber habilitado el aprovisionador de Astra Control en el clúster gestionado. Consulte link:../use/enable-acp.html["Habilita el aprovisionador de Astra Control"^] si desea obtener instrucciones.
+* Asegúrese de que tiene link:../use/enable-acp.html["Habilitado Astra Control Provisioning"^] en el clúster gestionado.
 * Asegúrese de tener acceso al `tridentctl` utilidad.
 * Asegúrese de tener acceso de administrador al back-end de almacenamiento de ONTAP.
 * Asegúrese de conocer el nombre del volumen o los volúmenes que compartirá desde el back-end de almacenamiento ONTAP.
@@ -196,7 +196,7 @@ Debería ver una salida similar a la siguiente:
 +
 [listing]
 ----
-NAME         PROVISIONER             AGE
+NAME            PROVISIONER             AGE
 ontap-nas-sc    csi.trident.netapp.io   15h
 ----
 
@@ -205,7 +205,7 @@ ontap-nas-sc    csi.trident.netapp.io   15h
 
 === Aprovisione los volúmenes
 
-Después de crear un back-end de almacenamiento y una clase de almacenamiento, ahora puede aprovisionar un volumen. Para obtener instrucciones, consulte https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Aprovisione un volumen"^].
+Después de crear un back-end de almacenamiento y una clase de almacenamiento, ahora puede aprovisionar un volumen. Consulte estas instrucciones para https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["aprovisionamiento de un volumen"^].
 
 
 
@@ -390,4 +390,4 @@ anf-sc-nfs    csi.trident.netapp.io   15h
 
 === Aprovisione los volúmenes
 
-Después de crear un back-end de almacenamiento y una clase de almacenamiento, ahora puede aprovisionar un volumen. Para obtener instrucciones, consulte https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Aprovisione un volumen"^].
+Después de crear un back-end de almacenamiento y una clase de almacenamiento, ahora puede aprovisionar un volumen. Consulte estas instrucciones para https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["aprovisionamiento de un volumen"^].

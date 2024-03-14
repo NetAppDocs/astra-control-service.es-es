@@ -82,7 +82,7 @@ De forma predeterminada, los bloques Astra Control Service utilizan para almacen
 
 Un clúster de Kubernetes debe cumplir los siguientes requisitos para que pueda detectar y gestionar estos sistemas desde el servicio Astra Control Service.
 
-La versión de Kubernetes:: Los clústeres deben ejecutar Kubernetes de la versión 1.23 a la 1.25.
+La versión de Kubernetes:: Los clústeres deben ejecutar Kubernetes, de la versión 1,26 a la 1,28.
 Tipo de imagen:: El tipo de imagen para todos los pools de nodos debe ser Linux.
 Estado del clúster:: Los clústeres deben ejecutarse en buen estado y tener al menos un nodo de trabajo en línea sin nodos de trabajo en estado con errores.
 Región de Azure:: Los clústeres deben residir en una región donde Azure NetApp Files esté disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Consulte los productos de Azure por región"^].

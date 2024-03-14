@@ -35,7 +35,7 @@ Sin embargo, si cuenta con flexibilidad para elegir entre regiones de Google Clo
 
 
 
-NOTE: Si usa el tipo de servicio CVS con Astra Trident 23,01 o posterior, debe configurar los pools de almacenamiento para poder aprovisionar volúmenes. Si se aprovisionan volúmenes sin pools de almacenamiento configurados, se producirá un error en el aprovisionamiento de volúmenes. Consulte la https://cloud.google.com/architecture/partners/netapp-cloud-volumes/quickstart#create_a_volume_of_the_cvs_service_type["Documentación de Cloud Volumes Service"^] para obtener más información sobre la creación de volúmenes.
+NOTE: Si usa el tipo de servicio CVS con Astra Control Provisioner, debe configurar los pools de almacenamiento para poder aprovisionar volúmenes. Si se aprovisionan volúmenes sin pools de almacenamiento configurados, se producirá un error en el aprovisionamiento de volúmenes. Consulte la https://cloud.google.com/architecture/partners/netapp-cloud-volumes/quickstart#create_a_volume_of_the_cvs_service_type["Documentación de Cloud Volumes Service"^] para obtener más información sobre la creación de volúmenes.
 
 La tabla siguiente proporciona una comparación rápida de la información descrita en esta página.
 
