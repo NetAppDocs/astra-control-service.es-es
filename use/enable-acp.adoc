@@ -121,8 +121,261 @@ crane copy cr.astra.netapp.io/trident-acp:24.02.0 <my_custom_registry>/trident-a
 . Determinar si el método de instalación original de Astra Trident utilizó un.
 . Habilita el aprovisionamiento de Astra Control en Astra Trident con el método de instalación que solías originalmente:
 +
-Directiva no resuelta en <stdin> - Include::https://raw.githubusercontent.com/NetAppDocs/astra-control-center/main/_include/enable-acp-options-tabbed-block.adoc[]
+[role="tabbed-block"]
+====
+.Operador Astra Trident
+--
+.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Descarga el instalador de Astra Trident y extráigalo"^].
+.. Complete estos pasos si todavía no ha instalado Astra Trident o si ha quitado el operador de la implementación original de Astra Trident:
++
+... Cree el CRD:
++
+[source, console]
+----
+kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
+----
+... Cree el espacio de nombres trident (`kubectl create namespace trident`) o confirme que el espacio de nombres trident sigue existiendo (`kubectl get all -n trident`). Si el espacio de nombres se ha eliminado, vuelva a crearlo.
 
+
+.. Actualice Astra Trident a 24.02.0:
++
+
+NOTE: Para los clústeres que ejecutan Kubernetes 1,24 o una versión anterior, utilice `bundle_pre_1_25.yaml`. Para los clústeres que ejecutan Kubernetes 1,25 o posterior, utilice `bundle_post_1_25.yaml`.
+
++
+[source, console]
+----
+kubectl -n trident apply -f trident-installer/deploy/<bundle-name.yaml>
+----
+.. Compruebe que Astra Trident está ejecutando:
++
+[source, console]
+----
+kubectl get torc -n trident
+----
++
+Respuesta:
+
++
+[listing]
+----
+NAME      AGE
+trident   21m
+----
+.. [[Pull-secrets]]Si tienes un registro que usa secretos, crea un secreto para extraer la imagen del aprovisionador de Astra Control:
++
+[source, console]
+----
+kubectl create secret docker-registry <secret_name> -n trident --docker-server=<my_custom_registry> --docker-username=<username> --docker-password=<token>
+----
+.. Edite el CR de TridentOrchestrator y realice las siguientes modificaciones:
++
+[source, console]
+----
+kubectl edit torc trident -n trident
+----
++
+... Establezca una ubicación de registro personalizada para la imagen de Astra Trident o extráigala del registro de Astra Control (`tridentImage: <my_custom_registry>/trident:24.02.0` o. `tridentImage: netapp/trident:24.02.0`).
+... Habilita el aprovisionador de Astra Control (`enableACP: true`).
+... Establezca la ubicación de registro personalizada para la imagen del aprovisionador de Astra Control o sáquela del registro de Astra Control (`acpImage: <my_custom_registry>/trident-acp:24.02.0` o. `acpImage: cr.astra.netapp.io/trident-acp:24.02.0`).
+... Si estableció <<pull-secrets,la imagen descubre los secretos>> anteriormente en este procedimiento, puede establecerlos aquí (`imagePullSecrets: - <secret_name>`). Utilice el mismo nombre secreto que estableció en los pasos anteriores.
+
+
++
+[listing, subs="+quotes"]
+----
+apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  *tridentImage: <registry>/trident:24.02.0*
+  *enableACP: true*
+  *acpImage: <registry>/trident-acp:24.02.0*
+  *imagePullSecrets:
+  - <secret_name>*
+----
+.. Guarde y salga del archivo. El proceso de despliegue comenzará automáticamente.
+.. Compruebe que se han creado el operador, el despliegue y los replicasets.
++
+[source, console]
+----
+kubectl get all -n trident
+----
++
+
+IMPORTANT: Solo debe haber *una instancia* del operador en un clúster de Kubernetes. No cree varias implementaciones del operador Trident de Astra.
+
+.. Compruebe el `trident-acp` container se está ejecutando y eso `acpVersion` es `24.02.0` con el estado de `Installed`:
++
+[source, console]
+----
+kubectl get torc -o yaml
+----
++
+Respuesta:
+
++
+[listing]
+----
+status:
+  acpVersion: 24.02.0
+  currentInstallationParams:
+    ...
+    acpImage: <registry>/trident-acp:24.02.0
+    enableACP: "true"
+    ...
+  ...
+  status: Installed
+----
+
+
+--
+.tridentctl
+--
+.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["Descarga el instalador de Astra Trident y extráigalo"^].
+.. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["Si ya tiene un Astra Trident existente, desinstálelo del clúster que lo aloja"^].
+.. Instale Astra Trident con el aprovisionador de control de Astra habilitado (`--enable-acp=true`):
++
+[source, console]
+----
+./tridentctl -n trident install --enable-acp=true --acp-image=mycustomregistry/trident-acp:24.02
+----
+.. Confirme que se ha habilitado el aprovisionador de Astra Control:
++
+[source, console]
+----
+./tridentctl -n trident version
+----
++
+Respuesta:
+
++
+[listing]
+----
++----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 24.02.0 | 24.02.0 | 24.02.0. | +----------------+----------------+-------------+
+----
+
+
+--
+.Timón
+--
+.. Si tiene Astra Trident 23.07.1 o anterior instalado, https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html#uninstall-a-trident-operator-installation["desinstalar"^] el operador y otros componentes.
+.. Si tu clúster de Kubernetes ejecuta la versión 1,24 o anterior, elimina psp:
++
+[listing]
+----
+kubectl delete psp tridentoperatorpod
+----
+.. Añada el repositorio de Astra Trident Helm:
++
+[listing]
+----
+helm repo add netapp-trident https://netapp.github.io/trident-helm-chart
+----
+.. Actualice el gráfico Helm:
++
+[listing]
+----
+helm repo update netapp-trident
+----
++
+Respuesta:
+
++
+[listing]
+----
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "netapp-trident" chart repository
+Update Complete. ⎈Happy Helming!⎈
+----
+.. Enumere las imágenes:
++
+[listing]
+----
+./tridentctl images -n trident
+----
++
+Respuesta:
+
++
+[listing]
+----
+| v1.28.0            | netapp/trident:24.02.0|
+|                    | docker.io/netapp/trident-autosupport:24.02|
+|                    | registry.k8s.io/sig-storage/csi-provisioner:v4.0.0|
+|                    | registry.k8s.io/sig-storage/csi-attacher:v4.5.0|
+|                    | registry.k8s.io/sig-storage/csi-resizer:v1.9.3|
+|                    | registry.k8s.io/sig-storage/csi-snapshotter:v6.3.3|
+|                    | registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.0 |
+|                    | netapp/trident-operator:24.02.0 (optional)
+----
+.. Asegúrese de que el trident-operator 24.02.0 esté disponible:
++
+[listing]
+----
+helm search repo netapp-trident/trident-operator --versions
+----
++
+Respuesta:
+
++
+[listing]
+----
+NAME                            CHART VERSION   APP VERSION     DESCRIPTION
+netapp-trident/trident-operator 100.2402.0      24.02.0         A
+----
+.. Uso `helm install` y ejecute una de las siguientes opciones que incluyen estos ajustes:
++
+*** Un nombre para la ubicación de despliegue
+*** La versión de Trident de Astra
+*** El nombre de la imagen del aprovisionador de Astra Control
+*** La marca para habilitar el aprovisionador
+*** (Opcional) Una ruta de registro local. Si está utilizando un registro local, su https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions["Imágenes de Trident"^] Se pueden ubicar en un registro o en diferentes registros, pero todas las imágenes CSI deben estar ubicadas en el mismo registro.
+*** El espacio de nombres de Trident
+
+
+
+
+.Opciones
+** Imágenes sin registro
+
+
+[listing]
+----
+helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=cr.astra.netapp.io/trident-acp:24.02.0 --set enableACP=true --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident
+----
+** Imágenes en un registro
+
+
+[listing]
+----
+helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=<your-registry>:<acp image> --set enableACP=true --set imageRegistry=<your-registry>/sig-storage --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident
+----
+** Imágenes en diferentes registros
+
+
+[listing]
+----
+helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=<your-registry>:<acp image> --set enableACP=true --set imageRegistry=<your-registry>/sig-storage --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident
+----
+Puede utilizar `helm list` para revisar detalles de la instalación como nombre, espacio de nombres, gráfico, estado, versión de la aplicación, y el número de revisión.
+
+[NOTE]
+====
+Si tiene problemas para poner en marcha Trident mediante Helm, ejecute este comando para desinstalar completamente Astra Trident:
+
+[listing]
+----
+./tridentctl uninstall -n trident
+----
+*No* https://docs.netapp.com/us-en/trident/troubleshooting.html#completely-remove-astra-trident-and-crds["Elimina por completo los CRD de Astra Trident"^] Como parte de la desinstalación antes de intentar habilitar de nuevo Astra Control Provisioner.
+
+====
+--
+====
 
 
 .Resultado
