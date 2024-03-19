@@ -2596,4 +2596,83 @@ Astra Control Provisioning ha reemplazado a Astra Trident como aprovisionador de
   <block id="d09a3f23170df63b9065e78b7eb80224" category="paragraph">Si tiene problemas para poner en marcha Trident mediante Helm, ejecute este comando para desinstalar completamente Astra Trident:</block>
   <block id="3897d04922674a762953f58e38463cb0" category="inline-link">Elimina por completo los CRD de Astra Trident</block>
   <block id="98709e6abe377fa2083cb4a36ba22ddc" category="paragraph">*No*<block ref="d47e0c203a38c85d577cb0ed29c7fad1" category="inline-link-rx"></block> Como parte de la desinstalación antes de intentar habilitar de nuevo Astra Control Provisioner.</block>
+  <block id="5220375a520b7758aa31b8b43ce717fe" category="summary">Astra Control Provisioning admite la creación de relaciones de mirroring entre los volúmenes de origen y destino para replicar volúmenes para la recuperación ante desastres.</block>
+  <block id="50e2eea9ba53d70147772db1c5d25f79" category="doc">Replicar volúmenes mediante SnapMirror</block>
+  <block id="d0182feabbbe0987e5c6aed407b4c2a7" category="paragraph">Con Astra Control Provisioning, puede crear relaciones de mirroring entre un volumen de origen en un clúster y el volumen de destino en el clúster con relación de paridad para replicar datos para la recuperación de desastres. Puede utilizar una definición de recursos personalizados (CRD) con nombre para realizar las siguientes operaciones:</block>
+  <block id="a682d8ef86abcae6c5a1db6186c5f02b" category="list-text">Crear relaciones de mirroring entre volúmenes (RVP)</block>
+  <block id="31a8f98d3378661a5b8abf15438f0bca" category="list-text">Elimine las relaciones de reflejo entre volúmenes</block>
+  <block id="a6349012892be516e5729d501a9649a7" category="list-text">Rompa las relaciones de reflejo</block>
+  <block id="2597cb6d27f572bb6d7d2fd15f414795" category="list-text">Promocionar el volumen secundario durante condiciones de desastre (conmutaciones al respaldo).</block>
+  <block id="40f7c55be912a395aed2502927d3fcfa" category="list-text">Realice una transición de las aplicaciones sin pérdidas de un clúster a otro (durante las migraciones y las conmutaciones al respaldo planificadas).</block>
+  <block id="d193cd9a2432eca22e5cf0d06dcee1e6" category="section-title">Requisitos previos de replicación</block>
+  <block id="55be807bf2be012ff44a04449cc5e8a8" category="paragraph">Asegúrese de que se cumplen los siguientes requisitos previos antes de comenzar:</block>
+  <block id="3404cce75db90acf6a9d52860721a139" category="list-title">Clústeres ONTAP</block>
+  <block id="5764ffcba90184d76761806e7e8395b9" category="list-text">*Astra Control Provisionador*: Astra Control Provisionador versión 23,10 o posterior debe existir en los clústeres de Kubernetes de origen y destino que utilizan ONTAP como backend.</block>
+  <block id="ba84728ffba482ceb12371a53be2f636" category="inline-link">Información general sobre las licencias de SnapMirror en ONTAP</block>
+  <block id="b677eb65f7f869d18b845725a133a8d5" category="list-text">*Licencias*: Las licencias asíncronas de SnapMirror de ONTAP que utilizan el paquete de protección de datos deben estar habilitadas en los clústeres de ONTAP de origen y de destino. Consulte<block ref="a7b9425cefc4a3715b38951f4b2b6b35" category="inline-link-rx"></block> si quiere más información.</block>
+  <block id="5cc8ada79224d850ecd22fd22e550c47" category="list-title">Interconexión</block>
+  <block id="9fecd08b776fdfca7b33426363edf913" category="inline-link">Información general sobre relaciones entre iguales de clústeres y SVM</block>
+  <block id="02b05cdd8f0a8c426f307085cc1004f7" category="list-text">*Cluster y SVM*: Los back-ends de almacenamiento ONTAP deben ser peered. Consulte<block ref="60333a598df416e49fbceb5a88dce370" category="inline-link-rx"></block> si quiere más información.</block>
+  <block id="94ac6b3955eab183cb88ab17c91000eb" category="admonition">Compruebe que los nombres de las SVM utilizados en la relación de replicación entre dos clústeres de ONTAP sean únicos.</block>
+  <block id="11b4eae81775a6d26d41d2ca42309c91" category="list-text">*Astra Control Provisionador y SVM*: Las SVM remotas entre iguales deben estar disponibles para Astra Control Provisionador en el clúster de destino.</block>
+  <block id="0c5e1b5bc54261ccadd2a72af1047ded" category="list-title">Controladores compatibles</block>
+  <block id="57601c13c06c6ac6e23efaab44ced427" category="list-text">La replicación de volúmenes es compatible con los controladores ontap-nas y ontap-san.</block>
+  <block id="3ce5b83f8896ef0d2e356d3972ec8898" category="section-title">Cree una RVP reflejada</block>
+  <block id="427a1ab7f39ee4f2dd7a0b7e35f572da" category="paragraph">Siga estos pasos y utilice los ejemplos de CRD para crear una relación de reflejo entre los volúmenes primario y secundario.</block>
+  <block id="4dc69f665f0d76c17a577a352dd15b25" category="list-text">Realice los siguientes pasos en el clúster de Kubernetes principal:</block>
+  <block id="cffc5263be00a76539edeeff72190d54" category="list-text">Cree un objeto StorageClass con<block ref="23041ca302bab724a5a0a4ee923c745d" prefix=" " category="inline-code"></block> parámetro.</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="listing-title">Ejemplo</block>
+  <block id="f1fe26832c26eb686c85bd72da8a62f1" category="list-text">Cree una RVP con el tipo de almacenamiento creado anteriormente.</block>
+  <block id="a306778c7affcc4dd2329c7f1e9a6389" category="list-text">Cree un CR de MirrorRelationship con información local.</block>
+  <block id="f55994c0c11fac6e31cbb70581f696f0" category="paragraph">Astra Control Provisioner obtiene la información interna del volumen y el estado actual de protección de datos (DP) del volumen y, a continuación, rellena el campo de estado del MirrorRelationship.</block>
+  <block id="7e36329a511f28054ceb0cb2aba7de3a" category="list-text">Obtenga el TridentMirrorRelationship CR para obtener el nombre interno y SVM de la PVC.</block>
+  <block id="ce01c03f932076e82348fc5aaefacc7d" category="list-text">Realice los siguientes pasos en el clúster de Kubernetes secundario:</block>
+  <block id="dbe7fac150e57be9bc0d8e046792f4c3" category="list-text">Cree una StorageClass con el parámetro trident.netapp.io/replication: true.</block>
+  <block id="01d68e0f9630c032dc8a33358e46e65b" category="list-text">Cree un CR de MirrorRelationship con información de destino y origen.</block>
+  <block id="960441627a9e57f3614bc5e5fce9a5ff" category="paragraph">El aprovisionador de control de Astra creará una relación de SnapMirror con el nombre de la política de relaciones configurada (o predeterminado para ONTAP) e inicializarla.</block>
+  <block id="4ba5d2a91c95149a7ad924ebd0d9503d" category="list-text">Crear una RVP con StorageClass creado anteriormente para que actúe como secundario (destino de SnapMirror).</block>
+  <block id="efe874c809f0fe07e9ccbe31c010017a" category="paragraph">El aprovisionador de control de Astra comprobará el CRD de TridentMirrorRelationship y no podrá crear el volumen si la relación no existe. Si existe la relación, el aprovisionador de Astra Control se asegurará de que el nuevo volumen de FlexVol se coloque en una SVM vinculada con la SVM remota definida en MirrorRelationship.</block>
+  <block id="e71d1a5cbaac30e63ed507e4b62c705f" category="section-title">Estados de replicación de volúmenes</block>
+  <block id="35a5ab9faaa73d6bfb24393f7b676624" category="paragraph">Una relación de mirroring de Trident (TMR) es un CRD que representa un extremo de una relación de replicación entre RVP. El TMR de destino tiene un estado, que le dice a Astra Control Provisioner cuál es el estado deseado. El TMR de destino tiene los siguientes estados:</block>
+  <block id="546afd3b22376f948ae8d790e441d7da" category="list-text">*Establecido*: El PVC local es el volumen de destino de una relación de espejo, y esta es una nueva relación.</block>
+  <block id="724cfb5ec8bac42a80699bb79c4eccb9" category="list-text">*Promocionado*: El PVC local es ReadWrite y montable, sin relación de espejo actualmente en vigor.</block>
+  <block id="d323366aa32e60d08a0f93bda543af47" category="list-text">*Reestablecido*: El PVC local es el volumen de destino de una relación de espejo y también estaba anteriormente en esa relación de espejo.</block>
+  <block id="4c3cd5b62a43e82e03fffa6b238ed918" category="list-text">El estado reestablecido se debe usar si el volumen de destino alguna vez mantuvo una relación con el volumen de origen debido a que sobrescribe el contenido del volumen de destino.</block>
+  <block id="b2e7dc07859cd924ca5706b299986e57" category="list-text">El estado reestablecido generará un error si el volumen no mantuvo una relación anteriormente con el origen.</block>
+  <block id="93f9c6ccc7d85e709509db31891ae5eb" category="section-title">Promocione la RVP secundaria durante una conmutación al respaldo no planificada</block>
+  <block id="4a76c8d930ec18b5aedc26b5d8e5246f" category="paragraph">Realice el siguiente paso en el clúster de Kubernetes secundario:</block>
+  <block id="78ac02218b5a9367bdcb4881538477cc" category="list-text">Actualice el campo _spec.state_ de TridentMirrorRelationship a.<block ref="1fe57d6202c7cfbb0ee344b1e0a6fb37" prefix=" " category="inline-code"></block>.</block>
+  <block id="ffe4cfc202d643b50342b93a4a11a82f" category="section-title">Promocione la RVP secundaria durante una conmutación al respaldo planificada</block>
+  <block id="1d60b89a076d7f30b8efdef50e842f68" category="paragraph">Durante una conmutación al respaldo planificada (migración), realice los siguientes pasos para promocionar la RVP secundaria:</block>
+  <block id="3310d9a60c164accb7c262ab6e9fbc65" category="list-text">En el clúster de Kubernetes principal, cree una snapshot de la RVP y espere hasta que se cree la snapshot.</block>
+  <block id="8b17b79902950942165541a8ab704363" category="list-text">En el clúster de Kubernetes principal, cree SnapshotInfo CR para obtener información interna.</block>
+  <block id="678346d79faaa65b2da52e6d7ddce845" category="list-text">En el clúster de Kubernetes secundario, actualice el campo _spec.state_ de _TridentMirrorRelationship_ CR a _promoted_ y _spec.promotedSnapshotHandle_ para que sea InternalName de la snapshot.</block>
+  <block id="7b007b14980acd66e9301e02a5670f47" category="list-text">En un clúster de Kubernetes secundario, confirme el estado (campo status.state) de TridentMirrorRelationship a Promoted.</block>
+  <block id="f69101c0107c4bbf8f0ccc9141beb68b" category="section-title">Restaure una relación de mirroring después de una conmutación al nodo de respaldo</block>
+  <block id="9a023cbe1d3be933d8edb6228f9901ce" category="paragraph">Antes de restaurar una relación de reflejo, elija el lado que desea realizar como el nuevo primario.</block>
+  <block id="1c7011adbcc0afa258396aff4f10266b" category="list-text">En el clúster de Kubernetes secundario, compruebe que se actualicen los valores del campo _spec.remoteVolumeHandle_ del TridentMirrorRelationship.</block>
+  <block id="ffb25f01fda2538ae98bc0c4b4d465a6" category="list-text">En el clúster de Kubernetes secundario, actualice el campo _spec.mirror_ de TridentMirrorRelationship a<block ref="036bbe13de7250844b100bc381b59214" prefix=" " category="inline-code"></block>.</block>
+  <block id="41a593c0bede63aac2726a18e4599087" category="section-title">Operaciones adicionales</block>
+  <block id="429ffe8f0aaccc8922acaae0bea825a8" category="paragraph">Astra Control Provisioning admite las siguientes operaciones en los volúmenes primarios y secundarios:</block>
+  <block id="253093d00b66ff2357df5085c04b2758" category="section-title">Replica la PVC primaria a una nueva PVC secundaria</block>
+  <block id="301dcece9e67241c29ebbbac8a94274e" category="paragraph">Asegúrese de que ya tiene un PVC primario y un PVC secundario.</block>
+  <block id="7f1c32cba6b98d1db7f3dfda1df76189" category="list-text">Elimine los CRD de PersistentVolumeClaim y TridentMirrorRelationship del clúster secundario (destino) establecido.</block>
+  <block id="e655fd5342cff178f54ae5f5b2a3b7b6" category="list-text">Elimine el CRD de TridentMirrorRelationship del clúster primario (origen).</block>
+  <block id="3eb69a135044d3f308d140dccb1dbe5e" category="list-text">Cree un nuevo CRD de TridentMirrorRelationship en el clúster primario (de origen) para la nueva PVC secundaria (de destino) que desea establecer.</block>
+  <block id="92c650dfb6284b5d24ed0e83a2338fa0" category="section-title">Cambie el tamaño de una RVP reflejada, primaria o secundaria</block>
+  <block id="66990a43216d28b5b6818b021d397574" category="paragraph">El PVC se puede cambiar de tamaño como normal, ONTAP expandirá automáticamente cualquier flevxols de destino si la cantidad de datos excede el tamaño actual.</block>
+  <block id="4e2626fed5da19a4be8255f16a331609" category="section-title">Elimine la replicación de una RVP</block>
+  <block id="e1abf7fa65d845d34c33d593ed070453" category="paragraph">Para eliminar la replicación, realice una de las siguientes operaciones en el volumen secundario actual:</block>
+  <block id="b3dd2c563dffb09f03c72bc16a72be62" category="list-text">Elimine el MirrorRelationship en la RVP secundaria. Esto interrumpe la relación de replicación.</block>
+  <block id="413ab8e64d0d4ccb3f08ef2a8653a525" category="list-text">O bien, actualice el campo spec.state a _Promoted_.</block>
+  <block id="c00cff9971607d7a0409066a0ecc3bcd" category="section-title">Eliminar una RVP (que se había duplicado previamente)</block>
+  <block id="21c248e83f23afe590db7c4471350f23" category="paragraph">Astra Control Provisioning comprueba si existen las RVP replicadas y libera la relación de replicación antes de intentar eliminar el volumen.</block>
+  <block id="8ec9c60105332c1be8facc42b496e14b" category="section-title">Eliminar un TMR</block>
+  <block id="b4d20a51885b1a7645c486448d720b7e" category="paragraph">Al eliminar un TMR en un lado de una relación reflejada, el TMR restante pasará al estado _Promoted_ antes de que Astra Control Provisioner complete la eliminación. Si el TMR seleccionado para eliminación ya se encuentra en el estado _Promoted_, no existe ninguna relación de reflejo y el TMR se eliminará y el aprovisionador de Astra Control promoverá la RVP local a _ReadWrite_. Esta eliminación libera los metadatos de SnapMirror del volumen local en ONTAP. Si este volumen se utiliza en una relación de reflejo en el futuro, debe utilizar un nuevo TMR con un estado de replicación de volumen _established_ al crear la nueva relación de reflejo.</block>
+  <block id="d41660149eb8930ad76a1dfe3dc5f2e3" category="section-title">Actualice las relaciones de reflejo cuando el ONTAP esté en línea</block>
+  <block id="7079164c5ba86439b0719782591106dd" category="paragraph">Las relaciones de reflejos se pueden actualizar en cualquier momento una vez establecidas. Puede utilizar el<block ref="abb3a949c6d70e3e5d92f4ad2bf143a3" prefix=" " category="inline-code"></block> o.<block ref="ff0b4e3d4dfe8f6074b6943947345d4d" prefix=" " category="inline-code"></block> campos para actualizar las relaciones.
+Al promocionar un volumen de destino a un volumen de ReadWrite normal, se puede usar _promotedSnapshotHandle_ para especificar una snapshot específica a la que restaurar el volumen actual.</block>
+  <block id="4eecab048a7c90cfb92e0f04884686e8" category="section-title">Actualice las relaciones de reflejo cuando la ONTAP esté sin conexión</block>
+  <block id="e3b68b1c19a14af5fcb94e147290aec6" category="paragraph">Puede utilizar un CRD para realizar una actualización de SnapMirror sin Astra Control para tener conectividad directa con el clúster de ONTAP. Consulte el siguiente formato de ejemplo de TridentActionMirrorUpdate:</block>
+  <block id="bc08468157c4a9e3a30eed7ba64cc309" category="paragraph"><block ref="1f9dfae8a369525bce4996df40963532" prefix="" category="inline-code"></block> Refleja el estado del CRD TridentActionMirrorUpdate. Puede tomar un valor de _succeeded_, _in progress_ o _failed_.</block>
 </blocks>
