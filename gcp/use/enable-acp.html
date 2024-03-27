@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head class="at-element-marker">
+  <title>Habilita el aprovisionador de Astra Control | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Habilita el aprovisionador de Astra Control | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/es-es/astra-control-service/use/enable-acp.html" />
+	<meta property="og:description" content="Habilita el aprovisionador de Astra Control para acceder a funcionalidades avanzadas de aprovisionamiento y gestión del almacenamiento." />
+  <meta property="og:image" content="https://docs.netapp.com/es-es/astra-control-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Habilita el aprovisionador de Astra Control para acceder a funcionalidades avanzadas de aprovisionamiento y gestión del almacenamiento.">
+  <meta name="keywords" content=" Astra Control Provisioner install, acp, enable, astra trident upgrade, upgrade trident"><!-- Icons -->
+  <link rel="icon" href="/es-es/astra-control-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/es-es/astra-control-service/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/es-es/astra-control-service/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/es-es/astra-control-service/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/es-es/astra-control-service/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/es-es/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/astra-control-service/use/enable-acp.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/astra-control-service/use/enable-acp.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/es-es/astra-control-service/js/na-search.js'></script><script src='/es-es/astra-control-service/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/es-es/astra-control-service/js/custom-dropdown.js'></script>
+  <script src='/es-es/astra-control-service/js/FileSaver.min.js'></script>
+  <script src='/es-es/astra-control-service/js/jszip-utils.min.js'></script>
+  <script src='/es-es/astra-control-service/js/jszip.min.js'></script><script src='/es-es/astra-control-service/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="gcp">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/es-es/astra-control-service/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/es/">
+                <image id="ie-header-logo" src="/es-es/astra-control-service/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/es/support-and-training/documentation/">Documentos</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/es-es/astra-control-service/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">Español</span>
+                    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/es-es/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/fr-fr/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/astra-control-service/use/enable-acp.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/es-es/astra-control-service/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">Todo NetApp</span>
+                    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/es/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Soporte</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Base de conocimientos</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/es/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Formación</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/es-es/astra-control-service/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/es-es/astra-control-service/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">Todos los documentos</a>
+    </li>
+    
+    
+    <li class="">
+      <a href="https://docs.netapp.com/us-en/cloud/">Documentos de nube</a>
+    </li>
+    
+
+    
+    <li class="">
+      <a href="https://docs.netapp.com/es-es/astra-family/">
+        Astra
+      </a>
+    </li>
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/es-es/astra-control-service/">-->
+      Astra Control Service
+    <!--</a>-->
+  </div>
+</div>
+
+            
+<div id="ie-selectors">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/es-es/astra-control-service/use/enable-acp.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Google Cloud">
+    <label>Proveedor de cloud</label>
+    <div>Google Cloud</div>  
+    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown flavor invisible" />
+    <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup flavor" />
+    <!--<img src="/es-es/astra-control-service/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />-->
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/es-es/astra-control-service/aws/use/enable-acp.html">Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/es-es/astra-control-service/gcp/use/enable-acp.html">Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/es-es/astra-control-service/azure/use/enable-acp.html">Microsoft Azure
+    </li>
+    
+    
+    <li data-url="/es-es/astra-control-service/use/enable-acp.html">Todos los proveedores de cloud</li>
+  </ul>
+</div>
+</div>
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/es-es/astra-control-service/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/es-es/astra-control-service/gcp/search.html" 
+        data-type="widget"
+        data-placeholder="Buscar documentación"
+        data-no-results-found="No se han encontrado resultados para {query}"
+        data-did-you-mean="Busca {suggestion}."
+        data-no-results-found-did-you-mean="No se ha encontrado ningún resultado para {query}. ¿Querías decir {suggestion}?"
+        data-results-found="{hitCount} resultados encontrados"
+        data-error-message="Se ha producido un error. Por favor, inténtalo de nuevo."
+        data-error-reset="Restablecer búsqueda"
+        data-sk-es-pf-indexes="" 
+        data-flavor="gcp">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentos de Astra Control Service"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/es-es/astra-control-service/gcp/index.html">
+        Documentos de Astra Control Service
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notas de la versión"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Notas de la versión</div>-->
+         Notas de la versión
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Novedades"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/release-notes/whats-new.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/release-notes/whats-new.html">
+        Novedades
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problemas conocidos"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/release-notes/known-issues.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/release-notes/known-issues.html">
+        Problemas conocidos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Limitaciones conocidas"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/release-notes/known-limitations.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/release-notes/known-limitations.html">
+        Limitaciones conocidas
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Manos a la obra"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Manos a la obra</div>-->
+         Manos a la obra
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Más información sobre Astra Control"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/intro.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/intro.html">
+        Más información sobre Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Puestas en marcha de Kubernetes compatibles"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/supported-deployments.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/supported-deployments.html">
+        Puestas en marcha de Kubernetes compatibles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inicio rápido"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/quick-start.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/quick-start.html">
+        Inicio rápido
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure su proveedor de cloud"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Configure su proveedor de cloud</div>-->
+         Configure su proveedor de cloud
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configure Google Cloud"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/set-up-google-cloud.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/get-started/set-up-google-cloud.html">
+        Configure Google Cloud
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Regístrese para obtener una cuenta"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/register.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/register.html">
+        Regístrese para obtener una cuenta
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Añadir un clúster"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/add-first-cluster.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/add-first-cluster.html">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Añadir un clúster</div>-->
+         Añadir un clúster
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Instalar Astra Connector para clústeres privados"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/install-astra-connector.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/get-started/install-astra-connector.html">
+        Instalar Astra Connector para clústeres privados
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster gestionado por el proveedor"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Agregue un clúster gestionado por el proveedor</div>-->
+         Agregue un clúster gestionado por el proveedor
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster gestionado por un proveedor público"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/add-public-provider-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/add-public-provider-managed-cluster.html">
+        Agregue un clúster gestionado por un proveedor público
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster gestionado por un proveedor privado"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/add-private-provider-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/add-private-provider-managed-cluster.html">
+        Agregue un clúster gestionado por un proveedor privado
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster autogestionado"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Agregue un clúster autogestionado</div>-->
+         Agregue un clúster autogestionado
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster público autogestionado"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/add-public-self-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/add-public-self-managed-cluster.html">
+        Agregue un clúster público autogestionado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Agregue un clúster privado autogestionado"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/add-private-self-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/add-private-self-managed-cluster.html">
+        Agregue un clúster privado autogestionado
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Comprueba la versión de Astra Trident"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/check-astra-trident-version.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/check-astra-trident-version.html">
+        Comprueba la versión de Astra Trident
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cree un archivo kubeconfig"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/create-kubeconfig.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/es-es/astra-control-service/gcp/get-started/create-kubeconfig.html">
+        Cree un archivo kubeconfig
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="El futuro"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/whats-next.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/whats-next.html">
+        El futuro
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vídeos"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/videos.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/videos.html">
+        Vídeos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="PREGUNTAS FRECUENTES"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/get-started/faq.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/get-started/faq.html">
+        PREGUNTAS FRECUENTES
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Conceptos"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Conceptos</div>-->
+         Conceptos
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Arquitectura y componentes"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/learn/architecture.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/learn/architecture.html">
+        Arquitectura y componentes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protección de datos"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/learn/data-protection.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/learn/data-protection.html">
+        Protección de datos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Almacenamiento para clústeres GKE"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/learn/choose-class-and-size.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/learn/choose-class-and-size.html">
+        Almacenamiento para clústeres GKE
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestión de aplicaciones"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/learn/app-management.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/learn/app-management.html">
+        Gestión de aplicaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Roles de usuario y espacios de nombres"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/learn/user-roles-namespaces.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/learn/user-roles-namespaces.html">
+        Roles de usuario y espacios de nombres
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilice el servicio Astra Control Service"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Utilice el servicio Astra Control Service</div>-->
+         Utilice el servicio Astra Control Service
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inicie sesión"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/log-in.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/log-in.html">
+        Inicie sesión
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione y proteja aplicaciones"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Gestione y proteja aplicaciones</div>-->
+         Gestione y proteja aplicaciones
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inicie la gestión de aplicaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-apps.html">
+        Inicie la gestión de aplicaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Proteja sus aplicaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/protect-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/protect-apps.html">
+        Proteja sus aplicaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurar aplicaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/restore-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/restore-apps.html">
+        Restaurar aplicaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Clone y migre aplicaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/clone-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/clone-apps.html">
+        Clone y migre aplicaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione los enlaces de ejecución de aplicaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-app-execution-hooks.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-app-execution-hooks.html">
+        Gestione los enlaces de ejecución de aplicaciones
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ver el estado de las aplicaciones y la computación"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ver el estado de las aplicaciones y la computación</div>-->
+         Ver el estado de las aplicaciones y la computación
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Resumen del panel"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/view-dashboard.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/view-dashboard.html">
+        Resumen del panel
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Estado y detalles del clúster"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/view-clusters.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/view-clusters.html">
+        Estado y detalles del clúster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Salud y detalles de la aplicación"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/view-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/view-apps.html">
+        Salud y detalles de la aplicación
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar bloques"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-buckets.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/manage-buckets.html">
+        Gestionar bloques
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Supervisar tareas en ejecución"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/monitor-running-tasks.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/monitor-running-tasks.html">
+        Supervisar tareas en ejecución
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione su cuenta"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Gestione su cuenta</div>-->
+         Gestione su cuenta
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurar facturación"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/set-up-billing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/set-up-billing.html">
+        Configurar facturación
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Invitar y administrar usuarios"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-users.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-users.html">
+        Invitar y administrar usuarios
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar roles"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-roles.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-roles.html">
+        Gestionar roles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestione las credenciales del proveedor de cloud"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-credentials.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-credentials.html">
+        Gestione las credenciales del proveedor de cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Controlar la actividad de la cuenta"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/monitor-account-activity.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/monitor-account-activity.html">
+        Controlar la actividad de la cuenta
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar notificaciones"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-notifications.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/manage-notifications.html">
+        Gestionar notificaciones
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cierre la cuenta"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/close-account.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/es-es/astra-control-service/gcp/use/close-account.html">
+        Cierre la cuenta
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestionar las instancias de cloud"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/manage-cloud-instances.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/manage-cloud-instances.html">
+        Gestionar las instancias de cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Habilita el aprovisionador de Astra Control"
+      data-li-level="2#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/enable-acp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/enable-acp.html">
+        Habilita el aprovisionador de Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Desgestione aplicaciones y clústeres"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/unmanage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/unmanage.html">
+        Desgestione aplicaciones y clústeres
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Pon en marcha una instancia autogestionada de Astra Control"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use/deploy-astra-control-center.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use/deploy-astra-control-center.html">
+        Pon en marcha una instancia autogestionada de Astra Control
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Use el aprovisionador de Astra Control"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Use el aprovisionador de Astra Control</div>-->
+         Use el aprovisionador de Astra Control
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurar el cifrado de backend de almacenamiento"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use-acp/configure-storage-backend-encryption.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use-acp/configure-storage-backend-encryption.html">
+        Configurar el cifrado de backend de almacenamiento
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Recuperar datos de volumen mediante una copia Snapshot"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use-acp/acp-snap-restore.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use-acp/acp-snap-restore.html">
+        Recuperar datos de volumen mediante una copia Snapshot
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Replicar volúmenes mediante SnapMirror"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/use-acp/acp-volume-replicate.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/use-acp/acp-volume-replicate.html">
+        Replicar volúmenes mediante SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatice con la API REST de Astra Control"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/automation.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/es-es/astra-control-service/gcp/automation.html">
+        Automatice con la API REST de Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Conocimiento y apoyo"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/es-es/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/es-es/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Conocimiento y apoyo</div>-->
+         Conocimiento y apoyo
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Regístrese para recibir soporte"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/support/register-support.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/support/register-support.html">
+        Regístrese para recibir soporte
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Resolución de problemas"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/support/troubleshooting.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/support/troubleshooting.html">
+        Resolución de problemas
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenga ayuda"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/support/get-help.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/es-es/astra-control-service/gcp/support/get-help.html">
+        Obtenga ayuda
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Avisos legales"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/enable-acp.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/es-es/astra-control-service/gcp/legal-notices.html">
+        Avisos legales
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/es-es/astra-control-service"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/es-es/astra-control-service"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/es-es/astra-control-service/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> Se proporciona el idioma español mediante traducción automática para su comodidad. En caso de alguna inconsistencia, el inglés precede al español. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Habilita el aprovisionador de Astra Control</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2024-03-27 15:36:57 +0000">03/27/2024</time>
+        
+    
+    
+        <span>Colaboradores
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/es-es/astra-control-service/images/discuss-sm.svg" alt="" class="github-icon" />Sugerir cambios</span>
+        <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/es-es/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/astra-control-service.es-es/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/es-es/astra-control-service/use/enable-acp.html&page-title=Habilita el aprovisionador de Astra Control" class="page-nav-contribute-link" role="button">Solicitar cambios en el documento</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/astra-control-service/blob/main/use/enable-acp.adoc" class="page-nav-contribute-link" role="button">Editar esta página</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >Descubre cómo colaborar</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/es-es/astra-control-service/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/es-es/astra-control-service/pdfs/gcp/fullsite-sidebar/Documentación_de_Astra_Control_Service.pdf" >
+                    <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>PDF de este sitio de documentos</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Notas_de_la_versión.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Notas de la versión
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Manos_a_la_obra.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Manos a la obra
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Configure_su_proveedor_de_cloud.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Configure su proveedor de cloud
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Añadir_un_clúster.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Añadir un clúster
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Agregue_un_clúster_gestionado_por_el_proveedor.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Agregue un clúster gestionado por el proveedor
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Agregue_un_clúster_autogestionado.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Agregue un clúster autogestionado
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Conceptos.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Conceptos
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Utilice_el_servicio_Astra_Control_Service.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Utilice el servicio Astra Control Service
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Gestione_y_proteja_aplicaciones.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Gestione y proteja aplicaciones
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Ver_el_estado_de_las_aplicaciones_y_la_computación.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ver el estado de las aplicaciones y la computación
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Gestione_su_cuenta.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Gestione su cuenta
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Use_el_aprovisionador_de_Astra_Control.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Use el aprovisionador de Astra Control
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/es-es/astra-control-service/pdfs/gcp/sidebar/Conocimiento_y_apoyo.pdf" 
+            
+          >
+            <img src="/es-es/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Conocimiento y apoyo
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/es-es/astra-control-service/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Recopilación de documentos PDF independientes<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div class="paragraph lead">
+<p>Las versiones 23,10 y posteriores de Astra Trident incluyen la opción de usar Astra Control Provisioning, que permite a los usuarios de Astra Control con licencia acceder a funcionalidades avanzadas de aprovisionamiento del almacenamiento. El aprovisionador Astra Control ofrece esta funcionalidad ampliada, además de la funcionalidad estándar basada en CSI de Astra Trident. Puedes usar este procedimiento para habilitar e instalar el aprovisionador de Astra Control.</p>
+</div>
+<div class="paragraph">
+<p>Tu suscripción al servicio de Astra Control incluye automáticamente la licencia para el uso del aprovisionador de Astra Control.</p>
+</div>
+<div class="paragraph">
+<p>En las próximas actualizaciones de Astra Control, el aprovisionador de Astra Control reemplazará a Astra Trident como aprovisionador de almacenamiento y orquestador y será obligatorio para su uso en Astra Control. Por este motivo, se recomienda encarecidamente que los usuarios de Astra Control habiliten el aprovisionador de Astra Control. Astra Trident seguirá siendo de código abierto y se seguirá lanzando, manteniendo, admitiendo y actualizando con las nuevas funciones CSI y otras de NetApp.</p>
+</div>
+<div class="paragraph">
+<div class="title">¿Cómo puedo saber si debo habilitar Astra Control Provisioner?</div>
+<p>Si agrega un clúster a Astra Control Service que no tenga Astra Trident instalado previamente, el clúster se marcará como <code>Eligible</code>. Usted primero <a href="../get-started/add-first-cluster.html">"Añada el clúster a Astra Control"</a>, Astra Control Provisioner se activará automáticamente.</p>
+</div>
+<div class="paragraph">
+<p>Si el clúster no está marcado <code>Eligible</code>, se marcará <code>Partially eligible</code> debido a una de las siguientes razones:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Está usando una versión anterior de Astra Trident</p>
+</li>
+<li>
+<p>Se utiliza un Astra Trident 23,10 que aún no tiene habilitada la opción de aprovisionador</p>
+</li>
+<li>
+<p>Se trata de un tipo de clúster que no permite la habilitación automática</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Para <code>Partially eligible</code> Casos, usa estas instrucciones para habilitar manualmente el aprovisionador de Astra Control en tu clúster.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/use/ac-acp-eligibility.png" alt="Una captura de pantalla en la que se muestra la idoneidad del clúster en el flujo de trabajo de adición de clúster"></span></p>
+</div>
+<div class="paragraph">
+<div class="title">Antes de habilitar Astra Control Provisioner</div>
+<p>Si ya tienes un Astra Trident sin el aprovisionador de Astra Control y quieres habilitar el aprovisionador de Astra Control, haz lo siguiente primero:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Si tienes Astra Trident instalado, confirma que su versión está dentro de una ventana de cuatro versiones</strong>: Puedes realizar una actualización directa a Astra Trident 24,02 con el aprovisionador de control de Astra si tu Astra Trident está dentro de una ventana de cuatro versiones de la versión 24,02. Por ejemplo, puedes actualizar directamente de Astra Trident 23,04 a 24,02.</p>
+</li>
+<li>
+<p><strong>Confirme que su clúster tiene una arquitectura de sistema AMD64</strong>: La imagen del aprovisionador de Astra Control se proporciona en las arquitecturas de CPU AMD64 y ARM64, pero solo AMD64 es compatible con Astra Control.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Pasos</div>
+<ol class="arabic">
+<li>
+<p>Acceda al registro de imágenes de Astra Control de NetApp:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Inicia sesión en la interfaz de usuario de Astra Control Service y registra tu ID de cuenta de Astra Control.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Seleccione el icono de figura en la parte superior derecha de la página.</p>
+</li>
+<li>
+<p>Seleccione <strong>acceso API</strong>.</p>
+</li>
+<li>
+<p>Escriba su ID de cuenta.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>En la misma página, selecciona <strong>Generar token de API</strong> y copia la cadena de token de API en el portapapeles y guárdalo en tu editor.</p>
+</li>
+<li>
+<p>Inicia sesión en el registro de Astra Control usando el método que prefieras:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-docker" data-lang="docker">docker login cr.astra.netapp.io -u &lt;account-id&gt; -p &lt;api-token&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-crane" data-lang="crane">crane auth login cr.astra.netapp.io -u &lt;account-id&gt; -p &lt;api-token&gt;</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>(Solo registros personalizados) Siga estos pasos para mover la imagen a su registro personalizado. Si no está utilizando un registro, siga los pasos del operador Trident en la <a href="#no-registry">siguiente sección</a>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+Puede usar Podman en lugar de Docker para los siguientes comandos. Si se utiliza un entorno de Windows, se recomienda PowerShell.
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock tabbed-block">
+<div class="content">
+<div class="openblock">
+<div class="title">Docker</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Extrae la imagen del aprovisionador de Astra Control del registro:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+La imagen extraída no soportará múltiples plataformas y solo soportará la misma plataforma que el host que sacó la imagen, como Linux AMD64.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">docker pull cr.astra.netapp.io/astra/trident-acp:24.02.0 --platform &lt;cluster platform&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Ejemplo:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>docker pull cr.astra.netapp.io/astra/trident-acp:24.02.0 --platform linux/amd64</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Etiquete la imagen:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">docker tag cr.astra.netapp.io/astra/trident-acp:24.02.0 &lt;my_custom_registry&gt;/trident-acp:24.02.0</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Introduzca la imagen en el registro personalizado:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">docker push &lt;my_custom_registry&gt;/trident-acp:24.02.0</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="title">Grúa</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Copie el manifiesto de Astra Control Provisioner en su registro personalizado:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-crane" data-lang="crane">crane copy cr.astra.netapp.io/astra/trident-acp:24.02.0 &lt;my_custom_registry&gt;/trident-acp:24.02.0</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Determinar si el método de instalación original de Astra Trident utilizó un.</p>
+</li>
+<li>
+<p>Habilita el aprovisionamiento de Astra Control en Astra Trident con el método de instalación que solías originalmente:</p>
+<div class="exampleblock tabbed-block">
+<div class="content">
+<div class="openblock">
+<div class="title">Operador Astra Trident</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package" target="_blank" rel="noopener">"Descarga el instalador de Astra Trident y extráigalo"</a>.</p>
+</li>
+<li>
+<p>Complete estos pasos si todavía no ha instalado Astra Trident o si ha quitado el operador de la implementación original de Astra Trident:</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Cree el CRD:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Cree el espacio de nombres trident (<code>kubectl create namespace trident</code>) o confirme que el espacio de nombres trident sigue existiendo (<code>kubectl get all -n trident</code>). Si el espacio de nombres se ha eliminado, vuelva a crearlo.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Actualice Astra Trident a 24.02.0:</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Nota">
+</td>
+<td class="content">
+Para los clústeres que ejecutan Kubernetes 1,24 o una versión anterior, utilice <code>bundle_pre_1_25.yaml</code>. Para los clústeres que ejecutan Kubernetes 1,25 o posterior, utilice <code>bundle_post_1_25.yaml</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl -n trident apply -f trident-installer/deploy/&lt;bundle-name.yaml&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Compruebe que Astra Trident está ejecutando:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get torc -n trident</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME      AGE
+trident   21m</pre>
+</div>
+</div>
+</li>
+<li>
+<p><a id="Pull-secrets"></a>Si tienes un registro que usa secretos, crea un secreto para extraer la imagen del aprovisionador de Astra Control:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl create secret docker-registry &lt;secret_name&gt; -n trident --docker-server=&lt;my_custom_registry&gt; --docker-username=&lt;username&gt; --docker-password=&lt;token&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Edite el CR de TridentOrchestrator y realice las siguientes modificaciones:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl edit torc trident -n trident</code></pre>
+</div>
+</div>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Establezca una ubicación de registro personalizada para la imagen de Astra Trident o extráigala del registro de Astra Control (<code>tridentImage: &lt;my_custom_registry&gt;/trident:24.02.0</code> o. <code>tridentImage: netapp/trident:24.02.0</code>).</p>
+</li>
+<li>
+<p>Habilita el aprovisionador de Astra Control (<code>enableACP: true</code>).</p>
+</li>
+<li>
+<p>Establezca la ubicación de registro personalizada para la imagen del aprovisionador de Astra Control o sáquela del registro de Astra Control (<code>acpImage: &lt;my_custom_registry&gt;/trident-acp:24.02.0</code> o. <code>acpImage: cr.astra.netapp.io/astra/trident-acp:24.02.0</code>).</p>
+</li>
+<li>
+<p>Si estableció <a href="#pull-secrets">la imagen descubre los secretos</a> anteriormente en este procedimiento, puede establecerlos aquí (<code>imagePullSecrets: - &lt;secret_name&gt;</code>). Utilice el mismo nombre secreto que estableció en los pasos anteriores.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: trident.netapp.io/v1
+kind: TridentOrchestrator
+metadata:
+  name: trident
+spec:
+  debug: true
+  namespace: trident
+  <strong>tridentImage: &lt;registry&gt;/trident:24.02.0</strong>
+  <strong>enableACP: true</strong>
+  <strong>acpImage: &lt;registry&gt;/trident-acp:24.02.0</strong>
+  <strong>imagePullSecrets:
+  - &lt;secret_name&gt;</strong></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Guarde y salga del archivo. El proceso de despliegue comenzará automáticamente.</p>
+</li>
+<li>
+<p>Compruebe que se han creado el operador, el despliegue y los replicasets.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get all -n trident</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/important.svg" alt="Importante">
+</td>
+<td class="content">
+Solo debe haber <strong>una instancia</strong> del operador en un clúster de Kubernetes. No cree varias implementaciones del operador Trident de Astra.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Compruebe el <code>trident-acp</code> container se está ejecutando y eso <code>acpVersion</code> es <code>24.02.0</code> con el estado de <code>Installed</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">kubectl get torc -o yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>status:
+  acpVersion: 24.02.0
+  currentInstallationParams:
+    ...
+    acpImage: &lt;registry&gt;/trident-acp:24.02.0
+    enableACP: "true"
+    ...
+  ...
+  status: Installed</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="title">tridentctl</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><a href="https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package" target="_blank" rel="noopener">"Descarga el instalador de Astra Trident y extráigalo"</a>.</p>
+</li>
+<li>
+<p><a href="https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html" target="_blank" rel="noopener">"Si ya tiene un Astra Trident existente, desinstálelo del clúster que lo aloja"</a>.</p>
+</li>
+<li>
+<p>Instale Astra Trident con el aprovisionador de control de Astra habilitado (<code>--enable-acp=true</code>):</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">./tridentctl -n trident install --enable-acp=true --acp-image=mycustomregistry/trident-acp:24.02</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Confirme que se ha habilitado el aprovisionador de Astra Control:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-console" data-lang="console">./tridentctl -n trident version</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>+----------------+----------------+-------------+ | SERVER VERSION | CLIENT VERSION | ACP VERSION | +----------------+----------------+-------------+ | 24.02.0 | 24.02.0 | 24.02.0. | +----------------+----------------+-------------+</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="openblock">
+<div class="title">Timón</div>
+<div class="content">
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Si tiene Astra Trident 23.07.1 o anterior instalado, <a href="https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html#uninstall-a-trident-operator-installation" target="_blank" rel="noopener">"desinstalar"</a> el operador y otros componentes.</p>
+</li>
+<li>
+<p>Si tu clúster de Kubernetes ejecuta la versión 1,24 o anterior, elimina psp:</p>
+<div class="listingblock">
+<div class="content">
+<pre>kubectl delete psp tridentoperatorpod</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Añada el repositorio de Astra Trident Helm:</p>
+<div class="listingblock">
+<div class="content">
+<pre>helm repo add netapp-trident https://netapp.github.io/trident-helm-chart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Actualice el gráfico Helm:</p>
+<div class="listingblock">
+<div class="content">
+<pre>helm repo update netapp-trident</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "netapp-trident" chart repository
+Update Complete. ⎈Happy Helming!⎈</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Enumere las imágenes:</p>
+<div class="listingblock">
+<div class="content">
+<pre>./tridentctl images -n trident</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>| v1.28.0            | netapp/trident:24.02.0|
+|                    | docker.io/netapp/trident-autosupport:24.02|
+|                    | registry.k8s.io/sig-storage/csi-provisioner:v4.0.0|
+|                    | registry.k8s.io/sig-storage/csi-attacher:v4.5.0|
+|                    | registry.k8s.io/sig-storage/csi-resizer:v1.9.3|
+|                    | registry.k8s.io/sig-storage/csi-snapshotter:v6.3.3|
+|                    | registry.k8s.io/sig-storage/csi-node-driver-registrar:v2.10.0 |
+|                    | netapp/trident-operator:24.02.0 (optional)</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Asegúrese de que el trident-operator 24.02.0 esté disponible:</p>
+<div class="listingblock">
+<div class="content">
+<pre>helm search repo netapp-trident/trident-operator --versions</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Respuesta:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME                            CHART VERSION   APP VERSION     DESCRIPTION
+netapp-trident/trident-operator 100.2402.0      24.02.0         A</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Uso <code>helm install</code> y ejecute una de las siguientes opciones que incluyen estos ajustes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Un nombre para la ubicación de despliegue</p>
+</li>
+<li>
+<p>La versión de Trident de Astra</p>
+</li>
+<li>
+<p>El nombre de la imagen del aprovisionador de Astra Control</p>
+</li>
+<li>
+<p>La marca para habilitar el aprovisionador</p>
+</li>
+<li>
+<p>(Opcional) Una ruta de registro local. Si está utilizando un registro local, su <a href="https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html#container-images-and-corresponding-kubernetes-versions" target="_blank" rel="noopener">"Imágenes de Trident"</a> Se pueden ubicar en un registro o en diferentes registros, pero todas las imágenes CSI deben estar ubicadas en el mismo registro.</p>
+</li>
+<li>
+<p>El espacio de nombres de Trident</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="ulist">
+<div class="title">Opciones</div>
+<ul>
+<li>
+<p>Imágenes sin registro</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=cr.astra.netapp.io/astra/trident-acp:24.02.0 --set enableACP=true --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Imágenes en uno o más registros</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>helm install trident netapp-trident/trident-operator --version 100.2402.0 --set acpImage=&lt;your-registry&gt;:&lt;acp image&gt; --set enableACP=true --set imageRegistry=&lt;your-registry&gt;/sig-storage --set operatorImage=netapp/trident-operator:24.02.0 --set tridentAutosupportImage=docker.io/netapp/trident-autosupport:24.02 --set tridentImage=netapp/trident:24.02.0 --namespace trident</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Puede utilizar <code>helm list</code> para revisar detalles de la instalación como nombre, espacio de nombres, gráfico, estado, versión de la aplicación, y el número de revisión.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Si tiene problemas para poner en marcha Trident mediante Helm, ejecute este comando para desinstalar completamente Astra Trident:</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>./tridentctl uninstall -n trident</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>No</strong> <a href="https://docs.netapp.com/us-en/trident/troubleshooting.html#completely-remove-astra-trident-and-crds" target="_blank" rel="noopener">"Elimina por completo los CRD de Astra Trident"</a> Como parte de la desinstalación antes de intentar habilitar de nuevo Astra Control Provisioner.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="openblock">
+<div class="content">
+
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<div class="title">Resultado</div>
+<p>Está habilitada la funcionalidad de aprovisionamiento de Astra Control y es posible usar cualquier función disponible para la versión que esté ejecutando.</p>
+</div>
+<div class="paragraph">
+<p>Después de instalar el aprovisionador de Astra Control, el clúster que aloja el aprovisionador en la interfaz de usuario de Astra Control mostrará una <code>ACP version</code> en lugar de <code>Trident version</code> campo y núm. de versión instalada actual.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/use/ac-acp-version.png" alt="Una captura de pantalla que muestra la ubicación de la versión de ACP en la interfaz de usuario de"></span></p>
+</div>
+<div class="ulist">
+<div class="title">Si quiere más información</div>
+<ul>
+<li>
+<p><a href="https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-operator-overview.html" target="_blank" rel="noopener">"Documentación sobre actualizaciones de Astra Trident"</a></p>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/es-es/astra-control-service/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/es-es/astra-control-service/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">En esta página</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Condiciones de uso</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Política de privacidad</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Política de cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Configuración de cookies</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Enviar comentarios sobre esta página</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/es-es/astra-control-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/es-es/astra-control-service/js/prism.js'></script>
+      <script type="text/javascript" src='/es-es/astra-control-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/es-es/astra-control-service/js/ie-tabbed-blocks.js'></script>
+    <script src='/es-es/astra-control-service/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
