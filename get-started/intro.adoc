@@ -87,7 +87,7 @@ Usted administra cualquier actualización
 ** OpenShift Container Platform de Red Hat
 
 
-* *Clusters on-premise*
+* * Clústeres locales*
 +
 ** Red Hat OpenShift Container Platform en las instalaciones
 
@@ -139,7 +139,7 @@ Usted administra cualquier actualización
 ** https://longhorn.io/["El Longhorn"^]
 
 
-* *Clusters on-premise*
+* * Clústeres locales*
 +
 ** NetApp MetroCluster
 ** Sistemas ONTAP AFF y FAS de NetApp

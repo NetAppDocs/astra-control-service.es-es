@@ -16,7 +16,7 @@ Con Astra Control Provisioning, puede mejorar la seguridad de acceso a los datos
 
 Astra Control Provisioning admite el cifrado Kerberos para dos tipos de back-ends de almacenamiento:
 
-* *ONTAP en las instalaciones*: El aprovisionador de control de Astra admite el cifrado de Kerberos a través de conexiones NFSv3 y NFSv4 desde Red Hat OpenShift y los clústeres de Kubernetes ascendentes a volúmenes ONTAP locales.
+* *ONTAP en las instalaciones* - El aprovisionador de control de Astra admite el cifrado de Kerberos a través de conexiones NFSv3 y NFSv4 desde Red Hat OpenShift y los clústeres de Kubernetes ascendentes a volúmenes ONTAP locales.
 * *Azure NetApp Files* - El aprovisionador de control de Astra admite el cifrado de Kerberos a través de conexiones NFSv4,1 desde clústeres de Kubernetes anteriores a volúmenes de Azure NetApp Files.
 
 
@@ -24,9 +24,9 @@ Puede crear, eliminar, cambiar el tamaño, copiar, clonar, Clone de solo lectura
 
 
 
-== Configure el cifrado de Kerberos en tránsito con volúmenes de ONTAP locales
+== Configure el cifrado de Kerberos en tránsito con volúmenes de ONTAP en las instalaciones
 
-Es posible habilitar el cifrado de Kerberos en el tráfico de almacenamiento entre el clúster gestionado y un back-end de almacenamiento de ONTAP en las instalaciones.
+Puede habilitar el cifrado de Kerberos en el tráfico de almacenamiento entre su clúster gestionado y un back-end de almacenamiento de ONTAP en las instalaciones.
 
 
 NOTE: El cifrado de Kerberos para el tráfico NFS con back-ends de almacenamiento de ONTAP en las instalaciones solo se admite mediante el `ontap-nas` controlador de almacenamiento.

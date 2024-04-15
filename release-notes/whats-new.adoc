@@ -45,7 +45,7 @@ Puede hacerlo link:../use/enable-acp.html["Habilita el aprovisionador de Astra C
 Las siguientes funciones están disponibles en la versión Astra Control Provisioner 23,10:
 
 +
-*** * Seguridad de backend de almacenamiento mejorada con cifrado Kerberos 5*: Puede mejorar la seguridad del almacenamiento link:../use-acp/configure-storage-backend-encryption.html["habilitar cifrado"^] para el tráfico entre el clúster gestionado y el back-end de almacenamiento. El aprovisionador de control de Astra admite el cifrado Kerberos 5 a través de conexiones NFSv4,1 GbE desde clústeres de Red Hat OpenShift a Azure NetApp Files y volúmenes ONTAP en las instalaciones.
+*** * Seguridad de backend de almacenamiento mejorada con cifrado Kerberos 5*: Puede mejorar la seguridad del almacenamiento link:../use-acp/configure-storage-backend-encryption.html["habilitar cifrado"^] para el tráfico entre el clúster gestionado y el back-end de almacenamiento. El aprovisionador de control de Astra admite el cifrado de Kerberos 5 a través de conexiones NFSv4,1 GbE desde clústeres de Red Hat OpenShift a volúmenes Azure NetApp Files y ONTAP en las instalaciones.
 *** *Recuperar datos usando una instantánea*: Astra Control Provisioner proporciona una restauración de volumen rápida y en el lugar desde una instantánea usando el `TridentActionSnapshotRestore` (TASR) CR.
 *** * Capacidades de copia de seguridad y restauración para aplicaciones con `ontap-nas-economy` Back-ends de almacenamiento respaldados por el conductor*: Como se describe <<nas-eco-backup-restore,anterior>>.
 
@@ -329,7 +329,8 @@ endif::azure[]
 
 Esta versión incluye las siguientes funciones y mejoras nuevas.
 
-* Astra Control Center Astra Control ya está disponible en un nuevo modelo de implementación. _Astra Control Center_ es un software autogestionado que instala y opera en su centro de datos para que pueda gestionar la gestión del ciclo de vida de las aplicaciones de Kubernetes para los clústeres Kubernetes en las instalaciones.
+* Astra Control Center
+Astra Control ya está disponible en un nuevo modelo de puesta en marcha. _Astra Control Center_ es un software autogestionado que se instala y opera en el centro de datos para poder gestionar la gestión del ciclo de vida de las aplicaciones de Kubernetes para clústeres de Kubernetes en las instalaciones.
 +
 Para obtener más información, https://docs.netapp.com/us-en/astra-control-center["Vaya a la documentación de Astra Control Center"^].
 
