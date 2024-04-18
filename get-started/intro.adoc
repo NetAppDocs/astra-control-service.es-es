@@ -219,8 +219,6 @@ Astra Control Center se ejecuta en forma local en su propia nube privada.
 
 Astra Control Center admite los clústeres de Kubernetes con un tipo de almacenamiento configurado por el aprovisionador de Astra Control con un back-end de almacenamiento de ONTAP.
 
-En un entorno conectado a la nube, Astra Control Center utiliza Cloud Insights para proporcionar supervisión y telemetría avanzadas. Ante la ausencia de una conexión con Cloud Insights, la telemetría y la supervisión limitadas (7 días de métricas) están disponibles en Astra Control Center y también se exportan a herramientas de supervisión nativas de Kubernetes (como Prometheus y Grafana) mediante puntos finales de métricas abiertas.
-
 Astra Control Center está totalmente integrado en el ecosistema de AutoSupport y Active IQ para proporcionar a los usuarios y el soporte de NetApp información sobre solución de problemas y uso.
 
 Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.
@@ -252,6 +250,5 @@ Puede añadir aplicaciones al clúster. O bien, si ya tiene algunas aplicaciones
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Documentación de Astra Control Center"^]
 * https://docs.netapp.com/us-en/astra-automation/index.html["Documentación de la API de Astra Control"^]
 * https://docs.netapp.com/us-en/trident/index.html["Documentación de Astra Trident"^]
-* https://docs.netapp.com/us-en/cloudinsights/["Documentación de Cloud Insights"^]
 * https://docs.netapp.com/us-en/ontap/index.html["Documentación de ONTAP"^]
 

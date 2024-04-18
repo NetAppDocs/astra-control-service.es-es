@@ -997,7 +997,6 @@
   <block id="2325c645f4d2112a8e96b127fbad7bf2" category="inline-image-macro">Diagrama y componentes de la arquitectura de Astra Control</block>
   <block id="51d249216b03414f10b242b851af7951" category="section-title">Componentes de Astra Control</block>
   <block id="a8d77bbb11d2e1a349811767d194e9ba" category="list-text">*Clústeres de Kubernetes*: Kubernetes es una plataforma portátil, extensible y de código abierto para gestionar cargas de trabajo y servicios en contenedores, que facilita la configuración y la automatización declarativas. Astra proporciona servicios de gestión para aplicaciones alojadas en un clúster de Kubernetes.</block>
-  <block id="415ba7b6a21fb373d9c5b72207313c1c" category="list-text">*Cloud Insights*: Una herramienta de supervisión de infraestructura de cloud de NetApp, Cloud Insights le permite supervisar el rendimiento y la utilización de sus clústeres de Kubernetes gestionados por Astra Control Center. Cloud Insights relaciona el uso del almacenamiento con las cargas de trabajo. Cuando activa la conexión Cloud Insights en Astra Control Center, la información de telemetría se muestra en las páginas de interfaz de usuario de Astra Control Center.</block>
   <block id="de0c45e94d4b178203631d55e65d1b62" category="section-title">Interfaces Astra Control</block>
   <block id="d015aca78df45458ee1d6533c5246919" category="paragraph">Puede completar tareas utilizando diferentes interfaces:</block>
   <block id="085434e07821849d9d71c59516ad591f" category="list-text">*Interfaz de usuario web (UI)*: Tanto Astra Control Service como Astra Control Center utilizan la misma interfaz de usuario basada en web en la que puede gestionar, migrar y proteger aplicaciones. Use también la interfaz de usuario para gestionar las cuentas de usuario y las opciones de configuración.</block>
@@ -1008,8 +1007,6 @@
   <block id="ea643bf7aaf130341a17f697a7009368" category="list-text"><block ref="ea643bf7aaf130341a17f697a7009368" category="inline-link-rx"></block></block>
   <block id="14d9b10c6196045941347a9e85704b50" category="inline-link">Documentación de Astra Trident</block>
   <block id="4a2ab62188738135163aaaaeab1d6cfe" category="list-text"><block ref="4a2ab62188738135163aaaaeab1d6cfe" category="inline-link-rx"></block></block>
-  <block id="5858ee4031acd7b896faa2d3d2c1a299" category="inline-link">Documentación de Cloud Insights</block>
-  <block id="2b93b48daf034e4100d00b85950e109d" category="list-text"><block ref="2b93b48daf034e4100d00b85950e109d" category="inline-link-rx"></block></block>
   <block id="eb75aeb3b4b2b9734ba3e52f5483f0b2" category="inline-link">Documentación de ONTAP</block>
   <block id="8217522f2b9eea86f1099a2aba54aebd" category="list-text"><block ref="8217522f2b9eea86f1099a2aba54aebd" category="inline-link-rx"></block></block>
   <block id="f26ee8a93c95de7a50a14b73f85172c5" category="paragraph">Obtenga información acerca de las funciones de usuario y los espacios de nombres en Astra Control y cómo puede utilizarlas para controlar el acceso a los recursos de la organización.</block>
@@ -1269,7 +1266,6 @@
   <block id="c7386c78db4f5b185f74fe7c3db7962e" category="paragraph">Comenzamos a crear este volumen sólo para obtener los comandos de conexión en red.</block>
   <block id="b1151aae9531d2f5e85d085e8878cea6" category="summary">Estas preguntas frecuentes pueden ser de ayuda si solo está buscando una respuesta rápida a una pregunta.</block>
   <block id="8de7ff5f7f2186929bf88ea5dcfc0fb3" category="doc">Preguntas frecuentes para el servicio Astra Control</block>
-  <block id="47de31b9013ca59e1620936759a1c481" category="paragraph">Astra Control tiene como objetivo simplificar las operaciones de gestión del ciclo de vida de los datos de sus aplicaciones para las aplicaciones nativas de Kubernetes. Astra Control Service admite clústeres de Kubernetes que se ejecutan en varios entornos de proveedores de cloud.</block>
   <block id="7138c9866f92caa6559eeb16dedcead9" category="paragraph">En las siguientes secciones se proporcionan respuestas a algunas preguntas adicionales que se pueden encontrar a medida que se utiliza Astra Control. Para obtener más aclaraciones, diríjase a astra.feedback@netapp.com</block>
   <block id="3783e7bdb365c30dbefc88440e625d44" category="section-title">Acceso a Astra Control</block>
   <block id="03069a991fdd2077c62785ce41219767" category="paragraph">*¿Por qué necesito proporcionar tantos detalles al registrarse para Astra Control?*</block>
@@ -1510,7 +1506,6 @@
   <block id="e9ca84d66f1908e5a75b18227ca36fe4" category="paragraph">El plan gratuito de Astra Control le permite gestionar hasta 10 espacios de nombres en su cuenta. Si desea gestionar más de 10 espacios de nombres, deberá configurar la facturación mediante la actualización del plan gratuito al plan Premium.</block>
   <block id="b714fdd25acef8e71be758de7ff02f0b" category="section-title">Cómo funciona Astra Control Center</block>
   <block id="90d397f2aa31c2e6d9f5dfda5d12adca" category="paragraph">Astra Control Center se ejecuta en forma local en su propia nube privada.</block>
-  <block id="43e71b094d6e4df1d87b41898754d340" category="paragraph">En un entorno conectado a la nube, Astra Control Center utiliza Cloud Insights para proporcionar supervisión y telemetría avanzadas. Ante la ausencia de una conexión con Cloud Insights, la telemetría y la supervisión limitadas (7 días de métricas) están disponibles en Astra Control Center y también se exportan a herramientas de supervisión nativas de Kubernetes (como Prometheus y Grafana) mediante puntos finales de métricas abiertas.</block>
   <block id="ea2708b459fc0cad6936ec216bd9405e" category="paragraph">Astra Control Center está totalmente integrado en el ecosistema de AutoSupport y Active IQ para proporcionar a los usuarios y el soporte de NetApp información sobre solución de problemas y uso.</block>
   <block id="46d0a394f0b8bd48b4ad9f07551cc671" category="paragraph">Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.</block>
   <block id="b4851e92b19af0c5c82447fc0937709d" category="inline-link">requisitos</block>
@@ -2709,4 +2704,5 @@ Astra Control ya está disponible en un nuevo modelo de puesta en marcha. _Astra
   <block id="b68db3e0a56f3b8c81ba53790b675138" category="list-text"><block ref="b68db3e0a56f3b8c81ba53790b675138" category="inline-link-rx"></block></block>
   <block id="df3bb36ac44fafa7502c4bf87e8770ea" category="list-text">Para configurar e instalar el kit de herramientas:<block ref="ce6ac21e909840a69102ba43afa6cfb6" category="inline-link-rx"></block>.</block>
   <block id="6a96f7d929fa0abae3976fe12471f4f9" category="sidebar">Proteja todo un clúster</block>
+  <block id="c6549ebb7cd213e64b91aa2f6576c5f6" category="paragraph">Astra Control tiene como objetivo simplificar las operaciones de gestión del ciclo de vida de los datos de aplicaciones para aplicaciones nativas de Kubernetes. Astra Control Service admite clústeres de Kubernetes que se ejecutan en varios entornos de proveedores de cloud.</block>
 </blocks>
