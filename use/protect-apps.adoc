@@ -33,20 +33,27 @@ Puede realizar las siguientes tareas relacionadas con la protección de los dato
 
 == Configure una política de protección
 
-La política de protección protege una aplicación mediante la creación de snapshots, backups o ambos con una programación definida. Puede optar por crear snapshots y backups por hora, día, semana y mes, y especificar la cantidad de copias que desea retener.
+La política de protección protege una aplicación mediante la creación de snapshots, backups o ambos con una programación definida. Puede optar por crear snapshots y backups por hora, día, semana y mes, y especificar la cantidad de copias que desea retener. Puede definir una política de protección con la interfaz de usuario web de Astra Control o un archivo de recursos personalizados (CR).
 
 Si necesita que backups o snapshots se ejecuten con más frecuencia de una vez por hora, puede hacerlo https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilice la API REST de Astra Control para crear copias Snapshot y copias de seguridad"^].
 
 
 NOTE: Si va a definir una política de protección que crea backups inmutables para escribir bloques WORM (escritura única y lectura múltiple), asegúrese de que el tiempo de retención de los backups no sea más corto que el período de retención configurado para el bloque.
 
+
+TIP: Reajuste los programas de copia de seguridad y replicación para evitar superposiciones de programas. Por ejemplo, realice backups en la parte superior de la hora cada hora y programe la replicación para que comience con un desplazamiento de 5 minutos y un intervalo de 10 minutos.
+
+[role="tabbed-block"]
+====
+.Configure una política de protección con la interfaz de usuario web
+--
 .Pasos
-. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación administrada.
+. Seleccione *aplicaciones* y, a continuación, seleccione el nombre de una aplicación.
 . Seleccione *Protección de datos*.
 . Seleccione *Configurar política de protección*.
 . Definir una programación de protección seleccionando la cantidad de Snapshot y backups que se deben mantener en las programaciones por hora, por día, por semana y por mes.
 +
-Puede definir las programaciones por hora, por día, por semana y por mes de forma simultánea. Una programación no se activará hasta que se establezca el nivel de retención para las copias Snapshot y los backups.
+Puede definir las programaciones por hora, por día, por semana y por mes de forma simultánea. Una programación no se activa hasta que se establece un nivel de retención.
 
 +
 Al establecer un nivel de retención para backups, puede elegir el bloque en el que desea almacenar los backups.
@@ -55,12 +62,67 @@ Al establecer un nivel de retención para backups, puede elegir el bloque en el 
 En el siguiente ejemplo, se establecen cuatro programaciones de protección: Por hora, día, semana y mes para las copias Snapshot y los backups.
 
 +
-image:screenshot-protection-policy.png["Captura de pantalla de una directiva de configuración de ejemplo en la que puede elegir hacer Snapshots y backups cada hora, día, semana o mes."]
+image:screenshot-config-protection-policy.png["Captura de pantalla de una directiva de configuración de ejemplo en la que puede elegir hacer Snapshots y backups cada hora, día, semana o mes."]
 
+. [*Vista previa tecnológica*] Elija un depósito de destino para las copias de seguridad o instantáneas de la lista de depósitos de almacenamiento.
 . Seleccione *Revisión*.
-. Seleccione *Configurar política de protección*.
+. Seleccione *Configurar política de protección.*
 
 
+--
+.[Tech preview] Configurar una política de protección con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-schedule-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tus necesidades de entorno de Astra Control, configuración del clúster y protección de datos:
++
+** <CR_NAME>: El nombre de este recurso personalizado; elija un nombre único y sensible para su entorno.
+** <APPLICATION_NAME>: El nombre de Kubernetes de la aplicación de la que se va a realizar el backup.
+** <APPVAULT_NAME>: El nombre del AppVault donde se debe almacenar el contenido de la copia de seguridad.
+** <BACKUPS_RETAINED>: La cantidad de backups que se retendrán. Cero indica que no se debe crear ningún backup.
+** <SNAPSHOTS_RETAINED>: La cantidad de snapshots que se retendrán. Cero indica que no se debe crear ninguna instantánea.
+** <GRANULARITY>: La frecuencia con la que debe ejecutarse la programación. Los posibles valores, junto con los campos asociados necesarios:
++
+*** `hourly` (requiere que especifique `spec.minute`)
+*** `daily` (requiere que especifique `spec.minute` y.. `spec.hour`)
+*** `weekly` (requiere que especifique `spec.minute`, `spec.hour`, y. `spec.dayOfWeek`)
+*** `monthly` (requiere que especifique `spec.minute`, `spec.hour`, y. `spec.dayOfMonth`)
+
+
+** <DAY_OF_MONTH>: _(Opcional)_ el día del mes (1 - 31) en el que debe ejecutarse la programación. Este campo es necesario si la granularidad se establece en `monthly`.
+** <DAY_OF_WEEK>: _(Opcional)_ El día de la semana (0 - 7) en el que se debe ejecutar la programación. Los valores de 0 o 7 indican el domingo. Este campo es necesario si la granularidad se establece en `weekly`.
+** <HOUR_OF_DAY>: _(Opcional)_ La hora del día (0 - 23) que debe ejecutarse la programación. Este campo es necesario si la granularidad se establece en `daily`, `weekly`, o. `monthly`.
+** <MINUTE_OF_HOUR>: _(Opcional)_ El minuto de la hora (0 - 59) que debe ejecutarse la programación. Este campo es necesario si la granularidad se establece en `hourly`, `daily`, `weekly`, o. `monthly`.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+  backupRetention: "<BACKUPS_RETAINED>"
+  snapshotRetention: "<SNAPSHOTS_RETAINED>"
+  granularity: <GRANULARITY>
+  dayOfMonth: "<DAY_OF_MONTH>"
+  dayOfWeek: "<DAY_OF_WEEK>"
+  hour: "<HOUR_OF_DAY>"
+  minute: "<MINUTE_OF_HOUR>"
+----
+
+
+. Después de rellenar el `astra-control-schedule-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-schedule-cr.yaml
+----
+
+
+--
+====
 .Resultado
 Astra Control implementa la política de protección de datos mediante la creación y retención de copias Snapshot y copias de seguridad con la política de programación y retención que haya definido.
 
@@ -81,13 +143,58 @@ Astra Control permite la creación de copias Snapshot con clases de almacenamien
 
 IMPORTANT: Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` controlador, no se pueden crear instantáneas. Utilice una clase de almacenamiento alternativa para las instantáneas.
 
+[role="tabbed-block"]
+====
+.Cree una copia Snapshot de con la interfaz de usuario web de
+--
 .Pasos
 . Seleccione *aplicaciones*.
 . En el menú Opciones de la columna *acciones* de la aplicación deseada, seleccione *Snapshot*.
 . Personalice el nombre de la instantánea y, a continuación, seleccione *Siguiente*.
+. [*Vista previa tecnológica*] Elija un cubo de destino para la instantánea de la lista de cubos de almacenamiento.
 . Revise el resumen de la instantánea y seleccione *Snapshot*.
 
 
+--
+.[Vista previa técnica] Crear una instantánea con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-snapshot-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de este recurso personalizado; elija un nombre único y sensible para su entorno.
+** <APPLICATION_NAME>: El nombre de Kubernetes de la aplicación que se va a realizar la instantánea.
+** <APPVAULT_NAME>: El nombre del AppVault donde se debe almacenar el contenido de la instantánea.
+** <RECLAIM_POLICY>: _(Opcional)_ define lo que ocurre con una instantánea cuando se elimina la CR de instantánea. Opciones válidas:
++
+*** `Retain`
+*** `Delete` (predeterminado)
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Snapshot
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+  reclaimPolicy: <RECLAIM_POLICY>
+----
+
+
+
+
+. Después de rellenar el `astra-control-snapshot-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-cr.yaml
+----
+
+
+--
+====
 .Resultado
 Se inicia el proceso Snapshot. Una instantánea se realiza correctamente cuando el estado es *saludable* en la columna *Estado* de la página *Protección de datos* > *instantáneas*.
 
@@ -122,16 +229,53 @@ Los buckets en Astra Control no informan sobre la capacidad disponible. Antes de
 
 Si su aplicación utiliza una clase de almacenamiento respaldada por `ontap-nas-economy` conductor, usted necesita <<Habilite el backup y la restauración para las operaciones económicas de ontap-nas,habilite el backup y la restauración>> funcionalidad. Asegúrese de que ha definido un `backendType` parámetro en la https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objeto de almacenamiento de Kubernetes"^] con un valor de `ontap-nas-economy` antes de ejecutar cualquier operación de protección.
 
+[role="tabbed-block"]
+====
+.Cree un backup con la interfaz de usuario web de
+--
 .Pasos
 . Seleccione *aplicaciones*.
 . En el menú Opciones de la columna *acciones* de la aplicación deseada, seleccione *copia de seguridad*.
 . Personalice el nombre del backup.
 . Elija si desea realizar una copia de seguridad de la aplicación desde una instantánea existente. Si selecciona esta opción, puede elegir entre una lista de snapshots existentes.
-. Seleccione un bucket de destino para el backup en la lista de bloques de almacenamiento.
+. [*Tech preview*] Elija un depósito de destino para la copia de seguridad de la lista de depósitos de almacenamiento.
 . Seleccione *Siguiente*.
 . Revise el resumen de copia de seguridad y seleccione *copia de seguridad*.
 
 
+--
+.[Vista previa técnica] Cree un backup con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-backup-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de este recurso personalizado; elija un nombre único y sensible para su entorno.
+** <APPLICATION_NAME>: El nombre de Kubernetes de la aplicación de la que se va a realizar el backup.
+** <APPVAULT_NAME>: El nombre del AppVault donde se debe almacenar el contenido de la copia de seguridad.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Backup
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+----
+
+
+. Después de rellenar el `astra-control-backup-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-cr.yaml
+----
+
+
+--
+====
 .Resultado
 Astra Control crea una copia de seguridad de la aplicación.
 

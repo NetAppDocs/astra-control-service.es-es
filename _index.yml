@@ -24,6 +24,8 @@ indexpage:
       url: "/use/manage-apps.html"
     - title: Proteja sus aplicaciones
       url: "/use/protect-apps.html"
+    - title: Proteja todo un clúster
+      url: "/use/back-up-full-cluster.html"
     - title: Migrar una aplicación
       url: "/use/clone-apps.html"
     - title: Configurar facturación

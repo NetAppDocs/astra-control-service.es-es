@@ -265,6 +265,106 @@ Una vez completado el proceso, las aplicaciones asociadas al espacio de nombres 
 
 
 
+=== [Vista PREVIA TÉCNICA] Defina una aplicación utilizando un recurso personalizado de Kubernetes
+
+Puede especificar los recursos de Kubernetes que desee gestionar con Astra Control definiéndolos como aplicación mediante un recurso personalizado (CR). Puede añadir recursos de ámbito en clúster si desea gestionar esos recursos individualmente o todos los recursos de Kubernetes en un espacio de nombres si, por ejemplo, tiene la intención de gestionar y proteger todos los recursos de un espacio de nombres particular de una forma similar y con intervalos comunes.
+
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre (por ejemplo, `astra_mysql_app.yaml`).
+. Asigne un nombre a la aplicación en `metadata.name`.
+. Defina los recursos de aplicación que se van a gestionar:
++
+[role="tabbed-block"]
+====
+.spec.includedClusterScopedResources
+--
+Incluye los tipos de recursos de ámbito del clúster además de los que Astra Control incluye automáticamente:
+
+** *spec.includedClusterScopedResources*: _(Opcional)_ Una lista de tipos de recursos de ámbito de cluster que se incluirán.
++
+*** *GroupVersionKind*: _(Opcional)_ identifica inequívocamente un tipo.
++
+**** *GROUP*: _(requerido si se usa groupVersionKind)_ Grupo API del recurso a incluir.
+**** *VERSIÓN*: _(requerido si se usa groupVersionKind)_ Versión API del recurso a incluir.
+**** *Kind*: _(requerido si se usa groupVersionKind)_ tipo de recurso a incluir.
+
+
+*** *LabelSelector*: _(Opcional)_ Una consulta de etiqueta para un conjunto de recursos. Se utiliza para recuperar solo los recursos que coinciden con la etiqueta. Si no proporciona una etiqueta, Astra Control recopila todas las instancias del tipo de recurso especificado para ese clúster. El resultado de matchLabels y matchExpressions son ANDed.
++
+**** *MatchLabels*: _(Opcional)_ Un mapa de {key,value} pares. Un único {key,value} en el mapa matchLabels es equivalente a un elemento de matchExpressions que tiene un campo clave de “key”, operador como “in” y matriz de valores que contiene solo “value”. Los requisitos son ANDed.
+**** *MatchExpressions*: _(Opcional)_ Una lista de los requisitos del selector de etiquetas. Los requisitos son ANDed.
++
+***** *KEY*: _(requerido si se usa matchExpressions)_ La clave de etiqueta asociada con el selector de etiquetas.
+***** *OPERATOR*: _(requerido si se usa matchExpressions)_ representa la relación de una clave con un conjunto de valores. Los operadores válidos son `In`, `NotIn`, `Exists` y.. `DoesNotExist`.
+***** *VALORES*: _(requerido si se utiliza matchExpressions)_Una matriz de valores de cadena. Si el operador es `In` o. `NotIn`, la matriz de valores debe _not_ estar vacía. Si el operador es `Exists` o. `DoesNotExist`, la matriz de valores debe estar vacía.
+
+
+
+
+
+
+
+
+--
+.spec.includedNamespaces
+--
+Incluya espacios de nombres y recursos dentro de esos recursos en la aplicación:
+
+** *spec.includedNamespaces*: _(required)_Define el espacio de nombres y los filtros opcionales para la selección de recursos.
++
+*** *Namespace*: _(required)_ El espacio de nombres que contiene los recursos de la aplicación que desea administrar con Astra Control.
+*** *LabelSelector*: _(Opcional)_ Una consulta de etiqueta para un conjunto de recursos. Se utiliza para recuperar solo los recursos que coinciden con la etiqueta. Si no proporciona una etiqueta, Astra Control recopila todas las instancias del tipo de recurso especificado para ese clúster. El resultado de matchLabels y matchExpressions son ANDed.
++
+**** *MatchLabels*: _(Opcional)_ Un mapa de {key,value} pares. Un único {key,value} en el mapa matchLabels es equivalente a un elemento de matchExpressions que tiene un campo clave de “key”, operador como “in” y matriz de valores que contiene solo “value”. Los requisitos son ANDed.
+**** *MatchExpressions*: _(Opcional)_ Una lista de los requisitos del selector de etiquetas. `key` y.. `operator` son obligatorios. Los requisitos son ANDed.
++
+***** *KEY*: _(requerido si se usa matchExpressions)_ La clave de etiqueta asociada con el selector de etiquetas.
+***** *OPERATOR*: _(requerido si se usa matchExpressions)_ representa la relación de una clave con un conjunto de valores. Los operadores válidos son `In`, `NotIn`, `Exists` y.. `DoesNotExist`.
+***** *Valores*: _(requerido si se usa matchExpressions)_ Una matriz de valores de cadena. Si el operador es `In` o. `NotIn`, la matriz de valores debe _not_ estar vacía. Si el operador es `Exists` o. `DoesNotExist`, la matriz de valores debe estar vacía.
+
+
+
+
+
+
+
+
+--
+====
++
+Ejemplo YAML:
+
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Application
+metadata:
+  name: astra_mysql_app
+spec:
+  includedNamespaces:
+    - namespace: astra_mysql_app
+      labelSelector:
+        matchLabels:
+          app: nginx
+          env: production
+        matchExpressions:
+          - key: tier
+            operator: In
+            values:
+              - frontend
+              - backend
+----
+. Después de rellenar el `astra_mysql_app.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra_mysql_app.yaml -n astra-connector
+----
+
+
+
+
 == ¿Qué ocurre con los espacios de nombres del sistema?
 
 Astra Control también detecta espacios de nombres de sistemas en un clúster de Kubernetes. No le mostramos estos espacios de nombres del sistema de forma predeterminada porque es raro que necesite realizar backups de los recursos de la aplicación del sistema.

@@ -37,7 +37,7 @@ Tienes que realizar las siguientes tareas para añadir tu clúster privado a Ast
 
 == Instala Astra Connector
 
-Antes de agregar un clúster privado, tiene que instalar Astra Connector en el clúster para que Astra Control se pueda comunicar con él. Consulte link:install-astra-connector.html["Instalar Astra Connector para clústeres privados"] si desea obtener instrucciones.
+Antes de agregar un clúster privado, tiene que instalar Astra Connector en el clúster para que Astra Control se pueda comunicar con él. Consulte link:install-astra-connector-previous.html["Instala la versión anterior de Astra Connector para clústeres privados gestionados con flujos de trabajo que no sean nativos de Kubernetes"] si desea obtener instrucciones.
 
 
 

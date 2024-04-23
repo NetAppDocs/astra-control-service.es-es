@@ -94,6 +94,190 @@ NOTE: Para obtener más información sobre la configuración de reglas de inclus
 . Revise los detalles sobre la acción de restauración cuidadosamente, escriba “restaurar” (si se le solicita) y seleccione *Restaurar*.
 
 
+
+
+== [Vista previa técnica] Restaurar a partir del backup mediante un recurso personalizado (CR)
+
+Es posible restaurar datos desde un backup con un archivo de recurso personalizado (CR) en otro espacio de nombres o en el espacio de nombres de origen original.
+
+[role="tabbed-block"]
+====
+.Restaurar desde una copia de seguridad con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-backup-restore-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de esta operación de CR; seleccione un nombre sensible para su entorno.
+** <APPVAULT_NAME>: El nombre del AppVault donde se almacena el contenido del backup.
+** <BACKUP_PATH>: Ruta dentro de AppVault, donde se almacena el contenido del backup. Por ejemplo:
++
+[listing]
+----
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
+** <SOURCE_NAMESPACE>: El espacio de nombres de origen de la operación de restauración.
+** <DESTINATION_NAMESPACE>: El espacio de nombres de destino de la operación de restauración.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: BackupRestore
+metadata:
+  name: <CR_NAME>
+  namespace: astra-connector
+spec:
+  appVaultRef: <APPVAULT_NAME>
+  appArchivePath: <BACKUP_PATH>
+  namespaceMapping: [{"source": "<SOURCE_NAMESPACE>", "destination": "<DESTINATION_NAMESPACE>"}]
+----
+
+
+
+
+Directiva no resuelta en <stdin> - Include:../_include/selective-restore-cr.adoc[]
+
+. Después de rellenar el `astra-control-backup-restore-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-restore-cr.yaml
+----
+
+
+--
+.Restaure desde un backup al espacio de nombres original con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-backup-ipr-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de esta operación de CR; seleccione un nombre sensible para su entorno.
+** <APPVAULT_NAME>: El nombre del AppVault donde se almacena el contenido del backup.
+** <BACKUP_PATH>: Ruta dentro de AppVault, donde se almacena el contenido del backup. Por ejemplo:
++
+[listing]
+----
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: BackupInplaceRestore
+metadata:
+  name: <CR_NAME>
+  namespace: astra-connector
+spec:
+  appVaultRef: <APPVAULT_NAME>
+  appArchivePath: <BACKUP_PATH>
+----
+
+
+
+
+Directiva no resuelta en <stdin> - Include:../_include/selective-restore-cr.adoc[]
+
+. Después de rellenar el `astra-control-backup-ipr-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-ipr-cr.yaml
+----
+
+
+--
+====
+
+
+== [Vista PREVIA TÉCNICA] Restauración a partir de una instantánea con un recurso personalizado (CR)
+
+Puede restaurar datos desde una copia Snapshot con un archivo de recurso personalizado (CR) en un espacio de nombres diferente o en el espacio de nombres de origen original.
+
+[role="tabbed-block"]
+====
+.Restaurar desde instantánea con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-snapshot-restore-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de esta operación de CR; seleccione un nombre sensible para su entorno.
+** <APPVAULT_NAME>: El nombre del AppVault donde se almacena el contenido del backup.
+** <BACKUP_PATH>: Ruta dentro de AppVault, donde se almacena el contenido del backup. Por ejemplo:
++
+[listing]
+----
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
+** <SOURCE_NAMESPACE>: El espacio de nombres de origen de la operación de restauración.
+** <DESTINATION_NAMESPACE>: El espacio de nombres de destino de la operación de restauración.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: SnapshotRestore
+metadata:
+  name: <CR_NAME>
+  namespace: astra-connector
+spec:
+  appArchivePath: <BACKUP_PATH>
+  appVaultRef: <APPVAULT_NAME>
+  namespaceMapping: [{"source": "<SOURCE_NAMESPACE>", "destination": "<DESTINATION_NAMESPACE>"}]
+----
+
+
+
+
+Directiva no resuelta en <stdin> - Include:../_include/selective-restore-cr.adoc[]
+
+. Después de rellenar el `astra-control-snapshot-restore-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-restore-cr.yaml
+----
+
+
+--
+.Restauración de una snapshot al espacio de nombres original con un CR
+--
+.Pasos
+. Cree el archivo de recursos personalizados (CR) y asígnele un nombre `astra-control-snapshot-ipr-cr.yaml`. Actualiza los valores entre paréntesis <> para que coincidan con tu entorno de Astra Control y la configuración del clúster:
++
+** <CR_NAME>: El nombre de esta operación de CR; seleccione un nombre sensible para su entorno.
+** <APPVAULT_NAME>: El nombre del AppVault donde se almacena el contenido del backup.
+** <BACKUP_PATH>: Ruta dentro de AppVault, donde se almacena el contenido del backup. Por ejemplo:
++
+[listing]
+----
+ONTAP-S3_1343ff5e-4c41-46b5-af00/backups/schedule-20231213023800_94347756-9d9b-401d-a0c3
+----
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: SnapshotInplaceRestore
+metadata:
+  name: <CR_NAME>
+  namespace: astra-connector
+spec:
+  appArchivePath: <BACKUP_PATH>
+  appVaultRef: <APPVAULT_NAME>
+----
+
+
+
+
+Directiva no resuelta en <stdin> - Include:../_include/selective-restore-cr.adoc[]
+
+. Después de rellenar el `astra-control-snapshot-ipr-cr.yaml` Con los valores correctos, aplique el CR:
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-ipr-cr.yaml
+----
+
+
+--
+====
 .Resultado
 Astra Control restaura la aplicación en función de la información proporcionada. Si restauró la aplicación en un lugar, el contenido de los volúmenes persistentes existentes se reemplaza por el contenido de los volúmenes persistentes de la aplicación restaurada.
 
