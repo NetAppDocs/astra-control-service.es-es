@@ -50,6 +50,12 @@ Las siguientes limitaciones afectan a la gestión de aplicaciones de Astra Contr
 
 
 
+=== Las operaciones de restauración sin movimiento a las clases de almacenamiento económico ontap-nas fallan
+
+Si realiza una restauración sin movimiento de una aplicación (restaura la aplicación en su espacio de nombres original) y la clase de almacenamiento de la aplicación utiliza el `ontap-nas-economy` controlador, se puede producir un error en la operación de restauración si el directorio snapshot no está oculto. Antes de restaurar en el lugar, siga las instrucciones de link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Habilite el backup y la restauración para las operaciones económicas de ontap-nas"^] para ocultar el directorio de instantáneas.
+
+
+
 === No es posible restaurar colectivamente varias aplicaciones que utilicen el mismo espacio de nombres para otro
 
 Si gestiona varias aplicaciones que utilizan el mismo espacio de nombres (creando varias definiciones de aplicaciones en Astra Control), no podrá restaurar todas las aplicaciones en un espacio de nombres único diferente. Es necesario restaurar cada aplicación a su propio espacio de nombres independiente.
