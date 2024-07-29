@@ -629,7 +629,6 @@
   <block id="7cf981924f9f32f25a7be7da04e4f309" category="section-title">Suscríbase al servicio Astra Control Service en Azure Marketplace</block>
   <block id="90f1f0f612cdbd4b2caffe6bf1488efe" category="paragraph">Puede suscribirse al servicio Astra Control Service mediante Azure Marketplace. La cuenta y los datos de facturación se gestionan a través del Marketplace.</block>
   <block id="ceeca391c3348d53722ec9783ba88430" category="inline-link">TV de NetApp</block>
-  <block id="b504b02d5498a8b09080b1e621f4d1aa" category="admonition">Para ver un tutorial en vídeo del proceso de suscripción a Azure Marketplace, visite<block ref="bfd2f59ca3f14f5fb5037b1bda5b7515" category="inline-link-rx"></block>.</block>
   <block id="21e74b3c28d006317f38a2bc8eb1da3b" category="inline-link">Azure Marketplace</block>
   <block id="e3dd359be46779e5f048b0e4b88d59e4" category="list-text">Vaya a la<block ref="5be4aefdd1ff2763a0dd31323a166201" category="inline-link-rx"></block>.</block>
   <block id="f4b38ea86dced4bcec9486ee5f53c097" category="list-text">Seleccione *Get It Now*.</block>
@@ -1761,7 +1760,6 @@
   <block id="ed732ea9c1e91d97f98c7332ade8ccdc" category="inline-link-macro">Protección de datos en Astra Control</block>
   <block id="efe10d9d842c9e231cc488725ee92859" category="paragraph">Más información acerca de <block ref="0675148237c2e40e6d4648cd7be7bdff" category="inline-link-macro-rx"></block>.</block>
   <block id="b9e1d0bf223b6f7300505413ba804bf8" category="paragraph">Echa un vistazo a NetApp TV para obtener el contenido más reciente en vídeo, sobre Astra Control Service. NetApp TV incluye vídeos que muestran determinadas funciones de Astra Control Service o cómo completar ciertas tareas comunes.</block>
-  <block id="7e55cbece21210bf38e3d4b07e57e7d1" category="paragraph"><block ref="7e55cbece21210bf38e3d4b07e57e7d1" category="inline-link-rx"></block></block>
   <block id="316180edc15beeaf2a295663e1d94065" category="paragraph">Puede utilizar Astra Control Service para gestionar clústeres privados de Azure Kubernetes Service (AKS) y clústeres privados de Red Hat OpenShift en AKS. En estas instrucciones se asume que ya ha creado un clúster privado de AKS o OpenShift y preparado un método seguro para acceder de forma remota; para obtener más información sobre la creación y el acceso a clústeres privados de AKS o OpenShift, consulte la siguiente documentación:</block>
   <block id="1aea4b3a5f6138ad98f153802fc6de6d" category="inline-link">Documentación de Azure para clústeres AKS privados</block>
   <block id="cba64c917541f4eafce8c12475f555c6" category="list-text"><block ref="cba64c917541f4eafce8c12475f555c6" category="inline-link-rx"></block></block>
@@ -2885,4 +2883,6 @@ Astra Control ya está disponible en un nuevo modelo de puesta en marcha. _Astra
   <block id="5858ee4031acd7b896faa2d3d2c1a299" category="inline-link">Documentación de Cloud Insights</block>
   <block id="2b93b48daf034e4100d00b85950e109d" category="list-text"><block ref="2b93b48daf034e4100d00b85950e109d" category="inline-link-rx"></block></block>
   <block id="20186cef4fc96e59fa1bf8ee82f413ce" category="paragraph">Esta versión de Astra Control Service contiene una funcionalidad de Kubernetes declarativa que le permite realizar una gestión de datos desde un recurso personalizado (CR) nativo de Kubernetes.</block>
+  <block id="7da594e16f0a75f632446ae54fcebe05" category="paragraph"><block ref="7da594e16f0a75f632446ae54fcebe05" category="inline-link-rx"></block></block>
+  <block id="f5a6b606e4d3218555a81c4263520975" category="admonition">Para ver un tutorial en vídeo del proceso de suscripción de Azure Marketplace, visite<block ref="f66ebb92a2b0ab499cd7d4ec1bb5ea24" category="inline-link-rx"></block>.</block>
 </blocks>
