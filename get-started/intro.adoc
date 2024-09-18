@@ -219,7 +219,7 @@ Astra Control Center se ejecuta en forma local en su propia nube privada.
 
 Astra Control Center admite los clústeres de Kubernetes con un tipo de almacenamiento configurado por el aprovisionador de Astra Control con un back-end de almacenamiento de ONTAP.
 
-Astra Control Center está totalmente integrado en el ecosistema de AutoSupport y Active IQ para proporcionar a los usuarios y el soporte de NetApp información sobre solución de problemas y uso.
+Astra Control Center está totalmente integrado en el ecosistema del asesor digital de AutoSupport y Active IQ (también conocido como asesor digital) para proporcionar a los usuarios y al servicio de soporte de NetApp información sobre solución de problemas e uso.
 
 Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.
 

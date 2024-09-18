@@ -1467,7 +1467,6 @@
   <block id="e9ca84d66f1908e5a75b18227ca36fe4" category="paragraph">El plan gratuito de Astra Control le permite gestionar hasta 10 espacios de nombres en su cuenta. Si desea gestionar más de 10 espacios de nombres, deberá configurar la facturación mediante la actualización del plan gratuito al plan Premium.</block>
   <block id="b714fdd25acef8e71be758de7ff02f0b" category="section-title">Cómo funciona Astra Control Center</block>
   <block id="90d397f2aa31c2e6d9f5dfda5d12adca" category="paragraph">Astra Control Center se ejecuta en forma local en su propia nube privada.</block>
-  <block id="ea2708b459fc0cad6936ec216bd9405e" category="paragraph">Astra Control Center está totalmente integrado en el ecosistema de AutoSupport y Active IQ para proporcionar a los usuarios y el soporte de NetApp información sobre solución de problemas y uso.</block>
   <block id="46d0a394f0b8bd48b4ad9f07551cc671" category="paragraph">Puede probar Astra Control Center con una licencia de evaluación de 90 días. La versión de evaluación es compatible con las opciones de correo electrónico y comunidad. Además, tendrá acceso a los artículos de la base de conocimientos y a la documentación desde la consola de soporte del producto.</block>
   <block id="b4851e92b19af0c5c82447fc0937709d" category="inline-link">requisitos</block>
   <block id="e63cc3795b9216d59b085bd3111a248d" category="paragraph">Para instalar y utilizar Astra Control Center, tendrá que estar seguro<block ref="bdde32b2c988689d803729c06660acb4" category="inline-link-rx"></block>.</block>
@@ -2885,4 +2884,5 @@ Astra Control ya está disponible en un nuevo modelo de puesta en marcha. _Astra
   <block id="20186cef4fc96e59fa1bf8ee82f413ce" category="paragraph">Esta versión de Astra Control Service contiene una funcionalidad de Kubernetes declarativa que le permite realizar una gestión de datos desde un recurso personalizado (CR) nativo de Kubernetes.</block>
   <block id="7da594e16f0a75f632446ae54fcebe05" category="paragraph"><block ref="7da594e16f0a75f632446ae54fcebe05" category="inline-link-rx"></block></block>
   <block id="f5a6b606e4d3218555a81c4263520975" category="admonition">Para ver un tutorial en vídeo del proceso de suscripción de Azure Marketplace, visite<block ref="f66ebb92a2b0ab499cd7d4ec1bb5ea24" category="inline-link-rx"></block>.</block>
+  <block id="a9cf730f8ab04a5b52f1d19c74c1483c" category="paragraph">Astra Control Center está totalmente integrado en el ecosistema del asesor digital de AutoSupport y Active IQ (también conocido como asesor digital) para proporcionar a los usuarios y al servicio de soporte de NetApp información sobre solución de problemas e uso.</block>
 </blocks>
